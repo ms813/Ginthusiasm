@@ -1,0 +1,85 @@
+body {
+	margin: 0;
+}
+
+.header-small{
+    font-size: 1.5em;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+	width: 100%;
+	background-color: ForestGreen ;
+	height: 100px;
+}
+
+.header-small .logo{
+	max-width: 100px;
+	flex-grow: 1;
+}
+
+.nav-small{
+    height:100%;
+	flex-grow: 4;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	text-align:center;
+}
+
+.nav-small a span{
+	display:table-cell;
+	vertical-align:middle;
+}
+
+.nav-small a {
+	width: 25%;
+	height: 100%;
+	display: table;
+	text-decoration: none;
+	color: white;
+}
+
+.nav-small a:hover{
+	background-color: DarkGreen;
+}
+
+.header-small .search-header {
+	flex-grow: 1;
+	display: flex;
+	align-items:center;
+	justify-content: space-between;
+	height: 100%;
+}
+
+.header-small .search-header input[type='text']{
+	flex-grow: 3;
+    border-radius: 5px;
+    height:50%;
+}
+
+
+.header-small .search-header .btn {
+	flex-grow: 1;
+	width: 25%;
+	height:50%;
+}
+
+a.btn {
+	border-radius: 5px;
+	text-align: center;
+	color: white;
+	background-color: DarkGreen;
+	cursor: pointer;
+	display: table;
+}
+
+a.btn:hover{
+	background-color: green;
+}
+
+a.btn span{
+	display:table-cell;
+	vertical-align:middle;
+}

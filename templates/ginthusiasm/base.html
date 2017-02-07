@@ -1,0 +1,32 @@
+<!doctype html>
+{% load staticfiles %}
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/header.css' %}">
+        <title>
+            Ginthusiasm -
+            {% block title_block %}
+            {% endblock %}
+        </title>
+    </head>
+
+    <body>
+        <div class='header-small'>
+        	<img class='logo' src="{% static 'images/ginthusiasm-logo.png' %}" alt='site logo'/>
+        	<nav class='nav-small'>
+        		<a href='#'><span>Home</span></a>
+        		<a href='#'><span>About</span></a>
+        		<a href='#'><span>Gin</span></a>
+        		<a href='#'><span>Rate</span></a>
+        	</nav>
+        	<div class='search-header'>
+        		<input type='text'>
+        		<a class='btn'><span>Search</span></a>
+        	</div>
+        </div>
+        {% block body_block %}
+        {% endblock %}
+
+        <div>Footer here</div>
+    </body>
+</html>
