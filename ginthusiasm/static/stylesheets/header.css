@@ -1,26 +1,21 @@
-body {
-	margin: 0;
-}
-
 .header-small{
-    font-size: 1.5em;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
 	align-items: center;
 	width: 100%;
-	background-color: ForestGreen ;
-	height: 100px;
+	background-color: ForestGreen;
+	height: 50px;
 }
 
 .header-small .logo{
-	max-width: 100px;
+	max-width: 50px;
 	flex-grow: 1;
 }
 
-.nav-small{
-    height:100%;
-	flex-grow: 4;
+.header-small .nav{
+    height:50px;
+	flex-grow: 6;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
@@ -28,45 +23,57 @@ body {
 	text-align:center;
 }
 
-.nav-small a span{
-	display:table-cell;
-	vertical-align:middle;
+.header-large{
+    text-align: center;
+    background-color: ForestGreen;
+    height: 310px;
 }
 
-.nav-small a {
-	width: 25%;
+.header-large .logo-large{
+    margin: 5px auto;
+    max-height: 250px;
+}
+
+.header-large .nav{
+    margin-top: -5px;
+    height:50px;
+	display: flex;
+	flex-direction: row;
+    align-items: center;
+	text-align:center;
+    justify-content: space-around;
+}
+
+.nav a {
+	width: 18%;
 	height: 100%;
 	display: table;
 	text-decoration: none;
 	color: white;
 }
 
-.nav-small a:hover{
+.nav a span{
+	display:table-cell;
+	vertical-align:middle;
+}
+
+.nav a:hover{
+    border-radius: 5px;
 	background-color: DarkGreen;
 }
 
-.header-small .search-header {
-	flex-grow: 1;
-	display: flex;
-	align-items:center;
-	justify-content: space-between;
-	height: 100%;
-}
-
-.header-small .search-header input[type='text']{
-	flex-grow: 3;
+.nav input[type='text']{
+    height: 80%;
+    font-size: 1.2em;
+    border:none;
+    flex-grow:2;
+    text-align: center;
     border-radius: 5px;
-    height:50%;
 }
 
-
-.header-small .search-header .btn {
-	flex-grow: 1;
-	width: 25%;
-	height:50%;
-}
-
-a.btn {
+.nav a.btn {
+    height: 80%;
+    width: 10%;
 	border-radius: 5px;
 	text-align: center;
 	color: white;
@@ -75,11 +82,11 @@ a.btn {
 	display: table;
 }
 
-a.btn:hover{
+.nav a.btn:hover{
 	background-color: green;
 }
 
-a.btn span{
+.nav a.btn span{
 	display:table-cell;
 	vertical-align:middle;
 }

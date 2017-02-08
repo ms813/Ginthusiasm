@@ -1,0 +1,16 @@
+{% extends 'ginthusiasm/base.html' %}
+{% load staticfiles %}
+
+{% block header_block %}
+<div class='header-large'>
+    <a href='/'><img class='logo-large' src="{% static 'images/ginthusiasm-logo.png' %}" alt='site logo'/></a>
+    <div><nav class='nav'>
+        <a href='#'><span>Home</span></a>
+        <a href='#'><span>About</span></a>
+        <a href='#'><span>Gin</span></a>
+        <a href='#'><span>Rate</span></a>
+        <input type='text' placeholder="&#x1f50d;">
+        <a class='btn'><span>Search</span></a>
+    </nav></div>
+</div>
+{% endblock %}

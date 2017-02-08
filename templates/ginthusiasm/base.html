@@ -2,7 +2,13 @@
 {% load staticfiles %}
 <html>
     <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        {% block style_block %}
+        {% endblock%}
         <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/header.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/base_style.css' %}">
+
         <title>
             Ginthusiasm -
             {% block title_block %}
@@ -11,22 +17,11 @@
     </head>
 
     <body>
-        <div class='header-small'>
-        	<a href='/'><img class='logo' src="{% static 'images/ginthusiasm-logo.png' %}" alt='site logo'/></a>
-        	<nav class='nav-small'>
-        		<a href='#'><span>Home</span></a>
-        		<a href='#'><span>About</span></a>
-        		<a href='#'><span>Gin</span></a>
-        		<a href='#'><span>Rate</span></a>
-        	</nav>
-        	<div class='search-header'>
-        		<input type='text'>
-        		<a class='btn'><span>Search</span></a>
-        	</div>
-        </div>
-        {% block body_block %}
+        {% block header_block %}
         {% endblock %}
 
+        {% block body_block %}
+        {% endblock %}
         <div>Footer here</div>
     </body>
 </html>
