@@ -26,21 +26,21 @@
 .header-large{
     text-align: center;
     background-color: ForestGreen;
-    height: 310px;
+    height: 260px;
 }
 
 .header-large .logo-large{
     margin: 5px auto;
-    max-height: 250px;
+    max-height: 200px;
 }
 
 .header-large .nav{
     margin-top: -5px;
     height:50px;
 	display: flex;
-	flex-direction: row;
-    align-items: center;
 	text-align:center;
+    flex-direction: row;
+    align-items: center;
     justify-content: space-around;
 }
 
@@ -64,9 +64,9 @@
 
 .nav input[type='text']{
     height: 80%;
+    width: 18%;
     font-size: 1.2em;
     border:none;
-    flex-grow:2;
     text-align: center;
     border-radius: 5px;
 }
