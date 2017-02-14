@@ -1,0 +1,16 @@
+<div>
+    <h2>Sign up form</h2>
+    {% if error %}
+    <div>
+        <p>Sorry, we couldn't sign you up because there were problems with these fields:</p>
+        {{ error }}
+    </div>
+    {% endif %}
+    <form id='user_form' method='post' action="{% url 'signup' %}">
+        {% csrf_token %}
+
+        {{ user_form.as_p }}
+
+        <input id='signup-btn' type='submit' name='submit' value='Sign up'/>
+    </form>
+</div>

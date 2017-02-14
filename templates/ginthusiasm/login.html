@@ -4,5 +4,10 @@
 {% block title_block %} Log In{% endblock %}
 
 {% block body_block %}
-<div> Log in page </div>
+{% if login_form %}
+{% include 'ginthusiasm/login_widget.html' %}
+{% endif %}
+{% if user_form %}
+{% include 'ginthusiasm/signup_widget.html' %}
+{% endif %}
 {% endblock %}

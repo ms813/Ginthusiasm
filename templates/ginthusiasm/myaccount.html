@@ -1,0 +1,12 @@
+{% extends 'ginthusiasm/header_small.html' %}
+{% load staticfiles %}
+
+{% block title_block %} My Account{% endblock %}
+
+{% block body_block %}
+    <h1>Welcome {{ user.first_name }}!</h1>
+    <a>Wishlist</a>
+    <a>Reviews</a>
+    <a href='{% url "logout" %}'>Log Out</a>
+
+{% endblock %}

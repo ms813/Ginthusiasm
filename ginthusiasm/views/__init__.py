@@ -1,2 +1,2 @@
 from index import *
-from login import login
+from login import *

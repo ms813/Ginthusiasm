@@ -5,7 +5,13 @@
 	align-items: center;
 	width: 100%;
 	background-color: ForestGreen;
+	color: #ffffff;
 	height: 50px;
+}
+
+.header-small a, .header-large a{
+	color: #ffffff;
+	text-decoration: none;
 }
 
 .header-small .logo{
@@ -44,12 +50,27 @@
     justify-content: space-around;
 }
 
+.header-large .login-small{
+	position: absolute;
+	top: 0;
+	right: 15px;
+	height: 50px;
+}
+
+.header-large .header-search{
+	position: absolute;
+	top: 150px;
+	right: 0;
+	height: 50px;
+}
+
+.header-small .nav {
+	width: 50%;
+}
 .nav a {
-	width: 18%;
+	width: 25%;
 	height: 100%;
 	display: table;
-	text-decoration: none;
-	color: white;
 }
 
 .nav a span{
@@ -62,16 +83,7 @@
 	background-color: DarkGreen;
 }
 
-.nav input[type='text']{
-    height: 80%;
-    width: 18%;
-    font-size: 1.2em;
-    border:none;
-    text-align: center;
-    border-radius: 5px;
-}
-
-.nav a.btn {
+a.btn {
     height: 80%;
     width: 10%;
 	border-radius: 5px;
@@ -82,11 +94,41 @@
 	display: table;
 }
 
-.nav a.btn:hover{
+a.btn:hover{
 	background-color: green;
 }
 
-.nav a.btn span{
+a.btn span{
 	display:table-cell;
 	vertical-align:middle;
+}
+
+.login-small{
+	height: 100%;
+	width: 25%;
+	text-align: right;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+}
+
+.header-search{
+	display: flex;
+	align-items:center;
+	justify-content: space-around;
+	height: 100%;
+	width: 25%;
+}
+
+.header-search a.btn {
+	width: 25%;
+}
+
+.header-search input[type='text']{
+    height: 80%;
+    width: 70%;
+    font-size: 1.2em;
+    border:none;
+    text-align: center;
+    border-radius: 5px;
 }
