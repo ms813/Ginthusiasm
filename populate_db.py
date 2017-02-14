@@ -36,8 +36,6 @@ def populate_wishlist():
     for user in UserProfile.objects.all():
         wishlist = Wishlist.objects.get_or_create(user=user)
 
-    # wishlist population here...
-
 def populate_users():
     print("Populating users...")
 

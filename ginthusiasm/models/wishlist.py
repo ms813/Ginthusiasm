@@ -6,12 +6,7 @@ from ginthusiasm.models import Gin, UserProfile
 
 class Wishlist(models.Model):
     gins = models.ManyToManyField(Gin)
-    user = models.OneToOneField(UserProfile)
-    slug = models.SlugField(unique=True)
-
-    def save(self, *args, **kwargs):
-        self.slug = slugify(self.user.user.username)
-        super(Wishlist, self).save(*args, **kwargs)
+    user = models.OneToOneField(UserProfile, primary_key=True, related_name='wishlist')
 
     def __str__(self):
         return self.user.user.username + "'s wishlist"

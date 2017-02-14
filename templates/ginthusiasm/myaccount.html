@@ -5,7 +5,7 @@
 
 {% block body_block %}
     <h1>Welcome {{ user.first_name }}!</h1>
-    <a>Wishlist</a>
+    <a href='{% url "wishlist" user.username %}'>Wishlist</a>
     <a>Reviews</a>
     <a href='{% url "logout" %}'>Log Out</a>
 
