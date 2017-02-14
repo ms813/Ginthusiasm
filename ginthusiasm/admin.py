@@ -1,5 +1,4 @@
 from django.contrib import admin
-
 from ginthusiasm.models import Article, Distillery, Gin, Review, UserProfile, Wishlist
 
 admin.site.register(Article)
