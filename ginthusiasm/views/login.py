@@ -3,7 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from ginthusiasm.forms import UserForm, LoginForm
-from ginthusiasm.models import UserProfile
+from ginthusiasm.models import UserProfile, Wishlist
 
 def user_login(request):
     if request.method == 'POST':
@@ -47,9 +47,15 @@ def signup(request):
             profile = UserProfile()
             profile.user = user
             profile.save()
-            # new user is good, authenticate and log them in
-            context = {'message' : 'Account created!', 'login_form' : LoginForm()}
-            return render(request, 'ginthusiasm/login.html', context)
+
+            # create an empty wishlist for the new user
+            wishlist = Wishlist(user=profile)
+            wishlist.save()
+            # new user is good, log them in
+            login(request, user)
+            return redirect('myaccount')
+            # context = {'message' : 'Account created!', 'login_form' : LoginForm()}
+            # return render(request, 'ginthusiasm/login.html', context)
         else:
             # bad sign up data
             context = {
