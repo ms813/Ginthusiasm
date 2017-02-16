@@ -21,7 +21,29 @@ def populate_distillery():
 
 def populate_gin():
     print("Populating gins...")
-    # gin population here...
+
+    gins = [
+        {
+            "name" : "Isle of Harris Gin",
+            "price" : "35.00",
+            "short_description" : "Test short description",
+            "long_description" : "Test long description",
+            "taste_tags" : "Sugar Kelp, Juniper, Coriander, Angelica Root, Orris Root, Cubebs, Bitter Orange Peel, Licorice, Cassia Bark",
+            "image" : "desert.png",
+        }
+    ]
+
+    for data in gins:
+        gin, created = Gin.objects.get_or_create(name = data['name'])
+
+        if created:
+            gin.price = data['price']
+            gin.short_description = data['short_description']
+            gin.long_description = data['long_description']
+            gin.taste_tags = data['taste_tags']
+            gin.image = data['image']
+
+            gin.save()
 
 def populate_review():
     print("Populating reviews...")
