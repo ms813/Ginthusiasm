@@ -3,8 +3,6 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        {% block script_block %}
-        {% endblock%}
         {% block style_block %}
         {% endblock%}
         <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/header.css' %}">
@@ -24,5 +22,8 @@
         {% block body_block %}
         {% endblock %}
         <div>Footer here</div>
+
+        {% block script_block %}
+        {% endblock%}
     </body>
 </html>

@@ -9,4 +9,7 @@ urlpatterns = [
     url(r'^logout/$', views.user_logout, name='logout'),
     url(r'^wishlist/(?P<username>[\w\-]+)/$', views.wishlist, name='wishlist'),
     url(r'^$', views.index, name ='index'),
+
+    # debug
+    url(r'^maptest/$', views.maptest, name ='maptest'),
 ]

@@ -1,0 +1,32 @@
+{% extends 'ginthusiasm/header_large.html' %}
+{% load staticfiles %}
+
+{% block title_block %} MapTest{% endblock %}
+
+{% block body_block %}
+<img style="display:inline-block;" src = {{ map_url }} />
+<div id='js-map' style="display:inline-block;height:640px; width:640px"></div>
+{% endblock %}
+
+{% block script_block %}
+    <script src="{% static 'scripts/map_styles.js' %}"></script>
+    <script>
+        var initMap = function(){
+            var coords = {lat: {{ lat }}, lng: {{ lng }} };
+            var map = new google.maps.Map(document.getElementById('js-map'), {
+                zoom : {{ zoom }},
+                center: coords,
+                styles : map_style_dark
+            });
+
+            var marker = new google.maps.Marker({
+                position: coords,
+                map: map
+            });
+        }
+    </script>
+
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key={{ js_api_key }}&callback=initMap">
+    </script>
+{% endblock%}
