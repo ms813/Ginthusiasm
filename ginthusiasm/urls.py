@@ -3,6 +3,7 @@ from django.conf.urls import url
 from ginthusiasm import views
 
 urlpatterns = [
+    url(r'^gin/(?P<gin_name_slug>[\w\-]+)/$', views.show_gin, name='show_gin'),
     url(r'^login/$', views.user_login, name='login'),
     url(r'^signup/$', views.signup, name='signup'),
     url(r'^my-account/$', views.myaccount, name='myaccount'),
