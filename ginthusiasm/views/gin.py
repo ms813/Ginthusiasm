@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from ginthusiasm.models import Gin
 
+# View for the main gin page
 def show_gin(request, gin_name_slug):
     context_dict = {}
 
