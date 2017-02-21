@@ -1,0 +1,18 @@
+{% extends 'ginthusiasm/base.html' %}
+{% load staticfiles %}
+
+
+
+{% block title_block %}
+This is an article!!
+{% endblock %}
+
+
+{% block header_block %}
+{{ article.title }}
+{% endblock %}
+
+
+{% block body_block %}
+{{ article.content }}
+{% endblock %}
