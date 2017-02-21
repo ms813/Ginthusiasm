@@ -71,8 +71,17 @@ def populate_wishlist():
     if len(users) == 0:
         populate_users()
 
+    gins = Gin.objects.all()
+    if len(gins) == 0:
+        populate_gin()
+
     for user in UserProfile.objects.all():
-        wishlist = Wishlist.objects.get_or_create(user=user)
+        wishlist, created = Wishlist.objects.get_or_create(user=user)
+
+        if user.user.username == 'Matt' and created:
+            wishlist.gins.add(gins[0]);
+            wishlist.gins.add(gins[1]);
+            wishlist.gins.add(gins[2]);
 
 def populate_users():
     print("Populating users...")
