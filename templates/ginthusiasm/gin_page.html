@@ -1,0 +1,15 @@
+{% extends 'ginthusiasm/header_small.html' %}
+{% load staticfiles %}
+
+{% block style_block %}
+{% endblock %}
+
+{% block title_block %} {{ gin.name }}{% endblock %}
+
+{% block body_block %}
+    <div>
+        <h1>{{ gin.name }}</h1><br />
+        <p>{{ gin.long_description }}</p>
+        <img src="{{ MEDIA_URL }}{{ gin.image }}" alt='Image of {{ gin.name }}'/>
+    </div>
+{% endblock %}

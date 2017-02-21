@@ -17,4 +17,4 @@ def show_gin(request, gin_name_slug):
         context_dict['gin'] = None
 
     # Render the response and return it to the client
-    return HttpResponse("Gin page loaded. " + gin.name)
+    return render(request, 'ginthusiasm/gin_page.html', context=context_dict)
