@@ -38,7 +38,7 @@ def populate_gin():
             "long_description" : "Test long description",
             "taste_tags" : "Juniper, Rose Petals, Hibiscus, Strawberry, Raspberry, Vanilla, Apples, Pears, Pink Grapefruit, Rose Water",
             "image" : "gins/Eden-Mill-Love-Gin.jpg",
-        }
+        },
         {
             "name" : "The Botanist Islay Dry Gin",
             "price" : "35.00",
