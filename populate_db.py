@@ -22,7 +22,7 @@ def populate_distillery():
 def populate_gin():
     print("Populating gins...")
     print("    Populating gin taste tags...")
-    tags = ["Juniper", "Sugar Kelp", "Strawberry"]
+    tags = ["Juniper", "Sugar Kelp", "Coriander", "Angelica Root", "Orris Root", "Cubebs", "Bitter Orange Peel", "Licorice", "Cassia Bark"]
 
     for tag_name in tags:
         tag, created = TasteTag.objects.get_or_create(name = tag_name)
