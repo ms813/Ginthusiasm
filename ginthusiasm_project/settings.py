@@ -130,7 +130,7 @@ MEDIA_URL = '/media/'
 
 LOGIN_URL = '/login/'
 
-# email server for password reset emails
+# email server config for password reset emails
 if DEBUG:
     EMAIL_HOST = 'localhost'
     EMAIL_PORT = 1025
