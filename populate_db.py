@@ -9,7 +9,7 @@ from django.contrib.auth.models import User
 
 from django.contrib.auth.hashers import make_password
 
-from ginthusiasm.models import Article, Distillery, Gin, Review, UserProfile, Wishlist
+from ginthusiasm.models import Article, Distillery, Gin, TasteTag, Review, UserProfile, Wishlist
 
 def populate_article():
     print("Populating articles...")
@@ -21,7 +21,17 @@ def populate_distillery():
 
 def populate_gin():
     print("Populating gins...")
+    print("    Populating gin taste tags...")
+    tags = ["Juniper", "Sugar Kelp", "Strawberry"]
 
+    for tag_name in tags:
+        tag, created = TasteTag.objects.get_or_create(name = tag_name)
+
+        if created:
+            tag.name = tag_name
+            tag.save()
+
+    print("    Populating gins...")
     gins = [
         {
             "name" : "Isle of Harris Gin",

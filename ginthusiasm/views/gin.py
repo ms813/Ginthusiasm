@@ -20,7 +20,7 @@ def show_gin(request, gin_name_slug):
     return render(request, 'ginthusiasm/gin_page.html', context=context_dict)
 
 def gin_search_results(request):
-    gin_list = Gin.objects.order_by('average_rating')
+    gin_list = Gin.objects.order_by('-average_rating')
 
     context_dict = {'gins': gin_list}
 
