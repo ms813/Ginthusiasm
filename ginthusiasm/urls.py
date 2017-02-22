@@ -3,19 +3,22 @@ from django.contrib.auth.views import password_reset, password_reset_done, passw
 
 from ginthusiasm import views
 
-urlpatterns = [
 
-    #gin
+##########     Gin     ##########
+gin_patterns = [
     url(r'^gin/$', views.gin_search_results, name='gin_search_results'),
     url(r'^gin/(?P<gin_name_slug>[\w\-]+)/$', views.show_gin, name='show_gin'),
+]
 
-    # user
+##########     User     ##########
+user_patterns = [
+    # User, login etc
     url(r'^login/$', views.user_login, name='login'),
     url(r'^signup/$', views.signup, name='signup'),
     url(r'^my-account/$', views.myaccount, name='myaccount'),
     url(r'^logout/$', views.user_logout, name='logout'),
 
-    # password reset
+    # Password reset
     url(r'^password-reset/$',
         password_reset,
         {'post_reset_redirect' : '/password-reset/done/'},
@@ -31,13 +34,42 @@ urlpatterns = [
 
     url(r'^password-reset/complete/$',
         password_reset_complete),
+]
 
-    # wishlist
+##########     Wishlist     ##########
+wishlist_patterns = [
     url(r'^wishlist/(?P<username>[\w\-]+)/$', views.wishlist, name='wishlist'),
+]
 
-    # root
-    url(r'^$', views.index, name ='index'),
+##########     Distillery     ##########
+distillery_patterns = [
 
-    # debug
+]
+
+##########     Review     ##########
+review_patterns = [
+
+]
+
+##########     Article     ##########
+article_patterns = [
+
+]
+
+##########     Debug     ##########
+debug_patterns = [
     url(r'^maptest/$', views.maptest, name ='maptest'),
 ]
+
+urlpatterns = [
+    ##########     Index     ##########
+    url(r'^$', views.index, name ='index'),
+]
+
+urlpatterns += gin_patterns
+urlpatterns += user_patterns
+urlpatterns += wishlist_patterns
+urlpatterns += distillery_patterns
+urlpatterns += review_patterns
+urlpatterns += article_patterns
+urlpatterns += debug_patterns
