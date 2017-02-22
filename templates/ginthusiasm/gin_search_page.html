@@ -1,0 +1,20 @@
+{% extends 'ginthusiasm/header_small.html' %}
+{% load staticfiles %}
+
+{% block style_block %}
+{% endblock %}
+
+{% block title_block %} Search fo Gin{% endblock %}
+
+{% block body_block %}
+    {% if gins %}
+    <ul>
+        {% for gin in gins %}
+            {% include 'ginthusiasm/gin_widget.html' %}
+        {% endfor %}
+    </ul>
+    {% else %}
+        No Search Results
+    {% endif %}
+
+{% endblock %}

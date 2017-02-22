@@ -18,3 +18,10 @@ def show_gin(request, gin_name_slug):
 
     # Render the response and return it to the client
     return render(request, 'ginthusiasm/gin_page.html', context=context_dict)
+
+def gin_search_results(request):
+    gin_list = Gin.objects.order_by('average_rating')
+
+    context_dict = {'gins': gin_list}
+
+    return render(request, 'ginthusiasm/gin_search_page.html', context=context_dict)

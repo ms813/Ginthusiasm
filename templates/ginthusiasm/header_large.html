@@ -5,9 +5,9 @@
 <div class='header-large'>
     <a href='/'><img class='logo-large' src="{% static 'images/ginthusiasm-logo.png' %}" alt='site logo'/></a>
     <nav class='nav'>
-        <a href='#'><span>Home</span></a>
+        <a href="{% url 'index' %}"><span>Home</span></a>
         <a href='#'><span>About</span></a>
-        <a href='#'><span>Gin</span></a>
+        <a href="{% url 'gin_search_results' %}"><span>Gin</span></a>
         <a href='#'><span>Rate</span></a>
     </nav>
     <div class='login-small'>
