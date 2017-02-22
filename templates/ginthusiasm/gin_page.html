@@ -11,5 +11,14 @@
         <h1>{{ gin.name }}</h1><br />
         <p>{{ gin.long_description }}</p>
         <img src="{{ MEDIA_URL }}{{ gin.image }}" alt='Image of {{ gin.name }}'/>
+        <div>
+            Tags:
+            <ul>
+                {% for tag in gin.taste_tags.all %}
+                    <!-- Replace "#" with url to search page filterred by the taste tag -->
+                    <li><a href="#">{{ tag.name }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
 {% endblock %}
