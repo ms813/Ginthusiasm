@@ -8,7 +8,7 @@
 {% block body_block %}
     {% if gins %}
         {% for gin in gins %}
-            <p>{{ gin }}</p>
+            {% include 'ginthusiasm/gin_widget.html' %}
         {% endfor %}
     {% else %}
         <p>This user hasn't added any gins to their wishlist yet!</p>
