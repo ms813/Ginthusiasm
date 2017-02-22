@@ -33,3 +33,9 @@ form input[type='text'], form input[type='password'], form input[type='email'] {
 form .helptext {
     display: none;
 }
+
+#password_reset_wrapper{
+    margin: 0 auto;
+    width: 40%;
+    text-align: center;
+}
