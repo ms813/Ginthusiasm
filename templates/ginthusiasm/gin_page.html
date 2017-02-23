@@ -7,11 +7,13 @@
 {% block title_block %} {{ gin.name }}{% endblock %}
 
 {% block body_block %}
-    <div>
+    <div class='gin_description'>
+        <img class='image' src="{{ MEDIA_URL }}{{ gin.image }}" alt='Image of {{ gin.name }}'/>
         <h1>{{ gin.name }}</h1><br />
-        <p>{{ gin.long_description }}</p>
-        <img src="{{ MEDIA_URL }}{{ gin.image }}" alt='Image of {{ gin.name }}'/>
-        <div>
+        <p>{{ gin.long_description }}
+            {% lorem 10 p %}
+        </p>
+        <div class='taste_tags'>
             Tags:
             <ul>
                 {% for tag in gin.taste_tags.all %}
@@ -21,4 +23,43 @@
             </ul>
         </div>
     </div>
+
+    <div class='review_form'>
+    </div>
+
+    <div class='expert_reviews'>
+        <ul>
+        </ul>
+    </div>
+
+    <div class='other_reviews'>
+        <ul>
+        </ul>
+    </div>
+
+    <style>
+        div.gin_description {
+            flex-direction: wrap;
+        }
+
+        .gin_description .taste_tags ul {
+            display: inline-flex;
+            list-style-type: none;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+
+        .gin_description .taste_tags li {
+            padding: 10px;
+            margin-right: 10px;
+            background-color: lightgrey;
+        }
+
+        .gin_description .image {
+            max-height: 800px;
+            max-width: 400px;
+            float: right;
+        }
+
+    </style>
 {% endblock %}
