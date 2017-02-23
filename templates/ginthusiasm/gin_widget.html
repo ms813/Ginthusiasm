@@ -1,0 +1,8 @@
+<div>
+    <a href="{% url 'show_gin' gin.slug %}">
+        <img src="{{ MEDIA_URL }}{{ gin.image }}" alt='Image of {{ gin.name }}'/>
+        <h1>{{ gin.name }}</h1>
+    </a>
+    <p>{{ gin.short_description }}<p>
+    <p>{{ gin.average_rating }}<p>
+</div>
