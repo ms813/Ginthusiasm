@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from ginthusiasm.models import Gin
+from django.db.models import Q
 
 # View for the main gin page
 def show_gin(request, gin_name_slug):
@@ -20,7 +21,10 @@ def show_gin(request, gin_name_slug):
     return render(request, 'ginthusiasm/gin_page.html', context=context_dict)
 
 def gin_search_results(request):
-    gin_list = Gin.objects.order_by('-average_rating')
+
+    query = Q(price__gt=30.00)
+
+    gin_list = Gin.objects.filter(query).order_by('-average_rating')
 
     context_dict = {'gins': gin_list}
 
