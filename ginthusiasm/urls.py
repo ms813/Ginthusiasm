@@ -30,7 +30,7 @@ user_patterns = [
     url(r'^password-reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
         password_reset_confirm,
         {'post_reset_redirect' : '/password-reset/complete/'},
-        name="password_reset_confirm"),
+        name='password_reset_confirm'),
 
     url(r'^password-reset/complete/$',
         password_reset_complete),
