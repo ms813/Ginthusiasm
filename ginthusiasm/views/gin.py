@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from ginthusiasm.models import Gin
 from ginthusiasm.forms import AdvancedSearchForm
@@ -72,9 +72,13 @@ def gin_search_results(request):
     if query_dict.get('order') == 'DESC':
         order_by = '-' + order_by
 
-        
+
     # Execute filter query
     gin_list = Gin.objects.filter(queries).order_by(order_by)
+
+    # If there is only one result returned then redirect straight to that page
+    if len(gin_list) == 1:
+        return redirect('show_gin', gin_list[0].slug)
 
     context_dict = {'gins': gin_list, 'advanced_search_form': AdvancedSearchForm()}
 
