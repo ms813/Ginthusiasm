@@ -1,0 +1,14 @@
+{% extends 'ginthusiasm/header_small.html' %}
+{% load staticfiles %}
+
+{% block style_block %}
+{% endblock %}
+
+{% block title_block %} {{ article.name }} {% endblock %}
+
+{% block body_block %}
+    <div>
+        {{ article.content }}
+        This is an article !! Where is the description
+    </div>
+{% endblock %}

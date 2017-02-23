@@ -1,8 +1,29 @@
-<div>
-    <a href="{% url 'show_gin' gin.slug %}">
-        <img src="{{ MEDIA_URL }}{{ gin.image }}" alt='Image of {{ gin.name }}'/>
-        <h1>{{ gin.name }}</h1>
-    </a>
-    <p>{{ gin.short_description }}<p>
-    <p>{{ gin.average_rating }}<p>
+<div class='gin_widget'>
+    <div class=details>
+        <a href="{% url 'show_gin' gin.slug %}">
+            <h1>{{ gin.name }}</h1>
+        </a>
+        <p>{{ gin.short_description }}<p>
+        <p>{{ gin.average_rating }}<p>
+    </div>
+
+    <div class='image'>
+        <a href="{% url 'show_gin' gin.slug %}">
+            <img src="{{ MEDIA_URL }}{{ gin.image }}" alt='Image of {{ gin.name }}'/>
+        </a>
+    </div>
 </div>
+
+<style>
+    div.gin_widget {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 50px;
+    }
+
+    .gin_widget .image img {
+        height: 200px;
+        max-width: 150px;
+        object-fit: cover;
+    }
+</style>
