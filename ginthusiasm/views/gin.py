@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from ginthusiasm.models import Gin
+from ginthusiasm.forms import AdvancedSearchForm
+from django.db.models import Q
 
 # View for the main gin page
 def show_gin(request, gin_name_slug):
@@ -20,8 +22,60 @@ def show_gin(request, gin_name_slug):
     return render(request, 'ginthusiasm/gin_page.html', context=context_dict)
 
 def gin_search_results(request):
-    gin_list = Gin.objects.order_by('-average_rating')
+    query_dict = request.GET
 
-    context_dict = {'gins': gin_list}
+    print query_dict
+    queries = Q()
+
+    # Build filter query
+    if query_dict.get('keywords'):
+        print ("Keywords")
+        queries.add (
+            Q(name__icontains=query_dict.get('keywords')) |
+            Q(short_description__icontains=query_dict.get('keywords')) |
+            Q(long_description__icontains=query_dict.get('keywords'))
+            , Q.AND
+        )
+    if query_dict.get('max_price'):
+        print ("Max Price")
+        queries.add (
+            ~Q(price__gt=query_dict.get('max_price'))
+            , Q.AND
+        )
+    if query_dict.get('min_price'):
+        print ("Min Price")
+        queries.add (
+            ~Q(price__lt=query_dict.get('min_price'))
+            , Q.AND
+        )
+    if query_dict.get('max_rating'):
+        print ("Max Rating")
+        queries.add (
+            ~Q(average_rating__gt=query_dict.get('max_rating'))
+            , Q.AND
+        )
+    if query_dict.get('min_rating'):
+        print ("Min Rating")
+        queries.add (
+            ~Q(average_rating__lt=query_dict.get('min_rating'))
+            , Q.AND
+        )
+
+
+    # order by user defined ordering
+    order_by = 'name'
+    # if order_by is invalid default to ordering by gin name
+    if query_dict.get('order_by') in dict(AdvancedSearchForm.ORDER_BY_CHOICES):
+        order_by = query_dict.get('order_by')
+
+    # The order defaults to ascending
+    if query_dict.get('order') == 'DESC':
+        order_by = '-' + order_by
+
+        
+    # Execute filter query
+    gin_list = Gin.objects.filter(queries).order_by(order_by)
+
+    context_dict = {'gins': gin_list, 'advanced_search_form': AdvancedSearchForm()}
 
     return render(request, 'ginthusiasm/gin_search_page.html', context=context_dict)

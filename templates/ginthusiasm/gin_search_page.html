@@ -7,14 +7,25 @@
 {% block title_block %} Search fo Gin{% endblock %}
 
 {% block body_block %}
-    {% if gins %}
-    <ul>
-        {% for gin in gins %}
-            {% include 'ginthusiasm/gin_widget.html' %}
-        {% endfor %}
-    </ul>
-    {% else %}
-        No Search Results
-    {% endif %}
+    {% include 'ginthusiasm/advanced_search_widget.html' %}
+
+    <div class='search_results'>
+        {% if gins %}
+        <ul>
+            {% for gin in gins %}
+                <li>{% include 'ginthusiasm/gin_widget.html' %}</li>
+            {% endfor %}
+        </ul>
+        {% else %}
+            No Search Results
+        {% endif %}
+    </div>
+
+<style>
+    .search_results ul {
+        list-style: none;
+        padding-left: 0;
+    }
+</style>
 
 {% endblock %}
