@@ -66,7 +66,7 @@ def populate_gin():
             gin.price = data['price']
             gin.short_description = data['short_description']
             gin.long_description = data['long_description']
-            gin.taste_tags = data['taste_tags']
+            # gin.taste_tags = data['taste_tags']
             gin.image = data['image']
 
             gin.save()
