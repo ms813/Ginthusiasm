@@ -1,0 +1,15 @@
+<div class=advanced_search_widget>
+    <h1>Advanced Search</h1>
+    <form id='advanced_search_form' method='get' action={% url "gin_search_results" %}>
+        {{ advanced_search_form }}
+
+        <input id='search-btn' type='submit' name='submit' value='Search'/>
+    </form>
+</div>
+
+<style>
+    #advanced_search_form {
+        display: flex;
+        flex-direction: column;
+    }
+</style>
