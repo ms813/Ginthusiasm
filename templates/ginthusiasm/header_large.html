@@ -2,7 +2,7 @@
 {% load staticfiles %}
 
 {% block header_block %}
-<div class='header-large'>
+<header class='header-large'>
     <a href='/'><img class='logo-large' src="{% static 'images/ginthusiasm-logo.png' %}" alt='site logo'/></a>
     <nav class='nav'>
         <a href="{% url 'index' %}"><span>Home</span></a>
@@ -22,5 +22,5 @@
         <input id='header-search' type='text' placeholder="&#x1f50d;">
         <a href='#' class='btn'><span>Search</span></a>
     </div>
-</div>
+</header>
 {% endblock %}
