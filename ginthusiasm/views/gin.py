@@ -26,55 +26,42 @@ def gin_search_results(request):
 
     print query_dict
     queries = Q()
-    '''
+
     # Build filter query
     if query_dict.get('keywords'):
         print ("Keywords")
-        queries.add
-        (
-            (
-                Q(name__icontains=query_dict.get('keywords')) |
-                Q(short_description__icontains=query_dict.get('keywords')) |
-                Q(long_description__icontains=query_dict.get('keywords'))
-            ), Q.AND
-        )'''
+        queries.add (
+            Q(name__icontains=query_dict.get('keywords')) |
+            Q(short_description__icontains=query_dict.get('keywords')) |
+            Q(long_description__icontains=query_dict.get('keywords'))
+            , Q.AND
+        )
     if query_dict.get('max_price'):
         print ("Max Price")
-        queries.add
-        (
-            Q(price__lt=query_dict.get('max_price')) |
-            Q(price=query_dict.get('max_price'))
+        queries.add (
+            ~Q(price__gt=query_dict.get('max_price'))
             , Q.AND
         )
     if query_dict.get('min_price'):
         print ("Min Price")
-        queries.add
-        (
-            Q(price__gt=query_dict.get('min_price')) |
-            Q(price=query_dict.get('min_price'))
+        queries.add (
+            ~Q(price__lt=query_dict.get('min_price'))
             , Q.AND
         )
-        """
     if query_dict.get('max_rating'):
         print ("Max Rating")
-        queries.add
-        (
-            (
-                Q(average_rating__lt=query_dict.get('max_rating')) |
-                Q(average_rating=query_dict.get('max_rating'))
-            ), Q.AND
+        queries.add (
+            ~Q(average_rating__gt=query_dict.get('max_rating'))
+            , Q.AND
         )
     if query_dict.get('min_rating'):
         print ("Min Rating")
-        queries.add
-        (
-            (
-                Q(average_rating__gt=query_dict.get('min_rating')) |
-                Q(average_rating=query_dict.get('min_rating'))
-            ), Q.AND
+        queries.add (
+            ~Q(average_rating__lt=query_dict.get('min_rating'))
+            , Q.AND
         )
-        ####DONT FORGET TO ADD RATING
-    """
+
+
     # order by user defined ordering
     order_by = 'name'
     # if order_by is invalid default to ordering by gin name
@@ -85,8 +72,9 @@ def gin_search_results(request):
     if query_dict.get('order') == 'DESC':
         order_by = '-' + order_by
 
+        
     # Execute filter query
-    gin_list = Gin.objects.filter(queries)
+    gin_list = Gin.objects.filter(queries).order_by(order_by)
 
     context_dict = {'gins': gin_list, 'advanced_search_form': AdvancedSearchForm()}
 
