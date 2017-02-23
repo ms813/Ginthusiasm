@@ -1,18 +1,14 @@
-{% extends 'ginthusiasm/base.html' %}
+{% extends 'ginthusiasm/header_small.html' %}
 {% load staticfiles %}
 
-
-
-{% block title_block %}
-This is an article!!
+{% block style_block %}
 {% endblock %}
 
-
-{% block header_block %}
-{{ article.title }}
-{% endblock %}
-
+{% block title_block %} {{ article.name }} {% endblock %}
 
 {% block body_block %}
-{{ article.content }}
+    <div>
+        {{ article.content }}
+        This is an article !! Where is the description
+    </div>
 {% endblock %}

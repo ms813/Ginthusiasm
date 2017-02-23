@@ -53,7 +53,7 @@ review_patterns = [
 
 ##########     Article     ##########
 article_patterns = [
-
+    url(r'^article/(?P<article_name_slug>[\w\-]+)/$', views.article, name ='article'),
 ]
 
 ##########     Debug     ##########
@@ -64,6 +64,7 @@ debug_patterns = [
 urlpatterns = [
     ##########     Index     ##########
     url(r'^$', views.index, name ='index'),
+
 ]
 
 urlpatterns += gin_patterns
