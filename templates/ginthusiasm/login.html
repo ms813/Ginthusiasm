@@ -1,6 +1,10 @@
 {% extends 'ginthusiasm/header_small.html' %}
 {% load staticfiles %}
 
+{% block style_block %}
+    <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/login_signup.css' %}">
+{% endblock %}
+
 {% block title_block %} Log In{% endblock %}
 
 {% block body_block %}

@@ -1,0 +1,65 @@
+{% extends 'ginthusiasm/header_small.html' %}
+{% load staticfiles %}
+
+{% block style_block %}
+{% endblock %}
+
+{% block title_block %} {{ gin.name }}{% endblock %}
+
+{% block body_block %}
+    <div class='gin_description'>
+        <img class='image' src="{{ MEDIA_URL }}{{ gin.image }}" alt='Image of {{ gin.name }}'/>
+        <h1>{{ gin.name }}</h1><br />
+        <p>{{ gin.long_description }}
+            {% lorem 10 p %}
+        </p>
+        <div class='taste_tags'>
+            Tags:
+            <ul>
+                {% for tag in gin.taste_tags.all %}
+                    <!-- Replace "#" with url to search page filterred by the taste tag -->
+                    <li><a href="#">{{ tag.name }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <div class='review_form'>
+    </div>
+
+    <div class='expert_reviews'>
+        <ul>
+        </ul>
+    </div>
+
+    <div class='other_reviews'>
+        <ul>
+        </ul>
+    </div>
+
+    <style>
+        div.gin_description {
+            flex-direction: wrap;
+        }
+
+        .gin_description .taste_tags ul {
+            display: inline-flex;
+            list-style-type: none;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+
+        .gin_description .taste_tags li {
+            padding: 5px;
+            margin-right: 5px;
+            background-color: lightgrey;
+        }
+
+        .gin_description .image {
+            max-height: 800px;
+            max-width: 400px;
+            float: right;
+        }
+
+    </style>
+{% endblock %}

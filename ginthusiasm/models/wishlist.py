@@ -1,6 +1,5 @@
 from __future__ import unicode_literals
 from django.db import models
-from django.template.defaultfilters import slugify
 
 from ginthusiasm.models import Gin, UserProfile
 
