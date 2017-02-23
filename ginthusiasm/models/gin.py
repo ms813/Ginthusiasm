@@ -21,7 +21,7 @@ class Gin(models.Model):
     average_rating = models.FloatField(default=0)
     short_description = models.CharField(max_length=1024)
     long_description = models.TextField()
-    taste_tags = models.ManyToManyField(TasteTag)
+    taste_tags = models.ManyToManyField(TasteTag, blank=True)
     slug = models.SlugField(unique=True, blank=True)
     image = models.ImageField(upload_to='gins')
     distillery = models.ForeignKey('distillery', null=True, blank=True)

@@ -27,7 +27,10 @@ SECRET_KEY = '_4_sl=pk#*=ryg+5@nptmxmio&686iz)7)=saq(3$qh#8j9rpt'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [u'192.168.0.5']
+ALLOWED_HOSTS = [
+    u'127.0.0.1',
+    u'192.168.0.5',
+]
 
 
 # Application definition
