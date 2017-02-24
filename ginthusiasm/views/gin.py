@@ -61,7 +61,7 @@ def gin_search_results(request):
             , Q.AND
         )
 
-
+    print queries
     # order by user defined ordering
     order_by = 'name'
     # if order_by is invalid default to ordering by gin name
