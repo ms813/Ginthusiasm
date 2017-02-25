@@ -14,6 +14,8 @@ def show_gin(request, gin_name_slug):
 
         # Add the gin object to the context dictionary.
         context_dict['gin'] = gin
+        context_dict['expert_reviews'] = ['expert_reviews']
+        context_dict['other_reviews'] = ['other_reviews']
 
     except Gin.DoesNotExist:
         context_dict['gin'] = None
@@ -21,6 +23,7 @@ def show_gin(request, gin_name_slug):
     # Render the response and return it to the client
     return render(request, 'ginthusiasm/gin_page.html', context=context_dict)
 
+# View for the gin search page
 def gin_search_results(request):
     query_dict = request.GET
 
