@@ -18,7 +18,8 @@
             <ul>
                 {% for tag in gin.taste_tags.all %}
                     <!-- Replace "#" with url to search page filterred by the taste tag -->
-                    <li><a href="#">{{ tag.name }}</a></li>
+                    {% url 'gin_search_results' as tag_search_url %}
+                    <li><a href="{{ tag_search_url }}?tags={{ tag.name }}">{{ tag.name }}</a></li>
                 {% endfor %}
             </ul>
         </div>
