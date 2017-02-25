@@ -20,12 +20,12 @@ class Review(models.Model):
         default = USER
     )
 
-    date = models.DateField()
-    rating = models.PositiveSmallIntegerField()
-    summary = models.CharField(max_length=1024)
-    content = models.TextField()
-    lat = models.FloatField(blank=False)
-    long = models.FloatField(blank=False)
+    date = models.DateField(blank=True)
+    rating = models.PositiveSmallIntegerField(blank=True)
+    summary = models.CharField(max_length=1024, blank=True)
+    content = models.TextField(blank=True)
+    lat = models.FloatField(blank=True)
+    long = models.FloatField(blank=True)
     slug = models.SlugField(unique=True)
     # Assuming that when a user deletes their profile they'll want all their
     # reviews deleted too. Not sure about the foreign key argument?
