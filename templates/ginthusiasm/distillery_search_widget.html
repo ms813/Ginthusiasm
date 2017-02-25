@@ -1,0 +1,7 @@
+<div class=gin_search_widget>
+    <h1>Distillery search</h1>
+    <form id='distillery_search_form' method='get' action={% url "distillery_search_results" %}>
+        <div class='distillery_name'>Distillery: {{ advanced_search_form.distillery_name }}</div>
+        <input id='search-btn' type='submit' name='submit' value='Search'/>
+    </form>
+</div>

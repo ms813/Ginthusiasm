@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from ginthusiasm.models import Gin
+from ginthusiasm.models import Gin, TasteTag
 from ginthusiasm.forms import AdvancedSearchForm
 from django.db.models import Q
 
@@ -14,6 +14,8 @@ def show_gin(request, gin_name_slug):
 
         # Add the gin object to the context dictionary.
         context_dict['gin'] = gin
+        context_dict['expert_reviews'] = ['expert_reviews']
+        context_dict['other_reviews'] = ['other_reviews']
 
     except Gin.DoesNotExist:
         context_dict['gin'] = None
@@ -21,6 +23,7 @@ def show_gin(request, gin_name_slug):
     # Render the response and return it to the client
     return render(request, 'ginthusiasm/gin_page.html', context=context_dict)
 
+# View for the gin search page
 def gin_search_results(request):
     query_dict = request.GET
 
@@ -33,7 +36,8 @@ def gin_search_results(request):
         queries.add (
             Q(name__icontains=query_dict.get('keywords')) |
             Q(short_description__icontains=query_dict.get('keywords')) |
-            Q(long_description__icontains=query_dict.get('keywords'))
+            Q(long_description__icontains=query_dict.get('keywords')) #|
+            #Q(taste_tags__name__icontains=query_dict.get('keywords'))
             , Q.AND
         )
     if query_dict.get('max_price'):
@@ -60,8 +64,20 @@ def gin_search_results(request):
             ~Q(average_rating__lt=query_dict.get('min_rating'))
             , Q.AND
         )
+    if query_dict.get('tags'):
+        print ("Tags")
+        queries.add (
+            Q(taste_tags__name__icontains=query_dict.get('tags'))
+            , Q.AND
+        )
+    if query_dict.get('distillery'):
+        print ("Distillery")
+        queries.add (
+            Q(distillery__name__icontains=query_dict.get('distillery'))
+            , Q.AND
+        )
 
-
+    print queries
     # order by user defined ordering
     order_by = 'name'
     # if order_by is invalid default to ordering by gin name

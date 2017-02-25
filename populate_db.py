@@ -17,19 +17,60 @@ def populate_article():
 
 def populate_distillery():
     print("Populating distilleries...")
-    # distillery population here...
+    distilleries = [
+        {
+            "name" : "Edinburgh Gin",
+            "address" : "1A Rutland Place, Edinburgh, EH1 2AD",
+            "phone" : "01316 562810",
+            "email" : "info@edinburghgindistillery.com",
+            "long_description" : "Nestled beneath the West End of Edinburgh, you'll find something of a hidden wonderland - the Edinburgh Gin Distillery. Steeped in history and creation, we invite you to disappear down the rabbit hole and indulge yourself in the mystery of the beautiful botanical libations we call gin.",
+            "image" : "distilleries/Edinburgh-Gin.jpg",
+            "lat" : 55.949982,
+            "long" : -3.208180,
+        },
+        {
+            "name": "Eden Mill",
+            "address": "Main Street, Guardbridge, St Andrews, KY16 0UU",
+            "phone": "01334 834038",
+            "email" : "hello@edenmill.com",
+            "long_description": "Eden Mill Scottish craft gin. Traditionally made by hand in Scotland using copper pot stills. Our distilling talent comes from the deeply rooted understanding of whisky and a real drive to innovate.",
+            "image": "distilleries/Eden-Mill.jpg",
+            "lat": 56.363755,
+            "long": -2.892163,
+        }
+    ]
+
+    for data in distilleries:
+        distillery_results = []
+        try:
+            distillery_results = Distillery.objects.get(name=data['name'])
+        except Distillery.DoesNotExist:
+            pass
+
+        if not distillery_results:
+            distillery = Distillery()
+            distillery.name = data['name']
+            distillery.address = data['address']
+            distillery.phone = data['phone']
+            distillery.email = data['email']
+            distillery.long_description = data['long_description']
+            distillery.image = data['image']
+            distillery.lat = data['lat']
+            distillery.long = data['long']
+
+            distillery.save()
 
 def populate_gin():
     print("Populating gins...")
     print("    Populating gin taste tags...")
-    tags = ["Juniper", "Sugar Kelp", "Coriander", "Angelica Root", "Orris Root", "Cubebs", "Bitter Orange Peel", "Licorice", "Cassia Bark"]
+    #tags = ["Juniper", "Sugar Kelp", "Coriander", "Angelica Root", "Orris Root", "Cubebs", "Bitter Orange Peel", "Licorice", "Cassia Bark"]
 
-    for tag_name in tags:
-        tag, created = TasteTag.objects.get_or_create(name = tag_name)
+    #for tag_name in tags:
+        #tag, created = TasteTag.objects.get_or_create(name = tag_name)
 
-        if created:
-            tag.name = tag_name
-            tag.save()
+        #if created:
+            #tag.name = tag_name
+            #tag.save()
 
     print("    Populating gins...")
     gins = [
@@ -38,24 +79,27 @@ def populate_gin():
             "price" : "35.00",
             "short_description" : "Our new gin captures the elemental nature of the Isle of Harris, rewarding the drinker with maritime pleasures. The unique inclusion of local, hand-harvested Sugar kelp speaks of our island's deep connections to the sea while working with eight other carefully chosen botanicals.",
             "long_description" : "Test long description",
-            "taste_tags" : "Sugar Kelp, Juniper, Coriander, Angelica Root, Orris Root, Cubebs, Bitter Orange Peel, Licorice, Cassia Bark",
+            "taste_tags" : ["Sugar Kelp", "Juniper", "Coriander", "Angelica Root", "Orris Root", "Cubebs", "Bitter Orange Peel", "Licorice", "Cassia Bark"],
             "image" : "gins/Harris-Gin.jpg",
+            "distillery" : ""
         },
         {
             "name" : "Eden Mill Love Gin",
             "price" : "30.00",
             "short_description" : "The famous light blush Pink Gin from Eden Mill brings together an outstanding blend of local botanicals and exotic fruits. Our pink gin is a pale colour when poured and when diluted, sweet vanilla and floral notes are brought out. Show your appreciation of a great pink gin and spread the word about Love Gin.",
             "long_description" : "Test long description",
-            "taste_tags" : "Juniper, Rose Petals, Hibiscus, Strawberry, Raspberry, Vanilla, Apples, Pears, Pink Grapefruit, Rose Water",
+            "taste_tags" : ["Juniper", "Rose Petals", "Hibiscus", "Strawberry", "Raspberry", "Vanilla", "Apples", "Pears", "Pink Grapefruit", "Rose Water"],
             "image" : "gins/Eden-Mill-Love-Gin.jpg",
+            "distillery" : "Eden Mill"
         },
         {
             "name" : "The Botanist Islay Dry Gin",
             "price" : "35.00",
             "short_description" : "The Botanist Gin is a progressive exploration of the botanical heritage of our Isle of Islay. 22 hand-foraged local botanicals delicately augment nine berries, barks, seeds and peels during an achingly slow distillation. This first and only Islay Dry Gin is a rare expression of the heart and soul of our remote Scottish island home.",
             "long_description" : "Test long description",
-            "taste_tags" : "Menthol, Apple Mint, Spring Woodlands, Juniper, Coriander, Aniseed, Lemon Peel, Orange Peel, Thistle Honey, Gorse Coconut, Wild Mint",
+            "taste_tags" : ["Menthol", "Apple Mint", "Spring Woodlands", "Juniper", "Coriander", "Aniseed", "Lemon Peel", "Orange Peel", "Thistle Honey", "Gorse Coconut", "Wild Mint"],
             "image" : "gins/The-Botanist-Gin.jpg",
+            "distillery" : ""
         }
     ]
 
@@ -66,8 +110,24 @@ def populate_gin():
             gin.price = data['price']
             gin.short_description = data['short_description']
             gin.long_description = data['long_description']
-            gin.taste_tags = data['taste_tags']
+
+            # add tags to gins
+            for tag_name in data['taste_tags']:
+                tag, tag_created = TasteTag.objects.get_or_create(name = tag_name)
+
+                if tag_created:
+                    tag.name = tag_name
+                    tag.save()
+
+                gin.taste_tags.add(TasteTag.objects.get(name = tag))
+
             gin.image = data['image']
+
+            # associate distillery with gin
+            if data['distillery'] == "":
+                gin.distillery = None
+            else:
+                gin.distillery = Distillery.objects.get(name = data['distillery'])
 
             gin.save()
 
