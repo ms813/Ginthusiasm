@@ -3,13 +3,15 @@ from django.template.defaultfilters import slugify
 from django.db import models
 
 class Distillery(models.Model):
-    name = models.CharField(max_length=225, unique=True)
-    address = models.CharField(max_length=225)
-    email = models.EmailField()
-    slug = models.SlugField(unique=True)
-    img = models.ImageField(upload_to='distilleries')
-    lat = models.FloatField(blank=False)
-    long = models.FloatField(blank=False)
+    name = models.CharField(max_length=225, unique=True, blank=True)
+    address = models.CharField(max_length=225, blank=True)
+    phone = models.CharField(max_length=15, blank=True)
+    email = models.EmailField(blank=True)
+    long_description = models.TextField(blank=True)
+    slug = models.SlugField(unique=True, blank=True)
+    image = models.ImageField(upload_to='distilleries', blank=True)
+    lat = models.FloatField(blank=True)
+    long = models.FloatField(blank=True)
 
     # *args, **kwargs = a way of specifying that a method/function can take
     # extra parameters depending on future use (e.g. if need to save a Distillery

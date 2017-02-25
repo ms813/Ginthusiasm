@@ -1,0 +1,23 @@
+{% extends 'ginthusiasm/header_small.html' %}
+{% load staticfiles %}
+
+{% block style_block %}
+{% endblock %}
+
+{% block title_block %} Search for distilleries{% endblock %}
+
+{% block body_block %}
+    {% include 'ginthusiasm/distillery_search_widget.html' %}
+
+    <div class='search_results'>
+        {% if distilleries %}
+        <ul>
+            {% for distillery in distilleries %}
+                <li>{% include 'ginthusiasm/distillery_widget.html' %}</li>
+            {% endfor %}
+        </ul>
+        {% else %}
+            No Search Results
+        {% endif %}
+    </div>
+{% endblock %}
