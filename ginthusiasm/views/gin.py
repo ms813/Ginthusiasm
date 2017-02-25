@@ -53,7 +53,7 @@ def gin_search_results(request):
 def create_gin_query(query_dict):
     queries = Q()
 
-    # Build filter query
+    # filter by keywords
     if query_dict.get('keywords'):
         print ("Keywords")
         keywords = shlex.split(query_dict.get('keywords').replace("+", " "))
@@ -62,19 +62,19 @@ def create_gin_query(query_dict):
             keyword_query.add (
                 Q(name__icontains=keyword) |
                 Q(short_description__icontains=keyword) |
-                Q(long_description__icontains=keyword) #|
-                #Q(taste_tags__name__icontains=keyword)
+                Q(long_description__icontains=keyword) |
+                Q(taste_tags__name__iexact=keyword)
                 , Q.OR
             )
         queries.add(keyword_query, Q.AND)
 
+    # filter by price
     if query_dict.get('max_price'):
         print ("Max Price")
         queries.add (
             ~Q(price__gt=query_dict.get('max_price'))
             , Q.AND
         )
-
     if query_dict.get('min_price'):
         print ("Min Price")
         queries.add (
@@ -82,13 +82,13 @@ def create_gin_query(query_dict):
             , Q.AND
         )
 
+    # filter by rating
     if query_dict.get('max_rating'):
         print ("Max Rating")
         queries.add (
             ~Q(average_rating__gt=query_dict.get('max_rating'))
             , Q.AND
         )
-
     if query_dict.get('min_rating'):
         print ("Min Rating")
         queries.add (
@@ -96,17 +96,19 @@ def create_gin_query(query_dict):
             , Q.AND
         )
 
+    # filter by tag
     if query_dict.get('tags'):
         print ("Tags")
         tags = shlex.split(query_dict.get('tags').replace("+", " "))
         tags_query = Q()
         for tag in tags:
             tags_query.add (
-                Q(taste_tags__name__icontains=tag)
+                Q(taste_tags__name__iexact=tag)
                 , Q.OR
             )
         queries.add(tags_query, Q.AND)
 
+    # filter by distillery
     if query_dict.get('distillery'):
         print ("Distillery")
         queries.add (
