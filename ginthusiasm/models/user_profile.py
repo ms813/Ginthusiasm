@@ -27,6 +27,9 @@ class UserProfile(models.Model):
     def canAddGin(self):
         return self.user_type in (self.ADMIN, self.DISTILLERY_OWNER)
 
+    def canAddDistillery(self):
+        return self.user_type in (self.ADMIN, self.DISTILLERY_OWNER)
+
     def canWriteArticle(self):
         return self.user_type in (self.ADMIN, self.EXPERT)
 
