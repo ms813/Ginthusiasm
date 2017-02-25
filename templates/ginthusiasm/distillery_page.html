@@ -1,0 +1,31 @@
+{% extends 'ginthusiasm/header_small.html' %}
+{% load staticfiles %}
+
+{% block style_block %}
+{% endblock %}
+
+{% block title_block %} {{ distillery.name }}{% endblock %}
+
+{% block body_block %}
+    <div class='distillery_description'>
+        <img class='image' src="{{ MEDIA_URL }}{{ distillery.image }}" alt='Image of {{ distillery.name }}'/>
+        <h1>{{ distillery.name }}</h1><br />
+        <p>{{ distillery.long_description }}
+        </p>
+        <p>
+            <a href="#">Search for {{ distillery.name }}'s gins</a>
+        </p>
+    </div>
+    <div class="contact_details">
+        <h2>Contact</h2>
+        <p>
+            Email: {{ distillery.email }}
+        </p>
+        <p>
+            Phone: {{ distillery.phone }}
+        </p>
+        <p>
+            Address: {{ distillery.address }}
+        </p>
+    </div>
+{% endblock %}

@@ -4,6 +4,8 @@ from wishlist import wishlist
 from map_helper import MapHelper
 from gin import show_gin, gin_search_results
 from article import article
+from distillery import show_distillery, distillery_search_results
+
 
 
 # debug
