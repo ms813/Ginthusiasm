@@ -22,14 +22,14 @@ def populate_distillery():
 def populate_gin():
     print("Populating gins...")
     print("    Populating gin taste tags...")
-    tags = ["Juniper", "Sugar Kelp", "Coriander", "Angelica Root", "Orris Root", "Cubebs", "Bitter Orange Peel", "Licorice", "Cassia Bark"]
+    #tags = ["Juniper", "Sugar Kelp", "Coriander", "Angelica Root", "Orris Root", "Cubebs", "Bitter Orange Peel", "Licorice", "Cassia Bark"]
 
-    for tag_name in tags:
-        tag, created = TasteTag.objects.get_or_create(name = tag_name)
+    #for tag_name in tags:
+        #tag, created = TasteTag.objects.get_or_create(name = tag_name)
 
-        if created:
-            tag.name = tag_name
-            tag.save()
+        #if created:
+            #tag.name = tag_name
+            #tag.save()
 
     print("    Populating gins...")
     gins = [
@@ -38,7 +38,7 @@ def populate_gin():
             "price" : "35.00",
             "short_description" : "Our new gin captures the elemental nature of the Isle of Harris, rewarding the drinker with maritime pleasures. The unique inclusion of local, hand-harvested Sugar kelp speaks of our island's deep connections to the sea while working with eight other carefully chosen botanicals.",
             "long_description" : "Test long description",
-            "taste_tags" : "Sugar Kelp, Juniper, Coriander, Angelica Root, Orris Root, Cubebs, Bitter Orange Peel, Licorice, Cassia Bark",
+            "taste_tags" : ["Sugar Kelp", "Juniper", "Coriander", "Angelica Root", "Orris Root", "Cubebs", "Bitter Orange Peel", "Licorice", "Cassia Bark"],
             "image" : "gins/Harris-Gin.jpg",
         },
         {
@@ -46,7 +46,7 @@ def populate_gin():
             "price" : "30.00",
             "short_description" : "The famous light blush Pink Gin from Eden Mill brings together an outstanding blend of local botanicals and exotic fruits. Our pink gin is a pale colour when poured and when diluted, sweet vanilla and floral notes are brought out. Show your appreciation of a great pink gin and spread the word about Love Gin.",
             "long_description" : "Test long description",
-            "taste_tags" : "Juniper, Rose Petals, Hibiscus, Strawberry, Raspberry, Vanilla, Apples, Pears, Pink Grapefruit, Rose Water",
+            "taste_tags" : ["Juniper", "Rose Petals", "Hibiscus", "Strawberry", "Raspberry", "Vanilla", "Apples", "Pears", "Pink Grapefruit", "Rose Water"],
             "image" : "gins/Eden-Mill-Love-Gin.jpg",
         },
         {
@@ -54,7 +54,7 @@ def populate_gin():
             "price" : "35.00",
             "short_description" : "The Botanist Gin is a progressive exploration of the botanical heritage of our Isle of Islay. 22 hand-foraged local botanicals delicately augment nine berries, barks, seeds and peels during an achingly slow distillation. This first and only Islay Dry Gin is a rare expression of the heart and soul of our remote Scottish island home.",
             "long_description" : "Test long description",
-            "taste_tags" : "Menthol, Apple Mint, Spring Woodlands, Juniper, Coriander, Aniseed, Lemon Peel, Orange Peel, Thistle Honey, Gorse Coconut, Wild Mint",
+            "taste_tags" : ["Menthol", "Apple Mint", "Spring Woodlands", "Juniper", "Coriander", "Aniseed", "Lemon Peel", "Orange Peel", "Thistle Honey", "Gorse Coconut", "Wild Mint"],
             "image" : "gins/The-Botanist-Gin.jpg",
         }
     ]
@@ -66,7 +66,17 @@ def populate_gin():
             gin.price = data['price']
             gin.short_description = data['short_description']
             gin.long_description = data['long_description']
-            # gin.taste_tags = data['taste_tags']
+
+            # add tags to gins
+            for tag_name in data['taste_tags']:
+                tag, tag_created = TasteTag.objects.get_or_create(name = tag_name)
+
+                if tag_created:
+                    tag.name = tag_name
+                    tag.save()
+
+                gin.taste_tags.add(TasteTag.objects.get(name = tag))
+
             gin.image = data['image']
 
             gin.save()
