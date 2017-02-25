@@ -36,8 +36,8 @@ def gin_search_results(request):
         queries.add (
             Q(name__icontains=query_dict.get('keywords')) |
             Q(short_description__icontains=query_dict.get('keywords')) |
-            Q(long_description__icontains=query_dict.get('keywords')) |
-            Q(taste_tags__name__icontains=query_dict.get('tags'))
+            Q(long_description__icontains=query_dict.get('keywords')) #|
+            #Q(taste_tags__name__icontains=query_dict.get('keywords'))
             , Q.AND
         )
     if query_dict.get('max_price'):
@@ -68,6 +68,12 @@ def gin_search_results(request):
         print ("Tags")
         queries.add (
             Q(taste_tags__name__icontains=query_dict.get('tags'))
+            , Q.AND
+        )
+    if query_dict.get('distillery'):
+        print ("Distillery")
+        queries.add (
+            Q(distillery__name__icontains=query_dict.get('distillery'))
             , Q.AND
         )
 

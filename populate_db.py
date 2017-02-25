@@ -47,7 +47,7 @@ def populate_distillery():
         except Distillery.DoesNotExist:
             pass
 
-        if not len(distillery_results):
+        if not distillery_results:
             distillery = Distillery()
             distillery.name = data['name']
             distillery.address = data['address']
@@ -81,6 +81,7 @@ def populate_gin():
             "long_description" : "Test long description",
             "taste_tags" : ["Sugar Kelp", "Juniper", "Coriander", "Angelica Root", "Orris Root", "Cubebs", "Bitter Orange Peel", "Licorice", "Cassia Bark"],
             "image" : "gins/Harris-Gin.jpg",
+            "distillery" : ""
         },
         {
             "name" : "Eden Mill Love Gin",
@@ -89,6 +90,7 @@ def populate_gin():
             "long_description" : "Test long description",
             "taste_tags" : ["Juniper", "Rose Petals", "Hibiscus", "Strawberry", "Raspberry", "Vanilla", "Apples", "Pears", "Pink Grapefruit", "Rose Water"],
             "image" : "gins/Eden-Mill-Love-Gin.jpg",
+            "distillery" : "Eden Mill"
         },
         {
             "name" : "The Botanist Islay Dry Gin",
@@ -97,6 +99,7 @@ def populate_gin():
             "long_description" : "Test long description",
             "taste_tags" : ["Menthol", "Apple Mint", "Spring Woodlands", "Juniper", "Coriander", "Aniseed", "Lemon Peel", "Orange Peel", "Thistle Honey", "Gorse Coconut", "Wild Mint"],
             "image" : "gins/The-Botanist-Gin.jpg",
+            "distillery" : ""
         }
     ]
 
@@ -119,6 +122,12 @@ def populate_gin():
                 gin.taste_tags.add(TasteTag.objects.get(name = tag))
 
             gin.image = data['image']
+
+            # associate distillery with gin
+            if data['distillery'] == "":
+                gin.distillery = None
+            else:
+                gin.distillery = Distillery.objects.get(name = data['distillery'])
 
             gin.save()
 
