@@ -1,7 +1,7 @@
 from django import forms
 from ginthusiasm.models import Gin, TasteTag
 
-class AdvancedSearchForm(forms.Form):
+class GinSearchForm(forms.Form):
     NAME = 'name'
     PRICE = 'price'
     RATING = 'average_rating'
