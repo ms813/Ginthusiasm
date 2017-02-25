@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from ginthusiasm.models import Gin, TasteTag
 from ginthusiasm.forms import AdvancedSearchForm
 from django.db.models import Q
+import shlex
 
 # View for the main gin page
 def show_gin(request, gin_name_slug):
@@ -26,20 +27,22 @@ def show_gin(request, gin_name_slug):
 # View for the gin search page
 def gin_search_results(request):
     query_dict = request.GET
-
-    print query_dict
     queries = Q()
 
     # Build filter query
     if query_dict.get('keywords'):
         print ("Keywords")
-        queries.add (
-            Q(name__icontains=query_dict.get('keywords')) |
-            Q(short_description__icontains=query_dict.get('keywords')) |
-            Q(long_description__icontains=query_dict.get('keywords')) #|
-            #Q(taste_tags__name__icontains=query_dict.get('keywords'))
-            , Q.AND
-        )
+        keywords = shlex.split(query_dict.get('keywords').replace("+", " "))
+        keyword_query = Q()
+        for keyword in keywords:
+            keyword_query.add (
+                Q(name__icontains=keyword) |
+                Q(short_description__icontains=keyword) |
+                Q(long_description__icontains=keyword) #|
+                #Q(taste_tags__name__icontains=keyword)
+                , Q.OR
+            )
+        queries.add(keyword_query, Q.AND)
     if query_dict.get('max_price'):
         print ("Max Price")
         queries.add (
