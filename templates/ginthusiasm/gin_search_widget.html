@@ -1,6 +1,6 @@
-<div class=advanced_search_widget>
+<div class=gin_search_widget>
     <h1>Advanced Search</h1>
-    <form id='advanced_search_form' method='get' action={% url "gin_search_results" %}>
+    <form id='gin_search_form' method='get' action={% url "gin_search_results" %}>
         <div class='keywords'>Keywords: {{ advanced_search_form.keywords }}</div>
         <div class='price'>Price: £ {{ advanced_search_form.min_price }} to {{ advanced_search_form.max_price }}</div>
         <div class='rating'>Rating: {{ advanced_search_form.min_rating }} to {{ advanced_search_form.max_rating }} Stars</div>
@@ -10,21 +10,21 @@
 </div>
 
 <style>
-    #advanced_search_form {
+    #gin_search_form {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
     }
 
-    .advanced_search_widget input {
+    .gin_search_widget input {
         width: 60px;
     }
 
-    .advanced_search_widget select {
+    .gin_search_widget select {
         width: 120px;
     }
 
-    .advanced_search_widget .keywords input {
+    .gin_search_widget .keywords input {
         width: 300px;
     }
 </style>
