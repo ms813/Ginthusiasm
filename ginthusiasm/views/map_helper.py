@@ -18,21 +18,18 @@ class MapHelper:
                 # 18 ~ main building of Glasgow Uni
             'zoom' : '16',
 
-            'width' : 640,      # width in px
-            'height' : 640,     # height in px
+            'size' : '640x640',      # size takes the form '{width}x{height}' in px
             'scale' : 1,         # set as 2 for higher resolution
             'maptype' : 'hybrid'    # roadmap | satellite | hybrid | terrain
         }
 
-        # size takes the form '{width}x{height}'
-        params['size'] = str(params['width']) + 'x' + str(params['height'])
         self.default_params = params
 
     def getStaticMapUrl(self, lat, lng, **kwargs):
         # set the center of the map to lat,lng
-        center_coords = str(lat)+ ',' + str(lng)
-        map_url = self.urls['static'] + '?center=' + center_coords +'&'
-
+        # center_coords = str(lat)+ ',' + str(lng)
+        # map_url = self.urls['static'] + '?center=' + center_coords +'&'
+        map_url = self.urls['static']+ '?'
         # copy the default parameters
         map_params = self.default_params.copy()
 
@@ -47,7 +44,8 @@ class MapHelper:
         else:
             c = 'red'
             size = ''
-        map_url = map_url + 'markers=color:' + c + '%7Csize:' + size + '%7C' + center_coords + '&'
+        #map_url = map_url + 'markers=color:' + c + '%7Csize:' + size + '%7C' + center_coords + '&'
+        map_url = map_url + 'markers=color:' + c + '%7Csize:' + size + '%7C' + str(lat)+ ',' + str(lng) + '&'
 
         # update or add any values passed as optional kwargs
         if kwargs is not None:
@@ -58,7 +56,7 @@ class MapHelper:
         for k,v in map_params.iteritems():
             map_url = map_url + k + '=' + str(v) + '&'
 
-        # add the API key if we have one
+        # add the API key if we have one        
         if len(api_keys) > 0:
             map_url = map_url + "key=" + api_keys[0]
         else:
