@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from ginthusiasm.models import Distillery
 from ginthusiasm.forms import DistillerySearchForm
 from django.db.models import Q
+from ginthusiasm.views import MapHelper
 
 # View for the main distillery page
 def show_distillery(request, distillery_name_slug):
@@ -17,6 +18,10 @@ def show_distillery(request, distillery_name_slug):
         # Add the found distillery object to the context dictionary.
         # 'distillery' = key, distillery = found distillery object.
         context_dict['distillery'] = distillery
+
+        # Create the map from the coordinates and add to the distillery object
+        mh = MapHelper()
+        distillery.map_url = mh.getStaticMapUrl(distillery.lat, distillery.long)
 
     except Distillery.DoesNotExist:
         context_dict['distillery'] = None
