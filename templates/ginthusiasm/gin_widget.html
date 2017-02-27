@@ -6,8 +6,8 @@
         <p>{{ gin.short_description }}<p>
         <p>Average Rating: {{ gin.average_rating }}<p>
 
-        <a href='#' class='wishlist-button ginthusiasm-button' data-gin="{{ gin.slug }}">
-            <span>
+        <a href='#' class='wishlist-button ginthusiasm-button'>
+            <span data-gin="{{ gin.slug }}">
             {% if gin in user.userprofile.wishlist.gins.all %}
                 Remove from wishlist
             {% else %}
