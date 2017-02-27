@@ -39,7 +39,7 @@ def gin_search_results(request):
         order_by = '-' + order_by
 
     # Execute filter query
-    gin_list = Gin.objects.filter(create_gin_query(query_dict)).order_by(order_by)
+    gin_list = Gin.objects.filter(create_gin_query(query_dict)).distinct().order_by(order_by)
 
     # If there is only one result returned then redirect straight to that page
     if len(gin_list) == 1:
@@ -55,7 +55,6 @@ def create_gin_query(query_dict):
 
     # filter by keywords
     if query_dict.get('keywords'):
-        print ("Keywords")
         keywords = shlex.split(query_dict.get('keywords').replace("+", " "))
         keyword_query = Q()
         for keyword in keywords:
@@ -63,20 +62,19 @@ def create_gin_query(query_dict):
                 Q(name__icontains=keyword) |
                 Q(short_description__icontains=keyword) |
                 Q(long_description__icontains=keyword) |
-                Q(taste_tags__name__iexact=keyword)
+                Q(taste_tags__name__icontains=keyword) |
+                Q(distillery__name__icontains=keyword)
                 , Q.OR
             )
         queries.add(keyword_query, Q.AND)
 
     # filter by price
     if query_dict.get('max_price'):
-        print ("Max Price")
         queries.add (
             ~Q(price__gt=query_dict.get('max_price'))
             , Q.AND
         )
     if query_dict.get('min_price'):
-        print ("Min Price")
         queries.add (
             ~Q(price__lt=query_dict.get('min_price'))
             , Q.AND
@@ -84,13 +82,11 @@ def create_gin_query(query_dict):
 
     # filter by rating
     if query_dict.get('max_rating'):
-        print ("Max Rating")
         queries.add (
             ~Q(average_rating__gt=query_dict.get('max_rating'))
             , Q.AND
         )
     if query_dict.get('min_rating'):
-        print ("Min Rating")
         queries.add (
             ~Q(average_rating__lt=query_dict.get('min_rating'))
             , Q.AND
@@ -98,7 +94,6 @@ def create_gin_query(query_dict):
 
     # filter by tag
     if query_dict.get('tags'):
-        print ("Tags")
         tags = shlex.split(query_dict.get('tags').replace("+", " "))
         tags_query = Q()
         for tag in tags:
@@ -110,10 +105,12 @@ def create_gin_query(query_dict):
 
     # filter by distillery
     if query_dict.get('distillery'):
-        print ("Distillery")
-        queries.add (
-            Q(distillery__name__icontains=query_dict.get('distillery'))
-            , Q.AND
-        )
-
+        distilleries = shlex.split(query_dict.get('distillery').replace("+", " "))
+        distilleries_query = Q()
+        for distillery in distilleries:
+            distilleries_query.add (
+                Q(distillery__name__iexact=distillery)
+                , Q.OR
+            )
+        queries.add(distilleries_query, Q.AND)
     return queries
