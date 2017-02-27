@@ -7,11 +7,13 @@
         <p>Average Rating: {{ gin.average_rating }}<p>
 
         <a href='#' class='wishlist-button ginthusiasm-button' data-gin="{{ gin.slug }}">
+            <span>
             {% if gin in user.userprofile.wishlist.gins.all %}
                 Remove from wishlist
             {% else %}
                 Add to wishlist
             {% endif %}
+            </span>
         </a>
     </div>
 

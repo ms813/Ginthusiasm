@@ -9,11 +9,6 @@
 	height: 50px;
 }
 
-.header-small a, .header-large a{
-	color: #ffffff;
-	text-decoration: none;
-}
-
 .header-small .logo{
 	max-width: 50px;
 	flex-grow: 1;
@@ -70,38 +65,11 @@
 .nav a {
 	width: 25%;
 	height: 80%;
-	display: table;
 }
 
-.nav a span{
-
-	display:table-cell;
-	vertical-align:middle;
-}
-
-.nav a:hover{
-    border-radius: 5px;
-	background-color: #2E2F33;
-}
-
-a.btn {
+.header-small a.ginthusiasm-button, .header-large a.ginthusiasm-button  {
     height: 80%;
     width: 10%;
-	border-radius: 5px;
-	text-align: center;
-	color: white;
-	background-color: #2E2F33;
-	cursor: pointer;
-	display: table;
-}
-
-a.btn:hover{
-	background-color: #9DA0A7;
-}
-
-a.btn span{
-	display:table-cell;
-	vertical-align:middle;
 }
 
 .login-small{
@@ -116,6 +84,8 @@ a.btn span{
 	text-align: center;
 	align-self: center;
 	flex-basis: 20%;
+	color: #ffffff;
+	text-decoration: none;
 }
 
 .header-search{
@@ -126,14 +96,30 @@ a.btn span{
 	width: 25%;
 }
 
-.header-search a.btn {
+a.header-button {
+    display: table;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+a.header-button span{
+	display:table-cell;
+	vertical-align:middle;
+}
+
+a.header-button:hover{
+    border-radius: 5px;
+    background-color: #2E2F33;
+}
+
+.header-search a.ginthusiasm-button {
 	width: 25%;
 }
 
 .header-search input[type='text']{
     height: 80%;
     width: 70%;
-    font-siz: 1.2em;
+    font-size: 1.2em;
     border:none;
     text-align: center;
     border-radius: 5px;
