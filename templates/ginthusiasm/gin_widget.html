@@ -5,6 +5,14 @@
         </a>
         <p>{{ gin.short_description }}<p>
         <p>Average Rating: {{ gin.average_rating }}<p>
+
+        <a href='#' class='wishlist-button ginthusiasm-button' data-gin="{{ gin.slug }}">
+            {% if gin in user.userprofile.wishlist.gins.all %}
+                Remove from wishlist
+            {% else %}
+                Add to wishlist
+            {% endif %}
+        </a>
     </div>
 
     <div class='image'>
@@ -12,6 +20,7 @@
             <img src="{{ MEDIA_URL }}{{ gin.image }}" alt='Image of {{ gin.name }}'/>
         </a>
     </div>
+
 </div>
 
 <style>

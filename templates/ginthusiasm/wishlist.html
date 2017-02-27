@@ -14,3 +14,9 @@
         <p>This user hasn't added any gins to their wishlist yet!</p>
     {% endif %}
 {% endblock %}
+
+{% block script_block %}
+    <script src='{% static "scripts/add_to_wishlist.js" %}'></script>
+    <script src='{% static "scripts/ajax_setup.js" %}'></script>
+    <script src='{% static "scripts/js.cookie.js" %}'></script>
+{% endblock %}
