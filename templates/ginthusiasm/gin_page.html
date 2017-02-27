@@ -25,6 +25,17 @@
         </div>
     </div>
 
+    <!-- add to wishlist button -->
+    <a href='#' class='wishlist-button ginthusiasm-button'>
+        <span data-gin="{{ gin.slug }}">
+        {% if gin in user.userprofile.wishlist.gins.all %}
+            Remove from wishlist
+        {% else %}
+            Add to wishlist
+        {% endif %}
+        </span>
+    </a>
+
     <div id='review_form'>
         <h2>Write a Review</h2>
         <Strong>Write review form goes here!</Strong>
@@ -79,4 +90,10 @@
         }
 
     </style>
+{% endblock %}
+
+{% block script_block %}
+    <script src='{% static "scripts/wishlist_button.js" %}'></script>
+    <script src='{% static "scripts/ajax_setup.js" %}'></script>
+    <script src='{% static "scripts/js.cookie.js" %}'></script>
 {% endblock %}

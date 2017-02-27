@@ -6,6 +6,7 @@
         <p>{{ gin.short_description }}<p>
         <p>Average Rating: {{ gin.average_rating }}<p>
 
+        <!-- add to wishlist button -->
         <a href='#' class='wishlist-button ginthusiasm-button'>
             <span data-gin="{{ gin.slug }}">
             {% if gin in user.userprofile.wishlist.gins.all %}
@@ -15,6 +16,7 @@
             {% endif %}
             </span>
         </a>
+        
         <br />
         <a href="{% url 'show_gin' gin.slug %}#review_form">Write Review</a>
     </div>
