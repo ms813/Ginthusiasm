@@ -4,7 +4,7 @@
 	justify-content: space-around;
 	align-items: center;
 	width: 100%;
-	background-color: ForestGreen;
+	background-color: #212123;
 	color: #ffffff;
 	height: 50px;
 }
@@ -31,7 +31,7 @@
 
 .header-large{
     text-align: center;
-    background-color: ForestGreen;
+    background-color: #212123;
     height: 260px;
 }
 
@@ -69,18 +69,19 @@
 }
 .nav a {
 	width: 25%;
-	height: 100%;
+	height: 80%;
 	display: table;
 }
 
 .nav a span{
+
 	display:table-cell;
 	vertical-align:middle;
 }
 
 .nav a:hover{
     border-radius: 5px;
-	background-color: DarkGreen;
+	background-color: #2E2F33;
 }
 
 a.btn {
@@ -89,13 +90,13 @@ a.btn {
 	border-radius: 5px;
 	text-align: center;
 	color: white;
-	background-color: DarkGreen;
+	background-color: #2E2F33;
 	cursor: pointer;
 	display: table;
 }
 
 a.btn:hover{
-	background-color: green;
+	background-color: #9DA0A7;
 }
 
 a.btn span{
@@ -132,7 +133,7 @@ a.btn span{
 .header-search input[type='text']{
     height: 80%;
     width: 70%;
-    font-size: 1.2em;
+    font-siz: 1.2em;
     border:none;
     text-align: center;
     border-radius: 5px;
