@@ -98,7 +98,7 @@ def create_gin_query(query_dict):
         tags_query = Q()
         for tag in tags:
             tags_query.add (
-                Q(taste_tags__name__iexact=tag)
+                Q(taste_tags__name__icontains=tag)
                 , Q.OR
             )
         queries.add(tags_query, Q.AND)
@@ -109,7 +109,7 @@ def create_gin_query(query_dict):
         distilleries_query = Q()
         for distillery in distilleries:
             distilleries_query.add (
-                Q(distillery__name__iexact=distillery)
+                Q(distillery__name__icontains=distillery)
                 , Q.OR
             )
         queries.add(distilleries_query, Q.AND)
