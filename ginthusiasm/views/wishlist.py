@@ -4,7 +4,11 @@ from ginthusiasm.models import UserProfile, Wishlist, Gin
 from django.http import HttpResponse
 
 def wishlist(request, username):
-    context = {"gins" : User.objects.get(username=username).userprofile.wishlist.gins.all}
+    wishlist = User.objects.get(username=username).userprofile.wishlist
+    context = {
+        "wishlist_name" : str(wishlist),
+        "gins" : wishlist.gins.all
+    }
     return render(request, 'ginthusiasm/wishlist.html', context)
 
 # handles POST requests from 'add to/remove from wishlist' button
