@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from ginthusiasm.models import Gin, TasteTag
-from ginthusiasm.forms import GinSearchForm
+from ginthusiasm.models import Gin, TasteTag, Distillery
+from ginthusiasm.forms import GinSearchForm, AddGinForm
 from django.db.models import Q
 import shlex
 
@@ -23,6 +23,34 @@ def show_gin(request, gin_name_slug):
 
     # Render the response and return it to the client
     return render(request, 'ginthusiasm/gin_page.html', context=context_dict)
+
+# View for adding a gin to the database
+def add_gin(request, distillery_name_slug):
+    try:
+        distillery = Distillery.objects.get(slug=distillery_name_slug)
+    except Distillery.DoesNotExist:
+        distillery = None
+
+    form = AddGinForm()
+
+    if request.method == 'POST':
+        form = AddGinForm(request.POST)
+        if form.is_valid():
+            if distillery:
+                gin = form.save(commit=False)
+                gin.distillery = distillery
+                gin.average_rating = 0
+
+                if 'image' in request.FILES:
+                    gin.image = request.FILES['image']
+
+                gin.save()
+                return redirect('show_distillery', distillery_name_slug)
+        else:
+            print(form.errors)
+
+    context_dict = {'add_gin_form': form, 'distillery': distillery}
+    return render(request, 'ginthusiasm/add_gin_page.html', context=context_dict)
 
 # View for the gin search page
 def gin_search_results(request):

@@ -23,7 +23,7 @@ class Gin(models.Model):
     long_description = models.TextField()
     taste_tags = models.ManyToManyField(TasteTag, blank=True)
     slug = models.SlugField(unique=True, blank=True)
-    image = models.ImageField(upload_to='gins')
+    image = models.ImageField(upload_to='gins', blank=True)
     distillery = models.ForeignKey('distillery', null=True, blank=True)
 
     def save(self, *args, **kwargs):

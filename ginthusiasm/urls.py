@@ -45,6 +45,7 @@ wishlist_patterns = [
 distillery_patterns = [
     url(r'^distillery/$', views.distillery_search_results, name='distillery_search_results'),
     url(r'^distillery/(?P<distillery_name_slug>[\w\-]+)/$', views.show_distillery, name='show_distillery'),
+    url(r'^distillery/(?P<distillery_name_slug>[\w\-]+)/add-gin/$', views.add_gin, name='add_gin'),
 ]
 
 ##########     Review     ##########

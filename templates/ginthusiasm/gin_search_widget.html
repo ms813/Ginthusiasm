@@ -2,6 +2,7 @@
     <h1>Advanced Search</h1>
     <form id='gin_search_form' method='get' action={% url "gin_search_results" %}>
         <div class='keywords'>Keywords: {{ advanced_search_form.keywords }}</div>
+        <div class='distillery'>Distillery: {{ advanced_search_form.distillery }}</div>
         <div class='price'>Price: £ {{ advanced_search_form.min_price }} to {{ advanced_search_form.max_price }}</div>
         <div class='rating'>Rating: {{ advanced_search_form.min_rating }} to {{ advanced_search_form.max_rating }} Stars</div>
         <div class='ordering'>Order by: {{ advanced_search_form.order_by }}{{ advanced_search_form.order }}</div>
@@ -26,5 +27,9 @@
 
     .gin_search_widget .keywords input {
         width: 300px;
+    }
+
+    .gin_search_widget .distillery input {
+        width: 200px;
     }
 </style>
