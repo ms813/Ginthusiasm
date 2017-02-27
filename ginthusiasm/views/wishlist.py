@@ -9,6 +9,9 @@ def wishlist(request, username):
         "wishlist_name" : str(wishlist),
         "gins" : wishlist.gins.all
     }
+
+    if request.user.is_authenticated():
+        context['wishlist_name'] = "Your wishlist"
     return render(request, 'ginthusiasm/wishlist.html', context)
 
 # handles POST requests from 'add to/remove from wishlist' button

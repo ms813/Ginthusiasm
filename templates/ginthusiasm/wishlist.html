@@ -6,13 +6,7 @@
 {% endblock %}
 
 {% block body_block %}
-    <h1>
-        {% if user.is_authenticated %}
-            Your wishlist
-        {% else %}
-            {{ wishlist_name }}
-        {% endif %}
-    </h1>
+    <h1>{{ wishlist_name }}</h1>
 
     {% if gins %}
         {% for gin in gins %}
@@ -26,7 +20,7 @@
             <p>This user hasn't added any gins to their wishlist yet!</p>
         {% endif %}
     {% endif %}
-    
+
 {% endblock %}
 
 {% block script_block %}
