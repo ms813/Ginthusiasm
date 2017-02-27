@@ -28,7 +28,7 @@ class GinSearchForm(forms.Form):
     order_by = forms.ChoiceField(choices=ORDER_BY_CHOICES)
     order = forms.ChoiceField(choices=ORDER_ORDER_CHOICES)
     # taste_tags = forms.MultipleChoiceField(choices=TasteTag.objects.all, required=False)
-    # distillery = forms.CharField(max_length=128, required=False)
+    distillery = forms.CharField(max_length=128, required=False)
 
     # Add more fields to filter be groups of distilleries e.g. All Scottish distilleries
     # Add more fields to filter by location of reviews?
