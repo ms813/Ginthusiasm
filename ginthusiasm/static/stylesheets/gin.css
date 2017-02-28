@@ -1,0 +1,54 @@
+div.gin_description {
+    flex-direction: wrap;
+}
+
+.gin_description .taste_tags ul {
+    display: inline-flex;
+    list-style-type: none;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.gin_description .taste_tags li {
+    padding: 5px;
+    margin-right: 5px;
+    background-color: lightgrey;
+}
+
+.gin_description .image {
+    height: 800px;
+    max-width: 600px;
+    object-fit: cover;
+    float: right;
+}
+
+
+
+#gin_search_form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.gin_search_widget input {
+    width: 60px;
+}
+
+.gin_search_widget select {
+    width: 120px;
+}
+
+.gin_search_widget .keywords input {
+    width: 300px;
+}
+
+.gin_search_widget .distillery input {
+    width: 200px;
+}
+
+
+
+.search_results ul {
+    list-style: none;
+    padding-left: 0;
+}

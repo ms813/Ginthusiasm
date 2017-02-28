@@ -120,6 +120,7 @@ def populate_gin():
             "price" : "35.00",
             "short_description" : "Our new gin captures the elemental nature of the Isle of Harris, rewarding the drinker with maritime pleasures. The unique inclusion of local, hand-harvested Sugar kelp speaks of our island's deep connections to the sea while working with eight other carefully chosen botanicals.",
             "long_description" : "Test long description",
+            "abv" : "45.0",
             "taste_tags" : ["Sugar Kelp", "Juniper", "Coriander", "Angelica Root", "Orris Root", "Cubebs", "Bitter Orange Peel", "Licorice", "Cassia Bark"],
             "image" : "gins/Harris-Gin.jpg",
             "distillery" : ""
@@ -129,6 +130,7 @@ def populate_gin():
             "price" : "30.00",
             "short_description" : "The famous light blush Pink Gin from Eden Mill brings together an outstanding blend of local botanicals and exotic fruits. Our pink gin is a pale colour when poured and when diluted, sweet vanilla and floral notes are brought out. Show your appreciation of a great pink gin and spread the word about Love Gin.",
             "long_description" : "Test long description",
+            "abv" : "42.0",
             "taste_tags" : ["Juniper", "Rose Petals", "Hibiscus", "Strawberry", "Raspberry", "Vanilla", "Apples", "Pears", "Pink Grapefruit", "Rose Water"],
             "image" : "gins/Eden-Mill-Love-Gin.jpg",
             "distillery" : "Eden Mill"
@@ -138,6 +140,7 @@ def populate_gin():
             "price" : "35.00",
             "short_description" : "The Botanist Gin is a progressive exploration of the botanical heritage of our Isle of Islay. 22 hand-foraged local botanicals delicately augment nine berries, barks, seeds and peels during an achingly slow distillation. This first and only Islay Dry Gin is a rare expression of the heart and soul of our remote Scottish island home.",
             "long_description" : "Test long description",
+            "abv" : "46.0",
             "taste_tags" : ["Menthol", "Apple Mint", "Spring Woodlands", "Juniper", "Coriander", "Aniseed", "Lemon Peel", "Orange Peel", "Thistle Honey", "Gorse Coconut", "Wild Mint"],
             "image" : "gins/The-Botanist-Gin.jpg",
             "distillery" : ""
@@ -151,6 +154,7 @@ def populate_gin():
             gin.price = data['price']
             gin.short_description = data['short_description']
             gin.long_description = data['long_description']
+            gin.abv = data['abv']
 
             # add tags to gins
             for tag_name in data['taste_tags']:

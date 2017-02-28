@@ -5,10 +5,10 @@
 <header class='header-small'>
     <a href='/'><img class='logo' src="{% static 'images/ginthusiasm-logo.png' %}" alt='site logo'/></a>
     <nav class='nav'>
-        <a href="{% url 'index' %}"><span>Home</span></a>
-        <a href='#'><span>About</span></a>
-        <a href="{% url 'gin_search_results' %}"><span>Gin</span></a>
-        <a href='#'><span>Rate</span></a>
+        <a class='header-button' href="{% url 'index' %}"><span>Home</span></a>
+        <a class='header-button' href='#'><span>About</span></a>
+        <a class='header-button' href="{% url 'gin_search_results' %}"><span>Gin</span></a>
+        <a class='header-button' href='#'><span>Rate</span></a>
     </nav>
     <div class='login-small'>
     {% if user.is_authenticated %}
@@ -20,7 +20,7 @@
     </div>
     <div class='header-search'>
         <input id='header-search' type='text' placeholder="&#x1f50d;">
-        <a href='#' class='btn'><span>Search</span></a>
+        <a class='ginthusiasm-button' href='#'><span>Search</span></a>
     </div>
 </header>
 {% endblock %}

@@ -5,6 +5,20 @@
         </a>
         <p>{{ gin.short_description }}<p>
         <p>Average Rating: {{ gin.average_rating }}<p>
+
+        <!-- add to wishlist button -->
+        <a href='#' class='wishlist-button ginthusiasm-button'>
+            <span data-gin="{{ gin.slug }}">
+            {% if gin in user.userprofile.wishlist.gins.all %}
+                Remove from wishlist
+            {% else %}
+                Add to wishlist
+            {% endif %}
+            </span>
+        </a>
+
+        <br />
+        <a href="{% url 'show_gin' gin.slug %}#review_form">Write Review</a>
     </div>
 
     <div class='image'>
@@ -12,18 +26,5 @@
             <img src="{{ MEDIA_URL }}{{ gin.image }}" alt='Image of {{ gin.name }}'/>
         </a>
     </div>
+
 </div>
-
-<style>
-    div.gin_widget {
-        display: flex;
-        flex-direction: row;
-        margin-bottom: 50px;
-    }
-
-    .gin_widget .image img {
-        height: 200px;
-        max-width: 150px;
-        object-fit: cover;
-    }
-</style>

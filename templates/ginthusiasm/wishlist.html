@@ -2,15 +2,30 @@
 {% load staticfiles %}
 
 {% block title_block %}
-    {{ user.userprofile.wishlist }}
+    {{ wishlist_name }}
 {% endblock %}
 
 {% block body_block %}
+    <h1>{{ wishlist_name }}</h1>
+
     {% if gins %}
         {% for gin in gins %}
             {% include 'ginthusiasm/gin_widget.html' %}
         {% endfor %}
+        <p id='wishlistlen' data-wishlistlen='{{ gins|length }}' hidden></p>
     {% else %}
-        <p>This user hasn't added any gins to their wishlist yet!</p>
+        {% if user.is_authenticated %}
+            <p>You haven't added any gins to your wishlist!</p>
+        {% else %}
+            <p>This user hasn't added any gins to their wishlist!</p>
+        {% endif %}
     {% endif %}
+
+{% endblock %}
+
+{% block script_block %}
+    <script src='{% static "scripts/wishlist_button.js" %}'></script>
+    <script src='{% static "scripts/ajax_setup.js" %}'></script>
+    <script src='{% static "scripts/js.cookie.js" %}'></script>
+    <script src='{% static "scripts/remove_from_wishlist.js"%}'></script>
 {% endblock %}

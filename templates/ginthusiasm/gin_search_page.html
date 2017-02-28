@@ -2,9 +2,11 @@
 {% load staticfiles %}
 
 {% block style_block %}
+    <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/gin.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/gin_widget.css' %}">
 {% endblock %}
 
-{% block title_block %} Search fo Gin{% endblock %}
+{% block title_block %} Search for Gin{% endblock %}
 
 {% block body_block %}
     {% include 'ginthusiasm/gin_search_widget.html' %}
@@ -21,11 +23,10 @@
         {% endif %}
     </div>
 
-<style>
-    .search_results ul {
-        list-style: none;
-        padding-left: 0;
-    }
-</style>
+{% endblock %}
 
+{% block script_block %}
+    <script src='{% static "scripts/wishlist_button.js" %}'></script>
+    <script src='{% static "scripts/ajax_setup.js" %}'></script>
+    <script src='{% static "scripts/js.cookie.js" %}'></script>
 {% endblock %}

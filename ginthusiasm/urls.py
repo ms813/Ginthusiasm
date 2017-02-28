@@ -39,12 +39,14 @@ user_patterns = [
 ##########     Wishlist     ##########
 wishlist_patterns = [
     url(r'^wishlist/(?P<username>[\w\-]+)/$', views.wishlist, name='wishlist'),
+    url(r'^wishlist/add/(?P<gin_slug>[\w\-]+)/$', views.wishlist_add, name='wishlist_add')
 ]
 
 ##########     Distillery     ##########
 distillery_patterns = [
     url(r'^distillery/$', views.distillery_search_results, name='distillery_search_results'),
     url(r'^distillery/(?P<distillery_name_slug>[\w\-]+)/$', views.show_distillery, name='show_distillery'),
+    url(r'^distillery/(?P<distillery_name_slug>[\w\-]+)/add-gin/$', views.add_gin, name='add_gin'),
 ]
 
 ##########     Review     ##########

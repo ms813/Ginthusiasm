@@ -2,6 +2,7 @@
 {% load staticfiles %}
 
 {% block style_block %}
+    <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/gin.css' %}">
 {% endblock %}
 
 {% block title_block %} {{ gin.name }}{% endblock %}
@@ -9,7 +10,7 @@
 {% block body_block %}
     <div class='gin_description'>
         <img class='image' src="{{ MEDIA_URL }}{{ gin.image }}" alt='Image of {{ gin.name }}'/>
-        <h1>{{ gin.name }}</h1><br />
+        <h1>{{ gin.name }}</h1>
         <p>{{ gin.long_description }}
             {% lorem 10 p %}
         </p>
@@ -25,7 +26,18 @@
         </div>
     </div>
 
-    <div class='review_form'>
+    <!-- add to wishlist button -->
+    <a href='#' class='wishlist-button ginthusiasm-button'>
+        <span data-gin="{{ gin.slug }}">
+        {% if gin in user.userprofile.wishlist.gins.all %}
+            Remove from wishlist
+        {% else %}
+            Add to wishlist
+        {% endif %}
+        </span>
+    </a>
+
+    <div id='review_form'>
         <h2>Write a Review</h2>
         <Strong>Write review form goes here!</Strong>
     </div>
@@ -53,30 +65,10 @@
         <Strong>Map widget goes here!</Strong>
     </div>
 
-    <style>
-        div.gin_description {
-            flex-direction: wrap;
-        }
+{% endblock %}
 
-        .gin_description .taste_tags ul {
-            display: inline-flex;
-            list-style-type: none;
-            flex-direction: row;
-            flex-wrap: wrap;
-        }
-
-        .gin_description .taste_tags li {
-            padding: 5px;
-            margin-right: 5px;
-            background-color: lightgrey;
-        }
-
-        .gin_description .image {
-            height: 800px;
-            max-width: 600px;
-            object-fit: cover;
-            float: right;
-        }
-
-    </style>
+{% block script_block %}
+    <script src='{% static "scripts/wishlist_button.js" %}'></script>
+    <script src='{% static "scripts/ajax_setup.js" %}'></script>
+    <script src='{% static "scripts/js.cookie.js" %}'></script>
 {% endblock %}

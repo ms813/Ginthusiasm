@@ -5,8 +5,7 @@
 
 {% block body_block %}
     <h1>Welcome {{ user.first_name }}!</h1>
-    <a href='{% url "wishlist" user.username %}'>Wishlist</a>
-    <a>Reviews</a>
-    <a href='{% url "logout" %}'>Log Out</a>
-
+    <a class='ginthusiasm-button' href='{% url "wishlist" user.username %}'><span>Wishlist</span></a>
+    <a class='ginthusiasm-button'><span>Reviews</span></a>
+    <a class='ginthusiasm-button' href='{% url "logout" %}'><span>Log Out</span></a>
 {% endblock %}

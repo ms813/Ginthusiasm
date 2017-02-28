@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from ginthusiasm.models import Gin, TasteTag
-from ginthusiasm.forms import GinSearchForm
+from ginthusiasm.models import Gin, TasteTag, Distillery
+from ginthusiasm.forms import GinSearchForm, AddGinForm
 from django.db.models import Q
 import shlex
 
@@ -24,6 +24,34 @@ def show_gin(request, gin_name_slug):
     # Render the response and return it to the client
     return render(request, 'ginthusiasm/gin_page.html', context=context_dict)
 
+# View for adding a gin to the database
+def add_gin(request, distillery_name_slug):
+    try:
+        distillery = Distillery.objects.get(slug=distillery_name_slug)
+    except Distillery.DoesNotExist:
+        distillery = None
+
+    form = AddGinForm()
+
+    if request.method == 'POST':
+        form = AddGinForm(request.POST)
+        if form.is_valid():
+            if distillery:
+                gin = form.save(commit=False)
+                gin.distillery = distillery
+                gin.average_rating = 0
+
+                if 'image' in request.FILES:
+                    gin.image = request.FILES['image']
+
+                gin.save()
+                return redirect('show_distillery', distillery_name_slug)
+        else:
+            print(form.errors)
+
+    context_dict = {'add_gin_form': form, 'distillery': distillery}
+    return render(request, 'ginthusiasm/add_gin_page.html', context=context_dict)
+
 # View for the gin search page
 def gin_search_results(request):
     query_dict = request.GET
@@ -45,8 +73,19 @@ def gin_search_results(request):
     if len(gin_list) == 1:
         return redirect('show_gin', gin_list[0].slug)
 
-    context_dict = {'gins': gin_list, 'advanced_search_form': GinSearchForm()}
-
+    # Remember values of form fields
+    form = GinSearchForm(initial={
+        'keywords' : query_dict.get('keywords'),
+        'distillery' : query_dict.get('distillery'),
+        'min_price' : query_dict.get('min_price'),
+        'max_price' : query_dict.get('max_price'),
+        'min_rating' : query_dict.get('min_rating'),
+        'max_rating' : query_dict.get('max_rating'),
+        'order_by' : query_dict.get('order_by'),
+        'order' : query_dict.get('order'),
+    })
+    
+    context_dict = {'gins': gin_list, 'advanced_search_form': form}
     return render(request, 'ginthusiasm/gin_search_page.html', context=context_dict)
 
 # Function for generating a gin search query (Q() object) from a query dictionary

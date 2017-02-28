@@ -1,0 +1,11 @@
+div.gin_widget {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 50px;
+}
+
+.gin_widget .image img {
+    height: 200px;
+    max-width: 150px;
+    object-fit: cover;
+}
