@@ -70,59 +70,32 @@
    "taste_tags": ""
  },
  {
-<<<<<<< HEAD
-   "name": "Edinburgh Gin?s Rhubarb & Ginger",
-   "price": 18.5,
-   "short_description": "Tangy spring crop rhubarb macerated with oriental ginger and lemon zest is infused into Edinburgh Gin to create a nostalgia-inducing rose-hued tipple perfect for summer cocktails or as a winter warmer! 20% ABV.",
-   "long_description": "Test long description",
-   "abv": 20,
-   "image": "gins/edinburgh-rhubarb-ginger.jpg",
-=======
    "name": "Sharish Blue Magic Gin",
    "price": 40,
    "short_description": "Sharish Blue Magic Gin really is magical. One minute it's a vibrant, deep blue hue... but pour over tonic and ABRACADABRA, your G&T is suddenly a beautiful dusky purple/pink colour. The 'magic' is due to the flower Clitoria Ternatea that colours Sharish Blue Gin without the use of artificial additives. The addition of tonic changes the pH levels and the varying shades depend on which tonic is used. Not to be outdone by its colour-changing properties, the gin itself is exceptionally smooth with a unique fruity aroma and citrus taste. Made in Portugal, the botanicals include Juniper, Cinnamon, Coriander Seeds, Clove, Vanilla, and, rather originally, totally fresh Orange Peel, Lemon Peel, Bravo Esmolfe Apple and Lemon verbena.",
    "long_description": "",
    "abv": 40,
    "image": "gins/sharish-blue-magic.png",
->>>>>>> 22ef16a5c6558d5b23505a5091b0b87522b56a28
    "distillery": "",
    "taste_tags": "juniper, cinnamon, coriander, clove, vanilla, orange peel, lemon peel, apple, lemon verbena"
  },
  {
-<<<<<<< HEAD
-   "name": "Edinburgh Gin?s Plum & Vanilla liqueur",
-   "price": 18.5,
-   "short_description": "Made with juicy plums and Madagascan vanilla!",
-   "long_description": "Test long description",
-   "abv": 20,
-   "image": "gins/edinburgh-plum-vanilla.jpg",
-=======
    "name": "Tanqueray London Dry ",
    "price": 18,
    "short_description": "It starts with the man. Charles Tanqueray. The bold spirit who traded the church for the still and in the process, created one of the world's most awarded gins.Tonight we toast the bold spirit worthy of its seal and 180 years of distilling excellence",
    "long_description": "A blend of the purest�four-times-distilled�spirit and a hand picked selection of four botanicals, London Dry Gin offers uniquely balanced gin experience. Said to have been Frank Sinatra?s preferred gin, London Dry?s edge and sophistication have long made it a favourite with the stars in fashion, film and music. Tanqueray?s iconic bottle design is a contemporary update of the original 1948 design, which in turn, was inspired by the shape of a classic cocktail shaker. The famous�Tanqueray�family crest embossed on the glass of each bottle features a pineapple, a historic symbol of hospitality and warm welcome.",
    "abv": 43.1,
    "image": "gins/tanqueray-london-dry.jpg",
->>>>>>> 22ef16a5c6558d5b23505a5091b0b87522b56a28
    "distillery": "",
    "taste_tags": "juniper, coriander, angelica, liquorice"
  },
  {
-<<<<<<< HEAD
-   "name": "Edinburgh Gin?s Raspberry Liqueur",
-   "price": 18.5,
-   "short_description": "A fruity liqueur handmade in the heart of Scotland by infusing our award-winning Edinburgh Gin with mixture of juicy Perthshire Raspberries and cane sugar. Magical added to fizz ? alcoholic or not! 20% ABV.",
-   "long_description": "Test long description",
-   "abv": 20,
-   "image": "gins/edinburgh-raspberry.jpg",
-=======
    "name": "Tanqueray No. Ten Gin",
    "price": 32,
    "short_description": "Named after the still number of its origin, Tanqueray No. TEN gin is an homage to the passion and attention to detail that Charles Tanqueray stood for. Crafted with the perfect martini in mind, the fresh citrus fruits of No. Ten perfectly complement and capture the exquisite essence of the ultimate martini.�",
    "long_description": "Tanqueray No. TEN gin takes its name from ?Tiny Ten?, the nickname of the small copper pot still where every drop is produced, but there is nothing minor about its flavour. The only gin made using whole citrus fruit, including white grapefruit, lime, and orange, along with juniper, coriander, and a hint of chamomile flowers, No. TEN has a unique, full-bodied character and citrus undertone. It is this combination of full body and fresh flavor that has made it a perennial favourite amongst passionate bartenders. And it?s not only these bartenders who applaud No. TEN. Upon its launch, this gin was crowned ?Best White Spirit? three times in a row at the San Francisco World Spirits Competition, at which point it was retired from the competition into the Hall of Fame, where it remains the only white spirit. Tanqueray No. TEN has been developed with ultimate martini in mind.�",
    "abv": 47,
    "image": "gins/tanqueray-no-ten.jpg",
->>>>>>> 22ef16a5c6558d5b23505a5091b0b87522b56a28
    "distillery": "",
    "taste_tags": "citrus, camomile, sherbet, juniper"
  },
@@ -137,14 +110,6 @@
    "taste_tags": ""
  },
  {
-<<<<<<< HEAD
-   "name": "Tanqueray No. Ten Gin",
-   "price": 32,
-   "short_description": "Named after the still number of its origin, Tanqueray No. TEN gin is an homage to the passion and attention to detail that Charles Tanqueray stood for. Crafted with the perfect martini in mind, the fresh citrus fruits of No. Ten perfectly complement and capture the exquisite essence of the ultimate martini.�",
-   "long_description": "Tanqueray No. TEN gin takes its name from ?Tiny Ten?, the nickname of the small copper pot still where every drop is produced, but there is nothing minor about its flavour. The only gin made using whole citrus fruit, including white grapefruit, lime, and orange, along with juniper, coriander, and a hint of chamomile flowers, No. TEN has a unique, full-bodied character and citrus undertone. It is this combination of full body and fresh flavor that has made it a perennial favourite amongst passionate bartenders. And it?s not only these bartenders who applaud No. TEN. Upon its launch, this gin was crowned ?Best White Spirit? three times in a row at the San Francisco World Spirits Competition, at which point it was retired from the competition into the Hall of Fame, where it remains the only white spirit. Tanqueray No. TEN has been developed with ultimate martini in mind.�",
-   "abv": 47,
-   "image": "gins/tanqueray-no-ten.jpg",
-=======
    "name": "Eden Mill Love Gin",
    "price": 30,
    "short_description": "The famous light blush Pink Gin from Eden Mill brings together an outstanding blend of local botanicals and exotic fruits. Our pink gin is a pale colour when poured and when diluted, sweet vanilla and floral notes are brought out. Show your appreciation of a great pink gin and spread the word about Love Gin.",
@@ -161,83 +126,46 @@
    "long_description": "Test long description",
    "abv": 37.5,
    "image": "gins/gordons.jpg",
->>>>>>> 22ef16a5c6558d5b23505a5091b0b87522b56a28
    "distillery": "",
    "taste_tags": ""
  },
  {
-<<<<<<< HEAD
-   "name": "Tanqueray London Dry",
-   "price": 18,
-   "short_description": "It starts with the man. Charles Tanqueray. The bold spirit who traded the church for the still and in the process, created one of the world's most awarded gins.Tonight we toast the bold spirit worthy of its seal and 180 years of distilling excellence",
-   "long_description": "A blend of the purest�four-times-distilled�spirit and a hand picked selection of four botanicals, London Dry Gin offers uniquely balanced gin experience. Said to have been Frank Sinatra?s preferred gin, London Dry?s edge and sophistication have long made it a favourite with the stars in fashion, film and music. Tanqueray?s iconic bottle design is a contemporary update of the original 1948 design, which in turn, was inspired by the shape of a classic cocktail shaker. The famous�Tanqueray�family crest embossed on the glass of each bottle features a pineapple, a historic symbol of hospitality and warm welcome.",
-   "abv": 43.1,
-   "image": "gins/tanqueray-london-dry.jpg",
-=======
    "name": "Gordon's Crisp Cucumber",
    "price": 18,
    "short_description": "Winner of the 2013 Blind Taste Test in the FT Weekend Magazine; the subtly crisp, aromatic flavour of cucumber is married with delicious Gordon's London Dry Gin to create Gordon?s Crisp Cucumber. Mixed with tonic and ice, it quite simply makes for arefreshing addition to any evening.",
    "long_description": "Test long description",
    "abv": 37.5,
    "image": "gins/gordons-cucumber.jpg",
->>>>>>> 22ef16a5c6558d5b23505a5091b0b87522b56a28
    "distillery": "",
    "taste_tags": ""
  },
  {
-<<<<<<< HEAD
-   "name": "Sharish Blue Magic Gin",
-   "price": 40,
-   "short_description": "Sharish Blue Magic Gin really is magical. One minute it's a vibrant, deep blue hue... but pour over tonic and ABRACADABRA, your G&T is suddenly a beautiful dusky purple/pink colour. The 'magic' is due to the flower Clitoria Ternatea that colours Sharish Blue Gin without the use of artificial additives. The addition of tonic changes the pH levels and the varying shades depend on which tonic is used. Not to be outdone by its colour-changing properties, the gin itself is exceptionally smooth with a unique fruity aroma and citrus taste. Made in Portugal, the botanicals include Juniper, Cinnamon, Coriander Seeds, Clove, Vanilla, and, rather originally, totally fresh Orange Peel, Lemon Peel, Bravo Esmolfe Apple and Lemon verbena.",
-   "long_description": "",
-   "abv": 40,
-   "image": "gins/sharish-blue-magic.png",
-=======
    "name": "Gordon's with a Spot of Elderflower",
    "price": 16,
    "short_description": "Refreshing Gordon?s London Dry gin is combined with the delicate taste of elderflower for a delicious twist on a great British classic. The innovative new blend is ideal for enjoying with friends all-year round, and is best served with tonic and ice. Add two strawberry halves to the mix to bring out its delicate taste.",
    "long_description": "Test long description",
    "abv": 37.5,
    "image": "gins/gordons-elderflower.jpg",
->>>>>>> 22ef16a5c6558d5b23505a5091b0b87522b56a28
    "distillery": "",
    "taste_tags": ""
  },
  {
-<<<<<<< HEAD
-   "name": "Copperhead Gin",
-   "price": 33.75,
-   "short_description": "Mr. Copperhead was a notorious alchemist, in search of the elixir of life. During his pursuit, and much to his own surprise, he conjured up an exquisite composition, using a copper pot still and a recipe based on five essential botanicals: angelica, juniper, cardamon, orange peel and coriander seed. Enjoy the alchemist?s gin!",
-   "long_description": "",
-   "abv": 40,
-   "image": "gins/copperhead.png",
-=======
    "name": "Gordon's Sloe Gin",
    "price": 17,
    "short_description": "We take the finest wild sloe berries and steep them gently, before adding Gordon's�gin. The result is a wonderful tipple that marries the dryness of Gordon's with cassis sweetness ? perfect in�cocktails, as an alternative G&T, or simply on its own (but always with friends!).",
    "long_description": "Test long description",
    "abv": 26,
    "image": "gins/gordons-sloe.jpg",
->>>>>>> 22ef16a5c6558d5b23505a5091b0b87522b56a28
    "distillery": "",
    "taste_tags": ""
  },
  {
-<<<<<<< HEAD
-   "name": "Copperhead Black Batch",
-   "price": 36.95,
-   "short_description": "Mr. Copperhead, the notorious alchemist in constant search of improving his elixir of life, was enchanted by the elder tree and the tales surrounding it of witchcraft, protection and life prolongation. He managed to use the pitch black berries of the Sambucus Nigra shrub to stimulate the immune system. Carefully balanced with black Ceylon tea, this exquisite variant of the original Copperhead recipe will pleasantly surprise your senses. Welcome to the dark side of gin.",
-   "long_description": "",
-   "abv": 42,
-   "image": "gins/copperhead-black-batch.png",
-=======
    "name": "Isle of Harris Gin",
    "price": 35,
    "short_description": "Our new gin captures the elemental nature of the Isle of Harris, rewarding the drinker with maritime pleasures. The unique inclusion of local, hand-harvested Sugar kelp speaks of our island's deep connections to the sea while working with eight other carefully chosen botanicals.",
    "long_description": "Test long description",
    "abv": 45,
    "image": "gins/Harris-Gin.jpg",
->>>>>>> 22ef16a5c6558d5b23505a5091b0b87522b56a28
    "distillery": "",
    "taste_tags": "Sugar Kelp, Juniper, Coriander, Angelica Root, Orris Root, Cubebs, Bitter Orange Peel, Licorice, Cassia Bark"
  },
