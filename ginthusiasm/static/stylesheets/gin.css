@@ -9,12 +9,6 @@ div.gin_description {
     flex-wrap: wrap;
 }
 
-.gin_description .taste_tags li {
-    padding: 5px;
-    margin-right: 5px;
-    background-color: lightgrey;
-}
-
 .gin_description .image {
     height: 800px;
     max-width: 600px;

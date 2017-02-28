@@ -9,3 +9,8 @@ div.gin_widget {
     max-width: 150px;
     object-fit: cover;
 }
+
+.gin_widget a.ginthusiasm-button {
+    height: 25px;
+    width: 170px;
+}
