@@ -192,14 +192,15 @@ def populate_gin():
             # add tags to gins
             tags = data['taste_tags'].split(', ')
             for tag_name in tags:
-                tag_name = tag_name.title()
-                tag, tag_created = TasteTag.objects.get_or_create(name = tag_name)
+                if not tag_name=="":
+                    tag_name = tag_name.title()
+                    tag, tag_created = TasteTag.objects.get_or_create(name = tag_name)
 
-                if tag_created:
-                    tag.name = tag_name
-                    tag.save()
+                    if tag_created:
+                        tag.name = tag_name
+                        tag.save()
 
-                gin.taste_tags.add(TasteTag.objects.get(name = tag))
+                    gin.taste_tags.add(TasteTag.objects.get(name = tag))
 
             gin.image = data['image']
 
