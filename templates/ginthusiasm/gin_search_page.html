@@ -2,6 +2,8 @@
 {% load staticfiles %}
 
 {% block style_block %}
+    <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/gin.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/gin_widget.css' %}">
 {% endblock %}
 
 {% block title_block %} Search for Gin{% endblock %}
@@ -20,13 +22,6 @@
             No Search Results
         {% endif %}
     </div>
-
-<style>
-    .search_results ul {
-        list-style: none;
-        padding-left: 0;
-    }
-</style>
 
 {% endblock %}
 
