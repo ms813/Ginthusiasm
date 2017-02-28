@@ -28,5 +28,95 @@
    "image": "gins/The-Botanist-Gin.jpg",
    "distillery": "",
    "taste_tags": "Menthol, Apple Mint, Spring Woodlands, Juniper, Coriander, Aniseed, Lemon Peel, Orange Peel, Thistle Honey, Gorse Coconut, Wild Mint"
+ },
+ {
+   "name": "Gordon's London Dry Gin",
+   "price": 16.5,
+   "short_description": "Gordon's�London Dry gin is carefully distilled using a secret recipe. The distinctively refreshing taste comes from the finest handpicked juniper berries and a selection of other botanicals. It's the taste that's made Gordon's the world's best-selling London Dry gin.",
+   "long_description": "Test long description",
+   "abv": 37.5,
+   "image": "gins/gordons.jpg",
+   "distillery": "",
+   "taste_tags": ""
+ },
+ {
+   "name": "Gordon's with a Spot of Elderflower",
+   "price": 16,
+   "short_description": "Refreshing Gordon?s London Dry gin is combined with the delicate taste of elderflower for a delicious twist on a great British classic. The innovative new blend is ideal for enjoying with friends all-year round, and is best served with tonic and ice. Add two strawberry halves to the mix to bring out its delicate taste.",
+   "long_description": "Test long description",
+   "abv": 37.5,
+   "image": "gins/gordons-elderflower.jpg",
+   "distillery": "",
+   "taste_tags": ""
+ },
+ {
+   "name": "Gordon's Crisp Cucumber",
+   "price": 18,
+   "short_description": "Winner of the 2013 Blind Taste Test in the FT Weekend Magazine; the subtly crisp, aromatic flavour of cucumber is married with delicious Gordon's London Dry Gin to create Gordon?s Crisp Cucumber. Mixed with tonic and ice, it quite simply makes for arefreshing addition to any evening.",
+   "long_description": "Test long description",
+   "abv": 37.5,
+   "image": "gins/gordons-cucumber.jpg",
+   "distillery": "",
+   "taste_tags": ""
+ },
+ {
+   "name": "Gordon's Sloe Gin",
+   "price": 17,
+   "short_description": "We take the finest wild sloe berries and steep them gently, before adding Gordon's�gin. The result is a wonderful tipple that marries the dryness of Gordon's with cassis sweetness ? perfect in�cocktails, as an alternative G&T, or simply on its own (but always with friends!).",
+   "long_description": "Test long description",
+   "abv": 26,
+   "image": "gins/gordons-sloe.jpg",
+   "distillery": "",
+   "taste_tags": ""
+ },
+ {
+   "name": "Greenall's London Dry Gin",
+   "price": 14,
+   "short_description": "Crafted in our distillery for over 250 years, Greenall?s The Original uses the same secret recipe that has been handed down through only 7 master distillers. This secret blend of 8�botanicals gives a classic London Dry gin with rich juniper notes, balanced with mature citrus and spice. Best served with ice and lime in a�classic G&T�or as a versatile cocktail ingredient if you?re feeling a little more adventurous.",
+   "long_description": "Test long description",
+   "abv": 37.5,
+   "image": "gin/greenalls-london-dry.png",
+   "distillery": "",
+   "taste_tags": ""
+ },
+ {
+   "name": "Greenall's Wild Berry London Dry Gin",
+   "price": 14,
+   "short_description": "The inspiration for Greenall?s Wild Berry comes from blackberries growing in English hedgerows. These blackberries are combined with raspberries and infused with our award winning Original London Dry gin. Luscious and juicy berry notes are balanced with juniper and warming spice to give a smooth taste and peppery after tones.",
+   "long_description": "Test long description",
+   "abv": 37.5,
+   "image": "gin/greenalls-wild-berry.png",
+   "distillery": "",
+   "taste_tags": ""
+ },
+ {
+   "name": "Edinburgh Gin?s Rhubarb & Ginger",
+   "price": 18.5,
+   "short_description": "Tangy spring crop rhubarb macerated with oriental ginger and lemon zest is infused into Edinburgh Gin to create a nostalgia-inducing rose-hued tipple perfect for summer cocktails or as a winter warmer! 20% ABV.",
+   "long_description": "Test long description",
+   "abv": 20,
+   "image": "gin/edinburgh-rhubarb-ginger.jpg",
+   "distillery": "",
+   "taste_tags": ""
+ },
+ {
+   "name": "Edinburgh Gin?s Plum & Vanilla liqueur",
+   "price": 18.5,
+   "short_description": "Made with juicy plums and Madagascan vanilla!",
+   "long_description": "Test long description",
+   "abv": 20,
+   "image": "gin/edinburgh-plum-vanilla.jpg",
+   "distillery": "",
+   "taste_tags": ""
+ },
+ {
+   "name": "Edinburgh Gin?s Raspberry Liqueur",
+   "price": 18.5,
+   "short_description": "A fruity liqueur handmade in the heart of Scotland by infusing our award-winning Edinburgh Gin with mixture of juicy Perthshire Raspberries and cane sugar. Magical added to fizz ? alcoholic or not! 20% ABV.",
+   "long_description": "Test long description",
+   "abv": 20,
+   "image": "gin/edinburgh-raspberry.jpg",
+   "distillery": "",
+   "taste_tags": ""
  }
 ]
