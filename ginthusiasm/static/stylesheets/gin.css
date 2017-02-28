@@ -10,8 +10,8 @@ div.gin_description {
 }
 
 .gin_description .image {
-    height: 800px;
-    max-width: 600px;
+    height: 600px;
+    max-width: 450px;
     object-fit: cover;
     float: right;
 }
