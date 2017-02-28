@@ -12,6 +12,7 @@ class Article(models.Model):
     slug = models.SlugField(max_length=50,unique=True)
     author = models.ForeignKey('UserProfile', related_name='article')
     image = models.ImageField(upload_to='articles')
+    month = models.BooleanField()
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
