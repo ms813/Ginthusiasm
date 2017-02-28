@@ -11,6 +11,8 @@ from django.contrib.auth.hashers import make_password
 
 from ginthusiasm.models import Article, Distillery, Gin, TasteTag, Review, UserProfile, Wishlist
 
+import json
+
 def populate_article():
     print("Populating articles...")
     user = User.objects.get(username="Catherine")
@@ -135,7 +137,12 @@ def populate_gin():
             #tag.save()
 
     print("    Populating gins...")
-    gins = [
+
+    gins = []
+    with open('gin_data.json') as f:
+        gins = json.load(f)
+
+    """gins = [
         {
             "name" : "Isle of Harris Gin",
             "price" : "35.00",
@@ -166,8 +173,8 @@ def populate_gin():
             "image" : "gins/The-Botanist-Gin.jpg",
             "distillery" : ""
         }
-    ]
-
+    ]"""
+    print(gins)
     for data in gins:
         gin, created = Gin.objects.get_or_create(name = data['name'])
 
@@ -178,7 +185,8 @@ def populate_gin():
             gin.abv = data['abv']
 
             # add tags to gins
-            for tag_name in data['taste_tags']:
+            tags = data['taste_tags'].split(', ')
+            for tag_name in tags:
                 tag, tag_created = TasteTag.objects.get_or_create(name = tag_name)
 
                 if tag_created:
