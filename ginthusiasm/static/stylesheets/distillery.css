@@ -1,33 +1,38 @@
-div.main {
-    background-color: #9DA0A7;
+.distillery-main {
+    background-color: #c7c9ce;
+    padding: 50px 40px;
+    margin: 0 10%;
+
 }
 
-div.distillery_info {
+.distillery-info {
     display: flex;
-    flex-flow: column wrap;
-    justify-content: center;
-}
-
-.distillery_info .distillery_description {
+    flex-direction: row;
     flex-wrap: wrap;
+    justify-content: space-between;
 }
 
-.distillery_info .distillery_description .image {
-    height: 500px;
+.distillery-description {
+    flex-basis: 60%;
+}
+
+.distillery-image {
+    flex-basis: 0%;
+}
+
+.distillery-image .image {
+    max-width: 300px;
+    border-radius: 50%;
+}
+
+.distillery-contact {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-top: 70px;
+}
+
+.distillery-contact .map {
     max-width: 500px;
-    object-fit: cover;
-    float: right;
-}
-
-div.distillery_contact {
-
-}
-
-.distillery_contact .contact_details {
-    justify-content: space-around;
-
-}
-
-div.map {
-
 }
