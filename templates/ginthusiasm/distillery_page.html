@@ -2,31 +2,50 @@
 {% load staticfiles %}
 
 {% block style_block %}
+        <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/distillery.css' %}">
 {% endblock %}
 
 {% block title_block %} {{ distillery.name }}{% endblock %}
 
 {% block body_block %}
-    <div class='distillery_description'>
-        <img class='image' src="{{ MEDIA_URL }}{{ distillery.image }}" alt='Image of {{ distillery.name }}'/>
-        <h1>{{ distillery.name }}</h1><br />
-        <p>{{ distillery.long_description }}
-        </p>
-        <p>
-            <a href="#">Search for {{ distillery.name }}'s gins</a>
-        </p>
+    <div class = "main">
+
+        <div class="distillery_info">
+            <div class='distillery_description'>
+                <img class='image' src="{{ MEDIA_URL }}{{ distillery.image }}" alt='Image of {{ distillery.name }}'/>
+                <h1>{{ distillery.name }}</h1><br />
+                <p>{{ distillery.long_description }}
+                </p>
+                <p>
+                    <a href="#">Search for {{ distillery.name }}'s gins</a>
+                </p>
+            </div>
+        </div>
+
+        <div class="distillery_contact">
+            <div class="contact_details">
+                <h2>Contact</h2>
+                <p>
+                    Email: {{ distillery.email }}
+                </p>
+                <p>
+                    Phone: {{ distillery.phone }}
+                </p>
+                <p>
+                    Address: {{ distillery.address }}
+                </p>
+            </div>
+        </div>
+
+        <div class='map'>
+            <h2>Map</h2>
+            <img class='map' src = {{ distillery.map_url }} />
+        </div>
+
     </div>
-    <div class="contact_details">
-        <h2>Contact</h2>
-        <p>
-            Email: {{ distillery.email }}
-        </p>
-        <p>
-            Phone: {{ distillery.phone }}
-        </p>
-        <p>
-            Address: {{ distillery.address }}
-        </p>
-    </div>
-    <img class='map' src = {{ distillery.map_url }} />
+
+{% endblock %}
+
+{% block script_block %}
+
 {% endblock %}

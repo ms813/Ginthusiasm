@@ -1,0 +1,33 @@
+div.main {
+    background-color: #9DA0A7;
+}
+
+div.distillery_info {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+}
+
+.distillery_info .distillery_description {
+    flex-wrap: wrap;
+}
+
+.distillery_info .distillery_description .image {
+    height: 500px;
+    max-width: 500px;
+    object-fit: cover;
+    float: right;
+}
+
+div.distillery_contact {
+
+}
+
+.distillery_contact .contact_details {
+    justify-content: space-around;
+
+}
+
+div.map {
+
+}
