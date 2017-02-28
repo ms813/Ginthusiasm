@@ -6,11 +6,11 @@
 	width: 100%;
 	background-color: var(--base-color);
 	color: var(--foreground-alt);
-	height: 50px;
+	height: 50px;	
 }
 
 .header-small .logo{
-	max-width: 50px;
+	max-width: 100px;
 	flex-grow: 1;
 }
 
