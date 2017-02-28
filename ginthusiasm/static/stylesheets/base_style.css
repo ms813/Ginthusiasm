@@ -13,6 +13,7 @@
 */
 :root{
     --base-color: #212123;
+    --base-background: #7F7F7F;
     --lowlight-subtle: #2E2F33;
     --highlight-subtle: #9DA0A7;
     --highlight-medium: #C46B63;
@@ -26,6 +27,7 @@ body {
     margin: 0;
     font-family: 'Roboto', sans-serif;
     color: var(--base-color);
+    background-color: var(--base-background);
 }
 
 h1, h2, h3, h4, h5, h6 {
