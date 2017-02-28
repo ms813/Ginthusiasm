@@ -20,36 +20,6 @@
    "taste_tags": "elderberry, orange zest, cardamom, angelica, black ceylon tea, corriander"
  },
  {
-   "name": "Edinburgh Gin?s Plum & Vanilla liqueur",
-   "price": 18.5,
-   "short_description": "Made with juicy plums and Madagascan vanilla!",
-   "long_description": "Test long description",
-   "abv": 20,
-   "image": "gins/edinburgh-plum-vanilla.jpg",
-   "distillery": "",
-   "taste_tags": ""
- },
- {
-   "name": "Edinburgh Gin?s Raspberry Liqueur",
-   "price": 18.5,
-   "short_description": "A fruity liqueur handmade in the heart of Scotland by infusing our award-winning Edinburgh Gin with mixture of juicy Perthshire Raspberries and cane sugar. Magical added to fizz ? alcoholic or not! 20% ABV.",
-   "long_description": "Test long description",
-   "abv": 20,
-   "image": "gins/edinburgh-raspberry.jpg",
-   "distillery": "",
-   "taste_tags": ""
- },
- {
-   "name": "Edinburgh Gin?s Rhubarb & Ginger",
-   "price": 18.5,
-   "short_description": "Tangy spring crop rhubarb macerated with oriental ginger and lemon zest is infused into Edinburgh Gin to create a nostalgia-inducing rose-hued tipple perfect for summer cocktails or as a winter warmer! 20% ABV.",
-   "long_description": "Test long description",
-   "abv": 20,
-   "image": "gins/edinburgh-rhubarb-ginger.jpg",
-   "distillery": "",
-   "taste_tags": ""
- },
- {
    "name": "Greenall's London Dry Gin",
    "price": 14,
    "short_description": "Crafted in our distillery for over 250 years, Greenall?s The Original uses the same secret recipe that has been handed down through only 7 master distillers. This secret blend of 8�botanicals gives a classic London Dry gin with rich juniper notes, balanced with mature citrus and spice. Best served with ice and lime in a�classic G&T�or as a versatile cocktail ingredient if you?re feeling a little more adventurous.",
