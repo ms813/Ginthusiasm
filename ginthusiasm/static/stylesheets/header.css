@@ -4,8 +4,8 @@
 	justify-content: space-around;
 	align-items: center;
 	width: 100%;
-	background-color: #212123;
-	color: #ffffff;
+	background-color: var(--base-color);
+	color: var(--foreground-alt);
 	height: 50px;
 }
 
@@ -26,7 +26,7 @@
 
 .header-large{
     text-align: center;
-    background-color: #212123;
+    background-color: var(--base-color);
     height: 260px;
 }
 
@@ -84,7 +84,7 @@
 	text-align: center;
 	align-self: center;
 	flex-basis: 20%;
-	color: #ffffff;
+	color: var(--foreground-alt);
 	text-decoration: none;
 }
 
@@ -98,8 +98,9 @@
 
 a.header-button {
     display: table;
-    color: #ffffff;
+    color: var(--foreground-alt);	
     text-decoration: none;
+	transition: background-color 200ms linear, border-radius 200ms linear;
 }
 
 a.header-button span{
@@ -115,7 +116,7 @@ a.header-button span{
 
 a.header-button:hover{
     border-radius: 5px;
-    background-color: #2E2F33;
+    background-color: var(--highlight-alt)  !important;
 }
 
 .header-search a.ginthusiasm-button {
