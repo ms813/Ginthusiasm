@@ -13,7 +13,7 @@
 */
 :root{
     --base-color: #212123;
-    --base-background: #7F7F7F;
+    --base-background: #ebebeb;
     --lowlight-subtle: #2E2F33;
     --highlight-subtle: #9DA0A7;
     --highlight-medium: #C46B63;
@@ -29,6 +29,10 @@ body {
     font-family: 'Roboto', sans-serif;
     color: var(--base-color);
     background-color: var(--base-background);
+    background-image: url(../images/gin-lane.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 h1, h2, h3, h4, h5, h6 {
