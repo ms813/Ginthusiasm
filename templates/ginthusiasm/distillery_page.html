@@ -8,22 +8,30 @@
 {% block title_block %} {{ distillery.name }}{% endblock %}
 
 {% block body_block %}
-    <div class = "main">
+    <div class = "distillery-main">
 
-        <div class="distillery_info">
-            <div class='distillery_description'>
-                <img class='image' src="{{ MEDIA_URL }}{{ distillery.image }}" alt='Image of {{ distillery.name }}'/>
-                <h1>{{ distillery.name }}</h1><br />
+        <div class="distillery-info">
+
+            <div class='distillery-description'>
+
+                <h1>{{ distillery.name }}</h1>
                 <p>{{ distillery.long_description }}
                 </p>
                 <p>
-                    <a href="#">Search for {{ distillery.name }}'s gins</a>
+                    <a href="#">Find gins by {{ distillery.name }}</a>
                 </p>
+
             </div>
+
+            <div class="distillery-image">
+                <img class='image' src="{{ MEDIA_URL }}{{ distillery.image }}" alt='Image of {{ distillery.name }}'/>
+            </div>
+
         </div>
 
-        <div class="distillery_contact">
-            <div class="contact_details">
+        <div class="distillery-contact">
+
+            <div class="contact-details">
                 <h2>Contact</h2>
                 <p>
                     Email: {{ distillery.email }}
@@ -34,12 +42,15 @@
                 <p>
                     Address: {{ distillery.address }}
                 </p>
-            </div>
-        </div>
 
-        <div class='map'>
-            <h2>Map</h2>
-            <img class='map' src = {{ distillery.map_url }} />
+            </div>
+
+            <div class='distillery-map'>
+
+                <img class='map' src = {{ distillery.map_url }} />
+
+            </div>
+
         </div>
 
     </div>
