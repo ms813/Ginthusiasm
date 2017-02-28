@@ -7,11 +7,11 @@ class Article(models.Model):
 
     title = models.CharField(max_length=128, unique=True)
     shortDesc = models.TextField(max_length=1000, unique=True)
-    content = models.TextField()
+    content = models.TextField(max_length=1000)
     date = models.DateField()
     slug = models.SlugField(max_length=50,unique=True)
-    # Not sure what should be in the foreign key bracket??
     author = models.ForeignKey('UserProfile', related_name='article')
+    image = models.ImageField(upload_to='articles')
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)

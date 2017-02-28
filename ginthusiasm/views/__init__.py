@@ -3,7 +3,7 @@ from login import user_login, signup, myaccount, user_logout
 from wishlist import wishlist
 from map_helper import MapHelper
 from gin import show_gin, gin_search_results
-from article import article
+from article import article, article_listing
 from distillery import show_distillery, distillery_search_results
 
 

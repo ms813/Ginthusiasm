@@ -7,6 +7,7 @@
         {% endblock%}
         <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/header.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/base_style.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/footer.css' %}">
 
         <title>
             Ginthusiasm -
@@ -21,7 +22,9 @@
 
         {% block body_block %}
         {% endblock %}
-        <div>Footer here</div>
+
+        {% block footer_block %}
+        {% endblock %}
 
         {% block script_block %}
         {% endblock%}

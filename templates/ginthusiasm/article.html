@@ -4,11 +4,14 @@
 {% block style_block %}
 {% endblock %}
 
-{% block title_block %} {{ article.name }} {% endblock %}
+{% block title_block %} {{ article.title }} {% endblock %}
 
 {% block body_block %}
+    <h1> {{ article.title }} </h1>
     <div>
         {{ article.content }}
-        This is an article !! Where is the description
+    </div>
+    <div>
+        <img class='image' src="{{ MEDIA_URL }}{{ article.image }}" alt='Jan of the month'/>
     </div>
 {% endblock %}
