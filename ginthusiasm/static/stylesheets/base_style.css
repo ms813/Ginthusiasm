@@ -3,15 +3,13 @@
     src: url(../fonts/Smitten-Regular.ttf);
 }
 
-@import url('https://fonts.googleapis.com/css?family=Roboto+Slab|Roboto:300');
-
 body {
     margin: 0;
     font-family: 'Roboto', sans-serif;
 }
 
 h1,h2,h3,h4,h5,h6 {
-    font-family: 'Roboto Slab', serif;
+    font-family: 'Roboto Slab';
 }
 
 a.ginthusiasm-button {
