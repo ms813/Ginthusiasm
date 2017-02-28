@@ -1,8 +1,16 @@
+/*
+    Font definitions
+
+    Note additional fonts are loaded from Google Fonts in templates/base.html
+*/
 @font-face {
     font-family: smitten;
     src: url(../fonts/Smitten-Regular.ttf);
 }
 
+/*
+    Colour variable definitions
+*/
 :root{
     --base-color: #212123;
     --lowlight-subtle: #2E2F33;
