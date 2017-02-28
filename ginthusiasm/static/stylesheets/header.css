@@ -103,8 +103,12 @@ a.header-button {
 }
 
 a.header-button span{
+	/*
 	font-family: smitten;
 	font-size: 36px;
+	*/
+	font-family: 'Roboto Slab', serif;
+	font-size: 18px;
 	display:table-cell;
 	vertical-align:middle;
 }
