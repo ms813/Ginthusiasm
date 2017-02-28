@@ -13,9 +13,11 @@ div.article_content {
 .article_content .title {
   position: relative;
   top: -100px;
-  left: 40px;
+  left: 0px;
+  padding-left:40px;
   color: red;
   z-index=0;
+  background-color: white;
 }
 
 .article_content .content {

@@ -57,7 +57,8 @@ review_patterns = [
 ##########     Article     ##########
 article_patterns = [
     url(r'^article/$', views.article_listing, name='article_listing'),
-    url(r'^article/(?P<article_name_slug>[\w\-]+)/$', views.article, name ='article'),
+    url(r'^article/(?P<user_name>[\w\-]+)/$', views.article_user_listing, name='article_user_listing'),
+    url(r'^article/(?P<user_name>[\w\-]+)/(?P<article_name_slug>[\w\-]+)/$', views.article, name ='article'),
 ]
 
 ##########     Debug     ##########
