@@ -27,6 +27,7 @@ def populate_article():
         "slug" : "january-gin-of-the-month",
         "author" :userprofile,
         "image" : "articles/jan_gin.jpg",
+        "month": True,
     },
     {
         "title" : "Test Article",
@@ -36,6 +37,7 @@ def populate_article():
         "slug" : "test-article",
         "author" : userprofile,
         "image" : "articles/jan_gin.jpg",
+        "month": False,
     },
     {
         "title" : "Another article",
@@ -45,6 +47,7 @@ def populate_article():
         "slug" : "another-article",
         "author" :userprofile,
         "image" : "articles/jan_gin.jpg",
+        "month": False,
     },
     {
 
@@ -55,6 +58,7 @@ def populate_article():
         "slug" : "a-final-article",
         "author" :userprofile,
         "image" : "articles/jan_gin.jpg",
+        "month": False,
 
     }
 
@@ -77,6 +81,7 @@ def populate_article():
             article.slug = data['slug']
             article.author = data['author']
             article.image = data['image']
+            article.month = data['month']
             article.save()
 
 def populate_distillery():

@@ -40,3 +40,13 @@ def article_user_listing(request, user_name):
 
     # Go render the response and return it to the client.
     return render(request, 'ginthusiasm/article_listing.html', context_dict)
+
+
+
+def article_month(request):
+    context_dict = {}
+    article = Article.objects.get(month =True)
+
+    context_dict['article'] = article
+
+    return render(request, 'ginthusiasm/article.html', context_dict)
