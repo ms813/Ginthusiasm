@@ -1,9 +1,3 @@
-@font-face {
-    font-family: smitten;
-    src: url(../fonts/Smitten-Regular.ttf);
-}
-
-
 .header-small{
 	display: flex;
 	flex-direction: row;
