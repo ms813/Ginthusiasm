@@ -1,31 +1,51 @@
+/*
+    Font definitions
+
+    Note additional fonts are loaded from Google Fonts in templates/base.html
+*/
 @font-face {
     font-family: smitten;
     src: url(../fonts/Smitten-Regular.ttf);
 }
 
+/*
+    Colour variable definitions
+*/
+:root{
+    --base-color: #212123;
+    --lowlight-subtle: #2E2F33;
+    --highlight-subtle: #9DA0A7;
+    --highlight-medium: #C46B63;
+    --highlight-strong: #FF1493;
+    --highlight-alt: #8b97b7;
+    --foreground-alt: #FFFFFD;
+}
+
 body {
     margin: 0;
     font-family: 'Roboto', sans-serif;
+    color: var(--base-color);
 }
 
-h1,h2,h3,h4,h5,h6 {
-    font-family: 'Roboto Slab';
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Roboto Slab', serif;
+    color: var(--base-color);
 }
 
 a.ginthusiasm-button {
     border-radius: 5px;
 	text-align: center;
-	background-color: #2E2F33;
+	background-color: var(--lowlight-subtle);
 	cursor: pointer;
 	display: inline-table;;
-    color: #ffffff;
+    color: var(--foreground-alt);
     text-decoration: none;
     height: 35px;
     width:200px;
 }
 
 a.ginthusiasm-button:hover {
-    background-color: #9DA0A7;
+    background-color: var(--highlight-subtle);
 }
 
 a.ginthusiasm-button span {
@@ -36,17 +56,17 @@ a.ginthusiasm-button span {
 a.ginthusiasm-tag {
     border-radius: 5px;
 	text-align: center;
-	background-color: #2E2F33;
+	background-color: var(--lowlight-subtle);
 	cursor: pointer;
 	display: inline-table;;
-    color: #ffffff;
+    color: var(--foreground-alt);
     text-decoration: none;
     padding: 5px;
     margin-right: 5px;
 }
 
 a.ginthusiasm-tag:hover {
-    background-color: #9DA0A7;
+    background-color: var(--highlight-subtle);
 }
 
 a.ginthusiasm-tag span {

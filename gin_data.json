@@ -25,7 +25,7 @@
    "short_description": "Crafted in our distillery for over 250 years, Greenall?s The Original uses the same secret recipe that has been handed down through only 7 master distillers. This secret blend of 8�botanicals gives a classic London Dry gin with rich juniper notes, balanced with mature citrus and spice. Best served with ice and lime in a�classic G&T�or as a versatile cocktail ingredient if you?re feeling a little more adventurous.",
    "long_description": "Test long description",
    "abv": 37.5,
-   "image": "gins/greenalls-london-dry.png",
+   "image": "gins/greenalls-london-dry.jpg",
    "distillery": "",
    "taste_tags": ""
  },
@@ -35,7 +35,7 @@
    "short_description": "The inspiration for Greenall?s Wild Berry comes from blackberries growing in English hedgerows. These blackberries are combined with raspberries and infused with our award winning Original London Dry gin. Luscious and juicy berry notes are balanced with juniper and warming spice to give a smooth taste and peppery after tones.",
    "long_description": "Test long description",
    "abv": 37.5,
-   "image": "gins/greenalls-wild-berry.png",
+   "image": "gins/greenalls-wild-berry.jpg",
    "distillery": "",
    "taste_tags": ""
  },
@@ -45,7 +45,7 @@
    "short_description": "Sharish Blue Magic Gin really is magical. One minute it's a vibrant, deep blue hue... but pour over tonic and ABRACADABRA, your G&T is suddenly a beautiful dusky purple/pink colour. The 'magic' is due to the flower Clitoria Ternatea that colours Sharish Blue Gin without the use of artificial additives. The addition of tonic changes the pH levels and the varying shades depend on which tonic is used. Not to be outdone by its colour-changing properties, the gin itself is exceptionally smooth with a unique fruity aroma and citrus taste. Made in Portugal, the botanicals include Juniper, Cinnamon, Coriander Seeds, Clove, Vanilla, and, rather originally, totally fresh Orange Peel, Lemon Peel, Bravo Esmolfe Apple and Lemon verbena.",
    "long_description": "",
    "abv": 40,
-   "image": "gins/sharish-blue-magic.png",
+   "image": "gins/sharish-blue-magic.jpg",
    "distillery": "",
    "taste_tags": "juniper, cinnamon, coriander, clove, vanilla, orange peel, lemon peel, apple, lemon verbena"
  },
