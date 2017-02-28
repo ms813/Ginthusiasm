@@ -1,3 +1,9 @@
+@font-face {
+    font-family: smitten;
+    src: url(../fonts/Smitten-Regular.ttf);
+}
+
+
 .header-small{
 	display: flex;
 	flex-direction: row;
@@ -103,6 +109,8 @@ a.header-button {
 }
 
 a.header-button span{
+	font-family: smitten;
+	font-size: 36px;
 	display:table-cell;
 	vertical-align:middle;
 }
