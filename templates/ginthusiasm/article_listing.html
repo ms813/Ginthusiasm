@@ -12,7 +12,7 @@
     {% if article %}
       <ul>
         {% for article in article %}
-          {{ article.title }} <br />
+            <li>{% include 'ginthusiasm/article_widget.html' %}</li>
         {% endfor %}
       </ul>
     {% else %}

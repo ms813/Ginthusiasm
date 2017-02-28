@@ -1,0 +1,37 @@
+div.article_content {
+    flex-direction: wrap;
+}
+
+.article_content .image {
+  position: relative;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  z-index=0;
+}
+
+.article_content .title {
+  position: relative;
+  top: -100px;
+  left: 40px;
+  color: red;
+  z-index=0;
+}
+
+.article_content .content {
+  position: relative;
+  padding: 20px;
+  top: -50px;
+  z-index=0;
+  font-family:garamond;
+}
+
+/*.article_content .overlay {
+  position: relative;
+  background-color: white;
+  width = 40px;
+  height = 400px;
+  top: -100px;
+  left: 40px;
+  z-index=0;
+}*/
