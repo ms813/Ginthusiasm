@@ -45,6 +45,7 @@ def add_gin(request, distillery_name_slug):
                     gin.image = request.FILES['image']
 
                 gin.save()
+                form.save_m2m()
                 return redirect('show_distillery', distillery_name_slug)
         else:
             print(form.errors)
@@ -84,7 +85,7 @@ def gin_search_results(request):
         'order_by' : query_dict.get('order_by'),
         'order' : query_dict.get('order'),
     })
-    
+
     context_dict = {'gins': gin_list, 'advanced_search_form': form}
     return render(request, 'ginthusiasm/gin_search_page.html', context=context_dict)
 
