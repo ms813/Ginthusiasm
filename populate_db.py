@@ -139,9 +139,8 @@ def populate_gin():
     print("    Populating gins...")
 
     gins = []
-    with open('file') as f:
-        for line in f:
-            gins.append(json.loads(line))
+    with open('gin_data.json') as f:
+        gins = json.load(f)
 
     """gins = [
         {
@@ -175,7 +174,7 @@ def populate_gin():
             "distillery" : ""
         }
     ]"""
-
+    print(gins)
     for data in gins:
         gin, created = Gin.objects.get_or_create(name = data['name'])
 
@@ -186,7 +185,7 @@ def populate_gin():
             gin.abv = data['abv']
 
             # add tags to gins
-            tags = data['taste_tags'].split(',')
+            tags = data['taste_tags'].split(', ')
             for tag_name in tags:
                 tag, tag_created = TasteTag.objects.get_or_create(name = tag_name)
 
