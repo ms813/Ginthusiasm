@@ -9,6 +9,7 @@ class AddGinForm(forms.ModelForm):
             'price',
             'short_description',
             'long_description',
+            'abv',
             'taste_tags',
             'image',
         )

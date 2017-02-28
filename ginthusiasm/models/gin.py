@@ -21,6 +21,7 @@ class Gin(models.Model):
     average_rating = models.FloatField(default=0)
     short_description = models.CharField(max_length=1024)
     long_description = models.TextField()
+    abv = models.FloatField(default=0)
     taste_tags = models.ManyToManyField(TasteTag, blank=True)
     slug = models.SlugField(unique=True, blank=True)
     image = models.ImageField(upload_to='gins', blank=True)

@@ -73,8 +73,19 @@ def gin_search_results(request):
     if len(gin_list) == 1:
         return redirect('show_gin', gin_list[0].slug)
 
-    context_dict = {'gins': gin_list, 'advanced_search_form': GinSearchForm()}
-
+    # Remember values of form fields
+    form = GinSearchForm(initial={
+        'keywords' : query_dict.get('keywords'),
+        'distillery' : query_dict.get('distillery'),
+        'min_price' : query_dict.get('min_price'),
+        'max_price' : query_dict.get('max_price'),
+        'min_rating' : query_dict.get('min_rating'),
+        'max_rating' : query_dict.get('max_rating'),
+        'order_by' : query_dict.get('order_by'),
+        'order' : query_dict.get('order'),
+    })
+    
+    context_dict = {'gins': gin_list, 'advanced_search_form': form}
     return render(request, 'ginthusiasm/gin_search_page.html', context=context_dict)
 
 # Function for generating a gin search query (Q() object) from a query dictionary
