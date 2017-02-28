@@ -22,3 +22,24 @@ a.ginthusiasm-button span {
 	display:table-cell;
 	vertical-align:middle;
 }
+
+a.ginthusiasm-tag {
+    border-radius: 5px;
+	text-align: center;
+	background-color: #2E2F33;
+	cursor: pointer;
+	display: inline-table;;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 5px;
+    margin-right: 5px;
+}
+
+a.ginthusiasm-tag:hover {
+    background-color: #9DA0A7;
+}
+
+a.ginthusiasm-tag span {
+	display:table-cell;
+	vertical-align:middle;
+}
