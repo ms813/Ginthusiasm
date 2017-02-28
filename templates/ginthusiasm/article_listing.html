@@ -1,0 +1,22 @@
+{% extends 'ginthusiasm/header_small.html' %}
+{% load staticfiles %}
+
+{% block style_block %}
+{% endblock %}
+
+{% block title_block %}Article Archive{% endblock %}
+
+{% block body_block %}
+  <h1>Article Archive</h1>
+  <div>
+    {% if article %}
+      <ul>
+        {% for article in article %}
+          {{ article.title }} <br />
+        {% endfor %}
+      </ul>
+    {% else %}
+      No Search Results
+      {% endif %}
+  </div>
+{% endblock %}

@@ -24,3 +24,15 @@
     </div>
 </header>
 {% endblock %}
+
+
+{% block footer_block %}
+<header class='footer-small'>
+    <nav class='nav'>
+        <a href="{% url 'index' %}"><span>Home</span></a>
+        <a href='#'><span>About</span></a>
+        <a href="{% url 'gin_search_results' %}"><span>Gin</span></a>
+        <a href='#'><span>Rate</span></a>
+    </nav>
+</header>
+{% endblock %}s
