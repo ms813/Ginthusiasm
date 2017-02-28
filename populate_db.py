@@ -187,6 +187,7 @@ def populate_gin():
             # add tags to gins
             tags = data['taste_tags'].split(', ')
             for tag_name in tags:
+                tag_name = tag_name.title()
                 tag, tag_created = TasteTag.objects.get_or_create(name = tag_name)
 
                 if tag_created:
