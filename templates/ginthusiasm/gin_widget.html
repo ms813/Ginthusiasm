@@ -1,4 +1,4 @@
-<div class='gin_widget'>
+<div class='gin_widget' >
     <div class=details>
         <a href="{% url 'show_gin' gin.slug %}">
             <h1>{{ gin.name }}</h1>
@@ -6,16 +6,7 @@
         <p>{{ gin.short_description }}<p>
         <p>Average Rating: {{ gin.average_rating }}<p>
 
-        <!-- add to wishlist button -->
-        <a href='#' class='wishlist-button ginthusiasm-button'>
-            <span data-gin-name = "{{gin.name}}" data-gin-slug="{{ gin.slug }}">
-            {% if gin in user.userprofile.wishlist.gins.all %}
-                Remove from wishlist
-            {% else %}
-                Add to wishlist
-            {% endif %}
-            </span>
-        </a>
+        {% include 'ginthusiasm/wishlist_button.html'%}
 
         <a class='ginthusiasm-button' href="{% url 'show_gin' gin.slug %}#review_form">
             <span>

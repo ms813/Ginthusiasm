@@ -1,0 +1,10 @@
+<!-- add to wishlist button -->
+<a href='#' class='wishlist-button ginthusiasm-button' data-gin-name = "{{gin.name}}" data-gin-slug="{{ gin.slug }}">
+    <span>
+    {% if gin in user.userprofile.wishlist.gins.all %}
+        Remove from wishlist
+    {% else %}
+        Add to wishlist
+    {% endif %}
+    </span>
+</a>
