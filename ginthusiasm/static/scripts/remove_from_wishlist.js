@@ -5,7 +5,7 @@ $(document).ready(()=>{
         var gin_name = $(e.target).closest('.wishlist-button').first().data('gin-name');
 
         gin_widget.slideUp('slow', () => {
-            var wishlistlen= $('#wishlistlen').data('wishlistlen')
+            var wishlistlen= $('#wishlistlen').data('wishlistlen');
             $('#wishlistlen').data('wishlistlen', --wishlistlen);
 
             var back_link = $("<a>", {
