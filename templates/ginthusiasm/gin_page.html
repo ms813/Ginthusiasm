@@ -43,7 +43,7 @@
             <h2>Expert Reviews</h2>
             <ul>
                 {% for review in expert_reviews %}
-                    <li><Strong>Review widget goes here!</Strong></li>
+                    {% include "ginthusiasm/review-widget.html" %}
                 {% endfor %}
             </ul>
         </div>
@@ -52,7 +52,7 @@
             <h2>User Reviews</h2>
             <ul>
                 {% for review in other_reviews %}
-                    <li><Strong>Review widget goes here!</Strong></li>
+                    {% include "ginthusiasm/review-widget.html" %}
                 {% endfor %}
             </ul>
         </div>
