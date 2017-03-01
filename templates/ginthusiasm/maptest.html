@@ -4,28 +4,16 @@
 {% block title_block %} MapTest{% endblock %}
 
 {% block body_block %}
-<img style="display:inline-block;" src = {{ map_url }} />
-<div id='js-map' style="display:inline-block;height:640px; width:640px"></div>
+<img style="display:inline-block;" src = "{{ single_marker_map_url }}" />
+<img style="display:inline-block;" src = "{{ multi_marker_map_url }}" />
+
+{% include 'ginthusiasm/map_widget.html' %}
+
 {% endblock %}
 
 {% block script_block %}
     <script src="{% static 'scripts/map_styles.js' %}"></script>
-    <script>
-        var initMap = function(){
-            var coords = {lat: {{ lat }}, lng: {{ lng }} };
-            var map = new google.maps.Map(document.getElementById('js-map'), {
-                zoom : {{ zoom }},
-                center: coords,
-                styles : map_style_dark
-            });
-
-            var marker = new google.maps.Marker({
-                position: coords,
-                map: map
-            });
-        }
-    </script>
-
+    <script src="{% static 'scripts/google_map.js' %}"></script>
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?key={{ js_api_key }}&callback=initMap">
     </script>

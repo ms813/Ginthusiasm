@@ -25,25 +25,26 @@ class MapHelper:
 
         self.default_params = params
 
-    def getStaticMapUrl(self, lat, lng, **kwargs):
-        # set the center of the map to lat,lng
+    # coords should be either a single {lat, lng} pair, or a list of [{lat, lng}] pairs
+    def getStaticMapUrl(self, coords, **kwargs):
+
         map_url = self.urls['static']+ '?'
 
         # copy the default parameters
         map_params = self.default_params.copy()
 
-        #place a marker, with custom attributes if specified, or default red if not
-        marker = kwargs.get('marker')
-        if marker:
-            c = marker.get('color') # named color or hex 0x######
-            size = marker.get('size') # tiny | mid | small
-
-            # remove the marker from the args list so it isnt added again
-            del kwargs['marker']
+        # build the markers part of the url
+        markers = "markers="
+        if isinstance(coords, dict):
+            # only one set of coords specified
+            markers = markers + str(coords.get('lat'))+ ',' + str(coords.get('lng')) + '&'
         else:
-            c = 'red'
-            size = ''        
-        map_url = map_url + 'markers=color:' + c + '%7Csize:' + size + '%7C' + str(lat)+ ',' + str(lng) + '&'
+            # multiple markers, separated by |
+            del map_params['zoom']
+            for p in coords:
+                markers = markers + str(p.get('lat'))+ ',' + str(p.get('lng')) + '|'
+            markers = markers + '&'
+        map_url = map_url + markers
 
         # update or add any values passed as optional kwargs
         if kwargs is not None:
