@@ -179,7 +179,7 @@ def populate_gin():
             "distillery" : ""
         }
     ]"""
-    # print(gins)
+
     for data in gins:
         gin, created = Gin.objects.get_or_create(name = data['name'])
 
