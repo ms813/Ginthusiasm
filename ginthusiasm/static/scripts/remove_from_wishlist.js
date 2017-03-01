@@ -1,8 +1,8 @@
 $(document).ready(()=>{
     $('.wishlist-button').on('click', e => {
-        var gin_widget = $(e.target).closest('.gin_widget');
-        var gin_slug = $(e.target).data('gin-slug');
-        var gin_name = $(e.target).data('gin-name');
+        var gin_widget = $(e.target).closest('.gin_widget').first();
+        var gin_slug = $(e.target).closest('.wishlist-button').first().data('gin-slug');
+        var gin_name = $(e.target).closest('.wishlist-button').first().data('gin-name');
 
         gin_widget.slideUp('slow', () => {
             var wishlistlen= $('#wishlistlen').data('wishlistlen')

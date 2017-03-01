@@ -1,6 +1,6 @@
 $(document).ready(() => {
     $('.wishlist-button').on('click', e => {
-        var gin_slug = $(e.target).data('gin-slug');
+        var gin_slug = $(e.target).closest('.wishlist-button').first().data('gin-slug');        
 
         var request = $.post('/wishlist/add/' + gin_slug + '/', (data, status, jqXHR) => {
             if(data === 'added'){
