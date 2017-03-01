@@ -89,7 +89,7 @@ a.ginthusiasm-tag span {
     overflow: hidden;
 }
 
-.content div {
+.content>div {
     padding: 0px 40px;
     overflow: hidden;
 }
