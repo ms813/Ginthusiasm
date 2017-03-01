@@ -93,3 +93,8 @@ a.ginthusiasm-tag span {
     padding: 0px 40px;
     overflow: hidden;
 }
+
+div.content {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
