@@ -2,12 +2,20 @@
 {% load staticfiles %}
 
 {% block title_block %} MapTest{% endblock %}
+{% block style_block %}
+    <style>
+        #js-map{
+            width: 500px;
+            height: 500px;
+        }
+    </style>
+{% endblock %}
 
 {% block body_block %}
-<img style="display:inline-block;" src = "{{ single_marker_map_url }}" />
-<img style="display:inline-block;" src = "{{ multi_marker_map_url }}" />
+    <img style="display:inline-block;" src = "{{ single_marker_map_url }}" />
+    <img style="display:inline-block;" src = "{{ multi_marker_map_url }}" />
 
-{% include 'ginthusiasm/map_widget.html' %}
+    {% include 'ginthusiasm/map_widget.html' %}
 
 {% endblock %}
 

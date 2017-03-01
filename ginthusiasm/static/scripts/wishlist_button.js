@@ -17,7 +17,7 @@ $(document).ready(() => {
             } else {
                 //no user logged in, data === 'unauthenticated'
                 //redirect to login page
-                window.location.replace('/login/');
+                window.location = '/login/';
             }
         });
 

@@ -30,7 +30,7 @@ class Review(models.Model):
     # Assuming that when a user deletes their profile they'll want all their
     # reviews deleted too. Not sure about the foreign key argument?
     user = models.ForeignKey('UserProfile', on_delete=models.CASCADE)
-    gin = models.ForeignKey('Gin', on_delete=models.CASCADE)
+    gin = models.ForeignKey('Gin', on_delete=models.CASCADE, related_name='reviews')
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
