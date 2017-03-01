@@ -91,4 +91,5 @@ a.ginthusiasm-tag span {
 
 .content div {
     padding: 0px 40px;
+    overflow: hidden;
 }
