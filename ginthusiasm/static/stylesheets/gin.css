@@ -16,7 +16,10 @@ div.gin_description {
     float: right;
 }
 
-
+div.review_form, div.expert_reviews, div.other_reviews {
+    background-color: #ffffff;
+    
+}
 
 #gin_search_form {
     display: flex;
