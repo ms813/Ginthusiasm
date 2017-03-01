@@ -58,8 +58,10 @@ review_patterns = [
 article_patterns = [
     url(r'^article/$', views.article_listing, name='article_listing'),
     url(r'^article/(?P<user_name>[\w\-]+)/$', views.article_user_listing, name='article_user_listing'),
+    url(r'^article/(?P<user_name>[\w\-]+)/add-article/$', views.add_article, name='add_article'),
     url(r'^article/(?P<user_name>[\w\-]+)/(?P<article_name_slug>[\w\-]+)/$', views.article, name ='article'),
     url(r'^gin-of-the-month/$', views.article_month, name='article_month'),
+
 ]
 
 ##########     Debug     ##########

@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from ginthusiasm.models import Article
 from ginthusiasm.models import UserProfile
 from django.contrib.auth.models import User
+from ginthusiasm.forms import AddArticleForm
 
 #View for the main article page
 def article(request, article_name_slug, user_name):
@@ -41,8 +42,6 @@ def article_user_listing(request, user_name):
     # Go render the response and return it to the client.
     return render(request, 'ginthusiasm/article_listing.html', context_dict)
 
-
-
 def article_month(request):
     context_dict = {}
     article = Article.objects.get(month =True)
@@ -50,3 +49,30 @@ def article_month(request):
     context_dict['article'] = article
 
     return render(request, 'ginthusiasm/article.html', context_dict)
+
+
+# View for adding a gin to the database
+def add_article(request, user_name):
+    try:
+        user = User.objects.get(username=user_name)
+        userprofile = user.userprofile
+    except UserProfile.DoesNotExist:
+        userprofile = None
+
+    form = AddArticleForm()
+
+    if request.method == 'POST':
+        form = AddArticleForm(request.POST)
+        if form.is_valid():
+            if userprofile:
+                article = form.save(commit=False)
+                article.userprofile = userprofile
+                article.save()
+                form.save()
+                return article_listing(request, userprofile)
+
+        else:
+            print(form.errors)
+
+    context_dict = {'add_article_form': form, 'userprofile': userprofile}
+    return render(request, 'ginthusiasm/add_article.html', context=context_dict)
