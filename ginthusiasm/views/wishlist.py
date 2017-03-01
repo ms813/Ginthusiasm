@@ -12,12 +12,14 @@ def wishlist(request, username):
 
     if request.user.is_authenticated():
         context['wishlist_name'] = "Your wishlist"
-        
+
     return render(request, 'ginthusiasm/wishlist.html', context)
 
 # handles POST requests from 'add to/remove from wishlist' button
-def wishlist_add(request, gin_slug):
+def wishlist_add(request):
     response = "unauthenticated"
+
+    gin_slug = request.POST['gin_slug']
 
     # if the user is logged in
     if not request.user.is_anonymous():
