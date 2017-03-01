@@ -1,9 +1,9 @@
-.distillery-main {
+/*.distillery-main {
     background-color: var(--body-background);
     padding: 50px 40px;
     margin: 0 10%;
     box-shadow: 0px 0px 100px 10px #000000;
-}
+}*/
 
 .distillery-info {
     display: flex;
