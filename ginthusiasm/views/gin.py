@@ -16,39 +16,65 @@ def show_gin(request, gin_name_slug):
 
         # Add the gin object to the context dictionary.
         context_dict['gin'] = gin
-        context_dict['expert_reviews'] = ['expert_reviews']
-        context_dict['other_reviews'] = ['other_reviews']
 
         #### Map parameters ####
         # Grab the reviews on this gin
         reviews = gin.reviews.all()
 
-        coords = None
+        # RT - the commented-out code below doesn't quite work, so have
+        # added this. Hope that's alright.
+        coords = []
         if reviews:
-            # there are more than 0 reviews, so grab all the geodata from them
-            for r in reviews:
-                coords.append({ 'lat' : r.lat, 'lng' : r.long })
-            context_dict['map_status'] = "many"
-
-            # there is only one review, so need to set the zoom level
-            if len(reviews) == 1:
-                coords = { 'lat' : reviews[0].lat, 'lng' : reviews[0].long }
-                context_dict['zoom'] = 16
-                context_dict['map_status'] = "one"
+            # Creates list of dicts of coordinates
+            coords = [{ 'lat' : r.lat, 'lng' : r.long } for r in reviews]
         else:
-            # no reviews, center map on the distillery instead
             distillery = gin.distillery
-            if not distillery == None:
-                coords = { 'lat' : distillery.lat, 'lng' : distillery.long }
-                context_dict['zoom'] = 16
-                context_dict['map_status'] = "none"
+            if distillery:
+                coords = [{'lat': distillery.lat, 'lng': distillery.long}]
 
-        # add the API key if one exists
-        if len(api_keys) > 0:
+        # 'dumps' the coords list to a json string
+        context_dict['coords'] = json.dumps(coords)
+
+        # RT - Get reviews from the DB split by review type, so they will
+        # be accessible in the template
+        expert_reviews = reviews.filter(review_type=Review.EXPERT)
+        user_reviews = reviews.filter(review_type=Review.USER)
+        context_dict['expert_reviews'] = expert_reviews
+        context_dict['other_reviews'] = user_reviews
+        print context_dict['expert_reviews']
+        print context_dict['other_reviews']
+
+        context_dict['zoom'] = 16 if len(reviews) <= 1 else 1
+
+        if api_keys:
             context_dict['js_api_key'] = api_keys[0]
 
-        # coords need to be well formed json so encode here
-        context_dict['coords'] = json.JSONEncoder().encode(coords)
+        # coords = None
+        # if reviews:
+        #     # there are more than 0 reviews, so grab all the geodata from them
+        #     for r in reviews:
+        #         coords.append({ 'lat' : r.lat, 'lng' : r.long })
+        #     context_dict['map_status'] = "many"
+        #
+        #     # there is only one review, so need to set the zoom level
+        #     if len(reviews) == 1:
+        #         coords = { 'lat' : reviews[0].lat, 'lng' : reviews[0].long }
+        #         context_dict['zoom'] = 16
+        #         context_dict['map_status'] = "one"
+        # else:
+        #     # no reviews, center map on the distillery instead
+        #     distillery = gin.distillery
+        #     if not distillery == None:
+        #         coords = { 'lat' : distillery.lat, 'lng' : distillery.long }
+        #         context_dict['zoom'] = 16
+        #         context_dict['map_status'] = "none"
+        #
+        # # add the API key if one exists
+        # if len(api_keys) > 0:
+        #     context_dict['js_api_key'] = api_keys[0]
+        #
+        # # coords need to be well formed json so encode here
+        # context_dict['coords'] = json.JSONEncoder().encode(coords)
 
     except Gin.DoesNotExist:
         context_dict['gin'] = None
