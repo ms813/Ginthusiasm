@@ -8,6 +8,7 @@ div.gin_widget {
     height: 200px;
     max-width: 150px;
     object-fit: cover;
+    margin-left: 20px;
 }
 
 .gin_widget a.ginthusiasm-button {
