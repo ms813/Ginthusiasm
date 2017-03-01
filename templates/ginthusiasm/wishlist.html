@@ -5,7 +5,11 @@
     {{ wishlist_name }}
 {% endblock %}
 
+{% block style_block %}
+    <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/gin_widget.css' %}">
+{% endblock %}
 {% block body_block %}
+
     <h1>{{ wishlist_name }}</h1>
 
     {% if gins %}
