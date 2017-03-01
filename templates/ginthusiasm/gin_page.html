@@ -27,40 +27,44 @@
                 {% endfor %}
             </ul>
         </div>
+
+        <!-- add to wishlist button -->
+        <a href='#' class='wishlist-button ginthusiasm-button'>
+            <span data-gin="{{ gin.slug }}">
+            {% if gin in user.userprofile.wishlist.gins.all %}
+                Remove from wishlist
+            {% else %}
+                Add to wishlist
+            {% endif %}
+            </span>
+        </a>
     </div>
 
-    <!-- add to wishlist button -->
-    <a href='#' class='wishlist-button ginthusiasm-button'>
-        <span data-gin="{{ gin.slug }}">
-        {% if gin in user.userprofile.wishlist.gins.all %}
-            Remove from wishlist
-        {% else %}
-            Add to wishlist
-        {% endif %}
-        </span>
-    </a>
 
-    <div id='review_form'>
-        <h2>Write a Review</h2>
-        <Strong>Write review form goes here!</Strong>
-    </div>
 
-    <div class='expert_reviews'>
-        <h2>Expert Reviews</h2>
-        <ul>
-            {% for review in expert_reviews %}
-                <li><Strong>Review widget goes here!</Strong></li>
-            {% endfor %}
-        </ul>
-    </div>
+    <div class='reviews'>
+        <div id='review_form'>
+            <h2>Write a Review</h2>
+            <Strong>Write review form goes here!</Strong>
+        </div>
 
-    <div class='other_reviews'>
-        <h2>User Reviews</h2>
-        <ul>
-            {% for review in other_reviews %}
-                <li><Strong>Review widget goes here!</Strong></li>
-            {% endfor %}
-        </ul>
+        <div class='expert_reviews'>
+            <h2>Expert Reviews</h2>
+            <ul>
+                {% for review in expert_reviews %}
+                    <li><Strong>Review widget goes here!</Strong></li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class='other_reviews'>
+            <h2>User Reviews</h2>
+            <ul>
+                {% for review in other_reviews %}
+                    <li><Strong>Review widget goes here!</Strong></li>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
 
     <div class='map'>
