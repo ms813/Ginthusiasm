@@ -14,14 +14,12 @@ div.gin_description {
     max-width: 450px;
     object-fit: cover;
     float: right;
+    margin-left: 20px;
+    margin-bottom: 20px;
 }
 
 div.reviews {
     background-color: #ffffff;
-}
-
-div.reviews div {
-    padding: 0px 0px;
 }
 
 
@@ -47,8 +45,6 @@ div.reviews div {
 .gin_search_widget .distillery input {
     width: 200px;
 }
-
-
 
 .search_results ul {
     list-style: none;
