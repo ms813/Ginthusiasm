@@ -23,9 +23,9 @@ def show_gin(request, gin_name_slug):
         # Grab the reviews on this gin
         reviews = gin.reviews.all()
 
+        coords = None
         if reviews:
             # there are more than 0 reviews, so grab all the geodata from them
-            coords = []
             for r in reviews:
                 coords.append({ 'lat' : r.lat, 'lng' : r.long })
             context_dict['map_status'] = "many"
@@ -38,9 +38,10 @@ def show_gin(request, gin_name_slug):
         else:
             # no reviews, center map on the distillery instead
             distillery = gin.distillery
-            coords = { 'lat' : distillery.lat, 'lng' : distillery.long }
-            context_dict['zoom'] = 16
-            context_dict['map_status'] = "none"
+            if not distillery == None:
+                coords = { 'lat' : distillery.lat, 'lng' : distillery.long }
+                context_dict['zoom'] = 16
+                context_dict['map_status'] = "none"
 
         # add the API key if one exists
         if len(api_keys) > 0:
