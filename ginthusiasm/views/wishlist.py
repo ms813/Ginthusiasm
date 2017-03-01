@@ -12,32 +12,40 @@ def wishlist(request, username):
 
     if request.user.is_authenticated():
         context['wishlist_name'] = "Your wishlist"
-        
+
     return render(request, 'ginthusiasm/wishlist.html', context)
 
-# handles POST requests from 'add to/remove from wishlist' button
-def wishlist_add(request, gin_slug):
-    response = "unauthenticated"
-
+# handles requests from 'add to/remove from wishlist' button
+def wishlist_add(request):
     # if the user is logged in
     if not request.user.is_anonymous():
-        wishlist = request.user.userprofile.wishlist
-        gin = Gin.objects.get(slug=gin_slug)
-
-        # check if gin is already on this wishlist
-        if gin in wishlist.gins.all():
-            response = "removed"
-            wishlist.gins.remove(gin)
-        else:
-            response = "added"
-            wishlist.gins.add(gin)
-        wishlist.save()
-
-        if request.method == 'POST':
-            return HttpResponse(response)
-        else:
+        if not request.method == 'POST':
+            # if the user sends a GET request, redirect them to their own wishlist
             return redirect('wishlist', request.user.username)
+        else:
+            # user is sending a POST request, so probably clicked the button
 
+            # get the gin slug from the body of the post request
+            gin_slug = request.POST['gin_slug']
+
+            # find the Gin object matching the slug
+            gin = Gin.objects.get(slug=gin_slug)
+
+            # find the current user's wishlist
+            wishlist = request.user.userprofile.wishlist
+
+            # Add or remove gin from wishlist
+            if gin in wishlist.gins.all():
+                response = "removed"
+                wishlist.gins.remove(gin)
+            else:
+                response = "added"
+                wishlist.gins.add(gin)
+
+            wishlist.save()
+
+            # return a status message letting the client know if the gin was added or removed
+            return HttpResponse(response)
     else:
         # if user is not logged in, redirect them to the login page
         return redirect('login')

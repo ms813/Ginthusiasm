@@ -38,8 +38,8 @@ user_patterns = [
 
 ##########     Wishlist     ##########
 wishlist_patterns = [
-    url(r'^wishlist/(?P<username>[\w\-]+)/$', views.wishlist, name='wishlist'),
-    url(r'^wishlist/add/(?P<gin_slug>[\w\-]+)/$', views.wishlist_add, name='wishlist_add')
+    url(r'^wishlist/add/$', views.wishlist_add, name='wishlist_add'),
+    url(r'^wishlist/(?P<username>[\w\-]+)/$', views.wishlist, name='wishlist'),    
 ]
 
 ##########     Distillery     ##########
