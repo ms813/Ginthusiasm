@@ -1,0 +1,7 @@
+{% if gins.count > 0 %}
+    {% for gin in gins %}
+        <li><a href="{% url 'show_gin' gin.slug %}">{{ gin.name }}</a></li>
+    {% endfor %}
+{% else %}
+    <li>None to show!</li>
+{% endif %}

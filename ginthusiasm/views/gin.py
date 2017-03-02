@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, render_to_response
 from django.http import HttpResponse
 from ginthusiasm.models import Gin, TasteTag, Distillery, Review
 from ginthusiasm.forms import GinSearchForm, AddGinForm
@@ -108,8 +108,9 @@ def gin_search_results(request):
     query_dict = request.GET
     gin_list = []
 
-    # order by user defined ordering
-    order_by = 'relevance'
+    # order by user defined ordering, default = relevance
+    order_by = GinSearchForm.RELEVANCE
+
     # if order_by is invalid default to ordering by gin name
     if query_dict.get('order_by') in dict(GinSearchForm.ORDER_BY_CHOICES):
         order_by = query_dict.get('order_by')
@@ -214,5 +215,15 @@ def gin_keyword_filter(search_text):
 
     return Gin.objects.filter(pk__in=primary_keys).extra(select={'ordering': ordering}, order_by=('ordering',))
 
-def gin_keyword_filter_autocomplete(request):
-    print nothing
+def gin_autocomplete(request):
+    if request.method == 'POST':
+        print request.POST
+        search_text = request.POST.get('search_text')
+    else:
+        search_text = ''
+
+    gins = Gin.objects.filter(name__icontains=search_text)
+    print gins
+
+    context_dict = {'gins': gins}
+    return render_to_response('ginthusiasm/ajax_search.html', context=context_dict)

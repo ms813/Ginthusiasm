@@ -1,4 +1,8 @@
 <div class='header-search'>
+    {% csrf_token %}
     <input id='header-search-field' type='text' placeholder="&#x1f50d;">
+    <ul id='header-search-results'>
+
+    </ul>
     <a id='header-search-button' class='ginthusiasm-button'href='#' class='btn'><span>Search</span></a>
 </div>
