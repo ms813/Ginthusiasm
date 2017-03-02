@@ -3,6 +3,8 @@ from django.http import HttpResponse
 from ginthusiasm.models import Gin, TasteTag, Distillery, Review
 from ginthusiasm.forms import GinSearchForm, AddGinForm, ReviewForm
 from django.db.models import Q
+
+from haystack.query import SearchQuerySet, SQ
 from ginthusiasm_project.GoogleMapsAuth import api_keys
 import shlex, json
 
@@ -93,22 +95,37 @@ def add_gin(request, distillery_name_slug):
     return render(request, 'ginthusiasm/add_gin_page.html', context=context_dict)
 
 
+def rate_gin(request, gin_name_slug):
+    user_rating = request.POST.get('rating')
+    print user_rating
+
+    return HttpResponse('DONE')
+
+
+
+
+
 # View for the gin search page
 def gin_search_results(request):
     query_dict = request.GET
+    gin_list = []
 
     # order by user defined ordering
-    order_by = 'name'
+    order_by = 'relevance'
     # if order_by is invalid default to ordering by gin name
     if query_dict.get('order_by') in dict(GinSearchForm.ORDER_BY_CHOICES):
         order_by = query_dict.get('order_by')
 
-    # The order defaults to ascending
-    if query_dict.get('order') == 'DESC':
-        order_by = '-' + order_by
-
     # Execute filter query
-    gin_list = Gin.objects.filter(create_gin_query(query_dict)).distinct().order_by(order_by)
+    if query_dict.get('distillery') or query_dict.get('tags') or not query_dict.get('keywords'):
+        gin_list = Gin.objects.filter(create_gin_query(query_dict))
+    else:
+        gin_list = gin_keyword_filter(query_dict.get('keywords'))
+        gin_list = gin_list.filter(create_gin_query(query_dict))
+
+    # Order search results
+    if order_by != "relevance":
+        gin_list = gin_list.order_by(order_by)
 
     # If there is only one result returned then redirect straight to that page
     if len(gin_list) == 1:
@@ -117,7 +134,6 @@ def gin_search_results(request):
     # Remember values of form fields
     form = GinSearchForm(initial={
         'keywords': query_dict.get('keywords'),
-        'distillery': query_dict.get('distillery'),
         'min_price': query_dict.get('min_price'),
         'max_price': query_dict.get('max_price'),
         'min_rating': query_dict.get('min_rating'),
@@ -133,21 +149,6 @@ def gin_search_results(request):
 # Function for generating a gin search query (Q() object) from a query dictionary
 def create_gin_query(query_dict):
     queries = Q()
-
-    # filter by keywords
-    if query_dict.get('keywords'):
-        keywords = shlex.split(query_dict.get('keywords').replace("+", " "))
-        keyword_query = Q()
-        for keyword in keywords:
-            keyword_query.add(
-                Q(name__icontains=keyword) |
-                Q(short_description__icontains=keyword) |
-                Q(long_description__icontains=keyword) |
-                Q(taste_tags__name__icontains=keyword) |
-                Q(distillery__name__icontains=keyword)
-                , Q.OR
-            )
-        queries.add(keyword_query, Q.AND)
 
     # filter by price
     if query_dict.get('max_price'):
@@ -175,11 +176,12 @@ def create_gin_query(query_dict):
 
     # filter by tag
     if query_dict.get('tags'):
-        tags = shlex.split(query_dict.get('tags').replace("+", " "))
+        tags = shlex.split(query_dict.get('tags'))
+        print tags
         tags_query = Q()
         for tag in tags:
-            tags_query.add(
-                Q(taste_tags__name__icontains=tag)
+            tags_query.add (
+                Q(taste_tags__name__iexact=tag)
                 , Q.OR
             )
         queries.add(tags_query, Q.AND)
@@ -194,35 +196,25 @@ def create_gin_query(query_dict):
                 , Q.OR
             )
         queries.add(distilleries_query, Q.AND)
+
     return queries
 
-
-def add_review(request, gin_name_slug):
-
-    gin = Gin.objects.get(slug=gin_name_slug)
-    #check = User.objects.get(username=user_name).userprofile
-    check = request.user.userprofile
-
-    print(gin)
-
-    form = ReviewForm()
-
-    if request.method == 'POST':
-        form = ReviewForm(request.POST)
-
-        if form.is_valid():
-            if gin:
-                if check:
-                    review = form.save(commit=False)
-                    review.gin = gin
-                    review.user = check
-                    review.review_type = check.user_type
-                    review.save()
-                    return redirect('show_gin', gin_name_slug)
-
+# Filters gins by keywords, returns a QuerySet that can be further filtered
+def gin_keyword_filter(search_text):
+    if search_text:
+        sqs = SearchQuerySet().models(Gin).auto_query(search_text)
     else:
-        print(form.errors)
+        sqs = SearchQuerySet().models(Gin).all()
 
+    primary_keys = []
+    for gin in sqs:
+        primary_keys.append(gin.pk)
 
+    # From: codybonney.com/creating-a-queryset-from-a-list-while-presevering-order-using-django
+    clauses = ' '.join(['WHEN id=%s THEN %s' % (pk, i) for i, pk in enumerate(primary_keys)])
+    ordering = 'CASE %s END' % clauses
 
-    return render(request, 'ginthusiasm/add_review_widget.html', {'form':form, 'gin':gin })
+    return Gin.objects.filter(pk__in=primary_keys).extra(select={'ordering': ordering}, order_by=('ordering',))
+
+def gin_keyword_filter_autocomplete(request):
+    print nothing
