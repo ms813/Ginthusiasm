@@ -210,6 +210,10 @@ def populate_gin():
 
             gin.save()
 
+    #remake indexes
+    print ("        Remaking indexes...")
+    os.system('python manage.py rebuild_index')
+
 def populate_review():
     print("Populating reviews...")
     user = User.objects.get(username="Rozz")
