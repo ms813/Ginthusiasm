@@ -90,32 +90,5 @@
 
 
     <script src="{% static 'scripts/jquery.barrating.js' %}"></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-
-            $('.rating').each(function(i, e){                
-                $(e).barrating({
-                    theme: 'fontawesome-stars-o',
-                    initialRating: $(e).data('rating'),
-                    onSelect: ratingClicked,
-                });
-            });
-        });
-
-        var ratingClicked = function(value, text, event) {
-            if (value === "") {
-                value = 0;
-            }
-
-            var data = $(event.target).parent().siblings('.rating').data()
-
-            var request = $.post('/gin/' + data.gin + '/rate/', {rating: value});
-
-            request.done(function(data, status, jqXHR) {
-                console.log (data)
-            });
-            request.fail(function(data, status, jqXHR){});
-
-        }
-    </script>
+    <script src="{% static 'scripts/rating.js' %}"></script>
 {% endblock %}
