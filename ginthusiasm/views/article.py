@@ -4,6 +4,7 @@ from ginthusiasm.models import Article
 from ginthusiasm.models import UserProfile
 from django.contrib.auth.models import User
 from ginthusiasm.forms import AddArticleForm
+from datetime import date, datetime
 
 #View for the main article page
 def article(request, article_name_slug, user_name):
@@ -66,7 +67,7 @@ def add_article(request, user_name):
         if form.is_valid():
             if userprofile:
                 article = form.save(commit=False)
-                article.userprofile = userprofile
+                article.author = userprofile
 
                 if 'image' in request.FILES:
                     article.image = request.FILES['image']
@@ -76,6 +77,8 @@ def add_article(request, user_name):
 
         else:
             print(form.errors)
+
+    print(datetime.now)
 
     context_dict = {'add_article_form': form, 'user': user}
     return render(request, 'ginthusiasm/add_article.html', context=context_dict)
