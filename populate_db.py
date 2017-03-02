@@ -244,8 +244,6 @@ def populate_review():
             long = data['long'],
         )
 
-    rvs = Review.objects.all();
-
     """
     user = User.objects.get(username="Rozz")
     userprofile = user.userprofile
