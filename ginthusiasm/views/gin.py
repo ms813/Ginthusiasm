@@ -99,13 +99,31 @@ def rate_gin(request, gin_name_slug):
 
     return HttpResponse('DONE')
 
+
+
+
+
 # View for the gin search page
 def gin_search_results(request):
     query_dict = request.GET
+    gin_list = []
+
+    # order by user defined ordering
+    order_by = 'relevance'
+    # if order_by is invalid default to ordering by gin name
+    if query_dict.get('order_by') in dict(GinSearchForm.ORDER_BY_CHOICES):
+        order_by = query_dict.get('order_by')
 
     # Execute filter query
-    gin_list = gin_keyword_filter(query_dict.get('keywords'))
-    gin_list = gin_list.filter(create_gin_query(query_dict))#.order_by(order_by)
+    if query_dict.get('distillery') or query_dict.get('tags') or not query_dict.get('keywords'):
+        gin_list = Gin.objects.filter(create_gin_query(query_dict))
+    else:
+        gin_list = gin_keyword_filter(query_dict.get('keywords'))
+        gin_list = gin_list.filter(create_gin_query(query_dict))
+
+    # Order search results
+    if order_by != "relevance":
+        gin_list = gin_list.order_by(order_by)
 
     # If there is only one result returned then redirect straight to that page
     if len(gin_list) == 1:
@@ -114,7 +132,6 @@ def gin_search_results(request):
     # Remember values of form fields
     form = GinSearchForm(initial={
         'keywords': query_dict.get('keywords'),
-        'distillery': query_dict.get('distillery'),
         'min_price': query_dict.get('min_price'),
         'max_price': query_dict.get('max_price'),
         'min_rating': query_dict.get('min_rating'),
@@ -180,6 +197,7 @@ def create_gin_query(query_dict):
 
     return queries
 
+# Filters gins by keywords, returns a QuerySet that can be further filtered
 def gin_keyword_filter(search_text):
     if search_text:
         sqs = SearchQuerySet().models(Gin).auto_query(search_text)
@@ -188,7 +206,6 @@ def gin_keyword_filter(search_text):
 
     primary_keys = []
     for gin in sqs:
-        print gin
         primary_keys.append(gin.pk)
 
     # From: codybonney.com/creating-a-queryset-from-a-list-while-presevering-order-using-django

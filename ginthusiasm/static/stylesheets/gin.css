@@ -34,15 +34,11 @@ div.reviews {
 }
 
 .gin_search_widget select {
-    width: 120px;
+    width: 200px;
 }
 
 .gin_search_widget .keywords input {
     width: 300px;
-}
-
-.gin_search_widget .distillery input {
-    width: 200px;
 }
 
 .search_results ul {
