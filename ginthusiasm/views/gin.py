@@ -59,7 +59,6 @@ def show_gin(request, gin_name_slug):
     except Gin.DoesNotExist:
         context_dict['gin'] = None
 
-    context_dict['review']=add_review(request, gin_name_slug)
 
     # Render the response and return it to the client
     return render(request, 'ginthusiasm/gin_page.html', context=context_dict)

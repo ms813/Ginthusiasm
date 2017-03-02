@@ -33,8 +33,8 @@ class Review(models.Model):
     gin = models.ForeignKey('Gin', on_delete=models.CASCADE, related_name='reviews')
 
     def save(self, *args, **kwargs):
-    class Meta:
-        unique_together = ('user', 'gin',)
+        class Meta:
+            unique_together = ('user', 'gin',)
 
     #def save(self, *args, **kwargs):
             #self.slug = slugify(self.name)
