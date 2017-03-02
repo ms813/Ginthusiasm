@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'ginthusiasm',
+    'whoosh',
+    'haystack',
 ]
 
 MIDDLEWARE = [
@@ -142,3 +144,14 @@ if DEBUG:
     EMAIL_HOST_PASSWORD = ''
     EMAIL_USE_TLS = False
     DEFAULT_FROM_EMAIL = 'password_reset@ginthusiasm.com'
+
+
+# Searching using haystack and whoosh
+WHOOSH_INDEX = os.path.join(BASE_DIR, 'whoosh/')
+
+HAYSTACK_CONNECTIONS = {
+    'default' : {
+        'ENGINE' : 'haystack.backends.whoosh_backend.WhooshEngine',
+        'PATH' : WHOOSH_INDEX,
+    }
+}

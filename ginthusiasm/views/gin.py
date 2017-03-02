@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from ginthusiasm.models import Gin, TasteTag, Distillery
 from ginthusiasm.forms import GinSearchForm, AddGinForm
 from django.db.models import Q
+from haystack.query import SearchQuerySet, SQ
 import shlex
 
 # View for the main gin page
@@ -57,22 +58,13 @@ def add_gin(request, distillery_name_slug):
 def gin_search_results(request):
     query_dict = request.GET
 
-    # order by user defined ordering
-    order_by = 'name'
-    # if order_by is invalid default to ordering by gin name
-    if query_dict.get('order_by') in dict(GinSearchForm.ORDER_BY_CHOICES):
-        order_by = query_dict.get('order_by')
-
-    # The order defaults to ascending
-    if query_dict.get('order') == 'DESC':
-        order_by = '-' + order_by
-
     # Execute filter query
-    gin_list = Gin.objects.filter(create_gin_query(query_dict)).distinct().order_by(order_by)
+    gin_list = gin_keyword_filter(query_dict.get('keywords'))
+    gin_list = gin_list.filter(create_gin_query(query_dict))#.order_by(order_by)
 
     # If there is only one result returned then redirect straight to that page
-    if len(gin_list) == 1:
-        return redirect('show_gin', gin_list[0].slug)
+    if gin_list.count() == 1:
+        return redirect('show_gin', gin_list[0].object.slug)
 
     # Remember values of form fields
     form = GinSearchForm(initial={
@@ -91,66 +83,65 @@ def gin_search_results(request):
 
 # Function for generating a gin search query (Q() object) from a query dictionary
 def create_gin_query(query_dict):
-    queries = Q()
-
-    # filter by keywords
-    if query_dict.get('keywords'):
-        keywords = shlex.split(query_dict.get('keywords').replace("+", " "))
-        keyword_query = Q()
-        for keyword in keywords:
-            keyword_query.add (
-                Q(name__icontains=keyword) |
-                Q(short_description__icontains=keyword) |
-                Q(long_description__icontains=keyword) |
-                Q(taste_tags__name__icontains=keyword) |
-                Q(distillery__name__icontains=keyword)
-                , Q.OR
-            )
-        queries.add(keyword_query, Q.AND)
+    queries = SQ()
 
     # filter by price
     if query_dict.get('max_price'):
         queries.add (
-            ~Q(price__gt=query_dict.get('max_price'))
-            , Q.AND
+            ~SQ(price__gt=query_dict.get('max_price'))
+            , SQ.AND
         )
     if query_dict.get('min_price'):
         queries.add (
-            ~Q(price__lt=query_dict.get('min_price'))
-            , Q.AND
+            ~SQ(price__lt=query_dict.get('min_price'))
+            , SQ.AND
         )
 
     # filter by rating
     if query_dict.get('max_rating'):
         queries.add (
-            ~Q(average_rating__gt=query_dict.get('max_rating'))
-            , Q.AND
+            ~SQ(average_rating__gt=query_dict.get('max_rating'))
+            , SQ.AND
         )
     if query_dict.get('min_rating'):
         queries.add (
-            ~Q(average_rating__lt=query_dict.get('min_rating'))
-            , Q.AND
+            ~SQ(average_rating__lt=query_dict.get('min_rating'))
+            , SQ.AND
         )
 
     # filter by tag
     if query_dict.get('tags'):
-        tags = shlex.split(query_dict.get('tags').replace("+", " "))
-        tags_query = Q()
+        tags = shlex.split(query_dict.get('tags'))
+        print tags
+        tags_query = SQ()
         for tag in tags:
             tags_query.add (
-                Q(taste_tags__name__icontains=tag)
-                , Q.OR
+                SQ(taste_tags__name__iexact=tag)
+                , SQ.OR
             )
         queries.add(tags_query, Q.AND)
 
     # filter by distillery
     if query_dict.get('distillery'):
         distilleries = shlex.split(query_dict.get('distillery').replace("+", " "))
-        distilleries_query = Q()
+        distilleries_query = SQ()
         for distillery in distilleries:
             distilleries_query.add (
-                Q(distillery__name__icontains=distillery)
-                , Q.OR
+                SQ(distillery__name__icontains=distillery)
+                , SQ.OR
             )
         queries.add(distilleries_query, Q.AND)
+
+    print queries
     return queries
+
+def gin_keyword_filter(search_text):
+    if search_text:
+        sqs = SearchQuerySet().models(Gin).auto_query(search_text)
+    else:
+        sqs = SearchQuerySet().models(Gin).all()
+
+    return sqs
+
+def gin_keyword_filter_autocomplete(request):
+    print nothing
