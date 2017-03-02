@@ -3,6 +3,7 @@ from django.db import models
 
 from ginthusiasm.models import Gin, UserProfile
 
+
 class Wishlist(models.Model):
     gins = models.ManyToManyField(Gin)
     user = models.OneToOneField(UserProfile, primary_key=True, related_name='wishlist')

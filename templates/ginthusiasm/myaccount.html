@@ -12,7 +12,7 @@
     <a class='ginthusiasm-button' href='{% url "logout" %}'><span>Log Out</span></a>
 
     <form action="{% url 'profile_image_upload' %}" method="post" enctype="multipart/form-data">
-        {%  csrf_token %}
+        {% csrf_token %}
         {{ imgform }}
         <input type="submit" value="Upload">
     </form>

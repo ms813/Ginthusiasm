@@ -5,7 +5,7 @@ from ginthusiasm.models import UserProfile
 from django.contrib.auth.models import User
 from ginthusiasm.forms import AddArticleForm
 
-#View for the main article page
+# View for the main article page
 def article(request, article_name_slug, user_name):
 
     context_dict={}
