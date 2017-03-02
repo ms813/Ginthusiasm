@@ -18,6 +18,7 @@ user_patterns = [
     url(r'^signup/$', views.signup, name='signup'),
     url(r'^my-account/$', views.myaccount, name='myaccount'),
     url(r'^logout/$', views.user_logout, name='logout'),
+    url(r'^my-account/upload/$', views.myaccount, name='profile_image_upload'),
 
     # Password reset
     url(r'^password-reset/$',

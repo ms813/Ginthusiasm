@@ -4,13 +4,16 @@ from ginthusiasm.models import UserProfile, Wishlist, Gin
 from django.http import HttpResponse
 
 def wishlist(request, username):
-    wishlist = User.objects.get(username=username).userprofile.wishlist
+    user = User.objects.get(username=username)
+    prof = user.userprofile
+
     context = {
-        "wishlist_name" : str(wishlist),
-        "gins" : wishlist.gins.all
+        "wishlist_name" : str(prof.wishlist),
+        "gins" : prof.wishlist.gins.all,
+        "profile_image" : prof.profile_image
     }
 
-    if request.user.is_authenticated():
+    if request.user.is_authenticated() and username == request.user.username:
         context['wishlist_name'] = "Your wishlist"
 
     return render(request, 'ginthusiasm/wishlist.html', context)
