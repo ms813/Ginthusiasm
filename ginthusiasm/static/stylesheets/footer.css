@@ -1,12 +1,11 @@
 .footer-small{
-	display: flex;
-	flex-direction: row;
-	justify-content: space-around;
 	align-items: center;
 	width: 100%;
 	background-color: #212123;
 	color: #ffffff;
-	height: 100px;
+	bottom: 0;
+	left: 0;
+
 }
 
 .footer-small a{
@@ -15,7 +14,7 @@
 }
 
 
-.footer-small .nav{
+.footer-small .footernav{
     height:30px;
 	flex-grow: 6;
 	display: flex;
@@ -25,22 +24,19 @@
 	text-align:center;
 }
 
-.footer-small .nav {
-	width: 50%;
-}
-.nav a {
+.footernav a {
 	width: 25%;
 	height: 80%;
 	display: table;
 }
 
-.nav a span{
+.footernav a span{
 
 	display:table-cell;
 	vertical-align:middle;
 }
 
-.nav a:hover{
+.footernav a:hover{
     border-radius: 5px;
 	background-color: #ffffff;
 }
