@@ -1,4 +1,6 @@
 from index import index
+from about import about
+from contact import contact
 from login import user_login, signup, myaccount, user_logout
 from wishlist import wishlist, wishlist_add
 from map_helper import MapHelper
