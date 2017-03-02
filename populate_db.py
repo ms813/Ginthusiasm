@@ -1,17 +1,11 @@
-import sys
-import os
+import sys, os, django, json, random
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ginthusiasm_project.settings')
-
-import django
 django.setup()
+random.seed(8765)
 
 from django.contrib.auth.models import User
-
 from django.contrib.auth.hashers import make_password
-
 from ginthusiasm.models import Article, Distillery, Gin, TasteTag, Review, UserProfile, Wishlist
-
-import json
 
 def populate_article():
     print("Populating articles...")
@@ -216,58 +210,45 @@ def populate_gin():
 
 def populate_review():
     print("Populating reviews...")
-    user = User.objects.get(username="Rozz")
-    userprofile = user.userprofile
-    gin = Gin.objects.get(name="Eden Mill Love Gin")
 
-    reviews = [
-        {
-            "review_type" : Review.EXPERT,
-            "date" : '2017-03-01',
-            "rating" : 3,
-            "summary" : "Cupcake ipsum dolor sit amet. Wafer macaroon biscuit chupa chups candy canes candy chocolate cake chocolate. Chocolate cake chupa chups liquorice lemon drops sweet roll cheesecake jelly pudding. Carrot cake cupcake lemon drops candy canes powder sugar plum wafer marzipan.",
-            "content" : "Pudding jelly chocolate cake lollipop cupcake. Candy cotton candy pie sweet lollipop. Souffle cheesecake danish halvah. Muffin brownie powder pastry. Candy sweet roll jujubes jelly. Pie icing icing chupa chups lemon drops bear claw carrot cake muffin chocolate bar. Cheesecake bonbon icing lollipop sweet caramels powder. Powder croissant candy lemon drops. Bonbon brownie marzipan gingerbread candy bear claw powder tart. Donut candy sesame snaps. Halvah cake sweet apple pie. Cake oat cake tiramisu cake. Toffee dragee croissant jelly beans dragee macaroon chocolate cake tootsie roll.",
-            "lat" : 51.503351,
-            "long" : -0.119522,
-            "user" : userprofile,
-            "gin" : gin
-        },
-        {
-            "review_type": Review.EXPERT,
-            "date": '2017-02-28',
-            "rating": 2,
-            "summary": "Cupcake ipsum dolor sit amet. Wafer macaroon biscuit chupa chups candy canes candy chocolate cake chocolate. Chocolate cake chupa chups liquorice lemon drops sweet roll cheesecake jelly pudding. Carrot cake cupcake lemon drops candy canes powder sugar plum wafer marzipan.",
-            "content": "Pudding jelly chocolate cake lollipop cupcake. Candy cotton candy pie sweet lollipop. Souffle cheesecake danish halvah. Muffin brownie powder pastry. Candy sweet roll jujubes jelly. Pie icing icing chupa chups lemon drops bear claw carrot cake muffin chocolate bar. Cheesecake bonbon icing lollipop sweet caramels powder. Powder croissant candy lemon drops. Bonbon brownie marzipan gingerbread candy bear claw powder tart. Donut candy sesame snaps. Halvah cake sweet apple pie. Cake oat cake tiramisu cake. Toffee dragee croissant jelly beans dragee macaroon chocolate cake tootsie roll.",
-            "lat": 51.504493,
-            "long": -0.086500,
-            "user": userprofile,
-            "gin": gin
-        },
-        {
-            "review_type": Review.USER,
-            "date": '2017-02-27',
-            "rating": 4,
-            "summary": "Cupcake ipsum dolor sit amet. Wafer macaroon biscuit chupa chups candy canes candy chocolate cake chocolate. Chocolate cake chupa chups liquorice lemon drops sweet roll cheesecake jelly pudding. Carrot cake cupcake lemon drops candy canes powder sugar plum wafer marzipan.",
-            "content": "Pudding jelly chocolate cake lollipop cupcake. Candy cotton candy pie sweet lollipop. Souffle cheesecake danish halvah. Muffin brownie powder pastry. Candy sweet roll jujubes jelly. Pie icing icing chupa chups lemon drops bear claw carrot cake muffin chocolate bar. Cheesecake bonbon icing lollipop sweet caramels powder. Powder croissant candy lemon drops. Bonbon brownie marzipan gingerbread candy bear claw powder tart. Donut candy sesame snaps. Halvah cake sweet apple pie. Cake oat cake tiramisu cake. Toffee dragee croissant jelly beans dragee macaroon chocolate cake tootsie roll.",
-            "lat": 51.513839,
-            "long": -0.098351,
-            "user": userprofile,
-            "gin": gin
-        },
-        {
-            "review_type": Review.USER,
-            "date": '2017-02-26',
-            "rating": 1,
-            "summary": "Cupcake ipsum dolor sit amet. Wafer macaroon biscuit chupa chups candy canes candy chocolate cake chocolate. Chocolate cake chupa chups liquorice lemon drops sweet roll cheesecake jelly pudding. Carrot cake cupcake lemon drops candy canes powder sugar plum wafer marzipan.",
-            "content": "Pudding jelly chocolate cake lollipop cupcake. Candy cotton candy pie sweet lollipop. Souffle cheesecake danish halvah. Muffin brownie powder pastry. Candy sweet roll jujubes jelly. Pie icing icing chupa chups lemon drops bear claw carrot cake muffin chocolate bar. Cheesecake bonbon icing lollipop sweet caramels powder. Powder croissant candy lemon drops. Bonbon brownie marzipan gingerbread candy bear claw powder tart. Donut candy sesame snaps. Halvah cake sweet apple pie. Cake oat cake tiramisu cake. Toffee dragee croissant jelly beans dragee macaroon chocolate cake tootsie roll.",
-            "lat": 51.500723,
-            "long": -0.124636,
-            "user": userprofile,
-            "gin": gin
-        }
-    ]
+    users = User.objects.all()
+    gins = Gin.objects.all()
+
+    reviews = []
+    for user in users:
+        review_count = random.randint(0, len(gins))
+
+        for i in range(0, review_count):
+            reviews.append({
+                "review_type" : Review.EXPERT,
+                "date" : '2017-03-01',
+                "rating" : 3,
+                "summary" : "Cupcake ipsum dolor sit amet. Wafer macaroon biscuit chupa chups candy canes candy chocolate cake chocolate. Chocolate cake chupa chups liquorice lemon drops sweet roll cheesecake jelly pudding. Carrot cake cupcake lemon drops candy canes powder sugar plum wafer marzipan.",
+                "content" : "Pudding jelly chocolate cake lollipop cupcake. Candy cotton candy pie sweet lollipop. Souffle cheesecake danish halvah. Muffin brownie powder pastry. Candy sweet roll jujubes jelly. Pie icing icing chupa chups lemon drops bear claw carrot cake muffin chocolate bar. Cheesecake bonbon icing lollipop sweet caramels powder. Powder croissant candy lemon drops. Bonbon brownie marzipan gingerbread candy bear claw powder tart. Donut candy sesame snaps. Halvah cake sweet apple pie. Cake oat cake tiramisu cake. Toffee dragee croissant jelly beans dragee macaroon chocolate cake tootsie roll.",
+                "lat" : 51.503351 + (random.random() - 0.5),
+                "long" : -0.119522 + (random.random() - 0.5),
+                "user" : user.userprofile,
+                "gin" : gins[i]
+            })
 
     for data in reviews:
+        r, created = Review.objects.get_or_create(
+            user = data['user'],
+            gin = data['gin'],
+            review_type = data['review_type'],
+            date = data['date'],
+            rating = data['rating'],
+            summary = data['summary'],
+            content = data['content'],
+            lat = data['lat'],
+            long = data['long'],
+        )
+
+
+        """
+        user = User.objects.get(username="Rozz")
+        userprofile = user.userprofile
+        gin = Gin.objects.get(name="Eden Mill Love Gin")
         reviews_results = []
         try:
             reviews_results = Review.objects.get(date=data['date'])
@@ -287,6 +268,7 @@ def populate_review():
             review.gin = data['gin']
 
             review.save()
+        """
 
 def populate_wishlist():
     print("Populating wishlist...")
@@ -302,9 +284,9 @@ def populate_wishlist():
         wishlist, created = Wishlist.objects.get_or_create(user=user)
 
         if user.user.username == 'Matt' and created:
-            wishlist.gins.add(gins[0]);
-            wishlist.gins.add(gins[1]);
-            wishlist.gins.add(gins[2]);
+            wishlist.gins.add(gins[0])
+            wishlist.gins.add(gins[1])
+            wishlist.gins.add(gins[2])
 
 def populate_users():
     print("Populating users...")
