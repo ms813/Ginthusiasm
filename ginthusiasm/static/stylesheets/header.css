@@ -133,6 +133,10 @@ a.header-button:hover{
 }
 
 #header-search-results {
+	position: absolute;
+	text-align: left;
+	left: 0px;
+	top: 30px;
 	background-color: white;
 	z-index: 1;
 }
