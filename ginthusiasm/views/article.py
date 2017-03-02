@@ -64,12 +64,15 @@ def add_article(request, user_name):
     if request.method == 'POST':
         form = AddArticleForm(request.POST)
         if form.is_valid():
-            if userprofile: 
+            if userprofile:
                 article = form.save(commit=False)
                 article.userprofile = userprofile
 
+                if 'image' in request.FILES:
+                    article.image = request.FILES['image']
+
                 article.save()
-                return article_listing(request, userprofile)
+                return article_listing(request)
 
         else:
             print(form.errors)

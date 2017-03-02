@@ -26,7 +26,7 @@ def populate_article():
         "date" : '2017-02-17',
         "slug" : "january-gin-of-the-month",
         "author" :userprofile,
-        #"image" : "articles/jan_gin.jpg",
+        "image" : "articles/jan_gin.jpg",
         "month": True,
     },
     {
@@ -36,7 +36,7 @@ def populate_article():
         "date" : '2017-01-03',
         "slug" : "test-article",
         "author" : userprofile,
-        #"image" : "articles/jan_gin.jpg",
+        "image" : "articles/jan_gin.jpg",
         "month": False,
     },
     {
@@ -46,7 +46,7 @@ def populate_article():
         "date" : '2016-05-21',
         "slug" : "another-article",
         "author" :userprofile,
-        #"image" : "articles/jan_gin.jpg",
+        "image" : "articles/jan_gin.jpg",
         "month": False,
     },
     {
@@ -57,7 +57,7 @@ def populate_article():
         "date" : '2016-12-01',
         "slug" : "a-final-article",
         "author" :userprofile,
-        #"image" : "articles/jan_gin.jpg",
+        "image" : "articles/jan_gin.jpg",
         "month": False,
 
     }
@@ -78,7 +78,7 @@ def populate_article():
             article.date = data['date']
             article.slug = data['slug']
             article.author = data['author']
-            #article.image = data['image']
+            article.image = data['image']
             article.month = data['month']
             article.save()
 

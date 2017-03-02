@@ -32,6 +32,7 @@ class Review(models.Model):
     user = models.ForeignKey('UserProfile', on_delete=models.CASCADE)
     gin = models.ForeignKey('Gin', on_delete=models.CASCADE, related_name='reviews')
 
+
     def save(self, *args, **kwargs):
         #self.slug = slugify(self.name)
         super(Review, self).save(*args, **kwargs)
