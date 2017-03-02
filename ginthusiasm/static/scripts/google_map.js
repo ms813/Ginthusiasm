@@ -5,7 +5,7 @@ var initMap = function(){
     // build some map parameters
     var mapParams = { styles : map_style_dark };
 
-    // only set of coords specified
+    // if coordinates are not in an array, there is only 1 set
     if(! (data.coords instanceof Array)){
         // set the center of the map
         mapParams.center = data.coords;
