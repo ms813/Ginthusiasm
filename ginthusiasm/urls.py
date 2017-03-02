@@ -74,6 +74,11 @@ urlpatterns = [
     ##########     Index     ##########
     url(r'^$', views.index, name ='index'),
 
+    ##########     About     ##########
+    url(r'^about/$', views.about, name='about'),
+
+    ##########     Contact     ##########
+    url(r'^contact/$', views.about, name='contact'),
 ]
 
 urlpatterns += gin_patterns

@@ -1,4 +1,9 @@
-.footer-small{
+footer {
+	position: fixed;
+	bottom: 0;
+}
+
+.footer-small {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
@@ -7,6 +12,23 @@
 	background-color: #212123;
 	color: #ffffff;
 	height: 100px;
+
+	position: absolute;
+	bottom: 0px;
+	left: 0;
+}
+
+html, body {
+	height: 100%;
+}
+
+.main_container {
+	min-height: 100%;
+	position: relative;
+}
+
+.content {
+	margin-bottom: 100px;
 }
 
 .footer-small a{
@@ -35,7 +57,6 @@
 }
 
 .nav a span{
-
 	display:table-cell;
 	vertical-align:middle;
 }
@@ -43,4 +64,9 @@
 .nav a:hover{
     border-radius: 5px;
 	background-color: #ffffff;
+}
+
+html, body{
+	margin: 0;
+	padding: 0;
 }

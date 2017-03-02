@@ -50,6 +50,10 @@ div.reviews {
     padding-left: 0;
 }
 
+.map {
+    min-height: 500px;
+}
+
 .map #js-map{
     width:500px;
     height: 500px;
