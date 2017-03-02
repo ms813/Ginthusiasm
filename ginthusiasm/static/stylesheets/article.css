@@ -7,7 +7,7 @@ div.article_content {
   top: 0px;
   left: 0px;
   width: 100%;
-  z-index=0;
+  z-index: 0;
 }
 
 .article_content .title {
@@ -16,7 +16,7 @@ div.article_content {
   left: 0px;
   padding-left:40px;
   color: red;
-  z-index=0;
+  z-index: 0;
   background-color: white;
 }
 
@@ -24,7 +24,7 @@ div.article_content {
   position: relative;
   padding: 20px;
   top: -50px;
-  z-index=0;
+  z-index: 0;
   font-family:garamond;
 }
 

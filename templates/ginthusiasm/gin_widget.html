@@ -4,7 +4,8 @@
             <h1>{{ gin.name }}</h1>
         </a>
         <p>{{ gin.short_description }}<p>
-        <p>Average Rating: {{ gin.average_rating }}<p>
+        <p>Average Rating:</p>
+        {% include 'ginthusiasm/gin_rating_widget.html'%}
 
         {% include 'ginthusiasm/wishlist_button.html'%}
 
@@ -20,5 +21,4 @@
             <img src="{{ MEDIA_URL }}{{ gin.image }}" alt='Image of {{ gin.name }}'/>
         </a>
     </div>
-
 </div>

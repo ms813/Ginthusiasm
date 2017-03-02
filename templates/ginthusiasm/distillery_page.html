@@ -44,14 +44,27 @@
         </div>
 
         <div class='distillery-map'>
+            {% comment %}
+                MS - switching out static map for interactive map
 
-            <img class='map' src = {{ distillery.map_url }} />
+                old html:
+                <img class='map' src = {{ distillery.map_url }} />
 
+            {% endcomment %}
+
+            {% include 'ginthusiasm/map_widget.html' %}
         </div>
 
     </div>
 {% endblock %}
 
 {% block script_block %}
-
+    {% comment %}
+        MS - Adding scripts required for interactive map
+    {% endcomment %}
+    <script src="{% static 'scripts/map_styles.js' %}"></script>
+    <script src="{% static 'scripts/google_map.js' %}"></script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key={{ js_api_key }}&callback=initMap">
+    </script>
 {% endblock %}

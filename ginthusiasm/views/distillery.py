@@ -4,6 +4,11 @@ from ginthusiasm.forms import DistillerySearchForm
 from django.db.models import Q
 from ginthusiasm.views import MapHelper
 
+from ginthusiasm_project.GoogleMapsAuth import api_keys
+
+# MS - to encode map coords
+import json
+
 # View for the main distillery page
 def show_distillery(request, distillery_name_slug):
     # Dictionary for key & value pairs, which are then passed to the HTML template
@@ -19,9 +24,21 @@ def show_distillery(request, distillery_name_slug):
         # 'distillery' = key, distillery = found distillery object.
         context_dict['distillery'] = distillery
 
-        # Create the map from the coordinates and add to the distillery object
-        mh = MapHelper()
-        distillery.map_url = mh.getStaticMapUrl(distillery.lat, distillery.long)
+        # MS - interactive map code
+        #########################################################
+        # add the map parameters to the context dictionary
+        coords = { 'lat' : distillery.lat, 'lng' : distillery.long }
+
+        # note the coords must be well formed json to be correctly interpreted on the client slide
+        # hence the need to json encode here
+        context_dict['coords'] = json.JSONEncoder().encode(coords)
+        context_dict['zoom'] = 16
+
+        # grab our Google maps API key and pass it along with the context
+        # add the api key if we have one
+        if len(api_keys) > 0:
+            context_dict['js_api_key'] = api_keys[0]
+        #########################################################
 
     except Distillery.DoesNotExist:
         context_dict['distillery'] = None

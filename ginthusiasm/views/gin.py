@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from ginthusiasm.models import Gin, TasteTag, Distillery
+from ginthusiasm.models import Gin, TasteTag, Distillery, Review
 from ginthusiasm.forms import GinSearchForm, AddGinForm
 from django.db.models import Q
+
 from haystack.query import SearchQuerySet, SQ
-import shlex
+from ginthusiasm_project.GoogleMapsAuth import api_keys
+import shlex, json
 
 # View for the main gin page
 def show_gin(request, gin_name_slug):
@@ -16,14 +18,50 @@ def show_gin(request, gin_name_slug):
 
         # Add the gin object to the context dictionary.
         context_dict['gin'] = gin
-        context_dict['expert_reviews'] = ['expert_reviews']
-        context_dict['other_reviews'] = ['other_reviews']
+
+        # Grab the reviews on this gin
+        reviews = gin.reviews.all()
+
+        #### Map parameters ####
+        if reviews:
+            # 1 or more reviews, so create a list of coordinates
+            coords = [{ 'lat' : r.lat, 'lng' : r.long } for r in reviews]
+        else:
+            # 0 reviews, so center map on distillery
+            distillery = gin.distillery
+            if distillery:
+                coords = [{'lat': distillery.lat, 'lng': distillery.long}]
+            else:
+                # 0 reviews and 0 distilleries, use coords for the whole world
+                coords = [
+                    {'lat': 85, 'lng': -180},
+                    {'lat': -85, 'lng': 180}
+                ]
+
+        # set the zoom level - if more than one marker the map script scales the map dynamically anyways
+        context_dict['zoom'] = 16
+
+        # coords must be well formed JSON so encode here
+        context_dict['coords'] = json.dumps(coords)
+
+        # Get reviews from the DB split by review type, so they will
+        # be accessible in the template
+        expert_reviews = reviews.filter(review_type=Review.EXPERT)
+        user_reviews = reviews.filter(review_type=Review.USER)
+        context_dict['expert_reviews'] = expert_reviews
+        context_dict['other_reviews'] = user_reviews
+        # print context_dict['expert_reviews']
+        # print context_dict['other_reviews']
+
+        if api_keys:
+            context_dict['js_api_key'] = api_keys[0]
 
     except Gin.DoesNotExist:
         context_dict['gin'] = None
 
     # Render the response and return it to the client
     return render(request, 'ginthusiasm/gin_page.html', context=context_dict)
+
 
 # View for adding a gin to the database
 def add_gin(request, distillery_name_slug):
@@ -54,6 +92,13 @@ def add_gin(request, distillery_name_slug):
     context_dict = {'add_gin_form': form, 'distillery': distillery}
     return render(request, 'ginthusiasm/add_gin_page.html', context=context_dict)
 
+
+def rate_gin(request, gin_name_slug):
+    user_rating = request.POST.get('rating')
+    print user_rating
+
+    return HttpResponse('DONE')
+
 # View for the gin search page
 def gin_search_results(request):
     query_dict = request.GET
@@ -68,18 +113,19 @@ def gin_search_results(request):
 
     # Remember values of form fields
     form = GinSearchForm(initial={
-        'keywords' : query_dict.get('keywords'),
-        'distillery' : query_dict.get('distillery'),
-        'min_price' : query_dict.get('min_price'),
-        'max_price' : query_dict.get('max_price'),
-        'min_rating' : query_dict.get('min_rating'),
-        'max_rating' : query_dict.get('max_rating'),
-        'order_by' : query_dict.get('order_by'),
-        'order' : query_dict.get('order'),
+        'keywords': query_dict.get('keywords'),
+        'distillery': query_dict.get('distillery'),
+        'min_price': query_dict.get('min_price'),
+        'max_price': query_dict.get('max_price'),
+        'min_rating': query_dict.get('min_rating'),
+        'max_rating': query_dict.get('max_rating'),
+        'order_by': query_dict.get('order_by'),
+        'order': query_dict.get('order'),
     })
 
     context_dict = {'gins': gin_list, 'advanced_search_form': form}
     return render(request, 'ginthusiasm/gin_search_page.html', context=context_dict)
+
 
 # Function for generating a gin search query (Q() object) from a query dictionary
 def create_gin_query(query_dict):
@@ -87,24 +133,24 @@ def create_gin_query(query_dict):
 
     # filter by price
     if query_dict.get('max_price'):
-        queries.add (
+        queries.add(
             ~Q(price__gt=query_dict.get('max_price'))
             , Q.AND
         )
     if query_dict.get('min_price'):
-        queries.add (
+        queries.add(
             ~Q(price__lt=query_dict.get('min_price'))
             , Q.AND
         )
 
     # filter by rating
     if query_dict.get('max_rating'):
-        queries.add (
+        queries.add(
             ~Q(average_rating__gt=query_dict.get('max_rating'))
             , Q.AND
         )
     if query_dict.get('min_rating'):
-        queries.add (
+        queries.add(
             ~Q(average_rating__lt=query_dict.get('min_rating'))
             , Q.AND
         )
@@ -126,7 +172,7 @@ def create_gin_query(query_dict):
         distilleries = shlex.split(query_dict.get('distillery').replace("+", " "))
         distilleries_query = Q()
         for distillery in distilleries:
-            distilleries_query.add (
+            distilleries_query.add(
                 Q(distillery__name__icontains=distillery)
                 , Q.OR
             )
