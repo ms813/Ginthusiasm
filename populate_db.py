@@ -244,31 +244,32 @@ def populate_review():
             long = data['long'],
         )
 
+    rvs = Review.objects.all();
 
-        """
-        user = User.objects.get(username="Rozz")
-        userprofile = user.userprofile
-        gin = Gin.objects.get(name="Eden Mill Love Gin")
-        reviews_results = []
-        try:
-            reviews_results = Review.objects.get(date=data['date'])
-        except Review.DoesNotExist:
-            pass
+    """
+    user = User.objects.get(username="Rozz")
+    userprofile = user.userprofile
+    gin = Gin.objects.get(name="Eden Mill Love Gin")
+    reviews_results = []
+    try:
+        reviews_results = Review.objects.get(date=data['date'])
+    except Review.DoesNotExist:
+        pass
 
-        if not reviews_results:
-            review = Review()
-            review.review_type = data['review_type']
-            review.date = data['date']
-            review.rating = data['rating']
-            review.summary = data['summary']
-            review.content = data['content']
-            review.lat = data['lat']
-            review.long = data['long']
-            review.user = data['user']
-            review.gin = data['gin']
+    if not reviews_results:
+        review = Review()
+        review.review_type = data['review_type']
+        review.date = data['date']
+        review.rating = data['rating']
+        review.summary = data['summary']
+        review.content = data['content']
+        review.lat = data['lat']
+        review.long = data['long']
+        review.user = data['user']
+        review.gin = data['gin']
 
-            review.save()
-        """
+        review.save()
+    """
 
 def populate_wishlist():
     print("Populating wishlist...")
