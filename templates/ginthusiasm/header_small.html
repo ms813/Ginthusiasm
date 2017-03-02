@@ -18,10 +18,7 @@
         <a href='{% url "login" %}'>Log In | Sign Up</a>
     {% endif %}
     </div>
-    <div class='header-search'>
-        <input id='header-search' type='text' placeholder="&#x1f50d;">
-        <a class='ginthusiasm-button' href='#'><span>Search</span></a>
-    </div>
+    {% include 'ginthusiasm/header-search.html' %}
 </header>
 {% endblock %}
 

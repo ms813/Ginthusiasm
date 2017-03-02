@@ -28,7 +28,6 @@
             </ul>
         </div>
 
-        <!-- add to wishlist button -->
         {% include 'ginthusiasm/wishlist_button.html'%}
     </div>
 
@@ -44,7 +43,7 @@
             <h2>Expert Reviews</h2>
             <ul>
                 {% for review in expert_reviews %}
-                    <li><Strong>Review widget goes here!</Strong></li>
+                    {% include "ginthusiasm/review-widget.html" %}
                 {% endfor %}
             </ul>
         </div>
@@ -53,21 +52,31 @@
             <h2>User Reviews</h2>
             <ul>
                 {% for review in other_reviews %}
-                    <li><Strong>Review widget goes here!</Strong></li>
+                    {% include "ginthusiasm/review-widget.html" %}
                 {% endfor %}
             </ul>
         </div>
     </div>
 
+
+
     <div class='map'>
         <h2>Map</h2>
-        <Strong>Map widget goes here!</Strong>
+        {% include 'ginthusiasm/map_widget.html' %}
     </div>
 
 {% endblock %}
 
 {% block script_block %}
+    <!-- wishlist button -->
     <script src='{% static "scripts/wishlist_button.js" %}'></script>
     <script src='{% static "scripts/ajax_setup.js" %}'></script>
     <script src='{% static "scripts/js.cookie.js" %}'></script>
+
+    <!-- map -->
+    <script src="{% static 'scripts/map_styles.js' %}"></script>
+    <script src="{% static 'scripts/google_map.js' %}"></script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key={{ js_api_key }}&callback=initMap">
+    </script>
 {% endblock %}

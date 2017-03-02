@@ -1,0 +1,14 @@
+{% comment %}
+    This is the actual div where the map is rendered
+    Note the data parameters, passed from the server
+    {{ coords }}    must be well formed JSON in the form { "lat" : "", "lng" : ""}
+
+    style="display:inline-block;height:640px; width:640px"
+{% endcomment %}
+<div
+    id='js-map'
+    data-coords='{{ coords }}'
+    {% if zoom %}
+        data-zoom='{{ zoom }}'
+    {% endif %}>
+</div>

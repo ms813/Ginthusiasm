@@ -29,3 +29,11 @@
 .distillery-contact .map {
     max-width: 500px;
 }
+
+/*
+    MS - style the map with the #js-map selector!
+*/
+.distillery-contact #js-map{
+    width: 500px;
+    height: 500px;
+}

@@ -26,18 +26,18 @@ class Review(models.Model):
     content = models.TextField(blank=True)
     lat = models.FloatField(blank=True)
     long = models.FloatField(blank=True)
-    slug = models.SlugField(unique=True)
+    #slug = models.SlugField(unique=True)
     # Assuming that when a user deletes their profile they'll want all their
-    # reviews deleted too. Not sure about the foreign key argument?
+    # reviews deleted too.
     user = models.ForeignKey('UserProfile', on_delete=models.CASCADE)
-    gin = models.ForeignKey('Gin', on_delete=models.CASCADE)
+    gin = models.ForeignKey('Gin', on_delete=models.CASCADE, related_name='reviews')
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.name)
+        #self.slug = slugify(self.name)
         super(Review, self).save(*args, **kwargs)
 
     def __str__(self):
-        return self.name
+        return self.summary
 
     def __unicode__(self):
-        return self.name
+        return self.summary
