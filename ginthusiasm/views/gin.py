@@ -63,8 +63,8 @@ def gin_search_results(request):
     gin_list = gin_list.filter(create_gin_query(query_dict))#.order_by(order_by)
 
     # If there is only one result returned then redirect straight to that page
-    if gin_list.count() == 1:
-        return redirect('show_gin', gin_list[0].object.slug)
+    if len(gin_list) == 1:
+        return redirect('show_gin', gin_list[0].slug)
 
     # Remember values of form fields
     form = GinSearchForm(initial={
@@ -83,56 +83,55 @@ def gin_search_results(request):
 
 # Function for generating a gin search query (Q() object) from a query dictionary
 def create_gin_query(query_dict):
-    queries = SQ()
+    queries = Q()
 
     # filter by price
     if query_dict.get('max_price'):
         queries.add (
-            ~SQ(price__gt=query_dict.get('max_price'))
-            , SQ.AND
+            ~Q(price__gt=query_dict.get('max_price'))
+            , Q.AND
         )
     if query_dict.get('min_price'):
         queries.add (
-            ~SQ(price__lt=query_dict.get('min_price'))
-            , SQ.AND
+            ~Q(price__lt=query_dict.get('min_price'))
+            , Q.AND
         )
 
     # filter by rating
     if query_dict.get('max_rating'):
         queries.add (
-            ~SQ(average_rating__gt=query_dict.get('max_rating'))
-            , SQ.AND
+            ~Q(average_rating__gt=query_dict.get('max_rating'))
+            , Q.AND
         )
     if query_dict.get('min_rating'):
         queries.add (
-            ~SQ(average_rating__lt=query_dict.get('min_rating'))
-            , SQ.AND
+            ~Q(average_rating__lt=query_dict.get('min_rating'))
+            , Q.AND
         )
 
     # filter by tag
     if query_dict.get('tags'):
         tags = shlex.split(query_dict.get('tags'))
         print tags
-        tags_query = SQ()
+        tags_query = Q()
         for tag in tags:
             tags_query.add (
-                SQ(taste_tags__name__iexact=tag)
-                , SQ.OR
+                Q(taste_tags__name__iexact=tag)
+                , Q.OR
             )
         queries.add(tags_query, Q.AND)
 
     # filter by distillery
     if query_dict.get('distillery'):
         distilleries = shlex.split(query_dict.get('distillery').replace("+", " "))
-        distilleries_query = SQ()
+        distilleries_query = Q()
         for distillery in distilleries:
             distilleries_query.add (
-                SQ(distillery__name__icontains=distillery)
-                , SQ.OR
+                Q(distillery__name__icontains=distillery)
+                , Q.OR
             )
         queries.add(distilleries_query, Q.AND)
 
-    print queries
     return queries
 
 def gin_keyword_filter(search_text):
@@ -141,7 +140,16 @@ def gin_keyword_filter(search_text):
     else:
         sqs = SearchQuerySet().models(Gin).all()
 
-    return sqs
+    primary_keys = []
+    for gin in sqs:
+        print gin
+        primary_keys.append(gin.pk)
+
+    # From: codybonney.com/creating-a-queryset-from-a-list-while-presevering-order-using-django
+    clauses = ' '.join(['WHEN id=%s THEN %s' % (pk, i) for i, pk in enumerate(primary_keys)])
+    ordering = 'CASE %s END' % clauses
+
+    return Gin.objects.filter(pk__in=primary_keys).extra(select={'ordering': ordering}, order_by=('ordering',))
 
 def gin_keyword_filter_autocomplete(request):
     print nothing
