@@ -92,6 +92,12 @@ def add_gin(request, distillery_name_slug):
     return render(request, 'ginthusiasm/add_gin_page.html', context=context_dict)
 
 
+def rate_gin(request, gin_name_slug):
+    user_rating = request.POST.get('rating')
+    print user_rating
+
+    return HttpResponse('DONE')
+
 # View for the gin search page
 def gin_search_results(request):
     query_dict = request.GET
