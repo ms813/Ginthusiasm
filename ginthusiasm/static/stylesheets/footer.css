@@ -37,7 +37,7 @@ html, body {
 }
 
 
-.footer-small .nav{
+.footer-small .footernav{
     height:30px;
 	flex-grow: 6;
 	display: flex;
@@ -47,21 +47,19 @@ html, body {
 	text-align:center;
 }
 
-.footer-small .nav {
-	width: 50%;
-}
-.nav a {
+.footernav a {
 	width: 25%;
 	height: 80%;
 	display: table;
 }
+
 
 .nav a span{
 	display:table-cell;
 	vertical-align:middle;
 }
 
-.nav a:hover{
+.footernav a:hover{
     border-radius: 5px;
 	background-color: #ffffff;
 }

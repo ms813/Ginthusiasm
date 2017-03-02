@@ -56,7 +56,7 @@ def add_article(request, user_name):
     try:
         user = User.objects.get(username=user_name)
         userprofile = user.userprofile
-    except UserProfile.DoesNotExist:
+    except User.DoesNotExist:
         userprofile = None
 
     form = AddArticleForm()
@@ -67,12 +67,15 @@ def add_article(request, user_name):
             if userprofile:
                 article = form.save(commit=False)
                 article.userprofile = userprofile
+
+                if 'image' in request.FILES:
+                    article.image = request.FILES['image']
+
                 article.save()
-                form.save()
-                return article_listing(request, userprofile)
+                return article_listing(request)
 
         else:
             print(form.errors)
 
-    context_dict = {'add_article_form': form, 'userprofile': userprofile}
+    context_dict = {'add_article_form': form, 'user': user}
     return render(request, 'ginthusiasm/add_article.html', context=context_dict)

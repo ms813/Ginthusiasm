@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from ginthusiasm.models import Gin, TasteTag, Distillery, Review
-from ginthusiasm.forms import GinSearchForm, AddGinForm
+from ginthusiasm.forms import GinSearchForm, AddGinForm, ReviewForm
 from django.db.models import Q
 
 from haystack.query import SearchQuerySet, SQ
@@ -58,6 +58,7 @@ def show_gin(request, gin_name_slug):
 
     except Gin.DoesNotExist:
         context_dict['gin'] = None
+
 
     # Render the response and return it to the client
     return render(request, 'ginthusiasm/gin_page.html', context=context_dict)

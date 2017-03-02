@@ -7,6 +7,7 @@ from map_helper import MapHelper
 from article import article, article_listing, article_user_listing, article_month, add_article
 from gin import show_gin, add_gin, gin_search_results, rate_gin
 from distillery import show_distillery, distillery_search_results
+from review import add_review
 
 # debug
 from map_test import maptest

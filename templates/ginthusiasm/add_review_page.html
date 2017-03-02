@@ -1,0 +1,16 @@
+{% extends 'ginthusiasm/header_small.html' %}
+{% load staticfiles %}
+
+{% block style_block %}
+{% endblock %}
+
+{% block title_block %} Add Review {% endblock %}
+
+{% block body_block %}
+<div>
+  <h1> Add a revew </h1>
+<div>
+    <p>This is where the review form goes</p>
+    {% include "ginthusiasm/add_review_widget.html" %}
+</div>
+{% endblock %}

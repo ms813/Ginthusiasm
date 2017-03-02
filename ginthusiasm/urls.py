@@ -54,6 +54,9 @@ distillery_patterns = [
 ##########     Review     ##########
 review_patterns = [
 
+    url(r'^add-review/(?P<gin_name_slug>[\w\-]+)/$', views.add_review, name='add_review'),
+    #url(r'^add-review/$', views.add_revzzzzzzzsiew, name='add_review'),
+
 ]
 
 ##########     Article     ##########
