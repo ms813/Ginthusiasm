@@ -7,9 +7,13 @@
 
         <div class='rating'>
             Average Rating:
-            {% include 'ginthusiasm/gin_rating_widget_static.html'%}
+            {% with rating_type='average_rating' rating_initial=gin.average_rating %}
+                {% include 'ginthusiasm/gin_rating_widget.html'%}
+            {% endwith %}
             Your Rating:
-            {% include 'ginthusiasm/gin_rating_widget.html'%}
+            {% with rating_type='user_rating' rating_initial='3' %}
+                {% include 'ginthusiasm/gin_rating_widget.html'%}
+            {% endwith %}
         </div>
 
         {% include 'ginthusiasm/wishlist_button.html'%}

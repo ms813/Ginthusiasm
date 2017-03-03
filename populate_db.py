@@ -232,17 +232,22 @@ def populate_review():
             })
 
     for data in reviews:
-        r, created = Review.objects.get_or_create(
-            user = data['user'],
-            gin = data['gin'],
-            review_type = data['review_type'],
-            date = data['date'],
-            rating = data['rating'],
-            summary = data['summary'],
-            content = data['content'],
-            lat = data['lat'],
-            long = data['long'],
-        )
+        try:
+            r = Review.objects.get(user=data['user'], gin=data['gin'])
+            print(str(r) + " already exists!")
+        except Review.DoesNotExist:
+            r = Review.objects.create(
+                user=data['user'],
+                gin=data['gin'],
+                review_type=data['review_type'],
+                date=data['date'],
+                rating=data['rating'],
+                summary=data['summary'],
+                content=data['content'],
+                lat=data['lat'],
+                long=data['long'],
+            )
+            print(str(r) + ' successfully created')
 
     """
     user = User.objects.get(username="Rozz")
