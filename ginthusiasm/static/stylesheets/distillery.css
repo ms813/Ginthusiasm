@@ -9,31 +9,20 @@
     flex-basis: 60%;
 }
 
-.distillery-image {
+.distillery-info .distillery-map {
     flex-basis: 0%;
 }
 
+.distillery-info .distillery-map #js-map{
+    width: 400px;
+    height: 400px;
+}
+
 .distillery-image .image {
-    max-width: 300px;
+    max-width: 150px;
     border-radius: 50%;
 }
 
-.distillery-contact {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding-top: 70px;
-}
-
 .distillery-contact .map {
-    max-width: 500px;
-}
-
-/*
-    MS - style the map with the #js-map selector!
-*/
-.distillery-contact #js-map{
-    width: 500px;
-    height: 500px;
+    max-width: 100px;
 }
