@@ -21,7 +21,9 @@
         </p>
 
         <div class='rating'>
-            Average Rating: {% include 'ginthusiasm/gin_rating_widget_static.html' %}
+            {% with rating_type='average_rating' rating_initial=gin.average_rating %}
+                Average Rating: {% include 'ginthusiasm/gin_rating_widget.html'%}
+            {% endwith %}
         </div>
 
         <div class='taste_tags'>
@@ -48,7 +50,9 @@
             <h2>Write a Review</h2>
             {% if user.is_authenticated %}
                 <div>
-                    {% include 'ginthusiasm/gin_rating_widget.html' %}
+                    {% with rating_type='user_rating' rating_initial='3' %}
+                        {% include 'ginthusiasm/gin_rating_widget.html' %}
+                    {% endwith %}
                     {% include "ginthusiasm/add_review_widget.html" %}
                 </div>
             {% else %}
