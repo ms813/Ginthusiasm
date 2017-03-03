@@ -1,8 +1,11 @@
 from django import forms
 from ginthusiasm.models import Review
+from datetime import datetime, date
 
 class ReviewForm(forms.ModelForm):
-    date = forms.DateField(help_text="Date: ")
+
+    date = forms.DateField(widget=forms.HiddenInput(), initial = date.today)
+
     rating = forms.IntegerField(initial =0, help_text="Rating: ")
     summary = forms.CharField(help_text="Summary: ")
     content = forms.CharField(help_text="Content: ")
@@ -13,4 +16,4 @@ class ReviewForm(forms.ModelForm):
 
     class Meta:
         model = Review
-        fields = ('date', 'rating', 'summary', 'content', 'lat', 'long',)
+        fields = ('date','rating', 'summary', 'content', 'lat', 'long',)
