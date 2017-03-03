@@ -59,6 +59,8 @@ def show_gin(request, gin_name_slug):
     except Gin.DoesNotExist:
         context_dict['gin'] = None
 
+    context_dict['form'] = ReviewForm()
+    add_review(request, gin_name_slug)
 
     # Render the response and return it to the client
     return render(request, 'ginthusiasm/gin_page.html', context=context_dict)
@@ -217,3 +219,35 @@ def gin_keyword_filter(search_text):
 
 def gin_keyword_filter_autocomplete(request):
     print nothing
+
+
+def add_review(request, gin_name_slug):
+
+    gin = Gin.objects.get(slug=gin_name_slug)
+    #check = User.objects.get(username=user_name).userprofile
+    check = request.user.userprofile
+
+
+    print(gin)
+
+    form = ReviewForm()
+
+    if request.method == 'POST':
+        form = ReviewForm(request.POST)
+
+        if form.is_valid():
+            if gin:
+                if check:
+                    review = form.save(commit=False)
+                    review.gin = gin
+                    review.user = check
+                    review.review_type = check.user_type
+                    review.save()
+                    return redirect('show_gin', gin_name_slug)
+
+    else:
+        print(form.errors)
+
+
+
+    return render(request, 'ginthusiasm/add_review_widget.html', {'form':form, 'gin':gin })
