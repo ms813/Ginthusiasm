@@ -1,9 +1,18 @@
-<!--
+{% comment %}
     Dependencies:
     static/scripts/ajax_setup.js
     static/scripts/rating.js
     static/fontawesome-stars-o.css
--->
+
+    Notes:
+    When including this widget you should surround the include tag with a 'with'
+    tag containing assignments for the variables rating_type nad rating_initial
+    For example:
+    {% with rating_type='average_rating' rating_initial=gin.average_rating %}
+        {% include 'ginthusiasm/gin_rating_widget.html'%}
+    {% endwith %}
+    
+{% endcomment %}
 
 <div class="rating_widget" data-gin='{{ gin.slug }}'>
     <!-- FIX ME to include dynamic user rating -->
