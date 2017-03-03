@@ -4,10 +4,6 @@ footer {
 }
 
 .footer-small {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-around;
-	align-items: center;
 	width: 100%;
 	background-color: #212123;
 	color: #ffffff;
@@ -38,30 +34,20 @@ html, body {
 
 
 .footer-small .footernav{
-    height:30px;
-	flex-grow: 6;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	align-items: center;
-	text-align:center;
+
 }
 
 .footernav a {
-	width: 25%;
-	height: 80%;
-	display: table;
+
 }
 
 
 .nav a span{
-	display:table-cell;
-	vertical-align:middle;
+
 }
 
 .footernav a:hover{
-    border-radius: 5px;
-	background-color: #ffffff;
+ ''
 }
 
 html, body{

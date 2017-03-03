@@ -59,8 +59,10 @@ def show_gin(request, gin_name_slug):
     except Gin.DoesNotExist:
         context_dict['gin'] = None
 
-    context_dict['form'] = ReviewForm()
-    add_review(request, gin_name_slug)
+    if request.user.is_authenticated:
+        context_dict['form'] = ReviewForm()
+        add_review(request, gin_name_slug)
+
 
     # Render the response and return it to the client
     return render(request, 'ginthusiasm/gin_page.html', context=context_dict)
@@ -98,22 +100,24 @@ def add_gin(request, distillery_name_slug):
 
 
 def rate_gin(request, gin_name_slug):
-    if request.method == 'POST':
-        user_rating = request.POST.get('rating')
-        if user_rating > 0 or user_rating <= 5:
+    if not request.user.is_anonymous():
+        if request.method == 'POST':
+            user_rating = request.POST.get('rating')
+            if user_rating > 0 or user_rating <= 5:
 
-            gin = Gin.objects.get(slug=gin_name_slug)
-            userprofile = request.user.userprofile
+                gin = Gin.objects.get(slug=gin_name_slug)
+                userprofile = request.user.userprofile
 
-            review, created = Review.objects.get_or_create(user=userprofile, gin=gin)
+                review, created = Review.objects.get_or_create(user=userprofile, gin=gin)
 
-            review.rating = user_rating
-            review.save
+                review.rating = user_rating
+                review.save()
 
-    print user_rating
-    return HttpResponse('DONE')
+                return HttpResponse('rated')
+    else:
+        return HttpResponse('unauthenticated')
 
-
+    return HttpResponse('not rated')
 
 # View for the gin search page
 def gin_search_results(request):
