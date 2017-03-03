@@ -108,7 +108,7 @@ def rate_gin(request, gin_name_slug):
             review, created = Review.objects.get_or_create(user=userprofile, gin=gin)
 
             review.rating = user_rating
-            review.save
+            review.save()
 
     print user_rating
     return HttpResponse('DONE')
