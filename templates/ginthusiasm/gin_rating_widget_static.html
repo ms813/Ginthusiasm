@@ -6,8 +6,7 @@
 -->
 
 <div class="rating_widget" data-gin='{{ gin.slug }}'>
-    <!-- FIX ME to include dynamic user rating -->
-    <select class="user_rating" data-rating='3' data-gin='{{ gin.slug }}'>
+    <select class="average_rating" data-rating='{{ gin.average_rating }}'>
         <option value=""></option>
         <option value="1">1</option>
         <option value="2">2</option>

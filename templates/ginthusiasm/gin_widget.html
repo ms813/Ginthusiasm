@@ -4,8 +4,13 @@
             <h1>{{ gin.name }}</h1>
         </a>
         <p>{{ gin.short_description }}<p>
-        <p>Average Rating:</p>
-        {% include 'ginthusiasm/gin_rating_widget.html'%}
+
+        <div class='rating'>
+            Average Rating:
+            {% include 'ginthusiasm/gin_rating_widget_static.html'%}
+            Your Rating:
+            {% include 'ginthusiasm/gin_rating_widget.html'%}
+        </div>
 
         {% include 'ginthusiasm/wishlist_button.html'%}
 

@@ -12,9 +12,6 @@
 {% block title_block %} {{ gin.name }}{% endblock %}
 
 {% block body_block %}
-    
-    {% include 'ginthusiasm/gin_rating_widget.html' %}
-    <div class='avg_rating'>{{ gin.average_rating }}</div>
 
     <div class='gin_description'>
         <img class='image' src="{{ MEDIA_URL }}{{ gin.image }}" alt='Image of {{ gin.name }}'/>
@@ -22,6 +19,11 @@
         <p>{{ gin.long_description }}
             {% lorem 10 p %}
         </p>
+
+        <div class='rating'>
+            Average Rating: {% include 'ginthusiasm/gin_rating_widget_static.html' %}
+        </div>
+
         <div class='taste_tags'>
             Tags:
             <ul>
@@ -44,9 +46,10 @@
     <div class='reviews'>
         <div id='review_form'>
             <h2>Write a Review</h2>
-              <div>
-               {% include "ginthusiasm/add_review_widget.html" %}
-              </div>
+                <div>
+                    {% include 'ginthusiasm/gin_rating_widget.html' %}
+                    {% include "ginthusiasm/add_review_widget.html" %}
+                </div>
         </div>
 
         <div class='expert_reviews'>
@@ -80,7 +83,7 @@
 {% block script_block %}
     <!-- wishlist button -->
     <script src='{% static "scripts/wishlist_button.js" %}'></script>
-    <script src='{% static "scripts/ajax_setup.js" %}'></script>  
+    <script src='{% static "scripts/ajax_setup.js" %}'></script>
     <script src='{% static "scripts/js.cookie.js" %}'></script>
 
     <!-- map -->
