@@ -47,6 +47,7 @@ div.reviews {
 }
 
 .map {
+    margin: 30px 0;
     min-height: 500px;
 }
 
