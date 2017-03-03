@@ -20,12 +20,12 @@ class Review(models.Model):
         default = USER
     )
 
-    date = models.DateField(blank=True)
-    rating = models.PositiveSmallIntegerField(blank=True)
+    date = models.DateField(blank=True, null=True)
+    rating = models.PositiveSmallIntegerField(blank=True, null=True)
     summary = models.CharField(max_length=1024, blank=True)
     content = models.TextField(blank=True)
-    lat = models.FloatField(blank=True)
-    long = models.FloatField(blank=True)
+    lat = models.FloatField(blank=True, null=True)
+    long = models.FloatField(blank=True, null=True)
     #slug = models.SlugField(unique=True)
     # Assuming that when a user deletes their profile they'll want all their
     # reviews deleted too.
