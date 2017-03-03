@@ -21,20 +21,3 @@
     {% include 'ginthusiasm/header-search.html' %}
 </header>
 {% endblock %}
-
-{% block footer_block %}
-<header class='footer-small'>
-    <nav class='nav'>
-        <a href="{% url 'index' %}"><span>Home</span></a>
-        <a href='{% url 'about' %}'><span>About</span></a>
-        <a href="{% url 'gin_search_results' %}"><span>Gin</span></a>
-        <a href='#'><span>Rate</span></a><br />
-    </nav>
-    <nav class='nav'>
-        <a href="{% url 'index' %}"><span>Articles</span></a>
-        <a href='#'><span>Broken</span></a>
-        <a href="{% url 'gin_search_results' %}"><span>GinsAgain</span></a>
-        <a href='#'><span>Test</span></a>
-    </nav>
-</header>
-{% endblock %}
