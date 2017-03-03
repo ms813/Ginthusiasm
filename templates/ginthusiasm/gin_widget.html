@@ -4,8 +4,22 @@
             <h1>{{ gin.name }}</h1>
         </a>
         <p>{{ gin.short_description }}<p>
-        <p>Average Rating:</p>
-        {% include 'ginthusiasm/gin_rating_widget.html'%}
+
+        <div class='rating'>
+            Average Rating:
+            {% with rating_type='average_rating' rating_initial=gin.average_rating %}
+                {% include 'ginthusiasm/gin_rating_widget.html'%}
+            {% endwith %}
+
+            {% if user.is_authenticated %}
+                Your Rating:
+                {% with rating_type='user_rating' rating_initial='3' %}
+                    {% include 'ginthusiasm/gin_rating_widget.html'%}
+                {% endwith %}
+            {% else %}
+                <a href='{% url 'login' %}'>Please login to rate!</a>
+            {% endif %}
+        </div>
 
         {% include 'ginthusiasm/wishlist_button.html'%}
 

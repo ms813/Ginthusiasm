@@ -3,17 +3,22 @@ from django.contrib.auth.models import User
 from ginthusiasm.models import UserProfile, Wishlist, Gin
 from django.http import HttpResponse
 
+
 def wishlist(request, username):
-    wishlist = User.objects.get(username=username).userprofile.wishlist
+    user = User.objects.get(username=username)
+    prof = user.userprofile
+
     context = {
-        "wishlist_name" : str(wishlist),
-        "gins" : wishlist.gins.all
+        "wishlist_name": str(prof.wishlist),
+        "gins": prof.wishlist.gins.all,
+        "profile_image": prof.profile_image
     }
 
-    if request.user.is_authenticated():
+    if request.user.is_authenticated() and username == request.user.username:
         context['wishlist_name'] = "Your wishlist"
 
     return render(request, 'ginthusiasm/wishlist.html', context)
+
 
 # handles requests from 'add to/remove from wishlist' button
 def wishlist_add(request):
@@ -32,17 +37,17 @@ def wishlist_add(request):
             gin = Gin.objects.get(slug=gin_slug)
 
             # find the current user's wishlist
-            wishlist = request.user.userprofile.wishlist
+            wl = request.user.userprofile.wishlist
 
             # Add or remove gin from wishlist
-            if gin in wishlist.gins.all():
+            if gin in wl.gins.all():
                 response = "removed"
-                wishlist.gins.remove(gin)
+                wl.gins.remove(gin)
             else:
                 response = "added"
-                wishlist.gins.add(gin)
+                wl.gins.add(gin)
 
-            wishlist.save()
+                wl.save()
 
             # return a status message letting the client know if the gin was added or removed
             return HttpResponse(response)

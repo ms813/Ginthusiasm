@@ -4,10 +4,6 @@ footer {
 }
 
 .footer-small {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-around;
-	align-items: center;
 	width: 100%;
 	background-color: #212123;
 	color: #ffffff;
@@ -37,33 +33,21 @@ html, body {
 }
 
 
-.footer-small .nav{
-    height:30px;
-	flex-grow: 6;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	align-items: center;
-	text-align:center;
+.footer-small .footernav{
+
 }
 
-.footer-small .nav {
-	width: 50%;
+.footernav a {
+
 }
-.nav a {
-	width: 25%;
-	height: 80%;
-	display: table;
-}
+
 
 .nav a span{
-	display:table-cell;
-	vertical-align:middle;
+
 }
 
-.nav a:hover{
-    border-radius: 5px;
-	background-color: #ffffff;
+.footernav a:hover{
+ ''
 }
 
 html, body{

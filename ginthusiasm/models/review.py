@@ -20,24 +20,27 @@ class Review(models.Model):
         default = USER
     )
 
-    date = models.DateField(blank=True)
-    rating = models.PositiveSmallIntegerField(blank=True)
+    date = models.DateField(blank=True, null=True)
+    rating = models.PositiveSmallIntegerField(blank=True, null=True)
     summary = models.CharField(max_length=1024, blank=True)
     content = models.TextField(blank=True)
-    lat = models.FloatField(blank=True)
-    long = models.FloatField(blank=True)
+    lat = models.FloatField(blank=True, null=True)
+    long = models.FloatField(blank=True, null=True)
     #slug = models.SlugField(unique=True)
     # Assuming that when a user deletes their profile they'll want all their
     # reviews deleted too.
     user = models.ForeignKey('UserProfile', on_delete=models.CASCADE)
     gin = models.ForeignKey('Gin', on_delete=models.CASCADE, related_name='reviews')
 
-    def save(self, *args, **kwargs):
-        #self.slug = slugify(self.name)
-        super(Review, self).save(*args, **kwargs)
+    class Meta:
+        unique_together = ('user', 'gin',)
+
+    #def save(self, *args, **kwargs):
+            #self.slug = slugify(self.name)
+    #    super(Review, self).save(*args, **kwargs)
 
     def __str__(self):
-        return self.summary
+        return self.user.user.username + ": " + self.gin.name
 
     def __unicode__(self):
-        return self.summary
+        return self.user.user.username + ": " + self.gin.name

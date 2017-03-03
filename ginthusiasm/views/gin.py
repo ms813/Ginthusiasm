@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, render_to_response
 from django.http import HttpResponse
 from ginthusiasm.models import Gin, TasteTag, Distillery, Review
-from ginthusiasm.forms import GinSearchForm, AddGinForm
+from ginthusiasm.forms import GinSearchForm, AddGinForm, ReviewForm
 from django.db.models import Q
 
 from haystack.query import SearchQuerySet, SQ
@@ -59,6 +59,11 @@ def show_gin(request, gin_name_slug):
     except Gin.DoesNotExist:
         context_dict['gin'] = None
 
+    if request.user.is_authenticated:
+        context_dict['form'] = ReviewForm()
+        add_review(request, gin_name_slug)
+
+
     # Render the response and return it to the client
     return render(request, 'ginthusiasm/gin_page.html', context=context_dict)
 
@@ -93,15 +98,26 @@ def add_gin(request, distillery_name_slug):
     return render(request, 'ginthusiasm/add_gin_page.html', context=context_dict)
 
 
+
 def rate_gin(request, gin_name_slug):
-    user_rating = request.POST.get('rating')
-    print user_rating
+    if not request.user.is_anonymous():
+        if request.method == 'POST':
+            user_rating = request.POST.get('rating')
+            if user_rating > 0 or user_rating <= 5:
 
-    return HttpResponse('DONE')
+                gin = Gin.objects.get(slug=gin_name_slug)
+                userprofile = request.user.userprofile
 
+                review, created = Review.objects.get_or_create(user=userprofile, gin=gin)
 
+                review.rating = user_rating
+                review.save()
 
+                return HttpResponse('rated')
+    else:
+        return HttpResponse('unauthenticated')
 
+    return HttpResponse('not rated')
 
 # View for the gin search page
 def gin_search_results(request):
@@ -215,6 +231,7 @@ def gin_keyword_filter(search_text):
 
     return Gin.objects.filter(pk__in=primary_keys).extra(select={'ordering': ordering}, order_by=('ordering',))
 
+
 def gin_autocomplete(request):
     if request.method == 'POST':
         print request.POST
@@ -227,3 +244,35 @@ def gin_autocomplete(request):
 
     context_dict = {'gins': gins}
     return render_to_response('ginthusiasm/ajax_search.html', context=context_dict)
+
+
+def add_review(request, gin_name_slug):
+
+    gin = Gin.objects.get(slug=gin_name_slug)
+    #check = User.objects.get(username=user_name).userprofile
+    check = request.user.userprofile
+
+
+    print(gin)
+
+    form = ReviewForm()
+
+    if request.method == 'POST':
+        form = ReviewForm(request.POST)
+
+        if form.is_valid():
+            if gin:
+                if check:
+                    review = form.save(commit=False)
+                    review.gin = gin
+                    review.user = check
+                    review.review_type = check.user_type
+                    review.save()
+                    return redirect('show_gin', gin_name_slug)
+
+    else:
+        print(form.errors)
+
+
+
+    return render(request, 'ginthusiasm/add_review_widget.html', {'form':form, 'gin':gin })
