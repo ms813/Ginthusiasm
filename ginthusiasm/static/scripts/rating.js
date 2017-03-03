@@ -1,8 +1,5 @@
 $(document).ready(function() {
-
     $('.rating_widget').each(function(i, e){
-
-        console.log (e)
 
         var average_rating = $(e).find('.average_rating');
         var user_rating = $(e).find('.user_rating');
@@ -27,12 +24,8 @@ var ratingClicked = function(value, text, event) {
     }
 
     var data = $(event.target).closest('.rating_widget').data()
-
     var request = $.post('/gin/' + data.gin + '/rate/', {rating: value});
 
-    request.done(function(data, status, jqXHR) {
-        console.log (data)
-    });
+    request.done(function(data, status, jqXHR) {});
     request.fail(function(data, status, jqXHR){});
-
 }

@@ -94,13 +94,22 @@ def add_gin(request, distillery_name_slug):
     return render(request, 'ginthusiasm/add_gin_page.html', context=context_dict)
 
 
+
 def rate_gin(request, gin_name_slug):
-    user_rating = request.POST.get('rating')
+    if request.method == 'POST':
+        user_rating = request.POST.get('rating')
+        if user_rating > 0 or user_rating <= 5:
+
+            gin = Gin.objects.get(slug=gin_name_slug)
+            userprofile = request.user.userprofile
+
+            review, created = Review.objects.get_or_create(user=userprofile, gin=gin)
+
+            review.rating = user_rating
+            review.save
+
     print user_rating
-
     return HttpResponse('DONE')
-
-
 
 
 
