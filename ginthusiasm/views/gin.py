@@ -110,13 +110,12 @@ def rate_gin(request, gin_name_slug):
 
                 review.rating = user_rating
                 review.save()
+
+                return HttpResponse('rated')
     else:
         return HttpResponse('unauthenticated')
 
-    print user_rating
-    return HttpResponse('rated')
-
-
+    return HttpResponse('not rated')
 
 # View for the gin search page
 def gin_search_results(request):

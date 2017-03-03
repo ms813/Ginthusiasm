@@ -29,6 +29,8 @@ var ratingClicked = function(value, text, event) {
     request.done(function(data, status, jqXHR) {
         if (data === 'unauthenticated') {
             window.location = '/login/';
+        } else if (data === 'not rated') {
+            alert('An error occurred while rating this gin.')
         }
     });
 
