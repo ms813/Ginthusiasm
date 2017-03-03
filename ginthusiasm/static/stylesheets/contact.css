@@ -1,0 +1,42 @@
+.contact-form-title {
+    margin: 0 auto;
+    width: 59%;
+    padding: 30px;
+}
+
+.contact-form-container{
+    margin: 0 auto;
+    width: 40%;
+    min-width: 640px;
+}
+
+#contact-form {
+    display: flex;
+    flex-direction: row;
+    align-content: space-around;
+    flex-wrap: wrap;
+}
+
+form label{
+    flex-basis: 30%;
+    margin: 10px;
+    height: 35px;
+}
+
+form input[type='text'], form input[type='email'] {
+    flex-basis: 60%;
+    margin: 10px;
+    height: 35px;
+    border-radius: 5px;
+    text-align: left;
+}
+
+#contact-form #id_message {
+    flex-basis: 60%;
+    margin: 10px;
+    height: 100px;
+    border-radius: 5px;
+    text-align: left;
+    border-width: 2px;
+    border-style: inset;
+}
