@@ -26,6 +26,11 @@ var ratingClicked = function(value, text, event) {
     var data = $(event.target).closest('.rating_widget').data()
     var request = $.post('/gin/' + data.gin + '/rate/', {rating: value});
 
-    request.done(function(data, status, jqXHR) {});
+    request.done(function(data, status, jqXHR) {
+        if (data === 'unauthenticated') {
+            window.location = '/login/';
+        }
+    });
+
     request.fail(function(data, status, jqXHR){});
 }

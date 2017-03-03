@@ -98,20 +98,23 @@ def add_gin(request, distillery_name_slug):
 
 
 def rate_gin(request, gin_name_slug):
-    if request.method == 'POST':
-        user_rating = request.POST.get('rating')
-        if user_rating > 0 or user_rating <= 5:
+    if not request.user.is_anonymous():
+        if request.method == 'POST':
+            user_rating = request.POST.get('rating')
+            if user_rating > 0 or user_rating <= 5:
 
-            gin = Gin.objects.get(slug=gin_name_slug)
-            userprofile = request.user.userprofile
+                gin = Gin.objects.get(slug=gin_name_slug)
+                userprofile = request.user.userprofile
 
-            review, created = Review.objects.get_or_create(user=userprofile, gin=gin)
+                review, created = Review.objects.get_or_create(user=userprofile, gin=gin)
 
-            review.rating = user_rating
-            review.save()
+                review.rating = user_rating
+                review.save()
+    else:
+        return HttpResponse('unauthenticated')
 
     print user_rating
-    return HttpResponse('DONE')
+    return HttpResponse('rated')
 
 
 
