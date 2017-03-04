@@ -1,5 +1,10 @@
 <form id='add_review' method='post' action= '{% url "show_gin" gin.slug %}'>
     {% csrf_token %}
+
+    {% with rating_type='form_rating' rating_initial='3' %}
+        {% include 'ginthusiasm/gin_rating_widget.html' %}
+    {% endwith %}
+
     {% for field in form %}
       {{ field.help_text }}
       {{ field }}

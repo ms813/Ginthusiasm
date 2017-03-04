@@ -50,9 +50,6 @@
             <h2>Write a Review</h2>
             {% if user.is_authenticated %}
                 <div>
-                    {% with rating_type='user_rating' rating_initial='3' %}
-                        {% include 'ginthusiasm/gin_rating_widget.html' %}
-                    {% endwith %}
                     {% include "ginthusiasm/add_review_widget.html" %}
                 </div>
             {% else %}
