@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
-from django.template.defaultfilters import slugify
 from django.db import models
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 class Review(models.Model):
     # Single characters means less spaced used in DB
@@ -27,19 +28,17 @@ class Review(models.Model):
     content = models.TextField(blank=True)
     lat = models.FloatField(blank=True, null=True)
     long = models.FloatField(blank=True, null=True)
-    #slug = models.SlugField(unique=True)
-    # Assuming that when a user deletes their profile they'll want all their
-    # reviews deleted too.
     user = models.ForeignKey('UserProfile', on_delete=models.CASCADE)
     gin = models.ForeignKey('Gin', on_delete=models.CASCADE, related_name='reviews')
 
 
+    @receiver(post_save)
+    def callback(sender, **kwargs):
+        print(kwargs)
+
+
     class Meta:
         unique_together = ('user', 'gin',)
-
-    #def save(self, *args, **kwargs):
-            #self.slug = slugify(self.name)
-        #super(Review, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.user.user.username + ": " + self.gin.name
