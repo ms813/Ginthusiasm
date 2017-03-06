@@ -7,7 +7,7 @@
         {% endblock%}
         <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/header.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/base_style.css' %}">
-        <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/footer2.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/footer.css' %}">
 
         <!-- import fonts from Google -->
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:300|Roboto:300" rel="stylesheet">
@@ -34,7 +34,7 @@
         </div>
 
         {% block footer_block %}
-        <footer class='footer_c'>
+        <footer class='footer'>
             <nav class='footer_nav'>
                 <a class='left_col' href="{% url 'index' %}"><span>Home</span></a>
                 <a class='centre_col' href="{% url 'gin_search_results' %}"><span>Gins</span></a>
