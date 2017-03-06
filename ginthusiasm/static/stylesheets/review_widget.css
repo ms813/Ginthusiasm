@@ -1,0 +1,9 @@
+div.review_widget {
+
+}
+
+.review_widget .image img {
+    height: 200px;
+    max-width: 150px;
+    margin-left: 20px;
+}
