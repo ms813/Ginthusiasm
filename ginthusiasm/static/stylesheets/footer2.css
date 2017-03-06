@@ -1,48 +1,52 @@
 .footer_c {
   width: 100%;
-  background-color: #212123;
   height: 100px;
+  color: var(--foreground-alt);
 }
 
 
 .footer_c .footer_nav {
 
-  background-color:green;
+  background-color: #212123;
   height:100%;
   display: table;
   width: 100%;
   table-layout: fixed;
-  padding-left: 50px;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding:20px;
+  color: var(--foreground-alt);
 
 }
 
 .footer_c .footer_link{
   color:white;
-  padding-bottom: 10px;
 }
 
 .footer_c .left_col{
   float:left;
-  text-align: centre;
+  text-align: center;
   width:33.3%;
   padding-bottom: 10px;
+  color: white;
+
 
 }
 
 .footer_c .centre_col{
   float:left;
-  text-align: centre;
+  text-align: center;
   width:33.3%;
   padding-bottom: 10px;
+  color: white;
+
 }
 
 .footer_c .right_col{
-  float:right;
-  text-align: centre;
+  float:left;
+  text-align: center;
   width:33.3%;
   padding-bottom: 10px;
+  color: white;
+
 }
 
 
