@@ -15,7 +15,7 @@
 }
 
 .header-small .nav{
-    margin: 0 4.8%;
+    margin: 0 3%;
     height:50px;
     flex-grow: 6;
     display: flex;
@@ -65,7 +65,7 @@
 	width: 50%;
 }
 .nav a {
-	width: 20%;
+	width: 25%;
 	height: 80%;
 }
 
@@ -107,10 +107,6 @@ a.header-button {
 }
 
 a.header-button span{
-	/*
-	font-family: smitten;
-	font-size: 36px;
-	*/
 	font-family: 'Roboto Slab', serif;
 	font-size: 18px;
 	display:table-cell;

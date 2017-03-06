@@ -7,9 +7,8 @@
     <nav class='nav'>
         <a class='header-button' href="{% url 'index' %}"><span>Home</span></a>
         <a class='header-button' href="{% url 'about' %}"><span>About</span></a>
-        <a class='header-button' href="{% url 'contact' %}"><span>Contact</span></a>
-        <a class='header-button' href="#"><span>Gins</span></a>
-        <a class='header-button' href="{% url 'gin_search_results' %}"><span>Rate</span></a>
+        <a class='header-button' href="#"><span>Browse Gins</span></a>
+        <a class='header-button' href="{% url 'gin_search_results' %}"><span>Rate Gins</span></a>
     </nav>
     <div class='login-small'>
     {% if user.is_authenticated %}
