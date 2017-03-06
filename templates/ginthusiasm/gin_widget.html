@@ -13,9 +13,10 @@
 
             {% if user.is_authenticated %}
                 Your Rating:
-                {% with rating_type='user_rating' rating_initial='3' %}
+                {% with rating_type='user_rating' rating_initial=gin.user_rating %}
                     {% include 'ginthusiasm/gin_rating_widget.html'%}
                 {% endwith %}
+
             {% else %}
                 <a href='{% url 'login' %}'>Please login to rate!</a>
             {% endif %}
