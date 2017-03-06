@@ -3,17 +3,21 @@
 
 {% block title_block %} My Account{% endblock %}
 
+{% block style_block %}
+<link href="{% static 'stylesheets/my_account.css' %}" rel="stylesheet" type="text/css">
+{% endblock %}
+
 {% block body_block %}
     <h1>Welcome {{ user.first_name }}!</h1>
     <img class='profile_image' src='{{ MEDIA_URL }}{{ user.userprofile.profile_image }}'/>
-    <br>
-    <a class='ginthusiasm-button' href='{% url "wishlist" user.username %}'><span>Wishlist</span></a>
-    <a class='ginthusiasm-button'><span>Reviews</span></a>
-    <a class='ginthusiasm-button' href='{% url "logout" %}'><span>Log Out</span></a>
-
-    <form action="{% url 'profile_image_upload' %}" method="post" enctype="multipart/form-data">
+    <form id='profile_image_form' action="{% url 'profile_image_upload' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ imgform }}
         <input type="submit" value="Upload">
     </form>
+    <div class="'button-wrapper">
+        <a class='ginthusiasm-button' href='{% url "wishlist" user.username %}'><span>Wishlist</span></a>
+        <a class='ginthusiasm-button'><span>Reviews</span></a>
+        <a class='ginthusiasm-button' href='{% url "logout" %}'><span>Log Out</span></a>
+    </div>
 {% endblock %}

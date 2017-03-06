@@ -1,0 +1,14 @@
+.content img.profile_image{
+    max-width: 200px;
+}
+
+#profile_image_form{}
+
+#profile_image_form label{
+    display:none;
+}
+
+#profile_image_form input{
+    display: block;
+}
+
