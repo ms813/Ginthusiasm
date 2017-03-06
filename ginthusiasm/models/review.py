@@ -14,6 +14,7 @@ class Review(models.Model):
         (USER, 'User review'),
     )
 
+
     review_type = models.CharField(
         max_length=1,
         choices = REVIEW_TYPE_CHOICES,
@@ -31,6 +32,7 @@ class Review(models.Model):
     # reviews deleted too.
     user = models.ForeignKey('UserProfile', on_delete=models.CASCADE)
     gin = models.ForeignKey('Gin', on_delete=models.CASCADE, related_name='reviews')
+
 
     class Meta:
         unique_together = ('user', 'gin',)

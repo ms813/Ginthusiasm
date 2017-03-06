@@ -1,14 +1,11 @@
 <!-- RT - I'm not doing the template, just wanted to see if
 the reviews model & view was working -->
 <div class='review_widget'>
-  <ul>
-      <li>
-          <div class='image'>
+          <div class='review_image'>
             <img src="{{ MEDIA_URL }}{{ review.user.profile_image }}" alt='Image of'/>
           </div>
-          <h3>{{ review.user }}</h3>
-          {{ review.summary }} <br />
-          {{ review.rating }}
-      </li>
-  </ul>
+          <div class='review_details'>
+            <h3>{{ review.user }}</h3>
+            {{ review.summary }} <br />
+          </div>
 </div>
