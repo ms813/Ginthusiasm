@@ -156,8 +156,9 @@ def gin_search_results(request):
         'order': query_dict.get('order'),
     })
 
-    for gin in gin_list:
-        gin = add_user_ratings_to_gin(request.user, gin)
+    if request.user.is_authenticated():
+        for gin in gin_list:
+            gin = add_user_ratings_to_gin(request.user, gin)
 
     context_dict = {'gins': gin_list, 'advanced_search_form': form}
     return render(request, 'ginthusiasm/gin_search_page.html', context=context_dict)

@@ -7,7 +7,7 @@
         {% endblock%}
         <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/header.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/base_style.css' %}">
-        <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/footer.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/footer2.css' %}">
 
         <!-- import fonts from Google -->
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:300|Roboto:300" rel="stylesheet">
@@ -34,13 +34,17 @@
         </div>
 
         {% block footer_block %}
-        <footer class='footer-small'>
-            <nav class='footernav'>
-                <a href="{% url 'index' %}"><span>Home</span></a>
-                <a href="{% url 'index' %}"><span>Home</span></a>
-                <a href="{% url 'index' %}"><span>Home</span></a>
-                <a href="{% url 'index' %}"><span>Home</span></a>
-                <a href="{% url 'index' %}"><span>Home</span></a>
+        <footer class='footer_c'>
+            <nav class='footer_nav'>
+                <a class='left_col' href="{% url 'index' %}"><span>Left</span></a>
+                <a class='centre_col' href="{% url 'index' %}"><span>Centre</span></a>
+                <a class='right_col' href="{% url 'index' %}"><span>rightnse</span></a>
+                <a class='left_col' href="{% url 'index' %}"><span>Left</span></a>
+                <a class='centre_col' href="{% url 'index' %}"><span>cetnre</span></a>
+                <a class='right_col' href="{% url 'index' %}"><span>right</span></a>
+                <a class='left_col' href="{% url 'index' %}"><span>Left</span></a>
+                <a class='centre_col' href="{% url 'index' %}"><span>centre</span></a>
+                <a class='right_col' href="{% url 'index' %}"><span>right</span></a>
             </nav>
         </footer>
         {% endblock %}

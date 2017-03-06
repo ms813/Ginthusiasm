@@ -1,22 +1,27 @@
 footer {
-	position: fixed;
+	position: absolute;
 	bottom: 0;
 }
 
-.footer-small {
+.footer-small{
 	width: 100%;
 	background-color: #212123;
 	color: #ffffff;
 	height: 100px;
-
-	position: absolute;
+	vertical-align: baseline;
 	bottom: 0px;
 	left: 0;
 }
 
-html, body {
-	height: 100%;
+.test{
+	background-color: #212123;
+	color: #ffffff;
+	height: 100px;
 }
+
+/*html, body {
+	height: 100%;
+}*/
 
 .main_container {
 	min-height: 100%;
@@ -44,6 +49,16 @@ html, body {
 
 .nav a span{
 
+}
+
+body {
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+}
+
+main {
+	flex: 1 0 auto;
 }
 
 .footernav a:hover{

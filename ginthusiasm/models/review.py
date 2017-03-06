@@ -15,6 +15,7 @@ class Review(models.Model):
         (USER, 'User review'),
     )
 
+
     review_type = models.CharField(
         max_length=1,
         choices = REVIEW_TYPE_CHOICES,
@@ -30,9 +31,11 @@ class Review(models.Model):
     user = models.ForeignKey('UserProfile', on_delete=models.CASCADE)
     gin = models.ForeignKey('Gin', on_delete=models.CASCADE, related_name='reviews')
 
+
     @receiver(post_save)
     def callback(sender, **kwargs):
         print(kwargs)
+
 
     class Meta:
         unique_together = ('user', 'gin',)
