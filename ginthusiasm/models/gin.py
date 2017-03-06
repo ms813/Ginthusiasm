@@ -33,3 +33,14 @@ class Gin(models.Model):
 
     def __str__(self):
         return self.name
+
+    def update_average_rating(self):
+        sum = 0
+        reviews = self.reviews.all()
+        n = reviews.count()
+
+        for review in reviews:
+            sum += review.rating
+
+        self.average_rating = sum / n
+        self.save()

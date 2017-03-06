@@ -156,8 +156,24 @@ def gin_search_results(request):
         'order': query_dict.get('order'),
     })
 
+    for gin in gin_list:
+        gin = add_user_ratings_to_gin(request.user, gin)
+
     context_dict = {'gins': gin_list, 'advanced_search_form': form}
     return render(request, 'ginthusiasm/gin_search_page.html', context=context_dict)
+
+def add_user_ratings_to_gin(user, gin):
+
+    user_review = gin.reviews.filter(user=user.userprofile)
+
+    if len(user_review) > 0:
+        gin.user_rating = user_review[0].rating
+    else:
+        gin.user_rating = 0
+
+    print gin.user_rating
+
+    return gin
 
 
 # Function for generating a gin search query (Q() object) from a query dictionary

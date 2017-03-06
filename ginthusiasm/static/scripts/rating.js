@@ -3,6 +3,7 @@ $(document).ready(function() {
 
         var average_rating = $(e).find('.average_rating');
         var user_rating = $(e).find('.user_rating');
+        var form_rating = $(e).find('.form_rating');
 
         average_rating.barrating({
             theme: 'fontawesome-stars-o',
@@ -13,12 +14,18 @@ $(document).ready(function() {
         user_rating.barrating({
             theme: 'fontawesome-stars-o',
             initialRating: user_rating.data('rating'),
-            onSelect: ratingClicked,
+            onSelect: instantRatingClicked,
         });
+
+        form_rating.barrating({
+            theme: 'fontawesome-stars-o',
+            initialRating: form_rating.data('rating'),
+            onSelect: formRatingClicked,
+        })
     });
 });
 
-var ratingClicked = function(value, text, event) {
+var instantRatingClicked = function(value, text, event) {
     if (value === "") {
         value = 0;
     }
@@ -35,4 +42,12 @@ var ratingClicked = function(value, text, event) {
     });
 
     request.fail(function(data, status, jqXHR){});
+}
+
+var formRatingClicked = function(value, text, event) {
+    if (value === "") {
+        value = 0;
+    }
+
+    $(event.target).closest('.rating_widget').siblings('#id_rating').val(value);
 }
