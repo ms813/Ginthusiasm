@@ -1,12 +1,12 @@
 $(document).ready(() => {
     $('#header-search-button').click(headerSearch);
 
-    $('#header-search-field').focusout(e => {
+    /*$('.header-search').focusout(e => {
         $('#header-search-results').hide()
     });
-    $('#header-search-field').focusin(e => {
+    $('.header-search').focusin(e => {
         $('#header-search-results').show()
-    });
+    });*/
 
     // if the cursor is in the header search bar, bind the enter key to search
     $('#header-search-field').keyup(e => {
