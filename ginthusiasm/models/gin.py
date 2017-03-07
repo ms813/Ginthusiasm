@@ -36,7 +36,6 @@ class Gin(models.Model):
         return self.name
 
     def update_average_rating(self):
-        print ("HIT")
-        self.average_rating = 0
-        print self.reviews.aggregate(Avg('rating'))
-        super(Gin, self).save()
+        rating = self.reviews.aggregate(Avg('rating'))['rating__avg']
+        self.average_rating = rating
+        self.save()

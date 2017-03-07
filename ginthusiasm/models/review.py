@@ -42,8 +42,9 @@ class Review(models.Model):
 
     @receiver(post_save)
     def callback(sender, **kwargs):
-        gin = kwargs['instance'].gin
-        gin.update_average_rating()
+        r = kwargs['instance']
+        if (isinstance(r, Review)):
+            r.gin.update_average_rating()
 
 
     class Meta:
