@@ -2,7 +2,7 @@ var gin_search_url = "/gin/?keywords=";
 var distillery_search_url = "/distillery/?distillery_name=";
 var destination_url = gin_search_url;
 
-var autocomplete = gin_autocomplete();
+//var autocomplete = gin_autocomplete();
 
 $(document).ready(() => {
     $('#feature-search-button').click(featureSearch);
@@ -14,7 +14,8 @@ $(document).ready(() => {
         if(e.which === 13){
             featureSearch(e);
         } else {
-            autocomplete();
+            //autocomplete();
+            gin_autocomplete();
         }
     });
 });
