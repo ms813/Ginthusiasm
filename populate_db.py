@@ -139,39 +139,6 @@ def populate_gin():
     with open('gin_data.json') as f:
         gins = json.load(f)
 
-    """gins = [
-        {
-            "name" : "Isle of Harris Gin",
-            "price" : "35.00",
-            "short_description" : "Our new gin captures the elemental nature of the Isle of Harris, rewarding the drinker with maritime pleasures. The unique inclusion of local, hand-harvested Sugar kelp speaks of our island's deep connections to the sea while working with eight other carefully chosen botanicals.",
-            "long_description" : "Test long description",
-            "abv" : "45.0",
-            "taste_tags" : ["Sugar Kelp", "Juniper", "Coriander", "Angelica Root", "Orris Root", "Cubebs", "Bitter Orange Peel", "Licorice", "Cassia Bark"],
-            "image" : "gins/Harris-Gin.jpg",
-            "distillery" : ""
-        },
-        {
-            "name" : "Eden Mill Love Gin",
-            "price" : "30.00",
-            "short_description" : "The famous light blush Pink Gin from Eden Mill brings together an outstanding blend of local botanicals and exotic fruits. Our pink gin is a pale colour when poured and when diluted, sweet vanilla and floral notes are brought out. Show your appreciation of a great pink gin and spread the word about Love Gin.",
-            "long_description" : "Test long description",
-            "abv" : "42.0",
-            "taste_tags" : ["Juniper", "Rose Petals", "Hibiscus", "Strawberry", "Raspberry", "Vanilla", "Apples", "Pears", "Pink Grapefruit", "Rose Water"],
-            "image" : "gins/Eden-Mill-Love-Gin.jpg",
-            "distillery" : "Eden Mill"
-        },
-        {
-            "name" : "The Botanist Islay Dry Gin",
-            "price" : "35.00",
-            "short_description" : "The Botanist Gin is a progressive exploration of the botanical heritage of our Isle of Islay. 22 hand-foraged local botanicals delicately augment nine berries, barks, seeds and peels during an achingly slow distillation. This first and only Islay Dry Gin is a rare expression of the heart and soul of our remote Scottish island home.",
-            "long_description" : "Test long description",
-            "abv" : "46.0",
-            "taste_tags" : ["Menthol", "Apple Mint", "Spring Woodlands", "Juniper", "Coriander", "Aniseed", "Lemon Peel", "Orange Peel", "Thistle Honey", "Gorse Coconut", "Wild Mint"],
-            "image" : "gins/The-Botanist-Gin.jpg",
-            "distillery" : ""
-        }
-    ]"""
-
     for data in gins:
         gin, created = Gin.objects.get_or_create(name = data['name'])
 
@@ -233,8 +200,8 @@ def populate_review():
 
     for data in reviews:
         try:
-            r = Review.objects.get(user=data['user'], gin=data['gin'])
-            print(str(r) + " already exists!")
+           r = Review.objects.get(user=data['user'], gin=data['gin'])
+           print(str(r) + ' already exists!')
         except Review.DoesNotExist:
             r = Review.objects.create(
                 user=data['user'],
@@ -248,31 +215,6 @@ def populate_review():
                 long=data['long'],
             )
             print(str(r) + ' successfully created')
-
-    """
-    user = User.objects.get(username="Rozz")
-    userprofile = user.userprofile
-    gin = Gin.objects.get(name="Eden Mill Love Gin")
-    reviews_results = []
-    try:
-        reviews_results = Review.objects.get(date=data['date'])
-    except Review.DoesNotExist:
-        pass
-
-    if not reviews_results:
-        review = Review()
-        review.review_type = data['review_type']
-        review.date = data['date']
-        review.rating = data['rating']
-        review.summary = data['summary']
-        review.content = data['content']
-        review.lat = data['lat']
-        review.long = data['long']
-        review.user = data['user']
-        review.gin = data['gin']
-
-        review.save()
-    """
 
 def populate_wishlist():
     print("Populating wishlist...")
@@ -382,9 +324,7 @@ if __name__ == '__main__':
         # if no command line arguments, populate every model
         # note first cmd arg is 'populate_db.py'
 
-        # RT - had to comment out the loop below, and add
-        # these functions here to make sure DB was populating in
-        # right order
+        # These should be called in order
         populate_users()
         populate_distillery()
         populate_gin()
@@ -392,8 +332,6 @@ if __name__ == '__main__':
         populate_wishlist()
         populate_article()
 
-        # for key in models:
-        #     models[key]();
         print("Successfully finished populating all models")
     else:
         # populate each model as specified from the command line arguments

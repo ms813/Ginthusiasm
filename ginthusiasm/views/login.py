@@ -48,9 +48,6 @@ def signup(request):
             profile = UserProfile()
             profile.user = user
 
-            if 'profile_image' in request.FILES:
-                profile.profile_image = request.FILES['profile_image']
-
             profile.save()
 
             # create an empty wishlist for the new user
