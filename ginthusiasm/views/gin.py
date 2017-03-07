@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, render_to_response
 from django.http import HttpResponse
 from ginthusiasm.models import Gin, TasteTag, Distillery, Review
 from ginthusiasm.forms import GinSearchForm, AddGinForm, ReviewForm
@@ -248,7 +248,18 @@ def gin_keyword_filter(search_text):
     return Gin.objects.filter(pk__in=primary_keys).extra(select={'ordering': ordering}, order_by=('ordering',))
 
 def gin_keyword_filter_autocomplete(request):
-    print nothing
+    if request.method == 'POST':
+        print request.POST
+        search_text = request.POST.get('search_text')
+    else:
+        search_text = ''
+
+    #gins = Gin.objects.filter(name__icontains=search_text)[:3]
+
+    gins = SearchQuerySet().autocomplete(content_auto=search_text)
+
+    context_dict = {'gins': gins}
+    return render_to_response('ginthusiasm/ajax_search.html', context=context_dict)
 
 
 def add_review(request, gin_name_slug):
