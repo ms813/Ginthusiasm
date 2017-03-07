@@ -3,6 +3,7 @@
 
 {% block style_block %}
     <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/overlay.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/feature_search.css' %}">
 {% endblock %}
 
 {% block title_block %} Home{% endblock %}
@@ -25,10 +26,13 @@
             </div>
         {% endif %}
     </div>
+
+    {% include 'ginthusiasm/feature_search_widget.html' %}
 {% endblock %}
 
 {% block script_block %}
     <script src='{% static "scripts/age_verifier.js" %}'></script>
     <script src='{% static "scripts/ajax_setup.js" %}'></script>
     <script src='{% static "scripts/js.cookie.js" %}'></script>
+    <script src='{% static "scripts/feature_search.js" %}'></script>
 {% endblock %}
