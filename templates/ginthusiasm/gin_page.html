@@ -22,6 +22,10 @@
             {% lorem 10 p %}
         </p>
 
+        {% if gin.distillery %}
+            <a href="{% url 'show_distillery' gin.distillery.slug %}">See {{ gin.distillery.name }} Distillery</a>
+        {% endif %}
+
         <div class='rating'>
             {% with rating_type='average_rating' rating_initial=gin.average_rating %}
                 Average Rating: {% include 'ginthusiasm/gin_rating_widget.html'%}
