@@ -251,15 +251,13 @@ def gin_keyword_filter_autocomplete(request):
     if request.method == 'POST':
         print request.POST
         search_text = request.POST.get('search_text')
+
+        gins = SearchQuerySet().autocomplete(content_auto=search_text)[:5]
+
+        context_dict = {'gins': gins}
+        return render_to_response('ginthusiasm/ajax_search.html', context=context_dict)
     else:
-        search_text = ''
-
-    #gins = Gin.objects.filter(name__icontains=search_text)[:3]
-
-    gins = SearchQuerySet().autocomplete(content_auto=search_text)
-
-    context_dict = {'gins': gins}
-    return render_to_response('ginthusiasm/ajax_search.html', context=context_dict)
+        return redirect('index')
 
 
 def add_review(request, gin_name_slug):
