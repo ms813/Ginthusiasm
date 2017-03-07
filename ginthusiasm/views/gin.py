@@ -255,7 +255,7 @@ def add_review(request, gin_name_slug):
 
     gin = Gin.objects.get(slug=gin_name_slug)
     #check = User.objects.get(username=user_name).userprofile
-    check = request.user.userprofile
+    author = request.user.userprofile
 
 
     print(gin)
@@ -267,11 +267,12 @@ def add_review(request, gin_name_slug):
 
         if form.is_valid():
             if gin:
-                if check:
+                if author:
+                    print(form.instance)
                     review = form.save(commit=False)
                     review.gin = gin
-                    review.user = check
-                    review.review_type = check.user_type
+                    review.user = author
+                    review.review_type = author.user_type
                     review.save()
                     return redirect('show_gin', gin_name_slug)
 

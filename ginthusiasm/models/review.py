@@ -15,7 +15,6 @@ class Review(models.Model):
     # Maps user selection to variables above
 
 
-
     REVIEW_TYPE_CHOICES = (
         (BASIC, 'Basic user'),
         (ADMIN, 'Administrator'),
