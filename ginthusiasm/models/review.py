@@ -47,6 +47,7 @@ class Review(models.Model):
             r.gin.update_average_rating()
 
 
+
     class Meta:
         unique_together = ('user', 'gin',)
 
