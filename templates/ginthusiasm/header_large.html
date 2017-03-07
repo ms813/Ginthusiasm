@@ -2,22 +2,35 @@
 {% load staticfiles %}
 
 {% block header_block %}
-<header class='header-large'>
-    <a href='/'><img class='logo-large' src="{% static 'images/ginthusiasm-logo.png' %}" alt='site logo'/></a>
-    <nav class='nav'>
-        <a class='header-button' href="{% url 'index' %}"><span>Home</span></a>
-        <a class='header-button'href='{% url 'about' %}'><span>About</span></a>
-        <a class='header-button'href="{% url 'collections' %}"><span>Browse Gins</span></a>
-        <a class='header-button'href='{% url 'gin_search_results' %}'><span>Rate Gins</span></a>
-    </nav>
-    <div class='login-small'>
-    {% if user.is_authenticated %}
-        <a href='{% url "myaccount" %}'>My Account</a>
-        <a href='{% url "logout" %}'>Log Out</a>
-    {% else %}
-        <a href='{% url "login" %}'>Log In | Sign Up</a>
-    {% endif %}
+    <header class='header-large'>
+        <a href='/'><img class='logo-large' src="{% static 'images/ginthusiasm-logo.png' %}" alt='site logo'/></a>
+        <nav class='nav'>
+            <a class='header-button' href="{% url 'index' %}"><span>Home</span></a>
+            <a class='header-button' href='{% url 'about' %}'><span>About</span></a>
+            <a class='header-button' href="{% url 'collections' %}"><span>Browse Gins</span></a>
+            <a class='header-button' href='{% url 'gin_search_results' %}'><span>Rate Gins</span></a>
+        </nav>
+        <div class='login-small'>
+            {% if user.is_authenticated %}
+                <a href='{% url "myaccount" %}'>My Account</a>
+                <a href='{% url "logout" %}'>Log Out</a>
+            {% else %}
+                <a href='{% url "login" %}'>Log In | Sign Up</a>
+            {% endif %}
+        </div>
+        {% include 'ginthusiasm/header-search.html' %}
+    </header>
+{% endblock %}
+
+{% block content_block %}
+<div class="main_container_large_header">
+
+    <div class='content'>
+        {% block body_block %}
+        {% endblock %}
     </div>
-    {% include 'ginthusiasm/header-search.html' %}
-</header>
+
+    {% include 'ginthusiasm/footer.html' %}
+
+</div>
 {% endblock %}

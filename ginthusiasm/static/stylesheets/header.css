@@ -6,7 +6,7 @@
 	width: 100%;
 	background-color: var(--base-color);
 	color: var(--foreground-alt);
-	height: 50px;	
+	height: var(--header-small-height);
 }
 
 .header-small .logo{
@@ -28,7 +28,7 @@
 .header-large{
     text-align: center;
     background-color: var(--base-color);
-    height: 260px;
+    height: var(--header-large-height);
 }
 
 .header-large .logo-large{
@@ -103,7 +103,7 @@ a.header-button {
     display: table;
     color: var(--foreground-alt);
     text-decoration: none;
-	transition: background-color 200ms linear, border-radius 200ms linear;
+	transition: background-color 150ms linear, border-radius 150ms linear;
 }
 
 a.header-button span{

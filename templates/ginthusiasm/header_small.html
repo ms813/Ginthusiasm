@@ -21,3 +21,17 @@
     {% include 'ginthusiasm/header-search.html' %}
 </header>
 {% endblock %}
+
+{% block content_block %}
+<div class="main_container_small_header">
+
+    <div class='content'>
+        {% block body_block %}
+        {% endblock %}
+    </div>
+
+    {% include 'ginthusiasm/footer.html' %}
+
+</div>
+{% endblock %}
+

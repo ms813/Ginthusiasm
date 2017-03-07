@@ -11,7 +11,7 @@
 /*
     Colour variable definitions
 */
-:root{
+:root {
     --base-color: #212123;
     --base-background: #ebebeb;
     --lowlight-subtle: #2E2F33;
@@ -21,6 +21,12 @@
     --highlight-alt: #8b97b7;
     --foreground-alt: #FFFFFD;
     --body-background: #c7c9ce;
+    --header-large-height: 260px;
+    --header-small-height: 50px;
+}
+
+html, body {
+    height: 100%;
 }
 
 body {
@@ -46,14 +52,14 @@ ul {
 
 a.ginthusiasm-button {
     border-radius: 5px;
-	text-align: center;
-	background-color: var(--lowlight-subtle);
-	cursor: pointer;
-	display: inline-table;;
+    text-align: center;
+    background-color: var(--lowlight-subtle);
+    cursor: pointer;
+    display: inline-table;;
     color: var(--foreground-alt);
     text-decoration: none;
     height: 35px;
-    width:200px;
+    width: 200px;
 }
 
 a.ginthusiasm-button:hover {
@@ -61,16 +67,16 @@ a.ginthusiasm-button:hover {
 }
 
 a.ginthusiasm-button span {
-	display:table-cell;
-	vertical-align:middle;
+    display: table-cell;
+    vertical-align: middle;
 }
 
 a.ginthusiasm-tag {
     border-radius: 5px;
-	text-align: center;
-	background-color: var(--lowlight-subtle);
-	cursor: pointer;
-	display: inline-table;;
+    text-align: center;
+    background-color: var(--lowlight-subtle);
+    cursor: pointer;
+    display: inline-table;;
     color: var(--foreground-alt);
     text-decoration: none;
     padding: 5px;
@@ -82,8 +88,8 @@ a.ginthusiasm-tag:hover {
 }
 
 a.ginthusiasm-tag span {
-	display:table-cell;
-	vertical-align:middle;
+    display: table-cell;
+    vertical-align: middle;
 }
 
 .content {
@@ -92,14 +98,25 @@ a.ginthusiasm-tag span {
     margin: 0 10%;
     box-shadow: 0px 0px 100px 10px #000000;
     overflow: hidden;
+    padding-top: 40px;
+    padding-bottom: 40px;
 }
 
-.content>div {
+.content > div {
     padding: 0px 40px;
     overflow: hidden;
 }
 
-div.content {
-    padding-top: 40px;
-    padding-bottom: 40px;
+.content {
+    //margin-bottom: 100px;
+}
+
+.main_container_large_header {
+    min-height: calc(100% - var(--header-large-height));
+    position: relative;
+}
+
+.main_container_small_header{
+    min-height: calc(100% - var(--header-small-height));
+    position: relative;
 }
