@@ -43,6 +43,11 @@ class UserTestCase(TestCase):
         user = auth.get_user(self.client)
         self.assertTrue(user.is_authenticated(), "User is authenticated")
 
+        # Check the page has a log out and my account button
+        response = self.client.get("/")
+        self.assertContains(response, "My Account", msg_prefix="Logged in user has my account button")
+        self.assertContains(response, "Log Out", msg_prefix="Logged in user has log out button")
+
     # Check that the user is redirected to their 'My Account' page after logging in
     def test_user_redirect_after_login(self):
         response = self.client.post(reverse("login"), {"username": "jsmith", "password": "jsmith123"})
