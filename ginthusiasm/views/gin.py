@@ -257,7 +257,7 @@ def gin_keyword_filter_autocomplete(request):
         context_dict = {'gins': gins}
         return render_to_response('ginthusiasm/ajax_search.html', context=context_dict)
     else:
-        return redirect('index')
+        return redirect('gin_search_results')
 
 
 def add_review(request, gin_name_slug):
