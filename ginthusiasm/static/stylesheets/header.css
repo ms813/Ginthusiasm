@@ -15,13 +15,14 @@
 }
 
 .header-small .nav{
+    margin: 0 3%;
     height:50px;
-	flex-grow: 6;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	align-items: center;
-	text-align:center;
+    flex-grow: 6;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    text-align:center;
 }
 
 .header-large{
@@ -37,9 +38,10 @@
 
 .header-large .nav{
     margin-top: -5px;
+    margin: 0 10%;
     height:50px;
-	display: flex;
-	text-align:center;
+    display: flex;
+    text-align:center;
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
@@ -94,6 +96,7 @@
 	justify-content: space-around;
 	height: 100%;
 	width: 25%;
+	margin-right: 10%;
 }
 
 a.header-button {
@@ -104,10 +107,6 @@ a.header-button {
 }
 
 a.header-button span{
-	/*
-	font-family: smitten;
-	font-size: 36px;
-	*/
 	font-family: 'Roboto Slab', serif;
 	font-size: 18px;
 	display:table-cell;

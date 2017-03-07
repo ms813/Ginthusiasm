@@ -27,7 +27,7 @@ def article_listing(request):
 
     context_dict = {}
 
-    article = Article.objects.filter()
+    article = Article.objects.order_by('-date')
     context_dict['article'] = article
 
     # Go render the response and return it to the client.

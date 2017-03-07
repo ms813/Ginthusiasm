@@ -3,6 +3,8 @@
 
 {% block style_block %}
     <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/gin.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/review_widget.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/add_review.css' %}">
 
     <!-- Style sheets for rating widget -->
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
@@ -50,9 +52,6 @@
             <h2>Write a Review</h2>
             {% if user.is_authenticated %}
                 <div>
-                    {% with rating_type='user_rating' rating_initial='3' %}
-                        {% include 'ginthusiasm/gin_rating_widget.html' %}
-                    {% endwith %}
                     {% include "ginthusiasm/add_review_widget.html" %}
                 </div>
             {% else %}
@@ -82,7 +81,6 @@
 
 
     <div class='map'>
-        <h2>Map</h2>
         {% include 'ginthusiasm/map_widget.html' %}
     </div>
 

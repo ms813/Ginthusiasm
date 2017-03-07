@@ -34,13 +34,17 @@
         </div>
 
         {% block footer_block %}
-        <footer class='footer-small'>
-            <nav class='footernav'>
-                <a href="{% url 'index' %}"><span>Home</span></a>
-                <a href="{% url 'index' %}"><span>Home</span></a>
-                <a href="{% url 'index' %}"><span>Home</span></a>
-                <a href="{% url 'index' %}"><span>Home</span></a>
-                <a href="{% url 'index' %}"><span>Home</span></a>
+        <footer class='footer'>
+            <nav class='footer_nav'>
+                <a class='left_col' href="{% url 'index' %}"><span>Home</span></a>
+                <a class='centre_col' href="{% url 'gin_search_results' %}"><span>Gins</span></a>
+                <a class='right_col' href="{% url 'distillery_search_results' %}"><span>Distilleries</span></a>
+                <a class='left_col' href="{% url 'article_listing' %}"><span>Article Archive</span></a>
+                <a class='centre_col' href="{% url 'about' %}"><span>About Ginthusiasm</span></a>
+                <a class='right_col' href="{% url 'contact' %}"><span>Contact Us</span></a>
+                <a class='left_col' href="{% url 'article_month' %}"><span>Gin of the Month</span></a>
+                <a class='centre_col' href="{% url 'index' %}"><span>My Wishlist</span></a>
+                <a class='right_col' href="{% url 'myaccount' %}"><span>My Account</span></a>
             </nav>
         </footer>
         {% endblock %}

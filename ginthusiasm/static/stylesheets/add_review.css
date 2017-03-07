@@ -1,0 +1,12 @@
+div.add_review {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 50px;
+
+}
+
+.add_review .review_content{
+  background-color: black;
+  width:700px;
+
+}

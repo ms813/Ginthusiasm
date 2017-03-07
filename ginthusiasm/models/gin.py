@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 from django.template.defaultfilters import slugify
 from django.db import models
+from django.db.models import Avg
 
 
 
@@ -33,3 +34,9 @@ class Gin(models.Model):
 
     def __str__(self):
         return self.name
+
+    def update_average_rating(self):
+        print ("HIT")
+        self.average_rating = 0
+        print self.reviews.aggregate(Avg('rating'))
+        super(Gin, self).save()

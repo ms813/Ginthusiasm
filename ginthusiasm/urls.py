@@ -83,7 +83,10 @@ urlpatterns = [
     url(r'^about/$', views.about, name='about'),
 
     ##########     Contact     ##########
-    url(r'^contact/$', views.about, name='contact'),
+    url(r'^contact/$', views.contact, name='contact'),
+
+    ##########     Collections     ##########
+    url(r'^collections/$', views.collections, name='collections'),
 ]
 
 urlpatterns += gin_patterns

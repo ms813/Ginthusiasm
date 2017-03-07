@@ -4,3 +4,4 @@ from add_gin import AddGinForm
 from distillery_search import DistillerySearchForm
 from add_article import AddArticleForm
 from add_review import ReviewForm
+from contact import ContactForm

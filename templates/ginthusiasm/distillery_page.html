@@ -2,7 +2,7 @@
 {% load staticfiles %}
 
 {% block style_block %}
-        <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/distillery.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/distillery.css' %}">
 {% endblock %}
 
 {% block title_block %} {{ distillery.name }}{% endblock %}
@@ -12,56 +12,41 @@
 
         <div class='distillery-description'>
 
+            <div class="distillery-image">
+                <img class='image' src="{{ MEDIA_URL }}{{ distillery.image }}" alt='Image of {{ distillery.name }}'/>
+            </div>
+
             <h1>{{ distillery.name }}</h1>
             <p>{{ distillery.long_description }}
             </p>
             <p>
-                <a href="#">Find gins by {{ distillery.name }}</a>
+                <a href="/gin/?distillery={{ distillery.name }}">Find gins by {{ distillery.name }}</a>
             </p>
 
-        </div>
-
-        <div class="distillery-image">
-            <img class='image' src="{{ MEDIA_URL }}{{ distillery.image }}" alt='Image of {{ distillery.name }}'/>
-        </div>
-
-    </div>
-
-    <div class="distillery-contact">
-
-        <div class="contact-details">
-            <h2>Contact</h2>
-            <p>
-                Email: {{ distillery.email }}
-            </p>
-            <p>
-                Phone: {{ distillery.phone }}
-            </p>
-            <p>
-                Address: {{ distillery.address }}
-            </p>
+            <div class="contact-details">
+                <h2>Contact</h2>
+                <p>
+                    Email: {{ distillery.email }}
+                </p>
+                <p>
+                    Phone: {{ distillery.phone }}
+                </p>
+                <p>
+                    Address: {{ distillery.address }}
+                </p>
+            </div>
 
         </div>
 
         <div class='distillery-map'>
-            {% comment %}
-                MS - switching out static map for interactive map
-
-                old html:
-                <img class='map' src = {{ distillery.map_url }} />
-
-            {% endcomment %}
-
             {% include 'ginthusiasm/map_widget.html' %}
         </div>
 
     </div>
+
 {% endblock %}
 
 {% block script_block %}
-    {% comment %}
-        MS - Adding scripts required for interactive map
-    {% endcomment %}
     <script src="{% static 'scripts/map_styles.js' %}"></script>
     <script src="{% static 'scripts/google_map.js' %}"></script>
     <script async defer

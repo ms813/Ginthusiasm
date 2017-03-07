@@ -1,0 +1,20 @@
+div.review_widget {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 50px;
+
+}
+
+.review_widget .review_image img {
+    height: 100px;
+    width: 100px;
+    float:left;
+    padding-top: 20px;
+}
+
+.review_widget .review_details {
+    height: 100px;
+    float:left;
+    padding-left: 20px;
+
+}

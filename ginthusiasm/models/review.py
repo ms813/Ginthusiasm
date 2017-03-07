@@ -1,23 +1,32 @@
 from __future__ import unicode_literals
-from django.template.defaultfilters import slugify
 from django.db import models
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+
 
 class Review(models.Model):
     # Single characters means less spaced used in DB
+    BASIC = 'b'
+    ADMIN = 'a'
     EXPERT = 'e'
-    USER = 'u'
+    DISTILLERY_OWNER = 'o'
 
     # Tuple of tuples makes these choices immutable (can also be used to represent a single row from a database)
     # Maps user selection to variables above
+
+
+
     REVIEW_TYPE_CHOICES = (
-        (EXPERT, 'Expert review'),
-        (USER, 'User review'),
+        (BASIC, 'Basic user'),
+        (ADMIN, 'Administrator'),
+        (EXPERT, 'Expert reviewer'),
+        (DISTILLERY_OWNER, 'Distillery Owner'),
     )
 
     review_type = models.CharField(
         max_length=1,
-        choices = REVIEW_TYPE_CHOICES,
-        default = USER
+        choices=REVIEW_TYPE_CHOICES,
+        default=BASIC
     )
 
     date = models.DateField(blank=True, null=True)
@@ -26,18 +35,19 @@ class Review(models.Model):
     content = models.TextField(blank=True)
     lat = models.FloatField(blank=True, null=True)
     long = models.FloatField(blank=True, null=True)
-    #slug = models.SlugField(unique=True)
-    # Assuming that when a user deletes their profile they'll want all their
-    # reviews deleted too.
     user = models.ForeignKey('UserProfile', on_delete=models.CASCADE)
     gin = models.ForeignKey('Gin', on_delete=models.CASCADE, related_name='reviews')
 
+
+
+    @receiver(post_save)
+    def callback(sender, **kwargs):
+        gin = kwargs['instance'].gin
+        gin.update_average_rating()
+
+
     class Meta:
         unique_together = ('user', 'gin',)
-
-    #def save(self, *args, **kwargs):
-            #self.slug = slugify(self.name)
-    #    super(Review, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.user.user.username + ": " + self.gin.name
