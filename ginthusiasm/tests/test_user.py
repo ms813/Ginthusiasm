@@ -3,7 +3,7 @@ from django.urls import reverse
 from django.contrib import auth
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import User
-from ginthusiasm.models import UserProfile, Wishlist
+from ginthusiasm.models import UserProfile
 
 
 class UserTestCase(TestCase):
