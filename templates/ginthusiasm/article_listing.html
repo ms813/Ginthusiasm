@@ -2,6 +2,8 @@
 {% load staticfiles %}
 
 {% block style_block %}
+  <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/article_widget.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/base_style.css' %}">
 {% endblock %}
 
 {% block title_block %}Article Archive{% endblock %}
@@ -10,7 +12,7 @@
     <div>
         <h1>Article Archive</h1>
     </div>
-    
+
   <div>
     {% if article %}
       <ul>
