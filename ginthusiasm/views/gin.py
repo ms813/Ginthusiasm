@@ -47,7 +47,7 @@ def show_gin(request, gin_name_slug):
         # Get reviews from the DB split by review type, so they will
         # be accessible in the template
         expert_reviews = reviews.filter(review_type=Review.EXPERT)
-        user_reviews = reviews.filter(review_type=Review.USER)
+        user_reviews = reviews.filter(review_type=Review.BASIC)
         context_dict['expert_reviews'] = expert_reviews
         context_dict['other_reviews'] = user_reviews
         # print context_dict['expert_reviews']

@@ -3,23 +3,30 @@ from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
+
 class Review(models.Model):
     # Single characters means less spaced used in DB
+    BASIC = 'b'
+    ADMIN = 'a'
     EXPERT = 'e'
-    USER = 'u'
+    DISTILLERY_OWNER = 'o'
 
     # Tuple of tuples makes these choices immutable (can also be used to represent a single row from a database)
     # Maps user selection to variables above
-    REVIEW_TYPE_CHOICES = (
-        (EXPERT, 'Expert review'),
-        (USER, 'User review'),
-    )
 
+
+
+    REVIEW_TYPE_CHOICES = (
+        (BASIC, 'Basic user'),
+        (ADMIN, 'Administrator'),
+        (EXPERT, 'Expert reviewer'),
+        (DISTILLERY_OWNER, 'Distillery Owner'),
+    )
 
     review_type = models.CharField(
         max_length=1,
-        choices = REVIEW_TYPE_CHOICES,
-        default = USER
+        choices=REVIEW_TYPE_CHOICES,
+        default=BASIC
     )
 
     date = models.DateField(blank=True, null=True)
@@ -30,6 +37,7 @@ class Review(models.Model):
     long = models.FloatField(blank=True, null=True)
     user = models.ForeignKey('UserProfile', on_delete=models.CASCADE)
     gin = models.ForeignKey('Gin', on_delete=models.CASCADE, related_name='reviews')
+
 
 
     @receiver(post_save)
