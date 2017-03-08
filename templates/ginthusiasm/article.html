@@ -10,9 +10,11 @@
 
 {% block body_block %}
   <div class = 'article_content'>
-    <img class= 'image' src="{{ MEDIA_URL }}{{ article.image }}" alt='January gin of the month'/>
-    <h1 class = 'title'> {{ article.title }} </h1>
-  <div class = 'content'>
+    <img class= 'a_image' src="{{ MEDIA_URL }}{{ article.image }}" alt='January gin of the month'/>
+<div class='a_overlay'>
+    <h1 class = 'a_title'> {{ article.title }} </h1>
+  </div>
+  <div class = 'a_content'>
       {{ article.content }}
   </div>
 </div>
