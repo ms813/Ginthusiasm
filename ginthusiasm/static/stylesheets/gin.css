@@ -41,6 +41,10 @@ div.reviews {
     width: 300px;
 }
 
+div.search_results {
+    padding: 0px !important;
+}
+
 .search_results ul {
     list-style: none;
     padding-left: 0;

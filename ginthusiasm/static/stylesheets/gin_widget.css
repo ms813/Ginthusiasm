@@ -1,7 +1,7 @@
 div.gin_widget {
     display: flex;
     flex-direction: row;
-    padding-bottom: 50px;
+    padding: 25px 40px;
 }
 
 div.gin_widget img {
@@ -9,6 +9,10 @@ div.gin_widget img {
     max-width: 150px;
     object-fit: cover;
     margin-left: 20px;
+}
+
+div.gin_widget.False {
+    background-color: #fff;
 }
 
 div.gin_widget a.ginthusiasm-button {
