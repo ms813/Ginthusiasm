@@ -3,9 +3,7 @@ var distillery_search_url = "/distillery/?distillery_name=";
 var destination_url = gin_search_url;
 
 $(document).ready(() => {
-    $('#feature-search-button').click(featureSearch);
-    $('#Gin.tablinks').css("background-color", "#aaa");
-    $('#Distillery.tablinks').css("background-color", "#f1f1f1");
+    openTab(null, "Gin");
 
     // if the cursor is in the header search bar, bind the enter key to search
     $('#feature-search-field').keyup(e => {
@@ -59,12 +57,12 @@ function openTab(evt, tabName) {
     if (tabName === "Gin") {
         destination_url = gin_search_url;
         $('#Gin.tablinks').css("background-color", "#aaa");
-        $('#Distillery.tablinks').css("background-color", "#f1f1f1");
+        $('#Distillery.tablinks').css("background-color", $('.tab').css("background-color"));
         autocomplete = gin_autocomplete;
     } else if (tabName === "Distillery") {
         destination_url = distillery_search_url;
         $('#Distillery.tablinks').css("background-color", "#aaa");
-        $('#Gin.tablinks').css("background-color", "#f1f1f1");
+        $('#Gin.tablinks').css("background-color", $('.tab').css("background-color"));
         autocomplete = distillery_autocomplete;
     }
 }

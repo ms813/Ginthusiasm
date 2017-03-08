@@ -52,16 +52,14 @@
 
 
     <div class='reviews'>
-        <div id='review_form'>
             <h2>Write a Review</h2>
             {% if user.is_authenticated %}
-                <div>
+                <div class='add_review'>
                     {% include "ginthusiasm/add_review_widget.html" %}
                 </div>
             {% else %}
               <a href="{% url 'login' %}">Log in to review and rate this gin!! </a>
             {% endif %}
-        </div>
 
         <div class='expert_reviews'>
             <h2>Expert Reviews</h2>

@@ -5,8 +5,7 @@ the reviews model & view was working -->
             <img src="{{ MEDIA_URL }}{{ review.user.profile_image }}" alt='Image of'/>
           </div>
           <div class='review_details'>
-            <h3>{{ review.user }}</h3>
-            {{ review.date }}
-            {{ review.summary }} <br />
+            <h3>{{ review.user }} {{ review.date }}</h3>
+            {{ review.content }}
           </div>
 </div>

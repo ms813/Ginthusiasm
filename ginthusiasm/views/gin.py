@@ -268,18 +268,16 @@ def gin_keyword_filter_autocomplete(request):
         return redirect('gin_search_results')
 
 
-def add_review2(request, gin_name_slug):
-    gin = Gin.objects.get(slug=gin_name_slug)
-    # check = User.objects.get(username=user_name).userprofile
-    author = request.user.userprofile
+def add_review(request, gin_name_slug):
 
-    print(gin)
+    gin = Gin.objects.get(slug=gin_name_slug)
+    author = request.user.userprofile
 
     form = ReviewForm()
 
     if request.method == 'POST':
-
-        form = ReviewForm(request.POST)
+        form = ReviewForm(data=request.POST)
+        response_data={}
 
         if form.is_valid():
             if gin:
@@ -289,49 +287,21 @@ def add_review2(request, gin_name_slug):
                     review.user = author
                     review.review_type = author.user_type
                     review.save()
-                    return HttpResponse('')
+                    response_data['result'] = 'Create review successful'
+                    return HttpResponse(
+                        json.dumps(response_data),
+                        content_type="application/json"
+                    )
 
-    else:
-        print(form.errors)
-
-    return render(request, 'ginthusiasm/add_review_widget.html', {'form': form, 'gin': gin})
+        else:
+            print(form.errors)
 
 
-def add_review(request, gin_name_slug):
-    gin = Gin.objects.get(slug=gin_name_slug)
-    # check = User.objects.get(username=user_name).userprofile
-    author = request.user.userprofile
 
-    form = ReviewForm()
-
-    if request.method == 'POST':
-
-        if gin:
-            if author:
-                date = request.POST.get('date')
-                rating = request.POST.get('rating')
-                summary = request.POST.get('summary')
-                content = request.POST.get('content')
-                lat = request.POST.get('lat')
-                long = request.POST.get('long')
-                response_data = {}
-
-                review = Review(date=date, rating=rating, summary=summary, content=content, lat=lat, long=long)
-
-                review.gin = gin
-                review.user = author
-                review.review_type = author.user_type
-
-                review.save()
-
-                response_data['result'] = 'Create post successful!'
-
-        return HttpResponse(
-            json.dumps(response_data),
-            content_type="application/json"
-        )
     else:
         return HttpResponse(
             json.dumps({"nothing to see": "this isn't happening"}),
             content_type="application/json"
         )
+
+    return render_to_response('ginthusiasm/add_review_widget.html', {'form':form, 'gin':gin })
