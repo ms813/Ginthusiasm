@@ -187,7 +187,7 @@ def populate_review():
 
         for i in range(0, review_count):
             reviews.append({
-                "review_type" : Review.EXPERT,
+                "review_type" : UserProfile.EXPERT,
                 "date" : '2017-03-01',
                 "rating" : 3,
                 "summary" : "Cupcake ipsum dolor sit amet. Wafer macaroon biscuit chupa chups candy canes candy chocolate cake chocolate. Chocolate cake chupa chups liquorice lemon drops sweet roll cheesecake jelly pudding. Carrot cake cupcake lemon drops candy canes powder sugar plum wafer marzipan.",
