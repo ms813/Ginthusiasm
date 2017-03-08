@@ -3,7 +3,7 @@ from ginthusiasm.models import Gin
 from ginthusiasm.forms import ReviewForm
 
 """
-This view handles creation of new Reviews by a User about a Gin
+This view file handles creation of new Reviews by a User about a Gin
 """
 def add_review(request, gin_name_slug):
 

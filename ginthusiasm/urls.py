@@ -97,4 +97,3 @@ urlpatterns += wishlist_patterns
 urlpatterns += distillery_patterns
 urlpatterns += review_patterns
 urlpatterns += article_patterns
-urlpatterns += debug_patterns
