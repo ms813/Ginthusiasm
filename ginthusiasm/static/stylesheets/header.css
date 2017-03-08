@@ -1,142 +1,146 @@
-.header-small{
-	display: flex;
-	flex-direction: row;
-	justify-content: space-around;
-	align-items: center;
-	width: 100%;
-	background-color: var(--base-color);
-	color: var(--foreground-alt);
-	height: 50px;
+.header-small {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    background-color: var(--base-color);
+    color: var(--foreground-alt);
+    height: 50px;
 }
 
-.header-small .logo{
-	max-width: 100px;
-	flex-grow: 1;
+.header-small .logo {
+    max-width: 100px;
+    flex-grow: 1;
 }
 
-.header-small .nav{
-    height:50px;
-	flex-grow: 6;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	align-items: center;
-	text-align:center;
+.header-small .nav {
+    height: 50px;
+    flex-grow: 6;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
 }
 
-.header-large{
+.header-large {
     text-align: center;
     background-color: var(--base-color);
     height: 260px;
 }
 
-.header-large .logo-large{
+.header-large .logo-large {
     margin: 5px auto;
     max-height: 200px;
 }
 
-.header-large .nav{
+.header-large .nav {
     margin-top: -5px;
-    height:50px;
-	display: flex;
-	text-align:center;
+    height: 50px;
+    display: flex;
+    text-align: center;
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
 }
 
-.header-large .login-small{
-	position: absolute;
-	top: 0;
-	right: 15px;
-	height: 50px;
+.header-large .login-small {
+    position: absolute;
+    top: 0;
+    right: 15px;
+    height: 50px;
 }
 
-.header-large .header-search{
-	position: absolute;
-	top: 150px;
-	right: 0;
-	height: 50px;
+.header-large .header-search {
+    position: absolute;
+    top: 150px;
+    right: 0;
+    height: 50px;
 }
 
 .header-small .nav {
-	width: 50%;
-}
-.nav a {
-	width: 25%;
-	height: 80%;
+    width: 50%;
 }
 
-.header-small a.ginthusiasm-button, .header-large a.ginthusiasm-button  {
+.nav a {
+    width: 25%;
+    height: 80%;
+}
+
+.header-small a.ginthusiasm-button, .header-large a.ginthusiasm-button {
     height: 80%;
     width: 10%;
 }
 
-.login-small{
-	height: 100%;
-	width: 35%;
-	display: flex;
-	align-items: stretch;
-	justify-content: flex-end;
+.login-small {
+    height: 100%;
+    width: 35%;
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-end;
 }
 
 .login-small a {
-	text-align: center;
-	align-self: center;
-	flex-basis: 20%;
-	color: var(--foreground-alt);
-	text-decoration: none;
+    text-align: center;
+    align-self: center;
+    flex-basis: 20%;
+    color: var(--foreground-alt);
+    text-decoration: none;
 }
 
-.header-search{
-	display: flex;
-	align-items:center;
-	justify-content: space-around;
-	height: 100%;
-	width: 25%;
+.header-search {
+    position:relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    width: 25%;
 }
 
 a.header-button {
     display: table;
     color: var(--foreground-alt);
     text-decoration: none;
-	transition: background-color 200ms linear, border-radius 200ms linear;
+    transition: background-color 200ms linear, border-radius 200ms linear;
 }
 
-a.header-button span{
-	/*
-	font-family: smitten;
-	font-size: 36px;
-	*/
-	font-family: 'Roboto Slab', serif;
-	font-size: 18px;
-	display:table-cell;
-	vertical-align:middle;
+a.header-button span {
+    /*
+    font-family: smitten;
+    font-size: 36px;
+    */
+    font-family: 'Roboto Slab', serif;
+    font-size: 18px;
+    display: table-cell;
+    vertical-align: middle;
 }
 
-a.header-button:hover{
+a.header-button:hover {
     border-radius: 5px;
-    background-color: var(--highlight-alt)  !important;
+    background-color: var(--highlight-alt) !important;
 }
 
 .header-search a.ginthusiasm-button {
-	width: 25%;
+    width: 25%;
 }
 
-.header-search input[type='text']{
+.header-search input[type='text'] {
     height: 80%;
     width: 70%;
     font-size: 1.2em;
-    border:none;
+    border: none;
     text-align: center;
-    border-radius: 5px;
 }
 
 #header-search-results {
-	position: absolute;
-	text-align: left;
-	left: 0px;
-	top: 30px;
-	background-color: white;
-	z-index: 1;
+    display: inline;
+    position: absolute;
+    width:70%;
+    left:0;
+    z-index: 1;
+    top:46px;
+    text-align: left;
+    margin:0;
+    background-color: white;
 }
