@@ -41,8 +41,8 @@ div.reviews {
     width: 300px;
 }
 
-div.search_results {
-    padding: 0px !important;
+.content div.search_results {
+   padding: 0;
 }
 
 .search_results ul {
