@@ -5,3 +5,4 @@ from distillery_search import DistillerySearchForm
 from add_article import AddArticleForm
 from add_review import ReviewForm
 from contact import ContactForm
+from article_filter import ArticleFilter

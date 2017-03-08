@@ -28,7 +28,6 @@ class Review(models.Model):
 
     date = models.DateField(blank=True, null=True)
     rating = models.PositiveSmallIntegerField(blank=True, null=True)
-    summary = models.CharField(max_length=1024, blank=True)
     content = models.TextField(blank=True)
     lat = models.FloatField(blank=True, null=True)
     long = models.FloatField(blank=True, null=True)

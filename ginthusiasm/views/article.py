@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from ginthusiasm.models import Article
 from ginthusiasm.models import UserProfile
 from django.contrib.auth.models import User
-from ginthusiasm.forms import AddArticleForm
+from ginthusiasm.forms import AddArticleForm, ArticleFilter
 from datetime import date, datetime
 
 # View for the main article page
@@ -27,6 +27,24 @@ def article_listing(request):
 
     context_dict = {}
 
+    form = ArticleFilter()
+
+    if request.method == 'POST':
+        form = ArticleFilter(request.POST)
+        
+        if form.is_valid():
+
+            fil = form.save(commit=False)
+            fil.save()
+            return article_listing(request)
+
+        else:
+            print(form.errors)
+
+
+        context_dict['article_filter'] = form
+
+
     article = Article.objects.order_by('-date')
     context_dict['article'] = article
 
@@ -34,6 +52,7 @@ def article_listing(request):
     return render(request, 'ginthusiasm/article_listing.html', context_dict)
 
 def article_user_listing(request, user_name):
+
     context_dict = {}
     check = User.objects.get(username=user_name).userprofile
     article = Article.objects.filter(author =check)
@@ -51,8 +70,6 @@ def article_month(request):
 
     return render(request, 'ginthusiasm/article.html', context_dict)
 
-
-# View for adding a gin to the database
 def add_article(request, user_name):
     try:
         user = User.objects.get(username=user_name)
