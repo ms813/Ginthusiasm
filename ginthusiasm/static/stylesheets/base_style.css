@@ -101,10 +101,8 @@ a.ginthusiasm-tag span {
     overflow: hidden;
     padding-top: 40px;
     width: 80%;
-    padding-bottom: var(--footer-height);
     min-height: calc(100% - var(--footer-height));
-    height: 100%
-
+    flex-grow: 1;
 }
 
 .content > div {
@@ -112,12 +110,18 @@ a.ginthusiasm-tag span {
     overflow: hidden;
 }
 
-.main_container_large_header {
-    min-height: calc(100% - var(--header-large-height));
-    position: relative;
+.main_container_large_header, .main_container_small_header {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
 }
 
-.main_container_small_header{
-    min-height: calc(100% - var(--header-small-height));
-    position: relative;
+
+.main_container_large_header {
+    min-height: calc(100% - var(--header-large-height));
 }
+
+.main_container_small_header {
+    min-height: calc(100% - var(--header-small-height));
+}
+
