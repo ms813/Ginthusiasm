@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, render_to_response
 from django.http import HttpResponse
-from ginthusiasm.models import Gin, TasteTag, Distillery, Review
+from ginthusiasm.models import Gin, Distillery, Review
 from ginthusiasm.forms import GinSearchForm, AddGinForm, ReviewForm
 from django.db.models import Q
 
