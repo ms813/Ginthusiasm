@@ -4,9 +4,12 @@ from ginthusiasm.forms import ReviewForm
 
 """
 This view file handles creation of new Reviews by a User about a Gin
-"""
-def add_review(request, gin_name_slug):
 
+Whenever a Review model is saved, the gin's average rating is updated from ginthusiasm.signals
+"""
+
+
+def add_review(request, gin_name_slug):
     gin = Gin.objects.get(slug=gin_name_slug)
     check = request.user.userprofile
 
@@ -28,4 +31,4 @@ def add_review(request, gin_name_slug):
             # bad form data
             print(form.errors)
 
-    return render(request, 'ginthusiasm/add_review_widget.html', {'form':form, 'gin':gin })
+    return render(request, 'ginthusiasm/add_review_widget.html', {'form': form, 'gin': gin})
