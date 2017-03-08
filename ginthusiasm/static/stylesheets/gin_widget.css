@@ -28,17 +28,21 @@ div.gin_widget .rating > div {
 
 div.gin_widget .details a h1 {
     display:inline-block;
-    border-bottom: 2px solid transparent;
     text-decoration: none;
-    width: 0;
-    white-space: nowrap;
-    transition: 150ms ease;
 }
 
-div.gin_widget .details a h1:hover {
-    text-decoration: none;
+div.gin_widget .details a h1:after {
+    content: '';
+    display:block;
+    height:2px;
+    width: 0;
+    background: transparent;
+    transition: width 150ms ease, background-color 150ms ease;
+}
+
+div.gin_widget .details a h1:hover:after {
     width:100%;
-    border-bottom: 2px solid var(--base-color);
+    background: var(--base-color);
 }
 
 div.gin_widget .details a h1 {
