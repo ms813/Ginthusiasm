@@ -1,4 +1,4 @@
-<form id='add_review' method='post' action= '{% url "show_gin" gin.slug %}'>
+<form id='add_review' method='POST' action= '{% url "show_gin" gin.slug %}' class="add_review">
     {% csrf_token %}
 
     {% with rating_type='form_rating' rating_initial='3' %}
