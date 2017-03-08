@@ -116,7 +116,6 @@ a.ginthusiasm-tag span {
     flex-wrap: nowrap;
 }
 
-
 .main_container_large_header {
     min-height: calc(100% - var(--header-large-height));
 }

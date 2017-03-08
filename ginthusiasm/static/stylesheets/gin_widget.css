@@ -1,18 +1,17 @@
 div.gin_widget {
     display: flex;
     flex-direction: row;
-    //padding-bottom: 50px;
-    padding: 0;
+    padding-bottom: 50px;
 }
 
-.gin_widget img {
+div.gin_widget img {
     height: 200px;
     max-width: 150px;
     object-fit: cover;
     margin-left: 20px;
 }
 
-.gin_widget a.ginthusiasm-button {
+div.gin_widget a.ginthusiasm-button {
     height: 25px;
     width: 170px;
 }
@@ -23,6 +22,26 @@ div.gin_widget .rating {
     margin: 5px 0;
 }
 
-div.gin_widget .rating>div {
+div.gin_widget .rating > div {
     margin: 0 20px 0 10px;
 }
+
+div.gin_widget .details a h1 {
+    display:inline-block;
+    border-bottom: 2px solid transparent;
+    text-decoration: none;
+    width: 0;
+    white-space: nowrap;
+    transition: 150ms ease;
+}
+
+div.gin_widget .details a h1:hover {
+    text-decoration: none;
+    width:100%;
+    border-bottom: 2px solid var(--base-color);
+}
+
+div.gin_widget .details a h1 {
+    margin-top: 0;
+}
+
