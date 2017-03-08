@@ -27,6 +27,7 @@
     flex-direction: row;
     padding: 12px 12px;
     background-color: #fff;
+    height: 100%;
 }
 
 .feature_search_widget .tabcontent .search-field {
