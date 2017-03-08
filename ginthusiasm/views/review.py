@@ -1,18 +1,14 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-from ginthusiasm.models import Review, Gin
-from ginthusiasm.models import UserProfile
-from django.contrib.auth.models import User
+from ginthusiasm.models import Gin
 from ginthusiasm.forms import ReviewForm
 
+"""
+This view file handles creation of new Reviews by a User about a Gin
+"""
 def add_review(request, gin_name_slug):
 
     gin = Gin.objects.get(slug=gin_name_slug)
-    #check = User.objects.get(username=user_name).userprofile
     check = request.user.userprofile
-
-
-    print(gin)
 
     form = ReviewForm()
 
@@ -28,9 +24,8 @@ def add_review(request, gin_name_slug):
                     review.review_type = check.user_type
                     review.save()
 
-    else:
-        print(form.errors)
-
-
+        else:
+            # bad form data
+            print(form.errors)
 
     return render(request, 'ginthusiasm/add_review_widget.html', {'form':form, 'gin':gin })

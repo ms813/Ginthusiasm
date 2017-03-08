@@ -1,7 +1,10 @@
 from ginthusiasm_project.GoogleMapsAuth import api_keys
 
-# Glasgow Uni main building: 55.871873, -4.288336, zoom 16 is good
+"""
+Helper class to build static Google Maps urls
 
+Glasgow Uni main building: 55.871873, -4.288336, zoom 16 is good
+"""
 class MapHelper:
 
     def __init__(self):
@@ -44,6 +47,7 @@ class MapHelper:
             for p in coords:
                 markers = markers + str(p.get('lat'))+ ',' + str(p.get('lng')) + '|'
             markers = markers + '&'
+
         map_url = map_url + markers
 
         # update or add any values passed as optional kwargs
@@ -61,4 +65,5 @@ class MapHelper:
         else:
             # if no api key, trim the trailing ampersand
             map_url = map_url[:-1]
+
         return map_url

@@ -23,14 +23,11 @@
 {% endblock %}
 
 {% block content_block %}
-<div class="main_container_large_header">
-
-    <div class='content'>
-        {% block body_block %}
-        {% endblock %}
+    <div class="main_container_large_header">
+        <div class='content'>
+            {% block body_block %}
+            {% endblock %}
+        </div>
+        {% include 'ginthusiasm/footer.html' %}
     </div>
-
-    {% include 'ginthusiasm/footer.html' %}
-
-</div>
 {% endblock %}

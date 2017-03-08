@@ -1,18 +1,18 @@
 from django.shortcuts import render, redirect
 from ginthusiasm.models import Distillery
 from ginthusiasm.forms import DistillerySearchForm
-from django.db.models import Q
-from ginthusiasm.views import MapHelper
 
 from ginthusiasm_project.GoogleMapsAuth import api_keys
 
-# MS - to encode map coords
 import json
+
+"""
+This file contains views related to the Distillery model, including searching by distillery
+"""
+
 
 # View for the main distillery page
 def show_distillery(request, distillery_name_slug):
-    # Dictionary for key & value pairs, which are then passed to the HTML template
-    # by the render function.
     context_dict = {}
 
     try:
@@ -24,21 +24,16 @@ def show_distillery(request, distillery_name_slug):
         # 'distillery' = key, distillery = found distillery object.
         context_dict['distillery'] = distillery
 
-        # MS - interactive map code
-        #########################################################
         # add the map parameters to the context dictionary
-        coords = { 'lat' : distillery.lat, 'lng' : distillery.long }
+        coords = {'lat': distillery.lat, 'lng': distillery.long}
 
         # note the coords must be well formed json to be correctly interpreted on the client slide
-        # hence the need to json encode here
-        context_dict['coords'] = json.JSONEncoder().encode(coords)
+        context_dict['coords'] = json.dumps(coords)
         context_dict['zoom'] = 16
 
-        # grab our Google maps API key and pass it along with the context
         # add the api key if we have one
         if len(api_keys) > 0:
             context_dict['js_api_key'] = api_keys[0]
-        #########################################################
 
     except Distillery.DoesNotExist:
         context_dict['distillery'] = None
@@ -46,15 +41,15 @@ def show_distillery(request, distillery_name_slug):
     # Render the response and return it to the client
     return render(request, 'ginthusiasm/distillery_page.html', context=context_dict)
 
+
+# handles searching for distilleries from the main search widget
 def distillery_search_results(request):
     query_dict = request.GET
-    print query_dict
 
     # Execute query
-    distillery_list=[]
+    distillery_list = []
     if query_dict.get('distillery_name'):
         distillery_list = Distillery.objects.filter(name__icontains=query_dict['distillery_name'])
-        print distillery_list
 
     # If there is only one result returned then redirect straight to that page
     if len(distillery_list) == 1:

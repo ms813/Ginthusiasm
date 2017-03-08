@@ -1,6 +1,10 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 
+"""
+Renders the home page of the website
+
+Includes multiple template widgets, requiring data from many models
+"""
 def index(request):
     # Find out whether the user is over 18.
     # We use the COOKIES.get() function to obtain the 'verified' cookie.

@@ -1,5 +1,9 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+
+"""
+Renders the about page
+"""
+
 
 def about(request):
     return render(request, 'ginthusiasm/about.html')
