@@ -1,7 +1,8 @@
 div.gin_widget {
     display: flex;
     flex-direction: row;
-    padding-bottom: 50px;
+    //padding-bottom: 50px;
+    padding: 0;
 }
 
 .gin_widget img {
@@ -19,9 +20,9 @@ div.gin_widget {
 div.gin_widget .rating {
     display: flex;
     flex-direction: row;
-    margin: 5px 0px;
+    margin: 5px 0;
 }
 
 div.gin_widget .rating>div {
-    margin: 0px 20px 0px 10px;
+    margin: 0 20px 0 10px;
 }
