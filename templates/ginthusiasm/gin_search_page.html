@@ -19,7 +19,9 @@
         {% if gins.count > 0 %}
         <ul>
             {% for gin in gins %}
-                <li>{% include 'ginthusiasm/gin_widget.html' %}</li>
+                {% with alt_class=forloop.counter|divisibleby:'2' %}
+                    <li>{% include 'ginthusiasm/gin_widget.html' %}</li>
+                {% endwith %}
             {% endfor %}
         </ul>
         {% else %}

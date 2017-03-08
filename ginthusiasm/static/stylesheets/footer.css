@@ -1,11 +1,8 @@
 footer {
-    position: absolute;
-    bottom: 0;
     width: 100%;
     background-color: var(--base-color);
     color: var(--foreground-alt);
-    height: 100px;
-    left: 0;    
+    height: var(--footer-height);
 }
 
 footer a {

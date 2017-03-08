@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
-from ginthusiasm.models import UserProfile, Wishlist, Gin
+from ginthusiasm.models import Gin
 from django.http import HttpResponse
 
 

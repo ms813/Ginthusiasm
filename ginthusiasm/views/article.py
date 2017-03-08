@@ -1,37 +1,39 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 from ginthusiasm.models import Article
-from ginthusiasm.models import UserProfile
 from django.contrib.auth.models import User
 from ginthusiasm.forms import AddArticleForm, ArticleFilter
 from datetime import date, datetime
 
+"""
+Views relating to the Article model, including creating new ones and Gin of the Month
+"""
+
+
 # View for the main article page
 def article(request, article_name_slug, user_name):
-
-    context_dict={}
+    context_dict = {}
     check = User.objects.get(username=user_name).userprofile
 
     try:
         article = Article.objects.get(slug=article_name_slug, author=check)
         context_dict['article'] = article
-        print(article)
 
     except Article.DoesNotExist:
         context_dict['article'] = None
         print("No article found")
 
-    return render(request, 'ginthusiasm/article.html', context = context_dict)
+    return render(request, 'ginthusiasm/article.html', context=context_dict)
 
+
+# Renders a list of all articles
 def article_listing(request):
-
     context_dict = {}
 
     form = ArticleFilter()
 
     if request.method == 'POST':
         form = ArticleFilter(request.POST)
-        
+
         if form.is_valid():
 
             fil = form.save(commit=False)
@@ -51,20 +53,23 @@ def article_listing(request):
     # Go render the response and return it to the client.
     return render(request, 'ginthusiasm/article_listing.html', context_dict)
 
+
+# Renders a list of all articles written by a specified user
 def article_user_listing(request, user_name):
 
     context_dict = {}
     check = User.objects.get(username=user_name).userprofile
-    article = Article.objects.filter(author =check)
+    article = Article.objects.filter(author=check)
 
     context_dict['article'] = article
 
     # Go render the response and return it to the client.
     return render(request, 'ginthusiasm/article_listing.html', context_dict)
 
+# Renders gin of the month page
 def article_month(request):
     context_dict = {}
-    article = Article.objects.get(month =True)
+    article = Article.objects.get(month=True)
 
     context_dict['article'] = article
 
@@ -94,8 +99,6 @@ def add_article(request, user_name):
 
         else:
             print(form.errors)
-
-    print(datetime.now)
 
     context_dict = {'add_article_form': form, 'user': user}
     return render(request, 'ginthusiasm/add_article.html', context=context_dict)

@@ -1,13 +1,17 @@
 from django.shortcuts import render, redirect, render_to_response
 from django.http import HttpResponse
-from ginthusiasm.models import Gin, TasteTag, Distillery, Review
+from ginthusiasm.models import Gin, Distillery, Review
 from ginthusiasm.forms import GinSearchForm, AddGinForm, ReviewForm
 from django.db.models import Q
-
-
-from haystack.query import SearchQuerySet, SQ
+from haystack.query import SearchQuerySet
 from ginthusiasm_project.GoogleMapsAuth import api_keys
-import shlex, json
+import shlex
+import json
+
+"""
+This file handles creating, displaying and rating the Gin model
+"""
+
 
 # View for the main gin page
 def show_gin(request, gin_name_slug):
@@ -23,10 +27,10 @@ def show_gin(request, gin_name_slug):
         # Grab the reviews on this gin
         reviews = gin.reviews.all()
 
-        #### Map parameters ####
+        # Map parameters
         if reviews:
             # 1 or more reviews, so create a list of coordinates
-            coords = [{ 'lat' : r.lat, 'lng' : r.long } for r in reviews]
+            coords = [{'lat': r.lat, 'lng': r.long} for r in reviews]
         else:
             # 0 reviews, so center map on distillery
             distillery = gin.distillery
@@ -47,12 +51,8 @@ def show_gin(request, gin_name_slug):
 
         # Get reviews from the DB split by review type, so they will
         # be accessible in the template
-        expert_reviews = reviews.filter(review_type=Review.EXPERT)
-        user_reviews = reviews.filter(review_type=Review.BASIC)
-        context_dict['expert_reviews'] = expert_reviews
-        context_dict['other_reviews'] = user_reviews
-        # print context_dict['expert_reviews']
-        # print context_dict['other_reviews']
+        context_dict['expert_reviews'] = reviews.filter(review_type=Review.EXPERT)
+        context_dict['other_reviews'] = reviews.filter(review_type=Review.BASIC)
 
         if api_keys:
             context_dict['js_api_key'] = api_keys[0]
@@ -60,10 +60,10 @@ def show_gin(request, gin_name_slug):
     except Gin.DoesNotExist:
         context_dict['gin'] = None
 
+    # Add the review form to the template if the user is logged in
     if request.user.is_authenticated:
         context_dict['form'] = ReviewForm()
         add_review(request, gin_name_slug)
-
 
     # Render the response and return it to the client
     return render(request, 'ginthusiasm/gin_page.html', context=context_dict)
@@ -99,13 +99,18 @@ def add_gin(request, distillery_name_slug):
     return render(request, 'ginthusiasm/add_gin_page.html', context=context_dict)
 
 
-
+# Creates or updates a review for the specified gin with a user rating
+# Note this view should be called using AJAX, so it passes back a status string as a HttpResponse
 def rate_gin(request, gin_name_slug):
+    # check the user is logged in
     if not request.user.is_anonymous():
         if request.method == 'POST':
-            user_rating = request.POST.get('rating')
-            if user_rating > 0 or user_rating <= 5:
 
+            # grab the user rating from the POST data
+            user_rating = request.POST.get('rating')
+
+            # check the rating is within the allowed bounds (1-5)
+            if user_rating > 0 or user_rating <= 5:
                 gin = Gin.objects.get(slug=gin_name_slug)
                 userprofile = request.user.userprofile
 
@@ -120,10 +125,11 @@ def rate_gin(request, gin_name_slug):
 
     return HttpResponse('not rated')
 
+
 # View for the gin search page
+# Returns a list of all gins by default
 def gin_search_results(request):
     query_dict = request.GET
-    gin_list = []
 
     # order by user defined ordering
     order_by = 'relevance'
@@ -157,23 +163,23 @@ def gin_search_results(request):
         'order': query_dict.get('order'),
     })
 
+    # attach the user's saved ratings to each gin to be displayed
     if request.user.is_authenticated():
         for gin in gin_list:
-            gin = add_user_ratings_to_gin(request.user, gin)
+            add_user_ratings_to_gin(request.user, gin)
 
     context_dict = {'gins': gin_list, 'advanced_search_form': form}
     return render(request, 'ginthusiasm/gin_search_page.html', context=context_dict)
 
-def add_user_ratings_to_gin(user, gin):
 
+# helper function that gets the user's stored rating for a gin if it exists
+def add_user_ratings_to_gin(user, gin):
     user_review = gin.reviews.filter(user=user.userprofile)
 
     if len(user_review) > 0:
         gin.user_rating = user_review[0].rating
     else:
         gin.user_rating = 0
-
-    print gin.user_rating
 
     return gin
 
@@ -185,36 +191,35 @@ def create_gin_query(query_dict):
     # filter by price
     if query_dict.get('max_price'):
         queries.add(
-            ~Q(price__gt=query_dict.get('max_price'))
-            , Q.AND
+            ~Q(price__gt=query_dict.get('max_price')),
+            Q.AND
         )
     if query_dict.get('min_price'):
         queries.add(
-            ~Q(price__lt=query_dict.get('min_price'))
-            , Q.AND
+            ~Q(price__lt=query_dict.get('min_price')),
+            Q.AND
         )
 
     # filter by rating
     if query_dict.get('max_rating'):
         queries.add(
-            ~Q(average_rating__gt=query_dict.get('max_rating'))
-            , Q.AND
+            ~Q(average_rating__gt=query_dict.get('max_rating')),
+            Q.AND
         )
     if query_dict.get('min_rating'):
         queries.add(
-            ~Q(average_rating__lt=query_dict.get('min_rating'))
-            , Q.AND
+            ~Q(average_rating__lt=query_dict.get('min_rating')),
+            Q.AND
         )
 
     # filter by tag
     if query_dict.get('tags'):
         tags = shlex.split(query_dict.get('tags'))
-        print tags
         tags_query = Q()
         for tag in tags:
-            tags_query.add (
-                Q(taste_tags__name__iexact=tag)
-                , Q.OR
+            tags_query.add(
+                Q(taste_tags__name__iexact=tag),
+                Q.OR
             )
         queries.add(tags_query, Q.AND)
 
@@ -224,12 +229,13 @@ def create_gin_query(query_dict):
         distilleries_query = Q()
         for distillery in distilleries:
             distilleries_query.add(
-                Q(distillery__name__icontains=distillery)
-                , Q.OR
+                Q(distillery__name__icontains=distillery),
+                Q.OR
             )
         queries.add(distilleries_query, Q.AND)
 
     return queries
+
 
 # Filters gins by keywords, returns a QuerySet that can be further filtered
 def gin_keyword_filter(search_text):
@@ -248,11 +254,12 @@ def gin_keyword_filter(search_text):
 
     return Gin.objects.filter(pk__in=primary_keys).extra(select={'ordering': ordering}, order_by=('ordering',))
 
+# Filters gin by keyword, auto-completing via AJAX as the user types
 def gin_keyword_filter_autocomplete(request):
     if request.method == 'POST':
-        print request.POST
         search_text = request.POST.get('search_text')
 
+        # get the top 5 matching gins
         gins = SearchQuerySet().autocomplete(content_auto=search_text)[:5]
 
         context_dict = {'gins': gins}
@@ -280,8 +287,7 @@ def add_review(request, gin_name_slug):
                     review.user = author
                     review.review_type = author.user_type
                     review.save()
-
-                    response_data['result'] = 'Create post successful'
+                    response_data['result'] = 'Create review successful'
                     return HttpResponse(
                         json.dumps(response_data),
                         content_type="application/json"
@@ -290,10 +296,12 @@ def add_review(request, gin_name_slug):
         else:
             print(form.errors)
 
+
+
     else:
         return HttpResponse(
             json.dumps({"nothing to see": "this isn't happening"}),
             content_type="application/json"
         )
-        
+
     return render_to_response('ginthusiasm/add_review_widget.html', {'form':form, 'gin':gin })

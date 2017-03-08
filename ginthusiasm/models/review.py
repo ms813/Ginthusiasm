@@ -1,29 +1,20 @@
 from __future__ import unicode_literals
 from django.db import models
+from user_profile import UserProfile
+
+"""
+Represents a Review, written by a User about a Gin
+
+Each user can only write one review about each gin
+"""
 
 
 class Review(models.Model):
-    # Single characters means less spaced used in DB
-    BASIC = 'b'
-    ADMIN = 'a'
-    EXPERT = 'e'
-    DISTILLERY_OWNER = 'o'
-
-    # Tuple of tuples makes these choices immutable (can also be used to represent a single row from a database)
-    # Maps user selection to variables above
-
-
-    REVIEW_TYPE_CHOICES = (
-        (BASIC, 'Basic user'),
-        (ADMIN, 'Administrator'),
-        (EXPERT, 'Expert reviewer'),
-        (DISTILLERY_OWNER, 'Distillery Owner'),
-    )
-
+    # store the type of review, using the choices defined in the UserProfile
     review_type = models.CharField(
         max_length=1,
-        choices=REVIEW_TYPE_CHOICES,
-        default=BASIC
+        choices=UserProfile.USER_TYPE_CHOICES,
+        default=UserProfile.BASIC
     )
 
     date = models.DateField(blank=True, null=True)
@@ -34,9 +25,8 @@ class Review(models.Model):
     user = models.ForeignKey('UserProfile', on_delete=models.CASCADE)
     gin = models.ForeignKey('Gin', on_delete=models.CASCADE, related_name='reviews')
 
-
-
     class Meta:
+        # use a combination of the user and the gin as primary key
         unique_together = ('user', 'gin',)
 
     def __str__(self):

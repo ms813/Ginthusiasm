@@ -1,3 +1,7 @@
+"""
+Import all of the views so they can be accessed from outside the module
+"""
+
 from index import index
 from about import about
 from contact import contact
@@ -9,6 +13,3 @@ from gin import show_gin, add_gin, gin_search_results, rate_gin, gin_keyword_fil
 from distillery import show_distillery, distillery_search_results
 from review import add_review
 from collections import collections
-
-# debug
-from map_test import maptest

@@ -21,8 +21,10 @@
     --highlight-alt: #8b97b7;
     --foreground-alt: #FFFFFD;
     --body-background: #c7c9ce;
+
     --header-large-height: 260px;
     --header-small-height: 50px;
+    --footer-height: 100px;
 }
 
 html, body {
@@ -94,26 +96,31 @@ a.ginthusiasm-tag span {
 
 .content {
     background-color: var(--body-background);
-    /*padding: 50px 40px;*/
     margin: 0 10%;
-    box-shadow: 0px 0px 100px 10px #000000;
+    box-shadow: 0 0 100px 10px #000000;
     overflow: hidden;
     padding-top: 40px;
-    padding-bottom: 40px;
-    height: 100%;    
+    width: 80%;
+    min-height: calc(100% - var(--footer-height));
+    flex-grow: 1;
 }
 
 .content > div {
-    padding: 0px 40px;
+    padding: 0 40px;
     overflow: hidden;
+}
+
+.main_container_large_header, .main_container_small_header {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
 }
 
 .main_container_large_header {
     min-height: calc(100% - var(--header-large-height));
-    position: relative;
 }
 
-.main_container_small_header{
+.main_container_small_header {
     min-height: calc(100% - var(--header-small-height));
-    position: relative;
 }
+

@@ -118,7 +118,7 @@ header nav a span {
 
 header nav a:hover{
     border-radius: 5px;
-    background-color: var(--highlight-alt)  !important;
+    background-color: var(--highlight-alt);
 }
 
 header .header-search a.ginthusiasm-button {
