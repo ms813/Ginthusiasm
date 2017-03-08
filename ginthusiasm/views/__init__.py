@@ -1,3 +1,7 @@
+"""
+Import all of the views so they can be accessed from outside the module
+"""
+
 from index import index
 from about import about
 from contact import contact
