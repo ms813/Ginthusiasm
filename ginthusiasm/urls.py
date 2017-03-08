@@ -4,6 +4,11 @@ from django.contrib.auth.views import password_reset, password_reset_done, passw
 
 from ginthusiasm import views
 
+"""
+The URL patterns have been split up into several arrays in an attempt to keep
+routes for different models clearly separate
+"""
+
 ##########     Gin     ##########
 gin_patterns = [
     url(r'^gin-search/$', views.gin_keyword_filter_autocomplete, name='gin_autocomplete'),
@@ -77,6 +82,7 @@ article_patterns = [
     url(r'^gin-of-the-month/$', views.article_month, name='article_month'),
 ]
 
+# Define the misc url patterns here
 urlpatterns = [
     ##########     Index     ##########
     url(r'^$', views.index, name='index'),
@@ -91,6 +97,7 @@ urlpatterns = [
     url(r'^collections/$', views.collections, name='collections'),
 ]
 
+# collate all of the urls into the urlpatterns list
 urlpatterns += gin_patterns
 urlpatterns += user_patterns
 urlpatterns += wishlist_patterns

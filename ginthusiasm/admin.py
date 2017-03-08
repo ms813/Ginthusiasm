@@ -1,6 +1,10 @@
 from django.contrib import admin
 from ginthusiasm.models import Article, Distillery, Gin, TasteTag, Review, UserProfile, Wishlist
 
+"""
+Register all of the models with the admin interface
+"""
+
 admin.site.register(Article)
 admin.site.register(Distillery)
 admin.site.register(Gin)
