@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from ginthusiasm.models import Article
 from django.contrib.auth.models import User
-from ginthusiasm.forms import AddArticleForm, ArticleFilter
+from ginthusiasm.forms import AddArticleForm
 from datetime import date, datetime
 
 """
@@ -28,24 +28,6 @@ def article(request, article_name_slug, user_name):
 # Renders a list of all articles
 def article_listing(request):
     context_dict = {}
-
-    form = ArticleFilter()
-
-    if request.method == 'POST':
-        form = ArticleFilter(request.POST)
-
-        if form.is_valid():
-
-            fil = form.save(commit=False)
-            fil.save()
-            return article_listing(request)
-
-        else:
-            print(form.errors)
-
-
-        context_dict['article_filter'] = form
-
 
     article = Article.objects.order_by('-date')
     context_dict['article'] = article
