@@ -31,9 +31,7 @@
         </a>
     </div>
 
-    <div class='image'>
-        <a href="{% url 'show_gin' gin.slug %}">
-            <img src="{{ MEDIA_URL }}{{ gin.image }}" alt='Image of {{ gin.name }}'/>
-        </a>
-    </div>
+    <a href="{% url 'show_gin' gin.slug %}">
+        <img src="{{ MEDIA_URL }}{{ gin.image }}" alt='Image of {{ gin.name }}'/>
+    </a>
 </div>

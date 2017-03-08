@@ -1,7 +1,5 @@
 from __future__ import unicode_literals
 from django.db import models
-from django.db.models.signals import post_save
-from django.dispatch import receiver
 
 
 class Review(models.Model):
@@ -37,11 +35,6 @@ class Review(models.Model):
     user = models.ForeignKey('UserProfile', on_delete=models.CASCADE)
     gin = models.ForeignKey('Gin', on_delete=models.CASCADE, related_name='reviews')
 
-
-
-    @receiver(post_save)
-    def callback(sender, **kwargs):
-        print(kwargs)
 
 
     class Meta:

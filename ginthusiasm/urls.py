@@ -6,6 +6,7 @@ from ginthusiasm import views
 
 ##########     Gin     ##########
 gin_patterns = [
+    url(r'^gin-search/$', views.gin_keyword_filter_autocomplete, name='gin_autocomplete'),
     url(r'^gin/$', views.gin_search_results, name='gin_search_results'),
     url(r'^gin/(?P<gin_name_slug>[\w\-]+)/$', views.show_gin, name='show_gin'),
     url(r'^gin/(?P<gin_name_slug>[\w\-]+)/rate/$', views.rate_gin, name='rate_gin'),

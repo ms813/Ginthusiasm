@@ -3,12 +3,12 @@
 
 {% block header_block %}
 <header class='header-small'>
-    <a href='/'><img class='logo' src="{% static 'images/ginthusiasm-logo.png' %}" alt='site logo'/></a>
+    <a href='/'><img src="{% static 'images/ginthusiasm-logo.png' %}" alt='site logo'/></a>
     <nav class='nav'>
-        <a class='header-button' href="{% url 'index' %}"><span>Home</span></a>
-        <a class='header-button' href="{% url 'about' %}"><span>About</span></a>
-        <a class='header-button' href="{% url 'collections' %}"><span>Browse Gins</span></a>
-        <a class='header-button' href="{% url 'gin_search_results' %}"><span>Rate Gins</span></a>
+        <a href="{% url 'index' %}"><span>Home</span></a>
+        <a href="{% url 'about' %}"><span>About</span></a>
+        <a href="{% url 'collections' %}"><span>Browse Gins</span></a>
+        <a href="{% url 'gin_search_results' %}"><span>Rate Gins</span></a>
     </nav>
     <div class='login-small'>
     {% if user.is_authenticated %}
@@ -21,3 +21,17 @@
     {% include 'ginthusiasm/header-search.html' %}
 </header>
 {% endblock %}
+
+{% block content_block %}
+<div class="main_container_small_header">
+
+    <div class='content'>
+        {% block body_block %}
+        {% endblock %}
+    </div>   
+
+    {% include 'ginthusiasm/footer.html' %}
+
+</div>
+{% endblock %}
+
