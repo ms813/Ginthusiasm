@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, render_to_response
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
 from ginthusiasm.models import Gin, Distillery, Review, UserProfile
 from ginthusiasm.forms import GinSearchForm, AddGinForm, ReviewForm
 from distillery import show_distillery
@@ -72,6 +73,7 @@ def show_gin(request, gin_name_slug):
 
 
 # View for adding a gin to the database
+@login_required
 def add_gin(request, distillery_name_slug):
     try:
         distillery = Distillery.objects.get(slug=distillery_name_slug)
@@ -283,7 +285,7 @@ def gin_keyword_filter_autocomplete(request):
     else:
         return redirect('gin_search_results')
 
-
+@login_required
 def add_review(request, gin_name_slug):
     gin = Gin.objects.get(slug=gin_name_slug)
     author = request.user.userprofile

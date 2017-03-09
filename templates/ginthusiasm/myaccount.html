@@ -33,8 +33,21 @@
         {% comment %}
             Put 'add gin' button on the page if user is a distillery owner
         {% endcomment %}
-        {% if user.userprofile.user_type == 'o' %}
-            <a class='ginthusiasm-button' href='#'><span>Add Gin</span></a>
+        {% if distilleries %}
+
+            <a id='add-gin-btn'
+               class='ginthusiasm-button'
+               href='{% url "add_gin" distilleries.first.slug %}'>
+                <span>Add Gin
+                <select id='distillery-select'>
+                {% for d in distilleries %}
+                    <option value="{{ d.slug }}">{{ d.name }}</option>
+                {% endfor %}
+            </select></span>
+            </a>
         {% endif %}
     </div>
+{% endblock %}
+{% block script_block %}
+    <script src="{% static 'scripts/add_gin_select.js' %}"></script>
 {% endblock %}

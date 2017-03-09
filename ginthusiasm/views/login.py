@@ -88,6 +88,7 @@ def signup(request):
 @login_required
 def myaccount(request):
     userprofile = request.user.userprofile
+    context = {}
 
     if request.method == 'POST':
 
@@ -102,9 +103,11 @@ def myaccount(request):
             # invalid form data
             print("Error uploading profile image", form.errors)
     else:
-        form = UploadFileForm()
+        from ginthusiasm.models import Distillery
+        context['form'] = UploadFileForm()
+        context['distilleries'] = Distillery.objects.filter(owner=userprofile)
 
-    return render(request, 'ginthusiasm/myaccount.html', {'imgform': form})
+    return render(request, 'ginthusiasm/myaccount.html', context)
 
 
 # Log the current user out
