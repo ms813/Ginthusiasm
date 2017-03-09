@@ -52,6 +52,14 @@ ul {
     padding-left: 0;
 }
 
+input {
+    padding: 1px;
+}
+
+select {
+    padding: 1px;
+}
+
 a.ginthusiasm-button {
     //border-radius: 5px;
     text-align: center;
