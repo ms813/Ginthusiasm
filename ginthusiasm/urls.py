@@ -15,8 +15,7 @@ gin_patterns = [
     url(r'^gin/$', views.gin_search_results, name='gin_search_results'),
     url(r'^gin/(?P<gin_name_slug>[\w\-]+)/$', views.show_gin, name='show_gin'),
     url(r'^gin/(?P<gin_name_slug>[\w\-]+)/rate/$', views.rate_gin, name='rate_gin'),   
-    url(r'^gin/(?P<gin_name_slug>[\w\-]+)/review/$', views.add_review, name='add_review')
-
+    url(r'^gin/(?P<gin_name_slug>[\w\-]+)/review/$', views.add_review, name='add_review'),
 ]
 
 ##########     User     ##########
@@ -39,8 +38,7 @@ user_patterns = [
         name='password_reset'),
 
     # after the reset email has been sent
-    url(r'^password-reset/done/$',
-        password_reset_done),
+    url(r'^password-reset/done/$', password_reset_done, name='password_reset_done'),
 
     # sets new password after email link clicked
     url(r'^password-reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
@@ -49,8 +47,7 @@ user_patterns = [
         name='password_reset_confirm'),
 
     # confirms password has been changed
-    url(r'^password-reset/complete/$',
-        password_reset_complete),
+    url(r'^password-reset/complete/$', password_reset_complete, name='password_reset_complete'),
 ]
 
 ##########     Wishlist     ##########

@@ -118,6 +118,7 @@ def populate_distillery():
             distillery.image = data['image']
             distillery.lat = data['lat']
             distillery.long = data['long']
+            distillery.owner = User.objects.get(username="Charlie").userprofile
 
             distillery.save()
 
@@ -285,6 +286,14 @@ def populate_users():
             "password" : make_password("bobtest"),
             "user_type" : UserProfile.BASIC
         },
+        {
+            "username": "Charlie",
+            "first_name": "Charles",
+            "last_name": "Charleston",
+            "email": "charlie@doesntexist.com",
+            "password": make_password("charlietest"),
+            "user_type": UserProfile.DISTILLERY_OWNER
+        }
     ]
 
     for data in users:

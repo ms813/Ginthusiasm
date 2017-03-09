@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, render_to_response
 from django.http import HttpResponse
 from ginthusiasm.models import Gin, Distillery, Review, UserProfile
 from ginthusiasm.forms import GinSearchForm, AddGinForm, ReviewForm
+from distillery import show_distillery
 from django.db.models import Q
 from haystack.query import SearchQuerySet
 from ginthusiasm_project.GoogleMapsAuth import api_keys
@@ -79,6 +80,18 @@ def add_gin(request, distillery_name_slug):
 
     form = AddGinForm()
 
+    # Check that the user is logged in, send them to the distillery page
+    if request.user.is_anonymous():
+        return show_distillery(request, distillery_name_slug)
+
+    # and is either the distillery owner or an admin
+    is_admin = request.user.userprofile.user_type == UserProfile.ADMIN
+    owns_distillery = request.user.userprofile == distillery.owner
+
+    # if the user doesnt have privileges, send them to the distillery page
+    if not(is_admin or owns_distillery):
+        return show_distillery(request, distillery_name_slug)
+
     if request.method == 'POST':
         form = AddGinForm(request.POST)
         if form.is_valid():
@@ -97,7 +110,8 @@ def add_gin(request, distillery_name_slug):
             print(form.errors)
 
     context_dict = {'add_gin_form': form, 'distillery': distillery}
-    return render(request, 'ginthusiasm/add_gin_page.html', context=context_dict)
+    return render(request, 'ginthusiasm/add_gin_page.html',
+                  context=context_dict)
 
 
 # Creates or updates a review for the specified gin with a user rating
@@ -255,6 +269,7 @@ def gin_keyword_filter(search_text):
 
     return Gin.objects.filter(pk__in=primary_keys).extra(select={'ordering': ordering}, order_by=('ordering',))
 
+
 # Filters gin by keyword, auto-completing via AJAX as the user types
 def gin_keyword_filter_autocomplete(request):
     if request.method == 'POST':
@@ -270,7 +285,6 @@ def gin_keyword_filter_autocomplete(request):
 
 
 def add_review(request, gin_name_slug):
-
     gin = Gin.objects.get(slug=gin_name_slug)
     author = request.user.userprofile
 
@@ -278,12 +292,12 @@ def add_review(request, gin_name_slug):
 
     if request.method == 'POST':
         form = ReviewForm(data=request.POST)
-        response_data={}
+        response_data = {}
 
         ## Catherine - add postcode from review form here
         postcode = "G117PY"
         mh = MapHelper()
-        geodata = mh.postcodeToLatLng(postcode);               
+        geodata = mh.postcodeToLatLng(postcode);
         # {'lat' : x, 'lng' : y}
 
         if form.is_valid():
@@ -311,4 +325,4 @@ def add_review(request, gin_name_slug):
             content_type="application/json"
         )
 
-    return render_to_response('ginthusiasm/add_review_widget.html', {'form':form, 'gin':gin })
+    return render_to_response('ginthusiasm/add_review_widget.html', {'form': form, 'gin': gin})

@@ -20,6 +20,8 @@ class Distillery(models.Model):
     lat = models.FloatField(blank=True)
     long = models.FloatField(blank=True)
 
+    owner = models.ForeignKey("UserProfile", blank=True, null=True, related_name='distillery')
+
     # *args, **kwargs = a way of specifying that a method/function can take
     # extra parameters depending on future use (e.g. if need to save a Distillery
     # in a specific way with something models.Model provides). *args = arguments, and
