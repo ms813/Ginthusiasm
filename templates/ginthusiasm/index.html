@@ -3,14 +3,16 @@
 
 {% block style_block %}
     <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/overlay.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/feature_search.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/index.css' %}">
 {% endblock %}
 
 {% block title_block %} Home{% endblock %}
 
 {% block body_block %}
-    <div>
+    <!--<div>
         <h1>Ginthusiasm is go!</h1> {% lorem 3 p%}
-    </div>
+    </div>-->
 
     <div>
         {% if not verified_age %}
@@ -25,10 +27,19 @@
             </div>
         {% endif %}
     </div>
+
+    <div id='index-row1'>
+        <div class='welcome'>
+            <h1>Welcome to Ginthusiasm!</h1>
+            <p>Our welcome message</p>
+        </div>
+        {% include 'ginthusiasm/feature_search_widget.html' %}
+    </div>
 {% endblock %}
 
 {% block script_block %}
     <script src='{% static "scripts/age_verifier.js" %}'></script>
     <script src='{% static "scripts/ajax_setup.js" %}'></script>
     <script src='{% static "scripts/js.cookie.js" %}'></script>
+    <script src='{% static "scripts/feature_search.js" %}'></script>
 {% endblock %}

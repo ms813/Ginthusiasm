@@ -22,6 +22,10 @@
             {% lorem 10 p %}
         </p>
 
+        {% if gin.distillery %}
+            <a href="{% url 'show_distillery' gin.distillery.slug %}">See {{ gin.distillery.name }} Distillery</a>
+        {% endif %}
+
         <div class='rating'>
             {% with rating_type='average_rating' rating_initial=gin.average_rating %}
                 Average Rating: {% include 'ginthusiasm/gin_rating_widget.html'%}
@@ -47,17 +51,15 @@
 
 
 
-    <div class='reviews'>
-        <div id='review_form'>
+    <div class='reviews' id='review'>
             <h2>Write a Review</h2>
             {% if user.is_authenticated %}
-                <div>
+                <div class='add_review'>
                     {% include "ginthusiasm/add_review_widget.html" %}
                 </div>
             {% else %}
               <a href="{% url 'login' %}">Log in to review and rate this gin!! </a>
             {% endif %}
-        </div>
 
         <div class='expert_reviews'>
             <h2>Expert Reviews</h2>
@@ -102,4 +104,7 @@
 
     <script src="{% static 'scripts/jquery.barrating.js' %}"></script>
     <script src="{% static 'scripts/rating.js' %}"></script>
+    <script src="{% static 'scripts/add_review.js' %}"></script>
+
+
 {% endblock %}

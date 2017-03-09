@@ -2,38 +2,30 @@ div.article_content {
     flex-direction: wrap;
 }
 
-.article_content .image {
-  position: relative;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  z-index: 0;
+.article_content .a_image {
+    position: relative;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    z-index: 0;
 }
 
-.article_content .title {
-  position: relative;
-  top: -100px;
-  left: 0px;
-  padding-left:40px;
-  color: red;
-  z-index: 0;
-  background-color: white;
+.article_content .a_overlay {
+    background-color: rgba(255, 255, 255, 0.4);
+    position: relative;
+    top: -125px;
+    width: 40%;
+    height: 100px;
+
 }
 
-.article_content .content {
-  position: relative;
-  padding: 20px;
-  top: -50px;
-  z-index: 0;
-  font-family:garamond;
+.article_content .a_title {
+    text-align: center;
+
 }
 
-/*.article_content .overlay {
-  position: relative;
-  background-color: white;
-  width = 40px;
-  height = 400px;
-  top: -100px;
-  left: 40px;
-  z-index=0;
-}*/
+.article_content .a_content {
+    position: relative;
+    top: -100px;
+    z-index: 0;
+}

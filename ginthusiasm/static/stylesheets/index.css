@@ -1,0 +1,25 @@
+#index-row1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 260px;
+    margin-bottom: 20px;
+}
+
+.feature_search_widget {
+    width: 70%;
+    height: 100%;
+}
+
+.welcome {
+    width: 30%;
+    margin-right: 20px;
+    padding: 20px;
+    background-color: #fff;
+    align-items: center;
+    text-align: center;
+}
+
+.welcome h1 {
+    font-size: 20px;
+}

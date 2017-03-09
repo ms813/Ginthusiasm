@@ -1,12 +1,17 @@
 from ginthusiasm_project.GoogleMapsAuth import api_keys
+import requests
 
-# Glasgow Uni main building: 55.871873, -4.288336, zoom 16 is good
+"""
+Helper class to build static Google Maps urls
 
+Glasgow Uni main building: 55.871873, -4.288336, zoom 16 is good
+"""
 class MapHelper:
 
     def __init__(self):
         self.urls = {
-            'static' : 'https://maps.googleapis.com/maps/api/staticmap'
+            'static' : 'https://maps.googleapis.com/maps/api/staticmap',
+            'geodata' : 'http://maps.googleapis.com/maps/api/geocode/',
         }
 
         # See https://developers.google.com/maps/documentation/static-maps/intro
@@ -44,6 +49,7 @@ class MapHelper:
             for p in coords:
                 markers = markers + str(p.get('lat'))+ ',' + str(p.get('lng')) + '|'
             markers = markers + '&'
+
         map_url = map_url + markers
 
         # update or add any values passed as optional kwargs
@@ -61,4 +67,31 @@ class MapHelper:
         else:
             # if no api key, trim the trailing ampersand
             map_url = map_url[:-1]
+
         return map_url
+
+    # Get the center lat and long from a postcode using google geocoding
+    def postcodeToLatLng(self, postcode):
+        # see https://developers.google.com/maps/documentation/geocoding/intro
+        postcode = postcode.replace(" ", "")
+        url = self.urls['geodata'] + 'json?address=' + postcode;        
+
+        response = requests.get(url).json()
+
+        results = response['results']
+        for r in results:
+            check_postcode = r.get('address_components')[0].get('long_name').replace(" ", "")
+            if check_postcode == postcode:
+                bounds = r.get('geometry').get('bounds')
+
+                ne = bounds.get('northeast')
+                sw = bounds.get('southwest')
+
+                mid = {
+                    'lat' : (ne['lat'] - sw['lat']) / 2 + sw['lat'],
+                    'lng' : (ne['lng'] - sw['lng']) / 2 + sw['lng']
+                }
+
+                return mid
+        return None
+

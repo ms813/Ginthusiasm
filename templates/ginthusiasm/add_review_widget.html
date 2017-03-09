@@ -1,13 +1,15 @@
-<form id='add_review' method='post' action= '{% url "show_gin" gin.slug %}'>
-    {% csrf_token %}
-
-    {% with rating_type='form_rating' rating_initial='3' %}
-        {% include 'ginthusiasm/gin_rating_widget.html' %}
-    {% endwith %}
-
+<div id="thanks" style="display: none;">
+        <h4>Thank you for submitting your review!</h4>
+</div>
+<form id="add_review" method="post">
+    {% csrf_token %}    
     {% for field in form %}
       {{ field.help_text }}
       {{ field }}
     {% endfor %}
-    <input type="submit" name="submit" value="Add Review" />
+    {% with rating_type='form_rating' rating_initial='3' %}
+        {% include 'ginthusiasm/gin_rating_widget.html' %}
+    {% endwith %}
+    <a id='add-review-btn' class='ginthusiasm-button'><span>Add Review</span></a>
+    <a id='location-btn' class='ginthusiasm-button'><span>Tag review with current location</span></a>
 </form>

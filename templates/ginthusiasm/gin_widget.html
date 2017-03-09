@@ -1,9 +1,9 @@
-<div class='gin_widget' >
+<div class='gin_widget {{ alt_class }}'>
     <div class=details>
         <a href="{% url 'show_gin' gin.slug %}">
             <h1>{{ gin.name }}</h1>
         </a>
-        <p>{{ gin.short_description }}<p>
+        <p>{{ gin.short_description }}</p>
 
         <div class='rating'>
             Average Rating:
@@ -16,24 +16,24 @@
                 {% with rating_type='user_rating' rating_initial=gin.user_rating %}
                     {% include 'ginthusiasm/gin_rating_widget.html'%}
                 {% endwith %}
-
+                <strong class="message" hidden="True"></strong>
             {% else %}
                 <a href='{% url 'login' %}'>Please login to rate!</a>
             {% endif %}
         </div>
 
-        {% include 'ginthusiasm/wishlist_button.html'%}
+        <span>
+            {% include 'ginthusiasm/wishlist_button.html'%}
 
-        <a class='ginthusiasm-button' href="{% url 'show_gin' gin.slug %}#review_form">
-            <span>
-                Write Review
-            </span>
-        </a>
+            <a class='ginthusiasm-button' href="{% url 'show_gin' gin.slug %}#review">
+                <span>
+                    Write Review
+                </span>
+            </a>
+        </span>
     </div>
 
-    <div class='image'>
-        <a href="{% url 'show_gin' gin.slug %}">
-            <img src="{{ MEDIA_URL }}{{ gin.image }}" alt='Image of {{ gin.name }}'/>
-        </a>
-    </div>
+    <a href="{% url 'show_gin' gin.slug %}">
+        <img src="{{ MEDIA_URL }}{{ gin.image }}" alt='Image of {{ gin.name }}'/>
+    </a>
 </div>

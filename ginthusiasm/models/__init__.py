@@ -1,3 +1,7 @@
+"""
+Import all the models here so they can be accessed outside of the module
+"""
+
 from article import Article
 from distillery import Distillery
 from gin import Gin, TasteTag

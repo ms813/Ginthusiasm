@@ -1,14 +1,41 @@
-.content img.profile_image{
+.content .my-account {
+    display: flex;
+}
+
+.content .my-account .profile-image {
+    display: inline-flex;
+    flex-direction: column;
+    flex-basis: 25%;
+}
+
+.content .my-account .button-wrapper {
+    display: inline-flex;
+    flex-basis: 50%;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: space-around;
+    align-items: center;
+    flex-grow: 1;
+
+    /* Same height as profile img form */
+    padding-bottom: 42px;
+}
+
+.content img {
+    max-width: 200px;
+    overflow: hidden;
+}
+
+#profile_image_form {
+    display: inline-block;
     max-width: 200px;
 }
 
-#profile_image_form{}
-
-#profile_image_form label{
-    display:none;
+#profile_image_form label {
+    display: none;
 }
 
-#profile_image_form input{
+#profile_image_form input {
     display: block;
 }
 

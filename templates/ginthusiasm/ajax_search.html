@@ -1,5 +1,7 @@
 {% if gins.count > 0 %}
     {% for gin in gins %}
-        <li><a href="{% url 'show_gin' gin.slug %}">{{ gin.name }}</a></li>
+
+        <li><a href="{% url 'show_gin' gin.object.slug %}">{{ gin.object.name }}</a></li>
+
     {% endfor %}
 {% endif %}

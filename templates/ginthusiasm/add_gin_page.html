@@ -7,6 +7,7 @@
 {% block title_block %} Add Gin{% endblock %}
 
 {% block body_block %}
+    <h1>Adding new gin to the {{ distillery.name }} distillery</h1>
 <div>
     <form id='add_gin_form' method='post' action='/distillery/{{ distillery.slug }}/add-gin/'
         enctype="multipart/form-data">

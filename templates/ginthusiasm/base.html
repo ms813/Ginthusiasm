@@ -1,57 +1,39 @@
 <!doctype html>
 {% load staticfiles %}
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        {% block style_block %}
-        {% endblock%}
-        <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/header.css' %}">
-        <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/base_style.css' %}">
-        <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/footer.css' %}">
+<head>
 
-        <!-- import fonts from Google -->
-        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:300|Roboto:300" rel="stylesheet">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    {% block style_block %}
+    {% endblock %}
+    <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/header.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/base_style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/footer.css' %}">
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        <script src='{% static "scripts/header_search.js"%}'></script>
+    <!-- favicon -->
+    <link rel="shortcut icon" href="{%  static 'favicon_pink.ico' %}">
 
-        <title>
-            Ginthusiasm -
-            {% block title_block %}
-            {% endblock %}
-        </title>
-    </head>
+    <!-- import fonts from Google -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:300|Roboto:300" rel="stylesheet">
 
-    <body>
-        {% block header_block %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src='{% static "scripts/header_search.js" %}'></script>
+
+    <title>
+        Ginthusiasm -
+        {% block title_block %}
         {% endblock %}
+    </title>
+</head>
 
-        <div class="main_container">
+<body>
+{% block header_block %}
+{% endblock %}
 
-        <div class='content'>
-            {% block body_block %}
-            {% endblock %}
-        </div>
+{% block content_block %}
+{% endblock %}
 
-        {% block footer_block %}
-        <footer class='footer'>
-            <nav class='footer_nav'>
-                <a class='left_col' href="{% url 'index' %}"><span>Home</span></a>
-                <a class='centre_col' href="{% url 'gin_search_results' %}"><span>Gins</span></a>
-                <a class='right_col' href="{% url 'distillery_search_results' %}"><span>Distilleries</span></a>
-                <a class='left_col' href="{% url 'article_listing' %}"><span>Article Archive</span></a>
-                <a class='centre_col' href="{% url 'about' %}"><span>About Ginthusiasm</span></a>
-                <a class='right_col' href="{% url 'contact' %}"><span>Contact Us</span></a>
-                <a class='left_col' href="{% url 'article_month' %}"><span>Gin of the Month</span></a>
-                <a class='centre_col' href="{% url 'index' %}"><span>My Wishlist</span></a>
-                <a class='right_col' href="{% url 'myaccount' %}"><span>My Account</span></a>
-            </nav>
-        </footer>
-        {% endblock %}
-
-        </div>
-
-        {% block script_block %}
-        {% endblock%}
-    </body>
+{% block script_block %}
+{% endblock %}
+</body>
 </html>

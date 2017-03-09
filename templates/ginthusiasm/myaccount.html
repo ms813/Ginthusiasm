@@ -4,20 +4,56 @@
 {% block title_block %} My Account{% endblock %}
 
 {% block style_block %}
-<link href="{% static 'stylesheets/my_account.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'stylesheets/my_account.css' %}" rel="stylesheet" type="text/css">
 {% endblock %}
 
 {% block body_block %}
     <h1>Welcome {{ user.first_name }}!</h1>
-    <img class='profile_image' src='{{ MEDIA_URL }}{{ user.userprofile.profile_image }}'/>
-    <form id='profile_image_form' action="{% url 'profile_image_upload' %}" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ imgform }}
-        <input type="submit" value="Upload">
-    </form>
-    <div class="'button-wrapper">
-        <a class='ginthusiasm-button' href='{% url "wishlist" user.username %}'><span>Wishlist</span></a>
-        <a class='ginthusiasm-button'><span>Reviews</span></a>
-        <a class='ginthusiasm-button' href='{% url "logout" %}'><span>Log Out</span></a>
+    <div class="my-account">
+        <div class="profile-image">
+            <img src='{{ MEDIA_URL }}{{ user.userprofile.profile_image }}'/>
+            <form id='profile_image_form' action="{% url 'profile_image_upload' %}" method="post"
+                  enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form }}
+                <input type="submit" value="Upload">
+            </form>
+        </div>
+        <div class="button-wrapper">
+            <a class='ginthusiasm-button' href='{% url "wishlist" user.username %}'><span>Wishlist</span></a>
+            <a class='ginthusiasm-button'><span>Reviews</span></a>
+            <a class='ginthusiasm-button' href='{% url "logout" %}'><span>Log Out</span></a>
+
+
+            {% comment %}
+            Can't access UserProfile.choices easily from template, so hard code the letters :(
+
+            Put an 'add article' button on the page if the user has sufficient priviledge
+        {% endcomment %}
+            {% if user.userprofile.user_type != 'b' %}
+                <a class='ginthusiasm-button'
+                   href='{% url "article_user_listing" user.username %}'><span>My articles</span></a>
+            {% endif %}
+
+            {% comment %}
+            Put 'add gin' button on the page if user is a distillery owner
+        {% endcomment %}
+            {% if distilleries %}
+
+                <a id='add-gin-btn'
+                   class='ginthusiasm-button'
+                   href='{% url "add_gin" distilleries.first.slug %}'>
+                <span>Add Gin
+                <select id='distillery-select'>
+                {% for d in distilleries %}
+                    <option value="{{ d.slug }}">{{ d.name }}</option>
+                {% endfor %}
+            </select></span>
+                </a>
+            {% endif %}
+        </div>
     </div>
+{% endblock %}
+{% block script_block %}
+    <script src="{% static 'scripts/add_gin_select.js' %}"></script>
 {% endblock %}

@@ -1,7 +1,14 @@
 from __future__ import unicode_literals
 from django.db import models
-
 from ginthusiasm.models import Gin, UserProfile
+
+"""
+Model representing a user's wishlist of Gins
+
+1-to-1 relationship with UserProfile
+Many-to-many relationship with Gin
+
+"""
 
 
 class Wishlist(models.Model):

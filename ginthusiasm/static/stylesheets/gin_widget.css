@@ -1,17 +1,28 @@
 div.gin_widget {
     display: flex;
     flex-direction: row;
-    margin-bottom: 50px;
+    padding: 25px 40px;
 }
 
-.gin_widget .image img {
+div.gin_widget img {
     height: 200px;
     max-width: 150px;
     object-fit: cover;
     margin-left: 20px;
 }
 
-.gin_widget a.ginthusiasm-button {
+.gin_widget div.details {
+    //display: flex;
+    //flex-direction: column;
+    //justify-content: space-between;
+    //height: 200px;
+}
+
+div.gin_widget.False {
+    background-color: #fff;
+}
+
+div.gin_widget a.ginthusiasm-button {
     height: 25px;
     width: 170px;
 }
@@ -19,9 +30,44 @@ div.gin_widget {
 div.gin_widget .rating {
     display: flex;
     flex-direction: row;
-    margin: 5px 0px;
+    margin: 5px 0;
 }
 
-div.gin_widget .rating>div {
-    margin: 0px 20px 0px 10px;
+div.gin_widget .rating > div {
+    margin: 0 20px 0 10px;
+}
+
+div.gin_widget .details a h1 {
+    display:inline-block;
+    text-decoration: none;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+div.gin_widget .details a h1:after {
+    content: '';
+    display:block;
+    height:2px;
+    width: 0;
+    background: transparent;
+    transition: width 150ms ease, background-color 150ms ease;
+}
+
+div.gin_widget .details a h1:hover:after {
+    width:100%;
+    background: var(--base-color);
+}
+
+div.gin_widget .details p {
+    margin: 4px 0px 16px 0px;
+    height: 100px;
+    overflow: hidden;
+    background: linear-gradient(
+        rgba(0, 0, 0, 1) 0%,
+        rgba(0, 0, 0, 1) 50%,
+        rgba(0, 0, 0, 0) 100%
+    );
+
+    -webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
 }

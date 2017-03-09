@@ -1,0 +1,9 @@
+.content .wishlist-top{
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+}
+
+.content .wishlist-top img {
+    max-height:200px;
+}

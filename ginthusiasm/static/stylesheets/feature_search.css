@@ -1,0 +1,54 @@
+/* Style the tab */
+.feature_search_widget div.tab {
+    overflow: hidden;
+    background-color: #f1f1f1;
+}
+
+/* Style the links inside the tab */
+.feature_search_widget div.tab a {
+    float: left;
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+/* Change background color of links on hover */
+.feature_search_widget div.tab a:hover {
+    background-color: #ddd;
+}
+
+/* Style the tab content */
+.feature_search_widget .tabcontent {
+    display: flex;
+    flex-direction: row;
+    padding: 12px 12px;
+    background-color: #fff;
+    height: 100%;
+}
+
+.feature_search_widget .tabcontent .search-field {
+    width: 80%;
+    height: 100%;
+}
+
+.feature_search_widget .tabcontent .search-field input {
+    padding-left: 7px;
+    width: 100%;
+    height: 29px;
+
+
+}
+
+.feature_search_widget .tabcontent .search-field input::-webkit-input-placeholder {
+
+}
+
+
+.feature_search_widget .tabcontent #feature-search-button {
+    min-width: 60px;
+    width: 20%;
+}
