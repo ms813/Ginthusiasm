@@ -187,7 +187,7 @@ def populate_review():
 
         for i in range(0, review_count):
             reviews.append({
-                "review_type" : Review.EXPERT,
+                "review_type" : UserProfile.EXPERT,
                 "date" : '2017-03-01',
                 "rating" : 3,
                 "content" : "Pudding jelly chocolate cake lollipop cupcake. Candy cotton candy pie sweet lollipop. Souffle cheesecake danish halvah. Muffin brownie powder pastry. Candy sweet roll jujubes jelly. Pie icing icing chupa chups lemon drops bear claw carrot cake muffin chocolate bar. Cheesecake bonbon icing lollipop sweet caramels powder. Powder croissant candy lemon drops. Bonbon brownie marzipan gingerbread candy bear claw powder tart. Donut candy sesame snaps. Halvah cake sweet apple pie. Cake oat cake tiramisu cake. Toffee dragee croissant jelly beans dragee macaroon chocolate cake tootsie roll.",

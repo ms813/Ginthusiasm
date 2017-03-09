@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, render_to_response
 from django.http import HttpResponse
-from ginthusiasm.models import Gin, Distillery, Review
+from ginthusiasm.models import Gin, Distillery, Review, UserProfile
 from ginthusiasm.forms import GinSearchForm, AddGinForm, ReviewForm
 from django.db.models import Q
 from haystack.query import SearchQuerySet
@@ -51,8 +51,8 @@ def show_gin(request, gin_name_slug):
 
         # Get reviews from the DB split by review type, so they will
         # be accessible in the template
-        context_dict['expert_reviews'] = reviews.filter(review_type=Review.EXPERT)
-        context_dict['other_reviews'] = reviews.filter(review_type=Review.BASIC)
+        context_dict['expert_reviews'] = reviews.filter(review_type=UserProfile.EXPERT)
+        context_dict['other_reviews'] = reviews.filter(review_type=UserProfile.BASIC)
 
         if api_keys:
             context_dict['js_api_key'] = api_keys[0]
