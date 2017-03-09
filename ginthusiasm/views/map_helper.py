@@ -83,7 +83,6 @@ class MapHelper:
             check_postcode = r.get('address_components')[0].get('long_name').replace(" ", "")
             if check_postcode == postcode:
                 bounds = r.get('geometry').get('bounds')
-                print(bounds)
 
                 ne = bounds.get('northeast')
                 sw = bounds.get('southwest')

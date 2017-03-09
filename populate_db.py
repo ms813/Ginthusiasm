@@ -170,6 +170,7 @@ def populate_gin():
                 gin.distillery = Distillery.objects.get(name = data['distillery'])
 
             gin.save()
+            print(str(gin) + " created")
 
     #remake indexes
     print ("        Remaking indexes...")

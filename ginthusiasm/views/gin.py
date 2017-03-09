@@ -277,7 +277,6 @@ def add_review(request, gin_name_slug):
     form = ReviewForm()
 
     if request.method == 'POST':
-        print("REVIEW POSTED TO SERVER")
         form = ReviewForm(data=request.POST)
         response_data={}
 
@@ -285,21 +284,24 @@ def add_review(request, gin_name_slug):
         postcode = "G117PY"
         mh = MapHelper()
         geodata = mh.postcodeToLatLng(postcode);               
-        # {'lat' : x, 'lng' : y} 
+        # {'lat' : x, 'lng' : y}
 
         if form.is_valid():
-            if gin:
-                if author:
-                    review = form.save(commit=False)
-                    review.gin = gin
-                    review.user = author
-                    review.review_type = author.user_type
-                    review.save()
-                    response_data['result'] = 'Create review successful'
-                    return HttpResponse(
-                        json.dumps(response_data),
-                        content_type="application/json"
-                    )
+            if gin and author:
+
+                review, created = Review.objects.get_or_create(user=author, gin=gin)
+                review.gin = gin
+                review.user = author
+                review.content = form.cleaned_data.get('content')
+                review.rating = form.cleaned_data.get('rating')
+                review.review_type = author.user_type
+
+                review.save()
+                response_data['result'] = 'Create review successful'
+                return HttpResponse(
+                    json.dumps(response_data),
+                    content_type="application/json"
+                )
 
         else:
             print(form.errors)
