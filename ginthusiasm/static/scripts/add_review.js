@@ -3,14 +3,14 @@ $(document).ready(function() {
 
   $('#add_review').on('submit', function(event){
     event.preventDefault();
-    console.log("form submitted!")  // sanity check
+    console.log("form submitted!")
     create_review();
 
   });
 
   // AJAX for posting
   function create_review() {
-      console.log("create post is working!") // sanity check
+      console.log("create post is working!")
 
       var formData = $("#add_review").serializeArray()
 
@@ -23,6 +23,10 @@ $(document).ready(function() {
           success : function(json) {
               console.log(json); // log the returned json to the console
               console.log("success"); // another sanity check
+              $("#add_review").slideUp(function(){
+                $("#thanks").slideDown();
+              });
+
           },
 
           // handle a non-successful response
@@ -33,5 +37,18 @@ $(document).ready(function() {
           }
       });
   };
+
+  var x = document.getElementById("demo");
+  function getLocation() {
+      if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showPosition);
+      } else {
+          x.innerHTML = "Geolocation is not supported by this browser.";
+      }
+  }
+  function showPosition(position) {
+      x.innerHTML = "Latitude: " + position.coords.latitude +
+      "<br>Longitude: " + position.coords.longitude;
+  }
 
 });

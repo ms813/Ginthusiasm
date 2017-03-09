@@ -11,22 +11,6 @@ form {
     flex-wrap: wrap;
 }
 
-form input [type='text']{
-
-}
-
-.add_review .ar_rating{
-  width:20%;
-}
-
-form input [type='submit']{
-    width:20%;
-}
-
-form input [type='double']{
-
-}
-
 form textarea{
   width:100%;
 }
