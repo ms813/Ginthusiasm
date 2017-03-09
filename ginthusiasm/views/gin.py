@@ -54,8 +54,9 @@ def show_gin(request, gin_name_slug):
 
         # Get reviews from the DB split by review type, so they will
         # be accessible in the template
-        context_dict['expert_reviews'] = reviews.filter(review_type=UserProfile.EXPERT)
-        context_dict['other_reviews'] = reviews.filter(review_type=UserProfile.BASIC)
+        # an expert is anyone that is not a BASIC user
+        context_dict['expert_reviews'] = reviews.filter(~Q(user__user_type=UserProfile.BASIC))
+        context_dict['other_reviews'] = reviews.filter(user__user_type=UserProfile.BASIC)
 
         if api_keys:
             context_dict['js_api_key'] = api_keys[0]
@@ -91,7 +92,7 @@ def add_gin(request, distillery_name_slug):
     owns_distillery = request.user.userprofile == distillery.owner
 
     # if the user doesnt have privileges, send them to the distillery page
-    if not(is_admin or owns_distillery):
+    if not (is_admin or owns_distillery):
         return show_distillery(request, distillery_name_slug)
 
     if request.method == 'POST':
@@ -284,6 +285,7 @@ def gin_keyword_filter_autocomplete(request):
         return render_to_response('ginthusiasm/ajax_search.html', context=context_dict)
     else:
         return redirect('gin_search_results')
+
 
 @login_required
 def add_review(request, gin_name_slug):
