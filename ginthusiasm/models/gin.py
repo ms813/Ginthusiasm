@@ -29,7 +29,7 @@ The gin's average rating is updated from ginthusiasm.signals, whenever a Review 
 class Gin(models.Model):
     name = models.CharField(max_length=128, unique=True)
     price = models.FloatField(default=0)
-    average_rating = models.FloatField(default=0)
+    average_rating = models.FloatField(default=0, null=True)
     short_description = models.CharField(max_length=512)
     long_description = models.TextField()
     abv = models.FloatField(default=0)
