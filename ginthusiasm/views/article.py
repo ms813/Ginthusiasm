@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, reverse
 from ginthusiasm.models import Article
 from django.contrib.auth.models import User
+from ginthusiasm.models import UserProfile
 from ginthusiasm.forms import AddArticleForm
 from datetime import date, datetime
 
@@ -43,10 +44,18 @@ def article_user_listing(request, user_name):
     check = User.objects.get(username=user_name).userprofile
     article = Article.objects.filter(author=check)
 
-    context_dict['article'] = article
+    if check.user_type == UserProfile.BASIC:
+        # basic users are not allowed to write articles, so redirect them to the article archive
+        # and show an error message
+        print("User " + str(check) + " doesn't have sufficient permissions to write articles!")
+        context_dict['article'] = Article.objects.order_by('-date')
+        context_dict['invalid_user'] = check.user.username
+        return render(request, 'ginthusiasm/article_listing.html', context_dict)
+    else:
+        context_dict['article'] = article
 
-    # Go render the response and return it to the client.
-    return render(request, 'ginthusiasm/article_listing.html', context_dict)
+        # Go render the response and return it to the client.
+        return render(request, 'ginthusiasm/article_listing.html', context_dict)
 
 # Renders gin of the month page
 def article_month(request):
