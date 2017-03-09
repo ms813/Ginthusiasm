@@ -2,12 +2,16 @@
 {% load staticfiles %}
 <html>
 <head>
+
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     {% block style_block %}
     {% endblock %}
     <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/header.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/base_style.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/footer.css' %}">
+
+    <!-- favicon -->
+    <link rel="shortcut icon" href="{%  static 'favicon.ico' %}?v=2">
 
     <!-- import fonts from Google -->
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:300|Roboto:300" rel="stylesheet">
