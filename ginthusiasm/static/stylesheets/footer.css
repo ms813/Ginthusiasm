@@ -21,7 +21,7 @@ footer a span{
 }
 
 footer a:hover {
-    border-radius: 5px;
+    //border-radius: 5px;
     background-color: var(--highlight-alt);
 }
 

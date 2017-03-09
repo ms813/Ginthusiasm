@@ -53,7 +53,7 @@ ul {
 }
 
 a.ginthusiasm-button {
-    border-radius: 5px;
+    //border-radius: 5px;
     text-align: center;
     background-color: var(--lowlight-subtle);
     cursor: pointer;
@@ -74,7 +74,7 @@ a.ginthusiasm-button span {
 }
 
 a.ginthusiasm-tag {
-    border-radius: 5px;
+    //border-radius: 5px;
     text-align: center;
     background-color: var(--lowlight-subtle);
     cursor: pointer;
@@ -123,4 +123,3 @@ a.ginthusiasm-tag span {
 .main_container_small_header {
     min-height: calc(100% - var(--header-small-height));
 }
-

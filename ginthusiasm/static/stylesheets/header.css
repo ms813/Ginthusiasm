@@ -71,7 +71,7 @@ header nav a {
 }
 
 header a.ginthusiasm-button, header a.ginthusiasm-button  {
-    height: 80%;
+    height: 60%;
     width: 10%;
 }
 
@@ -92,10 +92,10 @@ header .login-small a {
 	text-decoration: none;
 }
 
-header .header-search{
+header .header-search {
 	display: flex;
 	align-items:center;
-	justify-content: space-around;
+	//justify-content: space-around;
 	height: 100%;
 	width: 25%;
 	margin-right: 10%;
@@ -117,7 +117,7 @@ header nav a span {
 }
 
 header nav a:hover{
-    border-radius: 5px;
+    //border-radius: 5px;
     background-color: var(--highlight-alt);
 }
 
@@ -126,10 +126,12 @@ header .header-search a.ginthusiasm-button {
 }
 
 header .header-search input[type='text']{
-    height: 80%;
+	-webkit-appearance: none;
+	padding: 0px;
+    height: 60%;
     width: 70%;
     font-size: 1.2em;
     border:none;
     text-align: center;
-    border-radius: 5px;
+    //border-radius: 5px;
 }

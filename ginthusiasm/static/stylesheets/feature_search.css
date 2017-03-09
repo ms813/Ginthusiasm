@@ -39,7 +39,14 @@
     padding-left: 7px;
     width: 100%;
     height: 29px;
+
+
 }
+
+.feature_search_widget .tabcontent .search-field input::-webkit-input-placeholder {
+    
+}
+
 
 .feature_search_widget .tabcontent #feature-search-button {
     min-width: 60px;
