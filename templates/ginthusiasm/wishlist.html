@@ -13,9 +13,10 @@
     <link rel="stylesheet" href="{% static 'stylesheets/fontawesome-stars-o.css' %}">
 {% endblock %}
 {% block body_block %}
-
-    <h1>{{ wishlist_name }}</h1>
-    <img class='profile_image' src='{{ MEDIA_URL }}{{ profile_image }}'/>
+    <div>
+        <h1>{{ wishlist_name }}</h1>
+        <img class='profile_image' src='{{ MEDIA_URL }}{{ profile_image }}'/>
+    </div>
     {% if gins %}
         <ul>
             {% for gin in gins %}
