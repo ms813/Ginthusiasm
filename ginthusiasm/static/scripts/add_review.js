@@ -3,26 +3,25 @@ $(document).ready(function() {
 
   $('#add_review').on('submit', function(event){
     event.preventDefault();
-    console.log("form submitted!")  // sanity check
+    //console.log("form submitted!");  // sanity check
     create_review();
-
   });
 
   // AJAX for posting
   function create_review() {
-      console.log("create post is working!") // sanity check
+      //console.log("create post is working!") // sanity check
 
       var formData = $("#add_review").serializeArray()
 
       $.ajax({
-          url : '', // the endpoint
+          url : 'review/', // the endpoint
           type : "POST", // http method
           data : formData, // data sent with the post request
 
           // handle a successful response
           success : function(json) {
-              console.log(json); // log the returned json to the console
-              console.log("success"); // another sanity check
+              //console.log(json); // log the returned json to the console
+              console.log("Review saved successfully"); // another sanity check
           },
 
           // handle a non-successful response
@@ -33,5 +32,4 @@ $(document).ready(function() {
           }
       });
   };
-
 });

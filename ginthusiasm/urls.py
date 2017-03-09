@@ -14,7 +14,9 @@ gin_patterns = [
     url(r'^gin-search/$', views.gin_keyword_filter_autocomplete, name='gin_autocomplete'),
     url(r'^gin/$', views.gin_search_results, name='gin_search_results'),
     url(r'^gin/(?P<gin_name_slug>[\w\-]+)/$', views.show_gin, name='show_gin'),
-    url(r'^gin/(?P<gin_name_slug>[\w\-]+)/rate/$', views.rate_gin, name='rate_gin'),
+    url(r'^gin/(?P<gin_name_slug>[\w\-]+)/rate/$', views.rate_gin, name='rate_gin'),   
+    url(r'^gin/(?P<gin_name_slug>[\w\-]+)/review/$', views.add_review, name='add_review')
+
 ]
 
 ##########     User     ##########
@@ -68,10 +70,7 @@ distillery_patterns = [
 ]
 
 ##########     Review     ##########
-review_patterns = [
-    url(r'^add-review/(?P<gin_name_slug>[\w\-]+)/$', views.add_review, name='add_review'),
-    # url(r'^add-review/$', views.add_revzzzzzzzsiew, name='add_review'),
-]
+review_patterns = [ ]
 
 ##########     Article     ##########
 article_patterns = [
