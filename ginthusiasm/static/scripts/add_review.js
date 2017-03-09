@@ -31,6 +31,9 @@ var create_review = function (event) {
 
     request.done(function(data, status, jqXHR) {
         console.log("Review saved successfully");
+        $("#add_review").slideUp(function(){
++                $("#thanks").slideDown();
+               });
     });
 
     request.fail(function(data, status, jqXHR) {
