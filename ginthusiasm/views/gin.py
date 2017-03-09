@@ -5,6 +5,7 @@ from ginthusiasm.forms import GinSearchForm, AddGinForm, ReviewForm
 from django.db.models import Q
 from haystack.query import SearchQuerySet
 from ginthusiasm_project.GoogleMapsAuth import api_keys
+from map_helper import MapHelper
 import shlex
 import json
 
@@ -276,8 +277,15 @@ def add_review(request, gin_name_slug):
     form = ReviewForm()
 
     if request.method == 'POST':
+        print("REVIEW POSTED TO SERVER")
         form = ReviewForm(data=request.POST)
         response_data={}
+
+        ## Catherine - add postcode from review form here
+        postcode = "G117PY"
+        mh = MapHelper()
+        geodata = mh.postcodeToLatLng(postcode);               
+        # {'lat' : x, 'lng' : y} 
 
         if form.is_valid():
             if gin:
@@ -295,8 +303,6 @@ def add_review(request, gin_name_slug):
 
         else:
             print(form.errors)
-
-
 
     else:
         return HttpResponse(
