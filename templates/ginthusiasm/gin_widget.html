@@ -16,7 +16,7 @@
                 {% with rating_type='user_rating' rating_initial=gin.user_rating %}
                     {% include 'ginthusiasm/gin_rating_widget.html'%}
                 {% endwith %}
-
+                <strong class="message" hidden="True"></strong>
             {% else %}
                 <a href='{% url 'login' %}'>Please login to rate!</a>
             {% endif %}
