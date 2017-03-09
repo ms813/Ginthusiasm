@@ -3,7 +3,7 @@
         <a href="{% url 'show_gin' gin.slug %}">
             <h1>{{ gin.name }}</h1>
         </a>
-        <p>{{ gin.short_description }}<p>
+        <p>{{ gin.short_description }}</p>
 
         <div class='rating'>
             Average Rating:
@@ -22,13 +22,15 @@
             {% endif %}
         </div>
 
-        {% include 'ginthusiasm/wishlist_button.html'%}
+        <span>
+            {% include 'ginthusiasm/wishlist_button.html'%}
 
-        <a class='ginthusiasm-button' href="{% url 'show_gin' gin.slug %}#review_form">
-            <span>
-                Write Review
-            </span>
-        </a>
+            <a class='ginthusiasm-button' href="{% url 'show_gin' gin.slug %}#review">
+                <span>
+                    Write Review
+                </span>
+            </a>
+        </span>
     </div>
 
     <a href="{% url 'show_gin' gin.slug %}">

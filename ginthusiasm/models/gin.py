@@ -30,7 +30,7 @@ class Gin(models.Model):
     name = models.CharField(max_length=128, unique=True)
     price = models.FloatField(default=0)
     average_rating = models.FloatField(default=0)
-    short_description = models.CharField(max_length=1024)
+    short_description = models.CharField(max_length=512)
     long_description = models.TextField()
     abv = models.FloatField(default=0)
     taste_tags = models.ManyToManyField(TasteTag, blank=True)

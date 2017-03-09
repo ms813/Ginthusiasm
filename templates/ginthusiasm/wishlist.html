@@ -13,13 +13,18 @@
     <link rel="stylesheet" href="{% static 'stylesheets/fontawesome-stars-o.css' %}">
 {% endblock %}
 {% block body_block %}
-
-    <h1>{{ wishlist_name }}</h1>
-    <img class='profile_image' src='{{ MEDIA_URL }}{{ profile_image }}'/>
+    <div>
+        <h1>{{ wishlist_name }}</h1>
+        <img class='profile_image' src='{{ MEDIA_URL }}{{ profile_image }}'/>
+    </div>
     {% if gins %}
-        {% for gin in gins %}
-            {% include 'ginthusiasm/gin_widget.html' %}
-        {% endfor %}
+        <ul>
+            {% for gin in gins %}
+                {% with alt_class=forloop.counter|divisibleby:'2' %}
+                    <li>{% include 'ginthusiasm/gin_widget.html' %}</li>
+                {% endwith %}
+            {% endfor %}
+        </ul>
         <p id='wishlistlen' data-wishlistlen='{{ gins|length }}' hidden></p>
     {% else %}
         {% if user.is_authenticated %}
