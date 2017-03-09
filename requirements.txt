@@ -5,5 +5,4 @@ Pillow==4.0.0
 requests==2.13.0
 virtualenv==15.1.0
 virtualenvwrapper-win==1.2.1
->>>>>>> 9f8ce759a88c6a2b26413a1c5cf7f7cc226bbd8d
 Whoosh==2.7.4
