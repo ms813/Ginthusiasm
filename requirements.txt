@@ -2,5 +2,7 @@ Django==1.10.3
 django-haystack==2.6.0
 olefile==0.44
 Pillow==4.0.0
-Whoosh==2.7.4
 requests==2.13.0
+virtualenv==15.1.0
+virtualenvwrapper-win==1.2.1
+Whoosh==2.7.4
