@@ -288,14 +288,13 @@ def add_review(request, gin_name_slug):
 
         if form.is_valid():
             if gin and author:
-
+                # Get or create the review for this gin-author pair
                 review, created = Review.objects.get_or_create(user=author, gin=gin)
                 review.gin = gin
                 review.user = author
                 review.content = form.cleaned_data.get('content')
                 review.rating = form.cleaned_data.get('rating')
                 review.review_type = author.user_type
-
                 review.save()
                 response_data['result'] = 'Create review successful'
                 return HttpResponse(
