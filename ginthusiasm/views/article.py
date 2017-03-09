@@ -1,4 +1,4 @@
-from django.shortcuts import render, reverse
+from django.shortcuts import render
 from ginthusiasm.models import Article
 from django.contrib.auth.models import User
 from ginthusiasm.models import UserProfile
@@ -39,7 +39,6 @@ def article_listing(request):
 
 # Renders a list of all articles written by a specified user
 def article_user_listing(request, user_name):
-
     context_dict = {}
     check = User.objects.get(username=user_name).userprofile
     article = Article.objects.filter(author=check)
@@ -57,6 +56,7 @@ def article_user_listing(request, user_name):
         # Go render the response and return it to the client.
         return render(request, 'ginthusiasm/article_listing.html', context_dict)
 
+
 # Renders gin of the month page
 def article_month(request):
     context_dict = {}
@@ -65,6 +65,7 @@ def article_month(request):
     context_dict['article'] = article
 
     return render(request, 'ginthusiasm/article.html', context_dict)
+
 
 def add_article(request, user_name):
     try:

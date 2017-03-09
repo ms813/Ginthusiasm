@@ -40,6 +40,8 @@ div.gin_widget .rating > div {
 div.gin_widget .details a h1 {
     display:inline-block;
     text-decoration: none;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 div.gin_widget .details a h1:after {
@@ -54,11 +56,6 @@ div.gin_widget .details a h1:after {
 div.gin_widget .details a h1:hover:after {
     width:100%;
     background: var(--base-color);
-}
-
-div.gin_widget .details a h1 {
-    margin-top: 0;
-    margin-bottom: 0;
 }
 
 div.gin_widget .details p {

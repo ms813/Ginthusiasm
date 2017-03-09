@@ -24,11 +24,13 @@
         <a href='{% url "add_article" user.username %}' id='new-article' class="ginthusiasm-button"><span>Write a new article</span></a>
     {% endif %}
 
-    <div>
+    <div class="articles">
         {% if article %}
             <ul>
                 {% for article in article %}
-                    <li>{% include 'ginthusiasm/article_widget.html' %}</li>
+                    {% with alt_class=forloop.counter|divisibleby:'2' %}
+                        <li>{% include 'ginthusiasm/article_widget.html' %}</li>
+                    {% endwith %}
                 {% endfor %}
             </ul>
         {% else %}
