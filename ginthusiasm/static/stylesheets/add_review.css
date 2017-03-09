@@ -12,12 +12,7 @@ form {
 }
 
 form input [type='text']{
-    width:100%;
-    height: 100px;
-    border-radius: 10px;
-    text-align: left;
-    font-size: 22px;
-    padding-left: 20px;
+
 }
 
 .add_review .ar_rating{
@@ -29,5 +24,9 @@ form input [type='submit']{
 }
 
 form input [type='double']{
-  width:20%;
+
+}
+
+form textarea{
+  width:100%;
 }
