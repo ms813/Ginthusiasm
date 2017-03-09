@@ -12,7 +12,7 @@
     <img class='profile_image' src='{{ MEDIA_URL }}{{ user.userprofile.profile_image }}'/>
     <form id='profile_image_form' action="{% url 'profile_image_upload' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ imgform }}
+        {{ form }}
         <input type="submit" value="Upload">
     </form>
     <div class="'button-wrapper">

@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from ginthusiasm.forms import UserForm, LoginForm, UploadFileForm
-from ginthusiasm.models import UserProfile, Wishlist
+from ginthusiasm.models import UserProfile, Wishlist, Distillery
 
 """
 Views in this file handle login and signup requests from users
@@ -103,9 +103,15 @@ def myaccount(request):
             # invalid form data
             print("Error uploading profile image", form.errors)
     else:
-        from ginthusiasm.models import Distillery
+        # the upload profile image form
         context['form'] = UploadFileForm()
-        context['distilleries'] = Distillery.objects.filter(owner=userprofile)
+
+        # check if the user owns any distilleries
+        if userprofile.user_type == UserProfile.DISTILLERY_OWNER:
+            context['distilleries'] = Distillery.objects.filter(owner=userprofile)
+        elif userprofile.user_type == UserProfile.ADMIN:
+            context['distilleries'] = Distillery.objects.all()
+
 
     return render(request, 'ginthusiasm/myaccount.html', context)
 
