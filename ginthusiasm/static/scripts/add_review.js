@@ -1,35 +1,55 @@
-// magic.js
 $(document).ready(function() {
-
-  $('#add_review').on('submit', function(event){
-    event.preventDefault();
-    //console.log("form submitted!");  // sanity check
-    create_review();
-  });
-
-  // AJAX for posting
-  function create_review() {
-      //console.log("create post is working!") // sanity check
-
-      var formData = $("#add_review").serializeArray()
-
-      $.ajax({
-          url : 'review/', // the endpoint
-          type : "POST", // http method
-          data : formData, // data sent with the post request
-
-          // handle a successful response
-          success : function(json) {
-              //console.log(json); // log the returned json to the console
-              console.log("Review saved successfully"); // another sanity check
-          },
-
-          // handle a non-successful response
-          error : function(xhr,errmsg,err) {
-              $('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
-                  " <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
-              console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
-          }
-      });
-  };
+    $('#add_review').on('submit', create_review);
+    $('#location-btn').on('click', getLocation);
 });
+
+var create_review = function (event) {
+    //console.log("create post is working!") // sanity check
+    event.preventDefault();
+
+    var formData = $("#add_review").serializeArray()    
+        
+    //check that the rating is set to either the default value or the clicked value
+    var rating = -1;
+    var ratingIndex = -1;
+    for(var i = 0; i < formData.length; i++){        
+        if(formData[i].name === "rating"){
+            rating = formData[i].value;
+            ratingIndex = i;
+        }
+    }
+
+    //get the enumber of stars in the widget when the page was loaded
+    var initialRating = $('.rating_widget').find('.form_rating').data('rating')
+
+    //if the current rating is 0, set the rating to the default
+    if(rating == 0){
+        formData[ratingIndex].value = initialRating;
+    }
+
+    var request = $.post('review/', formData);
+
+    request.done(function(data, status, jqXHR) {            
+        console.log("Review saved successfully");
+    });
+
+    request.fail(function(data, status, jqXHR) {
+        // add the error to the dom
+        $('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+data+
+            " <a href='#' class='close'>&times;</a></div>"); 
+
+        // provide a bit more info about the error to the console
+        console.log(data.status + ": " + data.responseText); 
+    });
+}
+
+var getLocation = function(e){
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(pos){
+            $('#id_lat').val(pos.coords.latitude);
+            $('#id_long').val(pos.coords.longitude);
+        });
+    } else {
+        console.log("Geolocation is not supported by this browser.");
+    }
+}
