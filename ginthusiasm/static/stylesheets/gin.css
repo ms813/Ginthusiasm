@@ -1,5 +1,6 @@
 div.gin_description {
     flex-direction: wrap;
+    padding-bottom: 20px;
 }
 
 .gin_description .taste_tags ul {
