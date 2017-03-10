@@ -90,7 +90,7 @@ a.ginthusiasm-tag {
     color: var(--foreground-alt);
     text-decoration: none;
     padding: 5px;
-    margin-right: 5px;
+    margin: 2.5px;
 }
 
 a.ginthusiasm-tag:hover {

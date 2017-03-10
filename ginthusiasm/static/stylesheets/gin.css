@@ -3,7 +3,18 @@ div.gin_description {
     padding-bottom: 20px;
 }
 
+.gin_description div.rating {
+    margin-top: 16px;
+}
+
+.gin_description div.taste_tags {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
 .gin_description .taste_tags ul {
+    margin-left: 10px;
     display: inline-flex;
     list-style-type: none;
     flex-direction: row;
