@@ -1,15 +1,15 @@
 <div class="formwrapper">
     <h2>Log in</h2>
     {% if error %}
-    <div>
-        <p>Sorry, we couldn't log you in because: </p>
-        {{ error }}
-    </div>
+        <div>
+            <p>Sorry, we couldn't log you in because: </p>
+            {{ error }}
+        </div>
     {% endif %}
     {% if message %}
-    <div>
-        <p>{{ message }}</p>
-    </div>
+        <div>
+            <p>{{ message }}</p>
+        </div>
     {% endif %}
 
     <form id='login_form' method='post' action='{% url "login" %}'>

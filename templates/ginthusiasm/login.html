@@ -8,13 +8,13 @@
 {% block title_block %} Log In{% endblock %}
 
 {% block body_block %}
-{% if login_form %}
-{% include 'ginthusiasm/login_widget.html' %}
-{% endif %}
-<div id='password_reset_wrapper'>
-    <a id='password_reset_link' href="{% url 'password_reset'%}">Forgotten your password?</a>
-</div>
-{% if user_form %}
-{% include 'ginthusiasm/signup_widget.html' %}
-{% endif %}
+    {% if login_form %}
+        {% include 'ginthusiasm/login_widget.html' %}
+    {% endif %}
+    <div id='password_reset_wrapper'>
+        <a id='password_reset_link' href="{% url 'password_reset' %}">Forgotten your password?</a>
+    </div>
+    {% if user_form %}
+        {% include 'ginthusiasm/signup_widget.html' %}
+    {% endif %}
 {% endblock %}
