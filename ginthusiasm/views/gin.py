@@ -303,7 +303,7 @@ def add_review(request, gin_name_slug):
         ## Catherine - add postcode from review form here
         postcode = "G117PY"
         mh = MapHelper()
-        geodata = mh.postcodeToLatLng(postcode);
+        geodata = mh.postcodeToLatLng(postcode)
         # {'lat' : x, 'lng' : y}
 
         if form.is_valid():
@@ -314,6 +314,8 @@ def add_review(request, gin_name_slug):
                 review.user = author
                 review.content = form.cleaned_data.get('content')
                 review.rating = form.cleaned_data.get('rating')
+                review.lat = form.cleaned_data.get('lat')
+                review.long = form.cleaned_data.get('long')
                 review.review_type = author.user_type
                 review.save()
                 response_data['result'] = 'Create review successful'
