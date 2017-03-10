@@ -7,6 +7,10 @@ div.gin_description {
     margin-top: 16px;
 }
 
+.gin_description .rating .rating_widget {
+    margin-top: 5px;
+}
+
 .gin_description div.taste_tags {
     display: flex;
     flex-direction: row;
