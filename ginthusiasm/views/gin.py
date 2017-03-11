@@ -8,7 +8,6 @@ from django.db.models import Q
 from haystack.query import SearchQuerySet
 from ginthusiasm_project.GoogleMapsAuth import api_keys
 from map_helper import MapHelper
-import shlex
 import json
 
 """
@@ -246,7 +245,7 @@ def create_gin_query(query_dict):
 
     # filter by tag
     if query_dict.get('tags'):
-        tags = shlex.split(query_dict.get('tags'))
+        tags = query_dict.get('tags').split()
         tags_query = Q()
         for tag in tags:
             tags_query.add(
@@ -257,7 +256,7 @@ def create_gin_query(query_dict):
 
     # filter by distillery
     if query_dict.get('distillery'):
-        distilleries = shlex.split(query_dict.get('distillery').replace("+", " "))
+        distilleries = query_dict.get('distillery').replace("+", " ").split()
         distilleries_query = Q()
         for distillery in distilleries:
             distilleries_query.add(
