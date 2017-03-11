@@ -39,6 +39,7 @@ class UserTestCase(TestCase):
     def test_wishlist_page_exists(self):
         response = self.client.get(reverse('wishlist', kwargs={'username': 'jsmith'}))
         self.assertContains(response, "This user hasn't added any gins to their wishlist!")
+        self.assertTemplateUsed(response, 'ginthusiasm/wishlist.html', msg_prefix="Wishlist uses wishlist template")
 
     # Check gins can be added to the wishlist
     def test_wishlist_add_remove(self):
