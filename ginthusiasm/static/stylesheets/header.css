@@ -14,7 +14,7 @@ header.header-small  img{
 	flex-grow: 1;
 }
 
-.header-small .nav {
+header.header-small nav {
     height: 50px;
     flex-grow: 6;
     display: flex;
