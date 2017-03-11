@@ -295,7 +295,13 @@ def gin_keyword_filter_autocomplete(request):
         # get the top 5 matching gins
         gins = SearchQuerySet().autocomplete(content_auto=search_text)[:5]
 
-        context_dict = {'gins': gins}
+        context_dict = {
+            'results': [{
+                'name': gin.object.name,
+                'slug': gin.object.slug,
+            } for gin in gins],
+            'show_url': 'show_gin'
+        }
         return render_to_response('ginthusiasm/ajax_search.html', context=context_dict)
     else:
         return redirect('gin_search_results')
