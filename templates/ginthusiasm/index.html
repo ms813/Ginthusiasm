@@ -4,18 +4,32 @@
 {% block style_block %}
     <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/overlay.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/feature_search.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/trending_widget.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/index.css' %}">
+
+    <!-- Style sheets for rating widget -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'stylesheets/fontawesome-stars-o.css' %}">
 {% endblock %}
 
 {% block title_block %} Home{% endblock %}
 
 {% block body_block %}
-    <div id='index-row1'>
+    <div class='index-row'>
         <div class='welcome'>
             <h1>Welcome to Ginthusiasm!</h1>
             <p>Our welcome message</p>
         </div>
         {% include 'ginthusiasm/feature_search_widget.html' %}
+    </div>
+
+    <div class="index-row index-widget-row">
+        <span class="featured-gin-container">
+            {# featured gin widget here #}
+        </span>
+        <span class="trending-gin-container">
+            {% include 'ginthusiasm/trending_widget.html' %}
+        </span>
     </div>
 
     <div>
@@ -38,4 +52,6 @@
     <script src='{% static "scripts/ajax_setup.js" %}'></script>
     <script src='{% static "scripts/js.cookie.js" %}'></script>
     <script src='{% static "scripts/feature_search.js" %}'></script>
+    <script src="{% static 'scripts/jquery.barrating.js' %}"></script>
+    <script src="{% static 'scripts/rating.js' %}"></script>
 {% endblock %}
