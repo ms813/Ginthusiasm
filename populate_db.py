@@ -78,28 +78,10 @@ def populate_article():
 
 def populate_distillery():
     print("Populating distilleries...")
-    distilleries = [
-        {
-            "name" : "Edinburgh Gin",
-            "address" : "1A Rutland Place, Edinburgh, EH1 2AD",
-            "phone" : "01316 562810",
-            "email" : "info@edinburghgindistillery.com",
-            "long_description" : "Nestled beneath the West End of Edinburgh, you'll find something of a hidden wonderland - the Edinburgh Gin Distillery. Steeped in history and creation, we invite you to disappear down the rabbit hole and indulge yourself in the mystery of the beautiful botanical libations we call gin.",
-            "image" : "distilleries/Edinburgh-Gin.jpg",
-            "lat" : 55.949982,
-            "long" : -3.208180,
-        },
-        {
-            "name": "Eden Mill",
-            "address": "Main Street, Guardbridge, St Andrews, KY16 0UU",
-            "phone": "01334 834038",
-            "email" : "hello@edenmill.com",
-            "long_description": "Eden Mill Scottish craft gin. Traditionally made by hand in Scotland using copper pot stills. Our distilling talent comes from the deeply rooted understanding of whisky and a real drive to innovate.",
-            "image": "distilleries/Eden-Mill.jpg",
-            "lat": 56.363755,
-            "long": -2.892163,
-        }
-    ]
+
+    distilleries = []
+    with open('distillery_data.json') as f:
+        distilleries = json.load(f)
 
     for data in distilleries:
         distillery_results = []
