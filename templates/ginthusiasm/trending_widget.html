@@ -1,0 +1,16 @@
+<div class="trending-widget">
+    <h1 class="trending-gin-header">Trending Gins</h1>
+    {% for gin in trending_gins %}
+        <div class="trending-gin">
+            <span class="trending-gin-description">
+                {{ gin.name }}
+                {% with rating_type='average_rating' rating_initial=gin.average_rating %}
+                    {% include 'ginthusiasm/gin_rating_widget.html'%}
+                {% endwith %}
+            </span>
+            <span class="trending-gin-image">
+                <img src="{{ gin.image.url }}" alt="Image of {{ gin.name }}">
+            </span>
+        </div>
+    {% endfor %}
+</div>
