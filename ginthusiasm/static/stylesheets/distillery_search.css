@@ -12,7 +12,11 @@
     padding: 25px 40px;
 }
 
-.distillery-widget:nth-of-type(1) {
+.distillery-widget-details {
+    padding-right: 30px;
+}
+
+.distillery-widget:nth-of-type(odd) {
     background-color: #fff;
 }
 
