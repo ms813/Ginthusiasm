@@ -1,15 +1,17 @@
-<div class='distillery_widget'>
-    <div class=details>
+<div class='distillery-widget'>
+    <span class="details">
         <a href="{% url 'show_distillery' distillery.slug %}">
-            <h1>{{ distillery.name }}</h1>
+            <h1 class="distillery-widget-name">{{ distillery.name }}</h1>
         </a>
-        <p>{{ distillery.short_description }}<p>
-        <p>{{ distillery.email }}<p>
-    </div>
+        <p class="distillery-widget-description">{{ distillery.long_description }}</p>
+        <p>
+            <a href="mailto:{{ distillery.email }}">{{ distillery.email }}</a>
+        </p>
+    </span>
 
-    <div class='image'>
+    <span class='distillery-widget-image'>
         <a href="{% url 'show_distillery' distillery.slug %}">
             <img src="{{ MEDIA_URL }}{{ distillery.image }}" alt='Image of {{ distillery.name }}'/>
         </a>
-    </div>
+    </span>
 </div>
