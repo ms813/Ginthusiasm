@@ -11,8 +11,8 @@
     <h1>Welcome {{ user.first_name }}!</h1>
     <div class="my-account">
         <div class="profile-image">
-            <img src='{{ MEDIA_URL }}{{ user.userprofile.profile_image }}'/>
-            <form id='profile_image_form' action="{% url 'profile_image_upload' %}" method="post"
+            <img src="{{ MEDIA_URL }}{{ user.userprofile.profile_image }}"/>
+            <form id="profile_image_form" action="{% url 'profile_image_upload' %}" method="post"
                   enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ form }}
@@ -20,35 +20,31 @@
             </form>
         </div>
         <div class="button-wrapper">
-            <a class='ginthusiasm-button' href='{% url "wishlist" user.username %}'><span>Wishlist</span></a>
-            <a class='ginthusiasm-button'><span>Reviews</span></a>
-            <a class='ginthusiasm-button' href='{% url "logout" %}'><span>Log Out</span></a>
-
+            <a class="ginthusiasm-button" href="{% url "wishlist" user.username %}"><span>Wishlist</span></a>
+            <a class="ginthusiasm-button"><span>Reviews</span></a>
+            <a class="ginthusiasm-button" href="{% url 'logout' %}"><span>Log Out</span></a>
 
             {% comment %}
-            Can't access UserProfile.choices easily from template, so hard code the letters :(
+                Can't access UserProfile.choices easily from template, so hard code the letters :(
 
-            Put an 'add article' button on the page if the user has sufficient priviledge
-        {% endcomment %}
+                Put an 'add article' button on the page if the user has sufficient priviledge
+            {% endcomment %}
             {% if user.userprofile.user_type != 'b' %}
-                <a class='ginthusiasm-button'
-                   href='{% url "article_user_listing" user.username %}'><span>My articles</span></a>
+                <a class="ginthusiasm-button" href="{% url 'article_user_listing' user.username %}"><span>My articles</span></a>
             {% endif %}
 
             {% comment %}
-            Put 'add gin' button on the page if user is a distillery owner
-        {% endcomment %}
+                Put 'add gin' button on the page if user is a distillery owner
+            {% endcomment %}
             {% if distilleries %}
-
-                <a id='add-gin-btn'
-                   class='ginthusiasm-button'
-                   href='{% url "add_gin" distilleries.first.slug %}'>
-                <span>Add Gin
-                <select id='distillery-select'>
-                {% for d in distilleries %}
-                    <option value="{{ d.slug }}">{{ d.name }}</option>
-                {% endfor %}
-            </select></span>
+                <a href="{% url 'add_gin' distilleries.first.slug %}" id="add-gin-btn" class="ginthusiasm-button">
+                    <span>Add Gin
+                        <select id="distillery-select">
+                        {% for d in distilleries %}
+                            <option value="{{ d.slug }}">{{ d.name }}</option>
+                        {% endfor %}
+                        </select>
+                    </span>
                 </a>
             {% endif %}
         </div>
