@@ -59,10 +59,12 @@ class UserTestCase(TestCase):
 
         user = auth.get_user(self.client)
         self.assertTrue(user.is_authenticated(), "User is authenticated")
+        self.assertFalse(user.is_anonymous(), "User not anonymous after login")
 
         self.client.logout()
         user = auth.get_user(self.client)
         self.assertFalse(user.is_authenticated(), "User not authenticated after log out")
+        self.assertTrue(user.is_anonymous(), "User is anonymous after log out")
 
         # Check the index page has the login button after logging out
         response = self.client.get('/')
@@ -90,4 +92,3 @@ class UserTestCase(TestCase):
         self.client.logout()
         newUser = auth.get_user(self.client)
         self.assertFalse(newUser.is_authenticated(), "New user can log out")
-

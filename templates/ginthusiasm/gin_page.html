@@ -28,7 +28,8 @@
 
         <div class='rating'>
             {% with rating_type='average_rating' rating_initial=gin.average_rating %}
-                Average Rating: {% include 'ginthusiasm/gin_rating_widget.html'%}
+                Average Rating
+                {% include 'ginthusiasm/gin_rating_widget.html'%}
             {% endwith %}
         </div>
 

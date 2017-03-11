@@ -1,0 +1,8 @@
+<div class="login-small">
+    {% if user.is_anonymous %}
+        <a href="{% url 'login' %}">Log In | Sign Up</a>
+    {% else %}
+        <a href="{% url 'myaccount' %}">My Account</a>
+        <a href="{% url 'logout' %}">Log Out</a>
+    {% endif %}
+</div>

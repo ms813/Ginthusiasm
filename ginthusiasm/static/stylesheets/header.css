@@ -14,7 +14,7 @@ header.header-small  img{
 	flex-grow: 1;
 }
 
-.header-small .nav {
+header.header-small nav {
     height: 50px;
     flex-grow: 6;
     display: flex;
@@ -129,7 +129,7 @@ header .header-search input[type='text']{
 	padding: 0px;
     height: 60%;
     width: 70%;
-    font-size: 1.2em;
+    font-size: 0.9em;
     border: none;
     text-align: center;
 }
@@ -144,4 +144,8 @@ header .header-search input[type='text']{
     text-align: left;
     margin:0;
     background-color: white;
+}
+
+#header-search-results * {
+    font-size: 0.95em;
 }

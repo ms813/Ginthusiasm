@@ -1,8 +1,24 @@
 div.gin_description {
     flex-direction: wrap;
+    padding-bottom: 20px;
+}
+
+.gin_description div.rating {
+    margin-top: 16px;
+}
+
+.gin_description .rating .rating_widget {
+    margin-top: 5px;
+}
+
+.gin_description div.taste_tags {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .gin_description .taste_tags ul {
+    margin-left: 10px;
     display: inline-flex;
     list-style-type: none;
     flex-direction: row;
@@ -10,8 +26,8 @@ div.gin_description {
 }
 
 .gin_description .image {
-    height: 600px;
-    max-width: 450px;
+    height: 500px;
+    max-width: 375px;
     object-fit: cover;
     float: right;
     margin-left: 20px;
