@@ -22,7 +22,7 @@ class Review(models.Model):
     content = models.TextField(blank=True)
     lat = models.FloatField(blank=True, null=True)
     long = models.FloatField(blank=True, null=True)
-    user = models.ForeignKey('UserProfile', on_delete=models.CASCADE)
+    user = models.ForeignKey('UserProfile', on_delete=models.CASCADE, related_name='reviews')
     gin = models.ForeignKey('Gin', on_delete=models.CASCADE, related_name='reviews')
 
     class Meta:
