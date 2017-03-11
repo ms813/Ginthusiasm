@@ -2,6 +2,7 @@
 {% load staticfiles %}
 
 {% block style_block %}
+    <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/distillery_search.css' %}">
 {% endblock %}
 
 {% block title_block %} Search for distilleries{% endblock %}
@@ -9,15 +10,13 @@
 {% block body_block %}
     {% include 'ginthusiasm/distillery_search_widget.html' %}
 
-    <div class='search_results'>
-        {% if distilleries %}
-        <ul>
-            {% for distillery in distilleries %}
-                <li>{% include 'ginthusiasm/distillery_widget.html' %}</li>
-            {% endfor %}
-        </ul>
-        {% else %}
-            No Search Results
-        {% endif %}
+    <div class='distillery-search-results'>
+        {% for distillery in distilleries %}
+            {% include 'ginthusiasm/distillery_widget.html' %}
+        {% empty %}
+            <div class='distillery-search-no-results'>
+                No Search Results
+            </div>
+        {% endfor %}
     </div>
 {% endblock %}
