@@ -12,3 +12,4 @@ from article import article, article_listing, article_user_listing, article_mont
 from gin import show_gin, add_gin, gin_search_results, rate_gin, gin_keyword_filter_autocomplete, add_review
 from distillery import show_distillery, distillery_search_results
 from collections import collections
+from review import my_reviews

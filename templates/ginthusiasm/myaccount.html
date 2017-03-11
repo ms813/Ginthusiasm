@@ -21,7 +21,7 @@
         </div>
         <div class="button-wrapper">
             <a class="ginthusiasm-button" href="{% url "wishlist" user.username %}"><span>Wishlist</span></a>
-            <a class="ginthusiasm-button"><span>Reviews</span></a>
+            <a class="ginthusiasm-button" href="{% url "my_reviews" user.username %}"><span>My reviews</span></a>
             <a class="ginthusiasm-button" href="{% url 'logout' %}"><span>Log Out</span></a>
 
             {% comment %}

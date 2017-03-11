@@ -67,7 +67,9 @@ distillery_patterns = [
 ]
 
 ##########     Review     ##########
-review_patterns = [ ]
+review_patterns = [
+    url(r'^review/(?P<username>[\w\-]+)/$', views.my_reviews, name='my_reviews')
+]
 
 ##########     Article     ##########
 article_patterns = [
