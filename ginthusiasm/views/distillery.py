@@ -50,6 +50,8 @@ def distillery_search_results(request):
     distillery_list = []
     if query_dict.get('distillery_name'):
         distillery_list = Distillery.objects.filter(name__icontains=query_dict['distillery_name'])
+    else:
+        distillery_list = Distillery.objects.all()
 
     # If there is only one result returned then redirect straight to that page
     if len(distillery_list) == 1:
