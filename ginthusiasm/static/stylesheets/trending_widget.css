@@ -1,0 +1,35 @@
+.trending-widget {
+    background-color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+.trending-gin-header {
+    font-size: 20px;
+}
+
+.trending-gin {
+    display: flex;
+    flex-direction: row;
+}
+
+.trending-gin-description {
+    width: 100%;
+    text-align: initial;
+    display: inline-block;
+    position: relative;
+}
+.trending-gin-description > .rating_widget {
+    padding-top: 20px;
+}
+
+.trending-gin-image {
+    display: inline-block;
+    text-align: initial;
+}
+
+.trending-gin-image > img {
+    object-fit: cover;
+    height: 120px;
+    width: 80px;
+}
