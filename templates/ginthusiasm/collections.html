@@ -2,19 +2,23 @@
 {% load staticfiles %}
 
 {% block style_block %}
-    <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/base_style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/collections.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/base.css' %}">
 {% endblock %}
 
 {% block title_block %} Collections {% endblock %}
 
 {% block body_block %}
-    <div>
-    <h1 class = 'title'> Collections </h1>
-
+    <div class="collections-container">
+        {% for tag_name in taste_tag_names %}
+            <div>
+            <a href="{% url 'gin_search_results' %}?tags='{{ tag_name.tag_name }}'"><img src={{ tag_name.img }} class="collections-img"></a>
+            <p class="collections-name">{{ tag_name.tag_name }} Collection</p>
+            </div>
+        {% endfor %}
         <div>
-            {% for tag_name in taste_tag_names %}
-                <a href="#"><img></a>
-            {% endfor %}
+            <a href="{% url 'gin_search_results' %}"><img src="{% static 'images/all-gins.png' %}" class="collections-img"></a>
+            <p class="collections-name">Browse all gins</p>
         </div>
     </div>
 {% endblock %}
