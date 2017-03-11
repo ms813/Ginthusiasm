@@ -1,0 +1,26 @@
+div.add_article {
+  width:100%;
+
+}
+
+form {
+    display: flex;
+    flex-direction: row;
+    align-content: space-around;
+    flex-wrap: wrap;
+}
+
+form textarea{
+  flex-basis: 100%;
+  display:block;
+  border-radius: 5px;
+  height:100px;
+}
+
+form input[type='text'] {
+    flex-basis: 100%;
+    display:block;
+    margin: 10px;
+    height: 35px;
+    border-radius: 5px;
+}

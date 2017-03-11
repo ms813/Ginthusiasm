@@ -301,8 +301,8 @@ def add_review(request, gin_name_slug):
         response_data = {}
 
         ## Catherine - add postcode from review form here
-        postcode = "G117PY"
-        mh = MapHelper()
+        postcode = 'PA5 9DB';
+        mh = MapHelper();
         geodata = mh.postcodeToLatLng(postcode);
         # {'lat' : x, 'lng' : y}
 
