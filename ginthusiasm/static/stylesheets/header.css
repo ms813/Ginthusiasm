@@ -1,4 +1,5 @@
 header.header-small {
+    position: relative;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -15,6 +16,7 @@ header.header-small  img{
 }
 
 header.header-small nav {
+    position: relative;
     height: 50px;
     flex-grow: 6;
     display: flex;
@@ -36,7 +38,7 @@ header.header-large img{
 }
 
 header.header-large nav{
-
+    position: relative;
     margin-top: -5px;
     height: 50px;
     display: flex;
