@@ -1,0 +1,13 @@
+<div class="collection_highlights_widget">
+    <h1 class="collection-highlights-header">Collection highlights</h1>
+    <div class="collection-highlights-gins">
+    {% for highlight in collection_highlights %}
+        <div class="collection-highlight">
+            <span class="collection-highlight-description">
+                <a href="{% url 'gin_search_results' %}?tags='{{ highlight.tag_name }}'"><img src={{ highlight.img }} class="collections-img"></a>
+                <p class="collections-name">{{ highlight.tag_name }} Collection</p>
+            </span>
+        </div>
+    {% endfor %}
+    </div>
+</div>
