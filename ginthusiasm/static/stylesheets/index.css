@@ -6,8 +6,12 @@
     margin-bottom: 20px;
 }
 
-.index-widget-row {
+.middle-row {
     height: 440px;
+}
+
+.bottom-row {
+    height: 300px;
 }
 
 .feature_search_widget {
@@ -24,6 +28,14 @@
     max-width: 40%;
     min-width: 40%;
     overflow: scroll;
+}
+
+.collection-highlights-container {
+    max-width: 100%;
+    min-width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .welcome {
