@@ -1,4 +1,4 @@
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib.auth.views import password_reset, password_reset_done, password_reset_confirm, \
     password_reset_complete
 
@@ -94,6 +94,9 @@ urlpatterns = [
 
     ##########     Collections     ##########
     url(r'^collections/$', views.collections, name='collections'),
+
+    ##########     Social Auth     ##########
+    url('', include('social_django.urls', namespace='social'))
 ]
 
 # collate all of the urls into the urlpatterns list
