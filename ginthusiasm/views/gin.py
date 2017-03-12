@@ -9,6 +9,7 @@ from haystack.query import SearchQuerySet
 from ginthusiasm_project.GoogleMapsAuth import api_keys
 from map_helper import MapHelper
 import json
+import shlex
 
 """
 This file handles creating, displaying and rating the Gin model
@@ -245,7 +246,7 @@ def create_gin_query(query_dict):
 
     # filter by tag
     if query_dict.get('tags'):
-        tags = query_dict.get('tags').split()
+        tags = shlex.split(query_dict.get('tags'))
         tags_query = Q()
         for tag in tags:
             tags_query.add(
