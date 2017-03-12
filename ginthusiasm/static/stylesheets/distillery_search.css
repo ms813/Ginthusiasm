@@ -57,3 +57,14 @@
     max-width: 200px;
     object-fit: cover;
 }
+
+#search-btn {
+    text-align: center;
+    background-color: var(--lowlight-subtle);
+    cursor: pointer;
+    display: inline-table;;
+    color: var(--foreground-alt);
+    text-decoration: none;
+    height: 25px;
+    width: 100px;
+}
