@@ -1,10 +1,12 @@
-from django.shortcuts import render, redirect
+import json
+
+from django.shortcuts import render, redirect, render_to_response
+from haystack.query import SearchQuerySet
+
 from ginthusiasm.models import Distillery
 from ginthusiasm.forms import DistillerySearchForm
-
 from ginthusiasm_project.GoogleMapsAuth import api_keys
 
-import json
 
 """
 This file contains views related to the Distillery model, including searching by distillery
@@ -50,6 +52,8 @@ def distillery_search_results(request):
     distillery_list = []
     if query_dict.get('distillery_name'):
         distillery_list = Distillery.objects.filter(name__icontains=query_dict['distillery_name'])
+    else:
+        distillery_list = Distillery.objects.all()
 
     # If there is only one result returned then redirect straight to that page
     if len(distillery_list) == 1:
@@ -58,3 +62,21 @@ def distillery_search_results(request):
     context_dict = {'distilleries': distillery_list, 'advanced_search_form': DistillerySearchForm()}
 
     return render(request, 'ginthusiasm/distillery_search_page.html', context=context_dict)
+
+
+def distillery_keyword_autocomplete(request):
+    if request.method == 'POST':
+        search_text = request.POST.get('search_text')
+        # get the top 5 matching distilleries
+        distilleries = SearchQuerySet().autocomplete(distillery_auto=search_text)[:5]
+
+        context_dict = {
+            'results': [{
+                'name': distillery.object.name,
+                'slug': distillery.object.slug,
+            } for distillery in distilleries],
+            'show_url': 'show_distillery',
+        }
+        return render_to_response('ginthusiasm/ajax_search.html', context=context_dict)
+    else:
+        return redirect('distillery_search_results')

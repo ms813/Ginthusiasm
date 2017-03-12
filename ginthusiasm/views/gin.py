@@ -8,8 +8,8 @@ from django.db.models import Q
 from haystack.query import SearchQuerySet
 from ginthusiasm_project.GoogleMapsAuth import api_keys
 from map_helper import MapHelper
-import shlex
 import json
+import shlex
 
 """
 This file handles creating, displaying and rating the Gin model
@@ -66,7 +66,20 @@ def show_gin(request, gin_name_slug):
 
     # Add the review form to the template if the user is logged in
     if request.user.is_authenticated:
-        context_dict['form'] = ReviewForm()
+        # check if the user has already written a review and populate the form with it
+        review = gin.reviews.filter(user=request.user.userprofile).first()
+        if review:
+            initial_data = {
+                "date": review.date,
+                "rating": review.rating,
+                "content": review.content,
+                "lat": review.lat,
+                "long": review.long
+            }
+            context_dict['form'] = ReviewForm(initial=initial_data)
+        else:
+            context_dict['form'] = ReviewForm()
+
         add_review(request, gin_name_slug)
 
     # Render the response and return it to the client
@@ -244,7 +257,7 @@ def create_gin_query(query_dict):
 
     # filter by distillery
     if query_dict.get('distillery'):
-        distilleries = shlex.split(query_dict.get('distillery').replace("+", " "))
+        distilleries = query_dict.get('distillery').replace("+", " ").split()
         distilleries_query = Q()
         for distillery in distilleries:
             distilleries_query.add(
@@ -274,7 +287,6 @@ def gin_keyword_filter(search_text):
     return Gin.objects.filter(pk__in=primary_keys).extra(select={'ordering': ordering}, order_by=('ordering',))
 
 
-
 # Filters gin by keyword, auto-completing via AJAX as the user types
 def gin_keyword_filter_autocomplete(request):
     if request.method == 'POST':
@@ -283,7 +295,13 @@ def gin_keyword_filter_autocomplete(request):
         # get the top 5 matching gins
         gins = SearchQuerySet().autocomplete(content_auto=search_text)[:5]
 
-        context_dict = {'gins': gins}
+        context_dict = {
+            'results': [{
+                'name': gin.object.name,
+                'slug': gin.object.slug,
+            } for gin in gins],
+            'show_url': 'show_gin'
+        }
         return render_to_response('ginthusiasm/ajax_search.html', context=context_dict)
     else:
         return redirect('gin_search_results')
@@ -293,8 +311,6 @@ def gin_keyword_filter_autocomplete(request):
 def add_review(request, gin_name_slug):
     gin = Gin.objects.get(slug=gin_name_slug)
     author = request.user.userprofile
-
-    form = ReviewForm()
 
     if request.method == 'POST':
         form = ReviewForm(data=request.POST)
@@ -328,9 +344,6 @@ def add_review(request, gin_name_slug):
             print(form.errors)
 
     else:
-        return HttpResponse(
-            json.dumps({"nothing to see": "this isn't happening"}),
-            content_type="application/json"
-        )
-
-    return render_to_response('ginthusiasm/add_review_widget.html', {'form': form, 'gin': gin})
+        # GET request, probably when rendering a Gin large page
+        pass
+        #return render(request, 'ginthusiasm/add_review_widget.html', {'form': form, 'gin': gin})

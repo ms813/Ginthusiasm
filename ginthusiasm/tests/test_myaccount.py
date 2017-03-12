@@ -30,8 +30,6 @@ class TestMyAccount(TestCase):
         self.assertContains(response, '<img src="/media/profile_images/',
                             msg_prefix="My account contains profile image")
 
-        # profile picture upload form
-
         # wishlist button
         self.assertContains(response,
                             '<a class="ginthusiasm-button" href="/wishlist/jsmith/"><span>Wishlist</span></a>',
@@ -75,4 +73,3 @@ class TestMyAccount(TestCase):
         self.assertContains(response,
                             '<a href="/distillery/testdistillery/add-gin/" id="add-gin-btn"',
                             msg_prefix="My Account for distillery owners contains link to add gin to their distillery")
-

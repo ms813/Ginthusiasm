@@ -1,0 +1,29 @@
+{% with gin=review.gin %}
+    <div class="gin_widget {{ alt_class }}">
+        <div class="details">
+            <a href="{% url 'show_gin' gin.slug %}">
+                <h1>{{ review.gin.name }}</h1>
+            </a>
+
+            <p>{{ review.content }}</p>
+
+            <div class="rating">
+                Your rating:
+                {% with rating_type='average_rating' rating_initial=review.rating %}
+                    {% include 'ginthusiasm/gin_rating_widget.html' %}
+                {% endwith %}
+            </div>
+
+            <span>
+                {% include 'ginthusiasm/wishlist_button.html' %}
+                <a class='ginthusiasm-button' href="{% url 'show_gin' gin.slug %}#review">
+                    <span>Edit Review</span>
+                </a>
+            </span>
+        </div>
+
+        <a href="{% url 'show_gin' gin.slug %}">
+            <img src="{{ MEDIA_URL }}{{ gin.image }}" alt="Image of {{ gin.name }}"/>
+        </a>
+    </div>
+{% endwith %}

@@ -1,0 +1,24 @@
+.collections-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.collections-container > a {
+    width: 33%;
+    flex-grow: 1;
+    flex-basis: 33%;
+}
+
+.collections-img {
+    object-fit: cover;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    padding-top: 10px;
+}
+
+.collections-name {
+    text-align: center;
+}

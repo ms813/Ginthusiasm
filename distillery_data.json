@@ -1,0 +1,82 @@
+[
+ {
+   "name": "Copperhead",
+   "address": "Rue Bois des Fosses 464, Oostkamp, West Flanders, 8020",
+   "phone": "0489 541 933",
+   "email": "info@copperhead.be",
+   "long_description": "Dr. Copperhead was a notorious alchemist, in search of the elixir of life. During his pursuit he surprisingly found an exquisite composition: a copper distilled gin recipe based on five essential botanicals: angelica, juniper, cardamom, orange peel and coriander seed. Copperhead gin is a gentle and versatile gin which can be mixed by meticulously elaborated blends with a functional component such as Aperitivum, Energeticum and Digestivum. In this way one can choose the effect of his gin: appetizing, energizing or digestive. ",
+   "image": "distilleries/copperhead.jpeg",
+   "lat": 50.690813,
+   "long": 4.928613
+ },
+ {
+   "name": "Greenall's",
+   "address": "Melbury Park, Clayton Road, Birchwood, Warrington WA3 6PH",
+   "phone": "01925 286400",
+   "email": "info@greenallsgin.com",
+   "long_description": "Greenall’s has been proudly distilled for over 250 years through the craftsmanship of seven generations of master distillers, the custodians of our secret recipe. Founded in 1761 by Thomas Dakin, the forefather of English gin and our original master distiller, our award winning gin has been at the forefront of British gin for gin lovers through the centuries. Greenall’s continues to be crafted in Warrington using only the finest botanicals from around the World including wild Tuscan juniper, delicate Moroccan coriander, and zesty Spanish lemons.",
+   "image": "distilleries/greenalls.jpg",
+   "lat": 53.43222,
+   "long": -2.517502
+ },
+ {
+   "name": "Sharish Gin",
+   "address": "Parque da Cidade, Reguengos de Monsaraz, 7200 Reguengos de Monsaraz",
+   "phone": "266 501 006",
+   "email": "geral@sharishgin.com",
+   "long_description": "De carácter português e produzido no Alentejo vai buscar o seu nome à vila de Monsaraz. Utilizado durante a ocupação muçulmana, o termo árabe, SHARISH significa Xara ou Jara, a muito alentejana ESTEVA (cistus ladanifer). Assim Mont Sharish significaria \"Monte erguido num impenetrável brenhal de estevas. Originando posteriormente MONSARAZ.",
+   "image": "distilleries/sharish.jpg",
+   "lat": 38.426228,
+   "long": -7.534401
+ },
+ {
+   "name": "Tanqueray",
+   "address": "Lakeside Drive, Park Royal, London, NW10 7HQ",
+   "phone": "02012 847594",
+   "email": "info@tanqueray.com",
+   "long_description": "Tanqueray gin was initially distilled in 1830 by Charles Tanqueray in the Bloomsbury district of London. The retail outlet of Edward & Charles Tanqueray & Co was established on Vine Street, London in 1838. When Charles died in 1868, his son Charles Waugh Tanqueray inherited the distillery, which continued to operate until it was severely damaged during World War II. The only facility to survive the Axis bombing, now known as \"Old Tom,\" has since been moved to Cameron Bridge, Scotland.",
+   "image": "distilleries/tanqueray.jpg",
+   "lat": 51.530055,
+   "long": -0.28395
+ },
+ {
+   "name": "Gordon's",
+   "address": "The Cameron Bridge Distillery, Leven, Fife, KY8 5RA",
+   "phone": "01333 354061",
+   "email": "consumerinfo.gb@diageo.com",
+   "long_description": "Since humble beginnings back in 1769, the Gordon's range has undergone several changes, including the fashionable Shaker cocktail range of the 1920s and 30s, and the curious Orange gin of later years. One thing has always remained though — and that's the distinctive taste of our London Dry gin. Famed the world over as the ginniest of gins, a Gordon's, effortlessly mixed with fresh tonic over ice, has always heralded the start of something good . . .",
+   "image": "distilleries/gordons.jpg",
+   "lat": 56.189506,
+   "long": -3.055769
+ },
+ {
+   "name": "Harris Distillery",
+   "address": "Tarbert, Isle of Harris HS3 3DJ",
+   "phone": "01859 502212",
+   "email": "info@harrisdistillery.com",
+   "long_description": "The concept for the distillery grew out of a realisation that the island's natural assets could best be harnessed to address its acute economic problems through a project that brings this special place and its qualities to the attention of a wider audience.  The creation of the Isle of Harris Distillery in Tarbert is thus driven by a deep and abiding love for the beauty and wit of this place and its people.",
+   "image": "distilleries/harris.jpg",
+   "lat": 57.897614,
+   "long": -6.803955
+ },
+ {
+   "name": "The Botanist Gin",
+   "address": "Bruichladdich Distillery, Isle of Islay, Argyll, PA49 7UN",
+   "phone": "01496 850190",
+   "email": "mary@bruichladdich.com",
+   "long_description": "The Botanist is an artisanal Islay gin made by Bruichladdich Distillery. It is the only gin made on Islay and is distinctive for its augmentation of the nine classical gin aromatics with a further 22 locally picked wild Islay botanicals. It is these botanicals – and the two local botanists who collect them – that inspire its name. The Botanist is slow distilled in “Ugly Betty”, a Lomond Still, one of the last in existence. The distillation takes seventeen hours, distilling at 0.2 atmospheres of pressure, four times longer than an average whisky distillation. The gin is distilled after an overnight maceration of the nine base botanicals - the seed, berry, bark, root and peel categories - in spirit and Islay spring water. This alcohol vapour infusion from the distillation then passes through the botanical basket containing the 22 more delicate Islay aromatic leaves and petals. It is this double infusion that gives the Botanist gin its distinctive flavour, allowing the more delicate aromatic leaves and petals to influence the gin vapour without being destroyed.\n\n",
+   "image": "distilleries/botanist.jpg",
+   "lat": 55.765978,
+   "long": -6.361607
+ },
+  {
+    "name": "Eden Mill",
+    "address": "Main Street, Guardbridge, St Andrews, KY16 0UU",
+    "phone": "01334 834038",
+    "email" : "hello@edenmill.com",
+    "long_description": "Eden Mill Scottish craft gin. Traditionally made by hand in Scotland using copper pot stills. Our distilling talent comes from the deeply rooted understanding of whisky and a real drive to innovate.",
+    "image": "distilleries/eden-mill.jpg",
+    "lat": 56.363755,
+    "long": -2.892163
+  }
+]

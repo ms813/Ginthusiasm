@@ -1,7 +1,5 @@
-{% if gins.count > 0 %}
-    {% for gin in gins %}
-
-        <li><a href="{% url 'show_gin' gin.object.slug %}">{{ gin.object.name }}</a></li>
-
-    {% endfor %}
-{% endif %}
+{% for result in results %}
+    <li>
+        <a href="{% url show_url result.slug %}">{{ result.name }}</a>
+    </li>
+{% endfor %}

@@ -47,7 +47,18 @@ var gin_autocomplete = function() {
 }
 
 var distillery_autocomplete = function() {
-
+    if ($('#feature-search-field').val().length) {
+        var request = $.post('/distillery-search/', {
+                search_text : $('#feature-search-field').val(),
+                csrfmiddlewaretoken : $("input[name=csrfmiddlewaretoken]").val()
+            }
+        ).done(function(data, textStatus, jqXHR) {
+            console.log(data)
+            $('#feature-search-results').html(data);
+        });
+    } else {
+        $('#feature-search-results').html();
+    }
 }
 
 var autocomplete = gin_autocomplete;

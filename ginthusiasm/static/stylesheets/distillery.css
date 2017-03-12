@@ -19,7 +19,9 @@
 }
 
 .distillery-image .image {
-    max-width: 150px;
+    object-fit: cover;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
 }
 

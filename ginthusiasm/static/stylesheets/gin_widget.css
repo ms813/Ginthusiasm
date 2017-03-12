@@ -4,7 +4,7 @@ div.gin_widget {
     padding: 25px 40px;
 }
 
-div.gin_widget img {
+div.gin_widget img, div.my_review_widget img {
     height: 200px;
     max-width: 150px;
     object-fit: cover;
@@ -12,10 +12,10 @@ div.gin_widget img {
 }
 
 .gin_widget div.details {
-    //display: flex;
-    //flex-direction: column;
-    //justify-content: space-between;
-    //height: 200px;
+/ / display: flex;
+/ / flex-direction: column;
+/ / justify-content: space-between;
+/ / height: 200 px;
 }
 
 div.gin_widget.False {
@@ -38,7 +38,7 @@ div.gin_widget .rating > div {
 }
 
 div.gin_widget .details a h1 {
-    display:inline-block;
+    display: inline-block;
     text-decoration: none;
     margin-top: 0;
     margin-bottom: 0;
@@ -46,15 +46,15 @@ div.gin_widget .details a h1 {
 
 div.gin_widget .details a h1:after {
     content: '';
-    display:block;
-    height:2px;
+    display: block;
+    height: 2px;
     width: 0;
     background: transparent;
     transition: width 150ms ease, background-color 150ms ease;
 }
 
 div.gin_widget .details a h1:hover:after {
-    width:100%;
+    width: 100%;
     background: var(--base-color);
 }
 
@@ -63,11 +63,11 @@ div.gin_widget .details p {
     height: 100px;
     overflow: hidden;
     background: linear-gradient(
-        rgba(0, 0, 0, 1) 0%,
-        rgba(0, 0, 0, 1) 50%,
-        rgba(0, 0, 0, 0) 100%
+            rgba(0, 0, 0, 1) 0%,
+            rgba(0, 0, 0, 1) 50%,
+            rgba(0, 0, 0, 0) 100%
     );
 
     -webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
+    -webkit-text-fill-color: transparent;
 }

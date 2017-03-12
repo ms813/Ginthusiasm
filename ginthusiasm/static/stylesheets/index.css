@@ -1,4 +1,4 @@
-#index-row1 {
+.index-row {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -6,9 +6,23 @@
     margin-bottom: 20px;
 }
 
+.index-widget-row {
+    height: 440px;
+}
+
 .feature_search_widget {
     width: 70%;
     height: 100%;
+}
+
+.featured-gin-container {
+    max-width: 60%;
+    min-width: 60%;
+}
+
+.trending-gin-container {
+    max-width: 40%;
+    min-width: 40%;
 }
 
 .welcome {
