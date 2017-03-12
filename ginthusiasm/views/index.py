@@ -15,7 +15,7 @@ def index(request):
     # If the cookie exists, the value returned is casted to a boolean.
     # If the cookie does not exist, then the default value 'False' is used.
     verified_age = bool(request.COOKIES.get('verified', False))
-    trending_gins = Gin.objects.order_by('-average_rating')[:3]
+    trending_gins = Gin.objects.order_by('-average_rating')[:6]
 
     context_dict = {
         'verified_age': verified_age,
