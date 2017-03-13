@@ -145,6 +145,7 @@ a.ginthusiasm-tag span {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
+    align-items: center;
 }
 
 .main_container_large_header {
