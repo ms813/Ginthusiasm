@@ -130,13 +130,6 @@ a.ginthusiasm-tag span {
     flex-grow: 1;
 }
 
-@media screen and (max-width: 750px) {
-    .content {
-        margin: 0px;
-        width: 100%;
-    }
-}
-
 .content > div {
     padding: 0 40px 40px 40px;
     overflow: hidden;
@@ -184,4 +177,21 @@ a.ginthusiasm-link:hover:after {
 
 a.ginthusiasm-link.alt-colour:after {
     background-color: var(--foreground-alt);
+}
+
+@media screen and (max-width: 750px) {
+    .content {
+        margin: 0px;
+        padding-top: 10px;
+        width: 100%;
+    }
+
+    .content > div {
+        padding: 0px 10px 10px 10px;
+    }
+
+    .indent {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
 }
