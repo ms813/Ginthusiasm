@@ -176,9 +176,10 @@ def populate_review():
                 "rating" : 3,
                 "content" : "Pudding jelly chocolate cake lollipop cupcake. Candy cotton candy pie sweet lollipop. Souffle cheesecake danish halvah. Muffin brownie powder pastry. Candy sweet roll jujubes jelly. Pie icing icing chupa chups lemon drops bear claw carrot cake muffin chocolate bar. Cheesecake bonbon icing lollipop sweet caramels powder. Powder croissant candy lemon drops. Bonbon brownie marzipan gingerbread candy bear claw powder tart. Donut candy sesame snaps. Halvah cake sweet apple pie. Cake oat cake tiramisu cake. Toffee dragee croissant jelly beans dragee macaroon chocolate cake tootsie roll.",
                 "lat" : 51.503351 + (random.random() - 0.5),
-                "long" : -0.119522 + (random.random() - 0.5),
+                "lng" : -0.119522 + (random.random() - 0.5),
                 "user" : user.userprofile,
-                "gin" : gins[i]
+                "gin" : gins[i],
+                "postcode": "G2 2RQ",
             })
 
     for data in reviews:
@@ -194,7 +195,8 @@ def populate_review():
                 rating=data['rating'],
                 content=data['content'],
                 lat=data['lat'],
-                long=data['long'],
+                lng=data['lng'],
+                postcode= data['postcode'],
             )
             print(str(r) + ' successfully created')
 

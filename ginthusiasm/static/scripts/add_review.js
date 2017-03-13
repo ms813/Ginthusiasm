@@ -50,7 +50,7 @@ var getLocation = function (e) {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (pos) {
             $('#id_lat').val(pos.coords.latitude);
-            $('#id_long').val(pos.coords.longitude);
+            $('#id_lng').val(pos.coords.longitude);
         });
     } else {
         console.log("Geolocation is not supported by this browser.");

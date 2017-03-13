@@ -1,8 +1,10 @@
-<div>
-    <div>
-          <h2>{{ article.title }}</h2>
-          </a>
-          <p>{{ article.date }}<p>
-          <p>{{ article.shortDesc }}<p>
-    <div>
+<div class="gin_month_widget">
+    <h1 class="gm-header">Gin of the Month</h1>
+    {% for article in gin_month %}
+      <span class="gm-image">
+        <img src="{{ article.image.url }}" alt="Image of {{ article.title }}">
+      </span>
+      <a href="{% url 'article_month' %}"><span class="gm-title"> {{ article.title }}<br /></span></a>
+      <span class="gm-desc">{{ article.shortDesc }}</span>
+    {% endfor %}
 </div>

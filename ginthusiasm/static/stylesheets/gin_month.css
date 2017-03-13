@@ -1,0 +1,29 @@
+.gin_month_widget {
+    background-color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+.gm-header {
+  font-size: 20px;
+}
+
+.gm-image {
+
+}
+
+.gm-image > img {
+    object-fit: cover;
+    width: 100%;
+
+}
+
+.gm-title {
+  font-size: 20px;
+  padding-bottom: :20px;
+}
+
+.gm-desc {
+  vertical-align: center;
+  padding-bottom: :20px;
+}

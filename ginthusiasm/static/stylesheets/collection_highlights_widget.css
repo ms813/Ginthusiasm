@@ -1,0 +1,28 @@
+.collection_highlights_widget {
+    background-color: #fff;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
+
+.collection-highlights-gins {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.collection-highlights-header {
+    font-size: 20px;
+}
+
+.collections-img {
+    object-fit: cover;
+    height: 210px;
+    width: 330px;
+}
+
+.collections-name {
+    text-align: center;
+}

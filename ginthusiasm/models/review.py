@@ -21,9 +21,10 @@ class Review(models.Model):
     rating = models.PositiveSmallIntegerField(blank=True, null=True)
     content = models.TextField(blank=True)
     lat = models.FloatField(blank=True, null=True)
-    long = models.FloatField(blank=True, null=True)
+    lng = models.FloatField(blank=True, null=True)
     user = models.ForeignKey('UserProfile', on_delete=models.CASCADE, related_name='reviews')
     gin = models.ForeignKey('Gin', on_delete=models.CASCADE, related_name='reviews')
+    postcode = models.CharField(blank=True, null=True, max_length=128)
 
     class Meta:
         # use a combination of the user and the gin as primary key

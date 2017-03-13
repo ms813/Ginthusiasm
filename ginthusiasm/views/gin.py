@@ -33,7 +33,7 @@ def show_gin(request, gin_name_slug):
         # Map parameters
         if reviews:
             # 1 or more reviews, so create a list of coordinates
-            coords = [{'lat': r.lat, 'lng': r.long} for r in reviews]
+            coords = [{'lat': r.lat, 'lng': r.lng} for r in reviews]
         else:
             # 0 reviews, so center map on distillery
             distillery = gin.distillery
@@ -74,7 +74,7 @@ def show_gin(request, gin_name_slug):
                 "rating": review.rating,
                 "content": review.content,
                 "lat": review.lat,
-                "long": review.long
+                "lng": review.lng,
             }
             context_dict['form'] = ReviewForm(initial=initial_data)
         else:
@@ -317,9 +317,9 @@ def add_review(request, gin_name_slug):
         response_data = {}
 
         ## Catherine - add postcode from review form here
-        postcode = "G117PY"
-        mh = MapHelper()
-        geodata = mh.postcodeToLatLng(postcode)
+        #postcode = "G117PY"
+        #mh = MapHelper()
+        #geodata = mh.postcodeToLatLng(postcode)
         # {'lat' : x, 'lng' : y}
 
         if form.is_valid():
@@ -330,9 +330,27 @@ def add_review(request, gin_name_slug):
                 review.user = author
                 review.content = form.cleaned_data.get('content')
                 review.rating = form.cleaned_data.get('rating')
-                review.lat = form.cleaned_data.get('lat')
-                review.long = form.cleaned_data.get('long')
                 review.review_type = author.user_type
+                review.date = form.cleaned_data.get('date')
+                review.lat = form.cleaned_data.get('lat')
+                review.lng = form.cleaned_data.get('lng')
+
+                if form.cleaned_data.get('postcode') == "":
+                    print("The postcode is empty")
+                    review.lat = form.cleaned_data.get('lat')
+                    review.lng = form.cleaned_data.get('lng')
+
+                else:
+                    print("The postcode is not empty")
+                    print(form.cleaned_data.get('postcode'))
+                    review.postcode = form.cleaned_data.get('postcode')
+                    mh = MapHelper()
+                    geodata = mh.postcodeToLatLng(review.postcode)
+                    review.lng = geodata.get('lng')
+                    review.lat = geodata.get('lat')
+
+
+
                 review.save()
                 response_data['result'] = 'Create review successful'
                 return HttpResponse(

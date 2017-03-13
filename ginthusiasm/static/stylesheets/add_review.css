@@ -1,7 +1,5 @@
 div.add_review {
-
   width:100%;
-
 }
 
 form {
@@ -13,4 +11,5 @@ form {
 
 form textarea{
   width:100%;
+  border-radius: 5px;
 }

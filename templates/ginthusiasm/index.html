@@ -5,7 +5,9 @@
     <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/overlay.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/feature_search.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/trending_widget.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/collection_highlights_widget.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/index.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/gin_month.css' %}">
 
     <!-- Style sheets for rating widget -->
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
@@ -30,12 +32,18 @@
         {% include 'ginthusiasm/feature_search_widget.html' %}
     </div>
 
-    <div class="index-row index-widget-row">
+    <div class="index-row middle-row">
         <span class="featured-gin-container">
-            {# featured gin widget here #}
+            {% include 'ginthusiasm/gin_month_widget.html' %}
         </span>
         <span class="trending-gin-container">
             {% include 'ginthusiasm/trending_widget.html' %}
+        </span>
+    </div>
+
+    <div class="index-row bottom-row">
+        <span class="collection-highlights-container">
+            {% include 'ginthusiasm/collection_highlights_widget.html' %}
         </span>
     </div>
 
