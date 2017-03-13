@@ -12,9 +12,11 @@ form label{
     align-content: space-between;
     --base-width: 720px;
     --margin: 10px;
+    margin: 0px -20px 0px -20px;
 }
 
 .gin_search_widget div {
+    margin: 5px 20px 5px 20px;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -26,8 +28,8 @@ form label{
 }
 
 .gin_search_widget input[type="text"] {
-    flex-basis: 200px;
-    flex-grow: 2;
+    flex-basis: 300px;
+    flex-grow: 3;
 }
 
 .gin_search_widget input[type="number"] {
@@ -41,12 +43,14 @@ form label{
 }
 
 .gin_search_widget label {
+    text-align: right;
     white-space: nowrap;
     flex-basis: 100px;
     flex-grow: 1;
 }
 
 .gin_search_widget label.to {
+    text-align: center;
     flex-basis: 50px;
     flex-grow: 0.5;
 }
