@@ -43,7 +43,7 @@ form label{
 }
 
 .gin_search_widget label {
-    margin: 0px 10px;
+    margin: 0px 10px 0px 0px;
     white-space: nowrap;
     min-width: 100px;
     max-width: 100px;
