@@ -68,6 +68,8 @@ def signup(request):
             wishlist.save()
 
             # new user is good, log them in
+            # note: use the django.contrib.auth backend rather than the social auth backend
+            # when users sign up using this route
             login(request, user, backend=settings.AUTHENTICATION_BACKENDS[1])
             return redirect('myaccount')
         else:
