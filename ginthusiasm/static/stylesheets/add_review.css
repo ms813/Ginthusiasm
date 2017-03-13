@@ -11,25 +11,40 @@ form {
 
 form textarea{
   width:100%;
-  border-radius: 10px;
   border-color: gray;
 }
 
 
 form input[type='text']{
-    flex-basis: 20%;
+    flex-basis: 10%;
     margin: 10px;
     height: 35px;
-    border-radius: 5px;
     text-align: center;
 }
 
 
 .ar_location{
-  flex-basis: 40%;
+  display: flex;
+  flex-basis: 100%;
+  justify-content:center;
+  align-items: center;
+
 }
 
+
 .ar_reviewsubmit {
-  flex-basis: 60%;
-  text-align: right;
+  flex-basis: 100%;
+  text-align: center;
+
+}
+
+.ar_location #location-btn{
+  margin-left: 10px;
+}
+
+.ar_stars{
+  display: flex;
+  flex-basis: 100%;
+  justify-content:center;
+  align-items: center;
 }
