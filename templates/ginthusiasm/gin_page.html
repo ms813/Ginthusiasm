@@ -18,11 +18,11 @@
     <div class='gin_description'>
         <img class='image' src="{{ MEDIA_URL }}{{ gin.image }}" alt='Image of {{ gin.name }}'/>
         <h1>{{ gin.name }}</h1>
-        <p>{{ gin.long_description }}
+        {{ gin.long_description|safe|linebreaks }}
             {% comment %}
             {% lorem 10 p %}
             {% endcomment %}
-        </p>
+
 
         {% if gin.distillery %}
             <a href="{% url 'show_distillery' gin.distillery.slug %}">See {{ gin.distillery.name }} Distillery</a>
