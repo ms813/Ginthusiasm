@@ -29,9 +29,9 @@
         <p id='wishlistlen' data-wishlistlen='{{ gins|length }}' hidden></p>
     {% else %}
         {% if user.is_authenticated %}
-            <p>You haven't added any gins to your wishlist!</p>
+            <strong class="indent">You haven't added any gins to your wishlist!</strong>
         {% else %}
-            <p>This user hasn't added any gins to their wishlist!</p>
+            <strong class="indent">This user hasn't added any gins to their wishlist!</strong>
         {% endif %}
     {% endif %}
 
