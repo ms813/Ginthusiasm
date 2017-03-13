@@ -118,6 +118,12 @@ a.ginthusiasm-tag span {
     overflow: hidden;
 }
 
+.indent {
+    margin-left: 40px;
+    margin-right: 40px;
+    overflow: hidden;
+}
+
 .main_container_large_header, .main_container_small_header {
     display: flex;
     flex-direction: column;

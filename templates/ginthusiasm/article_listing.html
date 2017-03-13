@@ -10,18 +10,18 @@
 {% block title_block %}Article Archive{% endblock %}
 
 {% block body_block %}
-    <h1>Article Archive</h1>
+    <h1 class="indent">Article Archive</h1>
 
     {% comment %}
         Show this message if the user tries to go to a page for basic users who
         dont have permission to write articles
     {% endcomment %}
     {% if invalid_user %}
-        <p>Sorry, {{ invalid_user }} has not written any articles, so we redirected you to the article archive.</p>
+        <p class="indent">Sorry, {{ invalid_user }} has not written any articles, so we redirected you to the article archive.</p>
     {% endif %}
 
     {% if not user.is_anonymous and user.userprofile.user_type != 'b' %}
-        <a href='{% url "add_article" user.username %}' id='new-article' class="ginthusiasm-button"><span>Write a new article</span></a>
+        <a href='{% url "add_article" user.username %}' id='new-article' class="ginthusiasm-button indent"><span>Write a new article</span></a>
     {% endif %}
 
     <div class="articles">
@@ -34,7 +34,7 @@
                 {% endfor %}
             </ul>
         {% else %}
-            No Search Results
+            <strong class="indent">No Search Results</strong>
         {% endif %}
     </div>
 {% endblock %}

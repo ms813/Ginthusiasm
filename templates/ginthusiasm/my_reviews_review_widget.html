@@ -9,7 +9,7 @@
 
             <div class="rating">
                 Your rating:
-                {% with rating_type='average_rating' rating_initial=review.rating %}
+                {% with rating_type='user_rating' rating_initial=review.rating %}
                     {% include 'ginthusiasm/gin_rating_widget.html' %}
                 {% endwith %}
             </div>
