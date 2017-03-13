@@ -6,10 +6,11 @@
     align-content: space-between;
     --base-width: 720px;
     --margin: 10px;
+    padding: 40px;
 }
 
 .content .index-widget {
-    padding: 0;
+    padding: 0 20px;
     margin: var(--margin);
     flex-basis: calc(var(--base-width) / 3 - 2 * var(--margin));
     flex-grow: 1;
