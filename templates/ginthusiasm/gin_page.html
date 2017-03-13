@@ -59,7 +59,7 @@
                     {% include "ginthusiasm/add_review_widget.html" %}
                 </div>
             {% else %}
-              <a href="{% url 'login' %}">Log in to review and rate this gin!! </a>
+              <a href="{% url 'login' %}">Log in to review and rate this gin! </a>
             {% endif %}
 
         <div class='expert_reviews'>
@@ -84,6 +84,9 @@
 
 
     <div class='map'>
+        <div class="map-description">
+            <h3>See where in the world people are drinking {{ gin.name }}</h3>
+        </div>
         {% include 'ginthusiasm/map_widget.html' %}
     </div>
 
