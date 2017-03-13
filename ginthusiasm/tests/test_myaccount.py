@@ -37,7 +37,7 @@ class TestMyAccount(TestCase):
 
         # My Reviews button
         self.assertContains(response,
-                            '<a class="ginthusiasm-button" href="/review/jsmith/"><span>My Reviews</span></a>',
+                            '<a class="ginthusiasm-button" href="/review/jsmith/"><span>My reviews</span></a>',
                             msg_prefix="My account contains my reviews link")
 
         # log out button

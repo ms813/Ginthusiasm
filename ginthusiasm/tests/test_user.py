@@ -77,7 +77,7 @@ class UserTestCase(TestCase):
             "password": "password123",
             "first_name": "test",
             "last_name": "user",
-            "email": "test@ginthusiasm.com"
+            "email": "test@ginthusiasm.com",
         }
 
         self.client.post(reverse('signup'), data)
