@@ -7,12 +7,12 @@ header.header-small {
     width: 100%;
     background-color: var(--base-color);
     color: var(--foreground-alt);
-	height: var(--header-small-height);
+    height: var(--header-small-height);
 }
 
-header.header-small  img{
-	max-width: 100px;
-	flex-grow: 1;
+header.header-small img {
+    max-width: 100px;
+    flex-grow: 1;
 }
 
 header.header-small nav {
@@ -23,21 +23,21 @@ header.header-small nav {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    text-align:center;
+    text-align: center;
 }
 
-header.header-large{
+header.header-large {
     text-align: center;
     background-color: var(--base-color);
     height: var(--header-large-height);
 }
 
-header.header-large img{
+header.header-large img {
     margin: 5px auto;
     max-height: 200px;
 }
 
-header.header-large nav{
+header.header-large nav {
     position: relative;
     margin-top: -5px;
     height: 50px;
@@ -48,87 +48,86 @@ header.header-large nav{
     justify-content: space-around;
 }
 
-header.header-large .login-small{
-	position: absolute;
-	top: 0;
-	right: 15px;
-	height: 50px;
+header.header-large .login-small {
+    position: absolute;
+    top: 0;
+    right: 15px;
+    height: 50px;
 }
 
-header.header-large .header-search{
-	position: absolute;
-	top: 150px;
-	right: 0;
-	height: 50px;
+header.header-large .header-search {
+    position: absolute;
+    top: 150px;
+    right: 0;
+    height: 50px;
 }
 
 header.header-small nav {
-	width: 50%;
+    width: 50%;
 }
 
 header nav a {
-	width: 25%;
-	height: 80%;
+    width: 25%;
+    height: 80%;
 }
 
-header a.ginthusiasm-button, header a.ginthusiasm-button  {
+header a.ginthusiasm-button, header a.ginthusiasm-button {
     height: 60%;
     width: 10%;
 }
 
-header .login-small{
-	height: 100%;
-	width: 35%;
-	display: flex;
-	align-items: stretch;
-	justify-content: flex-end;
+header .login-small {
+    height: 100%;
+    width: 35%;
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-end;
+    white-space: nowrap;
 }
 
 header .login-small a {
-	min-width: 120px;
-	text-align: center;
-	align-self: center;
-	flex-basis: 20%;
-	color: var(--foreground-alt);
-	text-decoration: none;
+    text-align: center;
+    align-self: center;
+    color: var(--foreground-alt);
+    text-decoration: none;
+    margin: 0 10px;
 }
 
 header .header-search {
-    position:relative;
-	display: flex;
-	align-items:center;
-	height: 100%;
-	width: 25%;
-	margin-right: 10%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 25%;
+    margin-right: 10%;
 }
 
 header nav a {
-	min-width: 120px;
+    min-width: 120px;
     display: table;
     color: var(--foreground-alt);
     text-decoration: none;
-	transition: background-color 150ms linear, border-radius 150ms linear;
+    transition: background-color 150ms linear, border-radius 150ms linear;
 }
 
 header nav a span {
-	font-family: 'Roboto Slab', serif;
-	font-size: 18px;
-	display:table-cell;
-	vertical-align:middle;
+    font-family: 'Roboto Slab', serif;
+    font-size: 18px;
+    display: table-cell;
+    vertical-align: middle;
 }
 
-header nav a:hover{
-    //border-radius: 5px;
+header nav a:hover {
     background-color: var(--highlight-alt);
 }
 
 header .header-search a.ginthusiasm-button {
-	width: 25%;
+    width: 25%;
 }
 
-header .header-search input[type='text']{
-	-webkit-appearance: none;
-	padding: 0px;
+header .header-search input[type='text'] {
+    -webkit-appearance: none;
+    padding: 0px;
     height: 60%;
     width: 70%;
     font-size: 0.9em;
@@ -139,12 +138,12 @@ header .header-search input[type='text']{
 #header-search-results {
     display: inline;
     position: absolute;
-    width:70%;
-    left:0;
+    width: 70%;
+    left: 0;
     z-index: 1;
-    top:41px;
+    top: 41px;
     text-align: left;
-    margin:0;
+    margin: 0;
     background-color: white;
 }
 
