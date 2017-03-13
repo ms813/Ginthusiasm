@@ -1,5 +1,5 @@
 <div id="thanks" style="display: none;">
-        <h4>Thank you for submitting your review!</h4>
+        <h4>Thank you for submitting your review! Refresh the page to view it.</h4>
 </div>
 <form id="add_review" method="post">
     {% csrf_token %}
@@ -11,5 +11,5 @@
         {% include 'ginthusiasm/gin_rating_widget.html' %}
     {% endwith %}
     <a id='location-btn' class='ginthusiasm-button'><span>Tag review with current location</span></a>
-    <a id='add-review-btn' class='ginthusiasm-button'><span>Add Review</span></a>
+    <a id='add-review-btn' class='ginthusiasm-button'><span>Save Review</span></a>
 </form>
