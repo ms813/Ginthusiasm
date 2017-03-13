@@ -3,5 +3,5 @@
 # DON'T PUT THESE IN GIT!
 
 api_keys = [
-    # your api keys here as a string
+    "AIzaSyDEVlX9w_vUVxoqJNwy6xeo_-BMXDJqYc0"
     ]

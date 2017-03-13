@@ -7,9 +7,9 @@
       {{ field.help_text }}
       {{ field }}
     {% endfor %}
+    <a id='location-btn' class='ginthusiasm-button'><span>Current Location</span></a> <br />
     {% with rating_type='form_rating' rating_initial='3' %}
         {% include 'ginthusiasm/gin_rating_widget.html' %}
     {% endwith %}
-    <a id='location-btn' class='ginthusiasm-button'><span>Tag review with current location</span></a>
-    <a id='add-review-btn' class='ginthusiasm-button'><span>Add Review</span></a>
+    <a id='add-review-btn' class='ginthusiasm-button'><span>Save Review</span></a>
 </form>

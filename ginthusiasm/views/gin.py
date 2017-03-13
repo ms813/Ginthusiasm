@@ -343,7 +343,8 @@ def add_review(request, gin_name_slug):
                 else:
                     print("The postcode is not empty")
                     print(form.cleaned_data.get('postcode'))
-                    review.postcode = form.cleaned_data.get('postcode')
+                    review.postcode = form.cleaned_data.get('postcode').upper();
+                    print(review.postcode)
                     mh = MapHelper()
                     geodata = mh.postcodeToLatLng(review.postcode)
                     review.lng = geodata.get('lng')

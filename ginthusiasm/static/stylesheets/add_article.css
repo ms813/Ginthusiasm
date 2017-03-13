@@ -4,10 +4,10 @@ div.add_article {
 }
 
 form {
-    display: flex;
-    flex-direction: row;
-    align-content: space-around;
-    flex-wrap: wrap;
+  display: flex;
+  flex-direction: row;
+  align-content: space-around;
+  flex-wrap: wrap;
 }
 
 form textarea{
@@ -18,9 +18,9 @@ form textarea{
 }
 
 form input[type='text'] {
-    flex-basis: 100%;
-    display:block;
-    margin: 10px;
-    height: 35px;
-    border-radius: 5px;
+  flex-basis: 100%;
+  display:block;
+  margin: 10px;
+  height: 35px;
+  border-radius: 5px;
 }

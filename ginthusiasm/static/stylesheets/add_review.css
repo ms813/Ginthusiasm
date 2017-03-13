@@ -11,5 +11,25 @@ form {
 
 form textarea{
   width:100%;
-  border-radius: 5px;
+  border-radius: 10px;
+  border-color: gray;
+}
+
+
+form input[type='text']{
+    flex-basis: 20%;
+    margin: 10px;
+    height: 35px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+
+.ar_location{
+  flex-basis: 40%;
+}
+
+.ar_reviewsubmit {
+  flex-basis: 60%;
+  text-align: right;
 }
