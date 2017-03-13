@@ -1,7 +1,7 @@
-.trending-widget {
+.content .trending-widget {
     background-color: #fff;
-    padding: 20px;
     text-align: center;
+    overflow-y: scroll;
 }
 
 .trending-gin-header {
@@ -9,6 +9,7 @@
 }
 
 .trending-gin {
+    margin:20px;
     display: flex;
     flex-direction: row;
 }
