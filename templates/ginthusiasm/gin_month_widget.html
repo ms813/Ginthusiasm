@@ -4,7 +4,7 @@
       <span class="gm-image">
         <img src="{{ article.image.url }}" alt="Image of {{ article.title }}">
       </span>
-      <a href="{% url 'article_month' %}"><span class="gm-title"> {{ article.title }}<br /></span></a>
-      <span class="gm-desc">{{ article.shortDesc }}</span>
+      <a href="{% url 'article_month' %}" class="ginthusiasm-link"><span class="gm-title"> {{ article.title }}</span></a>
+      <div class="gm-desc">{{ article.shortDesc }}</div>
     {% endfor %}
 </div>

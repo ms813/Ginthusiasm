@@ -25,20 +25,6 @@ div.article_widget.False {
     background-color: var(--foreground-alt);
 }
 
-.article_widget a h2:after {
-    content: '';
-    display: block;
-    height: 2px;
-    width: 0;
-    background: transparent;
-    transition: width 150ms ease, background-color 150ms ease;
-}
-
-.article_widget a h2:hover:after {
-    width: 100%;
-    background: var(--base-color);
-}
-
 .article_widget a h2 {
     margin-top: 0;
     margin-bottom: 0;

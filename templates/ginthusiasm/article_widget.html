@@ -1,9 +1,11 @@
 <div class='article_widget {{ alt_class }}'>
     <div class='aw_left'>
-      <a href="{% url 'article' article.author article.slug  %}">
+      <a href="{% url 'article' article.author article.slug  %}" class="ginthusiasm-link">
         <h2>{{ article.title }}</h2>
       </a>
-        {{ article.date }} <br />
+        <br/>
+        {{ article.date }}
+        <br/>
         by {{ article.author }}
 
     </div>
