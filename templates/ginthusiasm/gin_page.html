@@ -19,7 +19,9 @@
         <img class='image' src="{{ MEDIA_URL }}{{ gin.image }}" alt='Image of {{ gin.name }}'/>
         <h1>{{ gin.name }}</h1>
         <p>{{ gin.long_description }}
+            {% comment %}
             {% lorem 10 p %}
+            {% endcomment %}
         </p>
 
         {% if gin.distillery %}
@@ -63,21 +65,25 @@
             {% endif %}
 
         <div class='expert_reviews'>
+            {% if expert_reviews %}
             <h2>Expert Reviews</h2>
             <ul>
                 {% for review in expert_reviews %}
                     {% include "ginthusiasm/review-widget.html" %}
                 {% endfor %}
             </ul>
+            {% endif %}
         </div>
 
         <div class='other_reviews'>
+            {% if other_reviews %}
             <h2>User Reviews</h2>
             <ul>
                 {% for review in other_reviews %}
                     {% include "ginthusiasm/review-widget.html" %}
                 {% endfor %}
             </ul>
+            {% endif %}
         </div>
     </div>
 
