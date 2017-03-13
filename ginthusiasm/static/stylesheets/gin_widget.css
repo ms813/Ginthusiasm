@@ -12,10 +12,13 @@ div.gin_widget img, div.my_review_widget img {
 }
 
 .gin_widget div.details {
-/ / display: flex;
-/ / flex-direction: column;
-/ / justify-content: space-between;
-/ / height: 200 px;
+    /*
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 200 px;
+    */
+    width: 100%;
 }
 
 div.gin_widget.False {
