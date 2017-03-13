@@ -151,3 +151,22 @@ header .header-search input[type='text']{
 #header-search-results * {
     font-size: 0.95em;
 }
+
+#header-search-results a {
+    display:inline-block;
+    text-decoration:none;
+    color: var(--base-color);
+}
+#header-search-results a:after {
+    content: '';
+    display: block;
+    height: 1px;
+    width: 0;
+    background: transparent;
+    transition: width 150ms ease, background-color 150ms ease;
+}
+
+#header-search-results a:hover:after {
+    width: 100%;
+    background: var(--base-color);
+}

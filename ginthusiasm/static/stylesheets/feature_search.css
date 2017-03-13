@@ -49,3 +49,23 @@
     min-width: 60px;
     width: 20%;
 }
+
+
+#feature-search-results a {
+    display:inline-block;
+    text-decoration:none;
+    color: var(--base-color);
+}
+#feature-search-results a:after {
+    content: '';
+    display: block;
+    height: 1px;
+    width: 0;
+    background: transparent;
+    transition: width 150ms ease, background-color 150ms ease;
+}
+
+#feature-search-results a:hover:after {
+    width: 100%;
+    background: var(--base-color);
+}
