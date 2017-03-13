@@ -51,6 +51,7 @@ var getLocation = function (e) {
         navigator.geolocation.getCurrentPosition(function (pos) {
             $('#id_lat').val(pos.coords.latitude);
             $('#id_lng').val(pos.coords.longitude);
+            $('#id_postcode').val("");
         });
     } else {
         console.log("Geolocation is not supported by this browser.");
