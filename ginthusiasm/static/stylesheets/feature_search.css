@@ -50,6 +50,9 @@
     width: 20%;
 }
 
+#feature-search-results {
+    margin-top: 10px;
+}
 
 #feature-search-results a {
     display:inline-block;
