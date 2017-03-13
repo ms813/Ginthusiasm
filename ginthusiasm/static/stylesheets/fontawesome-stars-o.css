@@ -10,6 +10,14 @@
   margin-right: 2px;
 }
 
+.big .br-theme-fontawesome-stars-o .br-widget {
+  height: 36px;
+}
+
+.big .br-theme-fontawesome-stars-o .br-widget a {
+  font-size: 28px;
+}
+
 /* Unfilled stars after those selected */
 .br-theme-fontawesome-stars-o .br-widget a:after {
   content: '\f006';
