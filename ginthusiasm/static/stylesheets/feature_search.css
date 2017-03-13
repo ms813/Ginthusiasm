@@ -4,6 +4,10 @@
     background-color: #f1f1f1;
 }
 
+.content .index-widget.feature_search_widget{
+    padding: 0;
+}
+
 /* Style the links inside the tab */
 .feature_search_widget div.tab a {
     float: left;
