@@ -20,7 +20,7 @@ class Article(models.Model):
     date = models.DateField()
     slug = models.SlugField(max_length=50, unique=True)
     author = models.ForeignKey('UserProfile', related_name='article')
-    image = models.ImageField(upload_to='articles', blank=True)
+    image = models.ImageField(upload_to='articles', blank=True, null=True)
 
     # True if this article is the featured article of the month
     month = models.BooleanField()
