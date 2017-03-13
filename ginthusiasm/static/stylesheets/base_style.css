@@ -156,6 +156,30 @@ a.ginthusiasm-tag span {
     min-height: calc(100% - var(--header-small-height));
 }
 
+a.ginthusiasm-link {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--base-color);
+}
+
+a.ginthusiasm-link:after {
+    content: '';
+    display: block;
+    height: 1px;
+    width: 0;
+    background: transparent;
+    transition: width 150ms ease, background-color 150ms ease;
+}
+
+a.ginthusiasm-link:hover:after {
+    width: 100%;
+    background: var(--base-color);
+}
+
+a.ginthusiasm-link.alt-colour:after {
+    background-color: var(--foreground-alt);
+}
+
 @media screen and (max-width: 750px) {
     .content {
         margin: 0px;
