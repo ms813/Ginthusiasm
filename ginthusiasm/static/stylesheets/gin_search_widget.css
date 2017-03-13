@@ -1,9 +1,3 @@
-form label{
-  border: 1px solid #000;
-  white-space:nowrap;
-  flex-basis:450px;
-}
-
 #gin_search_form {
     display: flex;
     flex-wrap: wrap;
@@ -16,12 +10,13 @@ form label{
 }
 
 .gin_search_widget div {
-    margin: 5px 20px 5px 20px;
+    margin: 2.5px 20px 2.5px 20px;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-between;
     align-content: space-between;
+    align-items: center;
     flex-basis: calc(var(--base-width) / 3 - 2 * var(--margin));
     flex-grow: 1;
     height: 25px;
@@ -40,14 +35,15 @@ form label{
 }
 
 .gin_search_widget input[type="submit"] {
-    flex-basis: 300px;
-    flex-grow: 3;
+    width: 100px;
+    flex-basis: 100px;
+    flex-grow: 1;
 }
 
 .gin_search_widget label {
     margin: 0px 10px 0px 0px;
     white-space: nowrap;
-    min-width: 100px;
+    min-width: auto;
     max-width: 100px;
 }
 
