@@ -15,7 +15,7 @@
 {% endblock %}
 
 {% block body_block %}
-    <h1>{{ reviewer }}'s reviews</h1>
+    <h1 class="indent">{{ reviewer }}'s reviews</h1>
     <div class='search_results'>
         {% if reviews.count > 0 %}
             <ul>
@@ -26,7 +26,7 @@
                 {% endfor %}
             </ul>
         {% else %}
-            You haven't written any reviews yet!
+            <strong class="indent">You haven't written any reviews yet!</strong>
         {% endif %}
     </div>
 {% endblock %}

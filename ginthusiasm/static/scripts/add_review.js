@@ -1,6 +1,7 @@
 $(document).ready(function () {
     $('#add-review-btn').on('click', create_review);
     $('#location-btn').on('click', getLocation);
+
 });
 
 var create_review = function (event) {
@@ -47,11 +48,17 @@ var create_review = function (event) {
 };
 
 var getLocation = function (e) {
+    $('#location-btn').html("<span>Please wait</span>")
+    $('#add-review-btn').html("<span>Please wait</span>")
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (pos) {
             $('#id_lat').val(pos.coords.latitude);
             $('#id_lng').val(pos.coords.longitude);
             $('#id_postcode').val("");
+            $('#location-btn').html("<span>Location used</span>")
+            $('#add-review-btn').html("<span>Save Review</span>")
+            console.log("Button clicked");
+
         });
     } else {
         console.log("Geolocation is not supported by this browser.");
