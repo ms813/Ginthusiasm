@@ -7,9 +7,9 @@
 {% block title_block %} Add Gin{% endblock %}
 
 {% block body_block %}
-    <h1>Adding new gin to the {{ distillery.name }} distillery</h1>
+    <h1 class="indent">Adding new gin to the {{ distillery.name }} distillery</h1>
 <div>
-    <form id='add_gin_form' method='post' action='/distillery/{{ distillery.slug }}/add-gin/'
+    <form id='add_gin_form' method='post' action="{% url 'add_gin' distillery.slug %}"
         enctype="multipart/form-data">
 
         {% csrf_token %}

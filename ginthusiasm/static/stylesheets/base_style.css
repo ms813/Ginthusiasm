@@ -61,7 +61,7 @@ select {
 }
 
 a.ginthusiasm-button {
-    //border-radius: 5px;
+/ / border-radius: 5 px;
     text-align: center;
     background-color: var(--lowlight-subtle);
     cursor: pointer;
@@ -82,7 +82,7 @@ a.ginthusiasm-button span {
 }
 
 a.ginthusiasm-tag {
-    //border-radius: 5px;
+/ / border-radius: 5 px;
     text-align: center;
     background-color: var(--lowlight-subtle);
     cursor: pointer;

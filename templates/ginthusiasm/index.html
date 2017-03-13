@@ -17,49 +17,40 @@
 {% block title_block %} Home{% endblock %}
 
 {% block body_block %}
-    <div class='index-row'>
-        <div class='welcome'>
-            <h1>Welcome to Ginthusiasm</h1>
-            <p>
-                Ginthusiasm is the UK’s leading gin-rating website, home to a growing collection of unique and creative drinks.
-                Learn about and rate your best-loved gins, read reviews, keep up to date with the latest gintastic news and trends,
-                and find the best gifts for your gin-aholic friends and family.
-            </p>
-            <p>
-                Where will your gin journey take you?
-            </p>
-        </div>
-        {% include 'ginthusiasm/feature_search_widget.html' %}
-    </div>
 
-    <div class="index-row middle-row">
-        <span class="featured-gin-container">
-            {% include 'ginthusiasm/gin_month_widget.html' %}
-        </span>
-        <span class="trending-gin-container">
-            {% include 'ginthusiasm/trending_widget.html' %}
-        </span>
+    <div class='index-widget narrow welcome'>
+        <h1>Welcome to Ginthusiasm</h1>
+        <p>
+            Ginthusiasm is the UK’s leading gin-rating website, home to a growing collection of unique and creative
+            drinks.
+            Learn about and rate your best-loved gins, read reviews, keep up to date with the latest gintastic news and
+            trends,
+            and find the best gifts for your gin-aholic friends and family.
+        </p>
+        <p>
+            Where will your gin journey take you?
+        </p>
     </div>
+    {% include 'ginthusiasm/feature_search_widget.html' %}
 
-    <div class="index-row bottom-row">
-        <span class="collection-highlights-container">
-            {% include 'ginthusiasm/collection_highlights_widget.html' %}
-        </span>
-    </div>
+    {% include 'ginthusiasm/gin_month_widget.html' %}
 
-    <div>
-        {% if not verified_age %}
-            <div id="age-overlay" class="overlay">
-                <div class="overlay-content">
-                    <p id="prompt">Welcome to Ginthusiasm. Please enter your date of birth:</p>
-                    <form name="ageform" onsubmit="return verify_age()">
-                        <input id="dob" type="date" name="dob">
-                        <input type="submit" value="Submit">
-                    </form>
-                </div>
+    {% include 'ginthusiasm/trending_widget.html' %}
+
+    {% include 'ginthusiasm/collection_highlights_widget.html' %}
+
+    {% if not verified_age %}
+        <div id="age-overlay" class="overlay">
+            <div class="overlay-content">
+                <p id="prompt">Welcome to Ginthusiasm. Please enter your date of birth:</p>
+                <form name="ageform" onsubmit="return verify_age()">
+                    <input id="dob" type="date" name="dob">
+                    <input type="submit" value="Submit">
+                </form>
             </div>
-        {% endif %}
-    </div>
+        </div>
+    {% endif %}
+
 {% endblock %}
 
 {% block script_block %}
