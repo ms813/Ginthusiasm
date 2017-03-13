@@ -17,7 +17,7 @@ $(document).ready(()=>{
             gin_widget.slideDown('slow');
 
             if (wishlistlen === 0){
-                $('#wishlistlen').text("You have no gins left on your wishlist!").slideDown('slow');
+                $('#wishlistlen').html("<strong class='indent'>You have no gins left on your wishlist!</strong>").slideDown('slow');
             }
         });
     });
