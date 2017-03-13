@@ -19,7 +19,9 @@
         <img class='image' src="{{ MEDIA_URL }}{{ gin.image }}" alt='Image of {{ gin.name }}'/>
         <h1>{{ gin.name }}</h1>
         <p>{{ gin.long_description }}
+            {% comment %}
             {% lorem 10 p %}
+            {% endcomment %}
         </p>
 
         {% if gin.distillery %}
