@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from ginthusiasm.forms import UserForm, LoginForm, UploadFileForm
 from ginthusiasm.models import UserProfile, Wishlist, Distillery
+from django.conf import settings
 
 """
 Views in this file handle login and signup requests from users
@@ -67,7 +68,7 @@ def signup(request):
             wishlist.save()
 
             # new user is good, log them in
-            login(request, user)
+            login(request, user, backend=settings.AUTHENTICATION_BACKENDS[1])
             return redirect('myaccount')
         else:
             # bad sign up data, render the form and the errors
