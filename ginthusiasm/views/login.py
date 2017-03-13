@@ -91,7 +91,8 @@ def signup(request):
 @login_required
 def myaccount(request):
     userprofile = request.user.userprofile
-    context = {}
+
+    context = {'form' : UploadFileForm()}
 
     if request.method == 'POST':
 
@@ -106,9 +107,6 @@ def myaccount(request):
             # invalid form data
             print("Error uploading profile image", form.errors)
     else:
-        # the upload profile image form
-        context['form'] = UploadFileForm()
-
         # check if the user owns any distilleries
         if userprofile.user_type == UserProfile.DISTILLERY_OWNER:
             context['distilleries'] = Distillery.objects.filter(owner=userprofile)
