@@ -15,7 +15,7 @@
 {% endblock %}
 
 {% block body_block %}
-    <h1>{{ reviewer }}'s reviews</h1>
+    <div><h1>{{ reviewer }}'s reviews</h1>
     <div class='search_results'>
         {% if reviews.count > 0 %}
             <ul>
@@ -28,6 +28,7 @@
         {% else %}
             You haven't written any reviews yet!
         {% endif %}
+    </div>
     </div>
 {% endblock %}
 
