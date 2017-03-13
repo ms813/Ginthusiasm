@@ -1,0 +1,61 @@
+form label{
+  border: 1px solid #000;
+  white-space:nowrap;
+  flex-basis:450px;
+}
+
+#gin_search_form {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+    align-content: space-between;
+    --base-width: 720px;
+    --margin: 10px;
+}
+
+.gin_search_widget div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-content: space-between;
+    flex-basis: calc(var(--base-width) / 3 - 2 * var(--margin));
+    flex-grow: 1;
+    height: 25px;
+}
+
+.gin_search_widget input[type="text"] {
+    flex-basis: 200px;
+    flex-grow: 2;
+}
+
+.gin_search_widget input[type="number"] {
+    flex-basis: 100px;
+    flex-grow: 1;
+}
+
+.gin_search_widget input[type="submit"] {
+    flex-basis: 300px;
+    flex-grow: 3;
+}
+
+.gin_search_widget label {
+    white-space: nowrap;
+    flex-basis: 100px;
+    flex-grow: 1;
+}
+
+.gin_search_widget label.to {
+    flex-basis: 50px;
+    flex-grow: 0.5;
+}
+
+.gin_search_widget select {
+    flex-basis: 200px;
+    flex-grow: 2;
+}
+
+.content div.search_results {
+   padding: 0;
+}
