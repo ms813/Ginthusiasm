@@ -1,3 +1,5 @@
+{% load staticfiles %}
+
 <div class="formwrapper">
     <h2>Log in</h2>
     {% if error %}
@@ -20,5 +22,11 @@
         <input id='login-btn' type='submit' name='submit' value='Log In'/>
     </form>
 
-    <a href="{% url 'social:begin' 'twitter' %}">Login with Twitter</a>
+    <div id='password_reset_wrapper'>
+        <a id='password_reset_link' class="ginthusiasm-link" href="{% url 'password_reset' %}">Forgotten your password?</a>
+    </div>
+
+    <div id="twitter-login">
+        <a href="{% url 'social:begin' 'twitter' %}"><img src="{% static "images/Twitter_Logo_White_On_Blue.png" %}" alt="Twitter logo" id="Twitter-logo"/></a>
+    </div>
 </div>

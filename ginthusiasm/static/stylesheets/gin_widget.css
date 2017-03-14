@@ -33,10 +33,18 @@ div.gin_widget a.ginthusiasm-button {
 div.gin_widget .rating {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     margin: 5px 0;
 }
 
 div.gin_widget .rating > div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    white-space: nowrap;
+}
+
+div.gin_widget .rating > div > div {
     margin: 0 20px 0 10px;
 }
 

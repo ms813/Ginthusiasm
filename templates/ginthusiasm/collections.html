@@ -13,12 +13,20 @@
         {% for tag_name in taste_tag_names %}
             <div>
             <a href="{% url 'gin_search_results' %}?tags='{{ tag_name.tag_name }}'"><img src={{ tag_name.img }} class="collections-img"></a>
-            <p class="collections-name">{{ tag_name.tag_name }} Collection</p>
+                <p class="collections-name">
+                    <a class="ginthusiasm-link" href="{% url 'gin_search_results' %}?tags='{{ tag_name.tag_name }}'">
+                        {{ tag_name.tag_name }} Collection
+                    </a>
+                </p>
             </div>
         {% endfor %}
         <div>
             <a href="{% url 'gin_search_results' %}"><img src="{% static 'images/all-gins.png' %}" class="collections-img"></a>
-            <p class="collections-name">Browse all gins</p>
+            <p class="collections-name">
+                <a class="ginthusiasm-link" href="{% url 'gin_search_results' %}">
+                    Browse all gins
+                </a>
+            </p>
         </div>
     </div>
 {% endblock %}

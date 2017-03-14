@@ -34,8 +34,21 @@ form .helptext {
     display: none;
 }
 
+#twitter-login{
+    margin: 0 auto;
+    width: 100%;
+    text-align: left;
+}
+
+#twitter-login img {
+    max-height: 50px;
+    padding-top: 15px;
+}
+
 #password_reset_wrapper{
     margin: 0 auto;
-    width: 40%;
-    text-align: center;
+    width: 100%;
+    padding-top: 10px;
+    text-align: left;
+ 
 }

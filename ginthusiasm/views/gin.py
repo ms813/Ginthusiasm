@@ -257,11 +257,11 @@ def create_gin_query(query_dict):
 
     # filter by distillery
     if query_dict.get('distillery'):
-        distilleries = query_dict.get('distillery').replace("+", " ").split()
+        distilleries = shlex.split(query_dict.get('distillery'))
         distilleries_query = Q()
         for distillery in distilleries:
             distilleries_query.add(
-                Q(distillery__name__icontains=distillery),
+                Q(distillery__name__iexact=distillery),
                 Q.OR
             )
         queries.add(distilleries_query, Q.AND)

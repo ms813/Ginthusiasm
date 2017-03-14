@@ -1,25 +1,29 @@
 <div class='gin_widget {{ alt_class }}'>
     <div class=details>
-        <a href="{% url 'show_gin' gin.slug %}" class="ginthusiasm-link">
+        <a href="{% url 'show_gin' gin.slug %}" class="ginthusiasm-link heavy">
             <h1>{{ gin.name }}</h1>
         </a>
         <p>{{ gin.short_description }}</p>
 
         <div class='rating'>
-            Average Rating:
-            {% with rating_type='average_rating' rating_initial=gin.average_rating %}
-                {% include 'ginthusiasm/gin_rating_widget.html'%}
-            {% endwith %}
-
-            {% if user.is_authenticated %}
-                Your Rating:
-                {% with rating_type='user_rating' rating_initial=gin.user_rating %}
+            <div>
+                Average Rating:
+                {% with rating_type='average_rating' rating_initial=gin.average_rating %}
                     {% include 'ginthusiasm/gin_rating_widget.html'%}
                 {% endwith %}
-                <strong class="message" hidden></strong>
-            {% else %}
-                <a href='{% url 'login' %}' class="ginthusiasm-link">Please login to rate!</a>
-            {% endif %}
+            </div>
+                <div class='user_rating'>
+                    {% if user.is_authenticated %}
+                        Your Rating:
+                        {% with rating_type='user_rating' rating_initial=gin.user_rating %}
+                            {% include 'ginthusiasm/gin_rating_widget.html'%}
+                        {% endwith %}
+                    {% else %}
+                        <a href='{% url 'login' %}' class="ginthusiasm-link">Please login to rate!</a>
+                    {% endif %}
+                </div>
+            <strong class="message" hidden></strong>
+
         </div>
 
         <span>
