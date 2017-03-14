@@ -5,17 +5,17 @@ var destination_url = gin_search_url;
 $(document).ready(() => {
     openTab(null, "Gin");
 
-    // if the cursor is in the header search bar, bind the enter key to search
+    // if the cursor is in the feature search bar, bind the enter key to search
     $('#feature-search-field').keyup(e => {
         if(e.which === 13){
             featureSearch(e);
         } else {
             autocomplete();
-            //gin_autocomplete();
         }
     });
 });
 
+// Function to execute the search and request the appropriate search page
 var featureSearch = function(e) {
     // grab the string from the search box
     var inputString = $('#feature-search-field').val();
@@ -29,6 +29,7 @@ var featureSearch = function(e) {
     return false;
 }
 
+// Function to get the autocomplete results when searching by gin
 var gin_autocomplete = function() {
     if ($('#feature-search-field').val().length > 0) {
         var request = $.post('/gin-search/', {
@@ -38,7 +39,6 @@ var gin_autocomplete = function() {
         )
 
         request.done(function(data, textStatus, jqXHR) {
-            console.log(data)
             $('#feature-search-results').html(data);
         });
     } else {
@@ -46,6 +46,7 @@ var gin_autocomplete = function() {
     }
 }
 
+// Function to get the autocomplete results when searching by distillery
 var distillery_autocomplete = function() {
     if ($('#feature-search-field').val().length) {
         var request = $.post('/distillery-search/', {
@@ -53,7 +54,6 @@ var distillery_autocomplete = function() {
                 csrfmiddlewaretoken : $("input[name=csrfmiddlewaretoken]").val()
             }
         ).done(function(data, textStatus, jqXHR) {
-            console.log(data)
             $('#feature-search-results').html(data);
         });
     } else {
@@ -61,8 +61,10 @@ var distillery_autocomplete = function() {
     }
 }
 
+// Variable stores the function to complete the autocomplete
 var autocomplete = gin_autocomplete;
 
+// Function controls the click behaviour of the tabs 
 function openTab(evt, tabName) {
     // Declare all variables
     if (tabName === "Gin") {
