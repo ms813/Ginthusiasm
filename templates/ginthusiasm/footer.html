@@ -7,7 +7,11 @@
         <a href="{% url 'about' %}"><span>About</span></a>
         <a href="{% url 'contact' %}"><span>Contact us</span></a>
         <a href="{% url 'article_month' %}"><span>Gin of the month</span></a>
-        <a href="{% url 'index' %}"><span>My Wishlist</span></a>
+        {% if user.is_anonymous %}
+            <a href="{% url 'login' %}"><span>My Wishlist</span></a>
+        {% else %}
+            <a href="{% url 'wishlist' user %}"><span>My Wishlist</span></a>
+        {% endif %}
         <a href="{% url 'myaccount' %}"><span>My Account</span></a>
     </nav>
 </footer>

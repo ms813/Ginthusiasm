@@ -1,0 +1,65 @@
+#gin_search_form {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: space-between;
+    --base-width: 720px;
+    --margin: 10px;
+    margin: 0px -20px 0px -20px;
+}
+
+.gin_search_widget div {
+    margin: 2.5px 20px 2.5px 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-content: space-between;
+    align-items: center;
+    flex-basis: calc(var(--base-width) / 3 - 2 * var(--margin));
+    flex-grow: 1;
+    height: 25px;
+}
+
+.gin_search_widget input[type="text"] {
+    width: 70px;
+    flex-basis: 300px;
+    flex-grow: 3;
+}
+
+.gin_search_widget input[type="number"] {
+    width: 20px;
+    flex-basis: 50px;
+    flex-grow: 1;
+}
+
+.gin_search_widget input[type="submit"] {
+    width: 100px;
+    flex-basis: 100px;
+    flex-grow: 1;
+}
+
+.gin_search_widget label {
+    margin: 0px 10px 0px 0px;
+    white-space: nowrap;
+    min-width: auto;
+    max-width: 100px;
+}
+
+.gin_search_widget label.to {
+    margin: 0px;
+    text-align: center;
+    min-width: 30px;
+    max-width: 30px;
+}
+
+.gin_search_widget select {
+    width: 70px;
+    flex-basis: 200px;
+    flex-grow: 2;
+}
+
+.content div.search_results {
+   padding: 0;
+}

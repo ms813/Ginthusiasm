@@ -1,5 +1,5 @@
 {% for result in results %}
     <li>
-        <a href="{% url show_url result.slug %}">{{ result.name }}</a>
+        <a href="{% url show_url result.slug %}" class="ginthusiasm-link">{{ result.name }}</a>
     </li>
 {% endfor %}

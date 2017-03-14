@@ -3,7 +3,7 @@
     {% for gin in trending_gins %}
         <div class="trending-gin">
             <span class="trending-gin-description">
-                <a href="{% url 'show_gin' gin.slug %}">{{ gin.name }}</a>
+                <a href="{% url 'show_gin' gin.slug %}" class="ginthusiasm-link">{{ gin.name }}</a>
                 {% with rating_type='average_rating' rating_initial=gin.average_rating %}
                     {% include 'ginthusiasm/gin_rating_widget.html'%}
                 {% endwith %}

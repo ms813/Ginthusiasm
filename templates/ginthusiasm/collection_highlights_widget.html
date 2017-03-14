@@ -5,7 +5,7 @@
         <div class="collection-highlight">
             <span class="collection-highlight-description">
                 <a href="{% url 'gin_search_results' %}?tags='{{ highlight.tag_name }}'"><img src={{ highlight.img }} class="collections-img"></a>
-                <p class="collections-name">{{ highlight.tag_name }} Collection</p>
+                <p class="collections-name"><a href="{% url 'gin_search_results' %}?tags='{{ highlight.tag_name }}'" class="ginthusiasm-link">{{ highlight.tag_name }} Collection</a></p>
             </span>
         </div>
     {% endfor %}

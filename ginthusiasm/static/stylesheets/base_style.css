@@ -50,6 +50,7 @@ h1, h2, h3, h4, h5, h6 {
 ul {
     list-style: none;
     padding-left: 0;
+    margin: 0px;
 }
 
 input {
@@ -60,8 +61,25 @@ select {
     padding: 1px;
 }
 
+input[type="submit"] {
+    text-align: center;
+    background-color: var(--lowlight-subtle);
+    cursor: pointer;
+    display: inline-table;;
+    color: var(--foreground-alt);
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1em;
+    border-style: none;
+    height: 25px;
+    width: 100px;
+}
+
+input[type="submit"]:hover {
+    background-color: var(--highlight-subtle);
+}
+
 a.ginthusiasm-button {
-/ / border-radius: 5 px;
     text-align: center;
     background-color: var(--lowlight-subtle);
     cursor: pointer;
@@ -82,7 +100,6 @@ a.ginthusiasm-button span {
 }
 
 a.ginthusiasm-tag {
-/ / border-radius: 5 px;
     text-align: center;
     background-color: var(--lowlight-subtle);
     cursor: pointer;
@@ -128,6 +145,7 @@ a.ginthusiasm-tag span {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
+    align-items: center;
 }
 
 .main_container_large_header {
@@ -136,4 +154,45 @@ a.ginthusiasm-tag span {
 
 .main_container_small_header {
     min-height: calc(100% - var(--header-small-height));
+}
+
+a.ginthusiasm-link {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--base-color);
+}
+
+a.ginthusiasm-link:after {
+    content: '';
+    display: block;
+    height: 1px;
+    width: 0;
+    background: transparent;
+    transition: width 150ms ease, background-color 150ms ease;
+}
+
+a.ginthusiasm-link:hover:after {
+    width: 100%;
+    background: var(--base-color);
+}
+
+a.ginthusiasm-link.alt-colour:after {
+    background-color: var(--foreground-alt);
+}
+
+@media screen and (max-width: 750px) {
+    .content {
+        margin: 0px;
+        padding-top: 10px;
+        width: 100%;
+    }
+
+    .content > div {
+        padding: 0px 10px 10px 10px;
+    }
+
+    .indent {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
 }

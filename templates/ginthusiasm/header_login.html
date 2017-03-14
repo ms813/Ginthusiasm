@@ -1,8 +1,8 @@
 <div class="login-small">
     {% if user.is_anonymous %}
-        <a href="{% url 'login' %}">Log In | Sign Up</a>
+        <a href="{% url 'login' %}" class="ginthusiasm-link alt-colour">Log In | Sign Up</a>
     {% else %}
-        <a href="{% url 'myaccount' %}">My Account</a>
-        <a href="{% url 'logout' %}">Log Out</a>
+        <a href="{% url 'myaccount' %}" class="ginthusiasm-link alt-colour">My Account</a>
+        <a href="{% url 'logout' %}" class="ginthusiasm-link alt-colour">Log Out</a>
     {% endif %}
 </div>

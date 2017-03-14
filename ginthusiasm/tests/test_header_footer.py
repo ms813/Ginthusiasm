@@ -90,7 +90,7 @@ class TestHeaderFooter(TestCase):
         self.assertTrue(user.is_anonymous())
 
         # check login button
-        self.assertContains(response, '<a href="/login/">Log In | Sign Up</a>',
+        self.assertContains(response, '<a href="/login/">',
                             msg_prefix="Header contains log in button when no user logged in")
 
     def header_has_logout(self, response):

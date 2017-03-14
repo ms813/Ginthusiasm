@@ -1,10 +1,32 @@
 <div class=gin_search_widget>
     <h1>Advanced Search</h1>
     <form id='gin_search_form' method='get' action={% url "gin_search_results" %}>
-        <div class='keywords'>Keywords: {{ advanced_search_form.keywords }}</div>
-        <div class='price'>Price: £ {{ advanced_search_form.min_price }} to {{ advanced_search_form.max_price }}</div>
-        <div class='rating'>Rating: {{ advanced_search_form.min_rating }} to {{ advanced_search_form.max_rating }} Stars</div>
-        <div class='ordering'>Order by: {{ advanced_search_form.order_by }}</div>
-        <input class='ginthusiasm-button' id='search-btn' type='submit' name='submit' value='Search'/>
+        <div>
+            <label class='keywords'>Keywords:</label>
+            {{ advanced_search_form.keywords }}
+        </div>
+        
+        <div>
+            <label class='price'>Price (£):</label>
+            {{ advanced_search_form.min_price }}
+            <label class='to'>to</label>
+            {{ advanced_search_form.max_price }}
+        </div>
+
+        <div>
+            <label class='rating'>Rating (Stars):</label>
+            {{ advanced_search_form.min_rating }}
+            <label class='to'>to</label>
+            {{ advanced_search_form.max_rating }}
+        </div>
+
+        <div>
+            <label class='ordering'>Order by:</label>
+            {{ advanced_search_form.order_by }}
+        </div>
+
+        <div class='search'>
+            <input class='ginthusiasm-button' id='search-btn' type='submit' name='submit' value='Search'/>
+        </div>
     </form>
 </div>

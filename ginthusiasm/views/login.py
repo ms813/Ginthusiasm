@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from ginthusiasm.forms import UserForm, LoginForm, UploadFileForm
 from ginthusiasm.models import UserProfile, Wishlist, Distillery
+from django.conf import settings
 
 """
 Views in this file handle login and signup requests from users
@@ -67,7 +68,9 @@ def signup(request):
             wishlist.save()
 
             # new user is good, log them in
-            login(request, user)
+            # note: use the django.contrib.auth backend rather than the social auth backend
+            # when users sign up using this route
+            login(request, user, backend=settings.AUTHENTICATION_BACKENDS[1])
             return redirect('myaccount')
         else:
             # bad sign up data, render the form and the errors
@@ -88,7 +91,8 @@ def signup(request):
 @login_required
 def myaccount(request):
     userprofile = request.user.userprofile
-    context = {}
+
+    context = {'form' : UploadFileForm()}
 
     if request.method == 'POST':
 
@@ -103,9 +107,6 @@ def myaccount(request):
             # invalid form data
             print("Error uploading profile image", form.errors)
     else:
-        # the upload profile image form
-        context['form'] = UploadFileForm()
-
         # check if the user owns any distilleries
         if userprofile.user_type == UserProfile.DISTILLERY_OWNER:
             context['distilleries'] = Distillery.objects.filter(owner=userprofile)
