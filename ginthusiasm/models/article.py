@@ -16,7 +16,7 @@ class Article(models.Model):
     shortDesc = models.TextField(max_length=1000, unique=True)
 
     # full content of the article body
-    content = models.TextField(max_length=1000)
+    content = models.TextField()
     date = models.DateField()
     slug = models.SlugField(max_length=50, unique=True)
     author = models.ForeignKey('UserProfile', related_name='article')

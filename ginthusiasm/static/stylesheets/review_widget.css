@@ -5,19 +5,26 @@ div.review_widget {
 
 }
 
-.review_image{
+.review_imagerating{
 
-
+ flex-basis: : 20%;
 }
-.review_widget .review_image img {
+
+img {
     height: 100px;
     width: 100px;
     float:left;
     padding-top: 20px;
 }
 
+.review_rating{
+  flex-basis:20%;
+
+}
+
 .review_widget .review_details {
-    float:left;
+  flex-basis: 80%
     padding-left: 20px;
+
 
 }

@@ -5,3 +5,7 @@
 .content div.articles{
   padding:0;
 }
+
+.content .articles ul{
+  margin:0;
+}
