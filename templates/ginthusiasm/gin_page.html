@@ -25,7 +25,13 @@
 
 
         {% if gin.distillery %}
-            <a href="{% url 'show_distillery' gin.distillery.slug %}">Learn More About {{ gin.distillery.name }} Distillery</a>
+            <a href="{% url 'show_distillery' gin.distillery.slug %}">
+                Learn More About {{ gin.distillery.name }}
+                {% if 'Distill'|upper in gin.distillery.name|upper %}
+                {% else %}
+                    Distillery
+                {% endif %}
+            </a>
         {% endif %}
 
         <div class='rating'>
