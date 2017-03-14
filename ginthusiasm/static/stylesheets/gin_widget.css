@@ -58,3 +58,10 @@ div.gin_widget .details p {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
+@media screen and (max-width: 750px) {
+    div.gin_widget {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
