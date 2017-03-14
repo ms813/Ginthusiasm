@@ -72,7 +72,7 @@ input[type="submit"] {
     font-size: 1em;
     border-style: none;
     height: 25px;
-    width: 100px;
+    //width: 100px;
 }
 
 input[type="submit"]:hover {
