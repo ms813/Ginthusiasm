@@ -10,15 +10,10 @@
 {% block body_block %}
 <div>
   <h1>Add Article</h1>
-    <form class= 'add_article' id="add_article_form" method="post" action="{% url "add_article" user.username %}"
+    <form class= 'add_article' id="add_article_form" method="post" action="{% url 'add_article' user.username %}"
           enctype="multipart/form-data">
           {% csrf_token  %}
-          {{ add_article_form.title.label }}
-          {{ add_article_form.title }}
-          {{ add_article_form.shortDesc.label }}
-          {{ add_article_form.shortDesc }}
-          {{ add_article_form.content.label }}
-          {{ add_article_form.content }}
+          {{ add_article_form }}
         <input type="submit" name="submit" value="Add Article" />
     </form>
 </div>
