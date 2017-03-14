@@ -8,6 +8,11 @@
     src: url(../fonts/Smitten-Regular.ttf);
 }
 
+@font-face {
+    font-family: robotolight;
+    src: url(../fonts/Roboto-300.ttf);
+}
+
 /*
     Colour variable definitions
 */
@@ -33,7 +38,7 @@ html, body {
 
 body {
     margin: 0;
-    font-family: 'Roboto', sans-serif;
+    font-family: robotolight, sans-serif;
     color: var(--base-color);
     background-color: var(--base-background);
     background-image: url(../images/gin-lane_v2.jpg);
