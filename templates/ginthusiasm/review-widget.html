@@ -1,11 +1,11 @@
 <div class='review_widget'>
-    <span class='review_imagerating'>
+    <div class='review_imagerating'>
       <img src="{{ MEDIA_URL }}{{ review.user.profile_image }}" alt='Image of'/>
       {% with rating_type='average_rating' rating_initial=review.rating %}
           {% include 'ginthusiasm/gin_rating_widget.html'%}
       {% endwith %}
-    </span>
-    <span class='review_details'>
+    </div>
+    <div class='review_details'>
         <h3>
             {{ review.user }}
             {% comment %}
@@ -20,5 +20,5 @@
             {% endif %}
             {{ review.date }}</h3>
         {{ review.content }}
-    </span>
+    </div>
 </div>
