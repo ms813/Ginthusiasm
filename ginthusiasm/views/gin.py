@@ -33,7 +33,8 @@ def show_gin(request, gin_name_slug):
         # Map parameters
         if reviews:
             # 1 or more reviews, so create a list of coordinates
-            coords = [{'lat': r.lat, 'lng': r.lng} for r in reviews]
+            # only add to the list of both lat and long are not None
+            coords = [{'lat': r.lat, 'lng': r.lng} for r in reviews if (r.lat and r.lng)]
         else:
             # 0 reviews, so center map on distillery
             distillery = gin.distillery
