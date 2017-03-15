@@ -2,22 +2,38 @@ div.review_widget {
   display: flex;
   flex-direction: row;
   margin-bottom: 50px;
+  width:100%;
+}
+
+
+.review_widget h3{
+  margin-top: 0;
+}
+
+.review_imagerating{
+ display:flex;
+ flex-direction: column;
+ flex-basis: : 20%;
+ margin-right: 10px;
 
 }
 
-.review_image{
-
-
-}
-.review_widget .review_image img {
-    height: 100px;
-    width: 100px;
+img {
+    width:100%;
     float:left;
-    padding-top: 20px;
+    padding-bottom: 20px;
+    max-width: 100px;
 }
+
+.review_rating{
+
+}
+
+
 
 .review_widget .review_details {
-    float:left;
-    padding-left: 20px;
+  flex-basis: 80%
+  padding-left: 20px;
+
 
 }
