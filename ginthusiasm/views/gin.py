@@ -31,10 +31,13 @@ def show_gin(request, gin_name_slug):
         reviews = gin.reviews.all()
 
         # Map parameters
+        coords = []
         if reviews:
             # 1 or more reviews, so create a list of coordinates
-            coords = [{'lat': r.lat, 'lng': r.lng} for r in reviews]
-        else:
+            # only add to the list of both lat and long are not None
+            coords = [{'lat': r.lat, 'lng': r.lng} for r in reviews if (r.lat and r.lng)]
+
+        if len(coords) == 0:
             # 0 reviews, so center map on distillery
             distillery = gin.distillery
             if distillery:
@@ -45,6 +48,8 @@ def show_gin(request, gin_name_slug):
                     {'lat': 85, 'lng': -180},
                     {'lat': -85, 'lng': 180}
                 ]
+
+
 
         # set the zoom level - if more than one marker the map script scales the map dynamically anyways
         context_dict['zoom'] = 16
@@ -315,12 +320,6 @@ def add_review(request, gin_name_slug):
     if request.method == 'POST':
         form = ReviewForm(data=request.POST)
         response_data = {}
-
-        ## Catherine - add postcode from review form here
-        #postcode = "G117PY"
-        #mh = MapHelper()
-        #geodata = mh.postcodeToLatLng(postcode)
-        # {'lat' : x, 'lng' : y}
 
         if form.is_valid():
             if gin and author:
