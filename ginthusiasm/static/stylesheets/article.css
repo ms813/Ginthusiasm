@@ -7,25 +7,17 @@ div.article_content {
     top: 0px;
     left: 0px;
     width: 100%;
-    z-index: 0;
-}
-
-.article_content .a_overlay {
-    background-color: rgba(255, 255, 255, 0.4);
-    position: relative;
-    top: -125px;
-    width: 40%;
-    height: 100px;
 
 }
 
 .article_content .a_title {
     text-align: center;
-
 }
 
 .article_content .a_content {
-    position: relative;
-    top: -100px;
-    z-index: 0;
+    margin: 0;
+}
+
+.article_content .a_author {
+  text-align: center;
 }

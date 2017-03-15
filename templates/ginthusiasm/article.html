@@ -11,12 +11,12 @@
 {% block body_block %}
   <div class = 'article_content'>
     <img class= 'a_image' src="{{ MEDIA_URL }}{{ article.image }}" alt='January gin of the month'/>
-<div class='a_overlay'>
     <h1 class = 'a_title'> {{ article.title }} </h1>
-  </div>
-  <div class = 'a_content'>
+    <div class='a_author'>Written by <a href="{% url 'article_user_listing' article.author %}"> {{article.author}}</a></div>
+    <div class = 'a_content'>
       {{ article.content|safe }}
-  </div>
+    </div>
+
 </div>
 
 {% endblock %}
