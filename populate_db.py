@@ -161,34 +161,20 @@ def populate_gin():
 def populate_review():
     print("Populating reviews...")
 
-    users = User.objects.all()
-    gins = Gin.objects.all()
-
     reviews = []
-    for user in users:
-        review_count = random.randint(0, len(gins))
-
-        for i in range(0, review_count):
-            reviews.append({
-                "review_type" : UserProfile.EXPERT,
-                "date" : '2017-03-01',
-                "rating" : 3,
-                "content" : "Pudding jelly chocolate cake lollipop cupcake. Candy cotton candy pie sweet lollipop. Souffle cheesecake danish halvah. Muffin brownie powder pastry. Candy sweet roll jujubes jelly. Pie icing icing chupa chups lemon drops bear claw carrot cake muffin chocolate bar. Cheesecake bonbon icing lollipop sweet caramels powder. Powder croissant candy lemon drops. Bonbon brownie marzipan gingerbread candy bear claw powder tart. Donut candy sesame snaps. Halvah cake sweet apple pie. Cake oat cake tiramisu cake. Toffee dragee croissant jelly beans dragee macaroon chocolate cake tootsie roll.",
-                "lat" : 51.503351 + (random.random() - 0.5),
-                "lng" : -0.119522 + (random.random() - 0.5),
-                "user" : user.userprofile,
-                "gin" : gins[i],
-                "postcode": "G2 2RQ",
-            })
+    with open('review_data.json') as f:
+        reviews = json.load(f)
 
     for data in reviews:
+        user = User.objects.get(username=data['user']).userprofile
+        gin = Gin.objects.get(name=data['gin'])
         try:
-           r = Review.objects.get(user=data['user'], gin=data['gin'])
+           r = Review.objects.get(user=user, gin=gin)
            print(str(r) + ' already exists!')
         except Review.DoesNotExist:
             r = Review.objects.create(
-                user=data['user'],
-                gin=data['gin'],
+                user=user,
+                gin=gin,
                 review_type=data['review_type'],
                 date=data['date'],
                 rating=data['rating'],
