@@ -46,6 +46,8 @@ def show_gin(request, gin_name_slug):
                     {'lat': -85, 'lng': 180}
                 ]
 
+
+
         # set the zoom level - if more than one marker the map script scales the map dynamically anyways
         context_dict['zoom'] = 16
 
@@ -315,12 +317,6 @@ def add_review(request, gin_name_slug):
     if request.method == 'POST':
         form = ReviewForm(data=request.POST)
         response_data = {}
-
-        ## Catherine - add postcode from review form here
-        #postcode = "G117PY"
-        #mh = MapHelper()
-        #geodata = mh.postcodeToLatLng(postcode)
-        # {'lat' : x, 'lng' : y}
 
         if form.is_valid():
             if gin and author:
