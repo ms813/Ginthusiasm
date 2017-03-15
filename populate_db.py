@@ -276,6 +276,22 @@ def populate_users():
             "email": "charlie@doesntexist.com",
             "password": make_password("charlietest"),
             "user_type": UserProfile.DISTILLERY_OWNER
+        },
+        {
+            "username": "Sharon",
+            "first_name": "Sharon",
+            "last_name": "Jones",
+            "email": "sharon@doesntexist.com",
+            "password": make_password("sharontest"),
+            "user_type": UserProfile.BASIC
+        },
+        {
+            "username": "Hector",
+            "first_name": "Hector",
+            "last_name": "Ali",
+            "email": "hector@doesntexist.com",
+            "password": make_password("sharontest"),
+            "user_type": UserProfile.EXPERT
         }
     ]
 
