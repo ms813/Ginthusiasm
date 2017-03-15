@@ -8,9 +8,12 @@ div.review_widget {
 
 .review_widget h3{
   margin-top: 0;
+  margin-bottom:0;
+  padding-bottom: 5px;
+
 }
 
-.review_imagerating{
+.review_image{
  display:flex;
  flex-direction: column;
  flex-basis: : 20%;
@@ -26,14 +29,20 @@ img {
 }
 
 .review_rating{
-
+  flex-basis:80%;
 }
 
 
+.review_titlerating{
+  display:flex;
+}
 
 .review_widget .review_details {
-  flex-basis: 80%
   padding-left: 20px;
+}
 
-
+.review_widget .review_date{
+  font-size: 10px;
+  padding-bottom: 5px;
+  flex-basis:20%;
 }
