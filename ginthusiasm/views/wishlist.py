@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from ginthusiasm.models import Gin
+from ginthusiasm.views.gin import add_user_ratings_to_gin
 from django.http import HttpResponse
 
 
@@ -8,9 +9,15 @@ def wishlist(request, username):
     user = User.objects.get(username=username)
     prof = user.userprofile
 
+    gin_list = prof.wishlist.gins.all()
+
+    if request.user.is_authenticated():
+        for gin in gin_list:
+            add_user_ratings_to_gin(request.user, gin)
+
     context = {
         "wishlist_name": str(prof.wishlist),
-        "gins": prof.wishlist.gins.all,
+        "gins": gin_list,
         "profile_image": prof.profile_image
     }
 
@@ -18,7 +25,6 @@ def wishlist(request, username):
         context['wishlist_name'] = "Your wishlist"
 
     return render(request, 'ginthusiasm/wishlist.html', context)
-
 
 # handles requests from 'add to/remove from wishlist' button
 def wishlist_add(request):
