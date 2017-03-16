@@ -28,7 +28,7 @@ def show_gin(request, gin_name_slug):
         context_dict['gin'] = gin
 
         # Grab the reviews on this gin
-        reviews = gin.reviews.all()
+        reviews = gin.reviews.all().order_by('-date')
 
         # Map parameters
         coords = []
