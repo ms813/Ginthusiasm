@@ -22,7 +22,7 @@
  {
    "name": "Greenall's London Dry Gin",
    "price": 14,
-   "short_description": "Crafted in our distillery for over 250 years, Greenall's The Original uses the same secret recipe that has been handed down through only 7 master distillers. This secret blend of 8�botanicals gives a classic London Dry gin with rich juniper notes, balanced with mature citrus and spice. Best served with ice and lime in a classic G&T�or as a versatile cocktail ingredient if you're feeling a little more adventurous.",
+   "short_description": "Crafted in our distillery for over 250 years, Greenall's The Original uses the same secret recipe that has been handed down through only 7 master distillers. This secret blend of 8 botanicals gives a classic London Dry gin with rich juniper notes, balanced with mature citrus and spice. Best served with ice and lime in a classic G&T or as a versatile cocktail ingredient if you're feeling a little more adventurous.",
    "long_description": "Test long description",
    "abv": 37.5,
    "image": "gins/greenalls-london-dry.jpg",
@@ -50,7 +50,7 @@
    "taste_tags": "juniper, cinnamon, coriander, clove, vanilla, orange peel, lemon peel, apple, lemon verbena"
  },
  {
-   "name": "Tanqueray London Dry ",
+   "name": "Tanqueray London Dry",
    "price": 18,
    "short_description": "It starts with the man. Charles Tanqueray. The bold spirit who traded the church for the still and in the process, created one of the world's most awarded gins. Tonight we toast the bold spirit worthy of its seal and 180 years of distilling excellence",
    "long_description": "A blend of the purest four-times-distilled spirit and a hand picked selection of four botanicals, London Dry Gin offers uniquely balanced gin experience. Said to have been Frank Sinatra's preferred gin, London Dry's edge and sophistication have long made it a favourite with the stars in fashion, film and music. Tanqueray's iconic bottle design is a contemporary update of the original 1948 design, which in turn, was inspired by the shape of a classic cocktail shaker. The famous Tanqueray family crest embossed on the glass of each bottle features a pineapple, a historic symbol of hospitality and warm welcome.",

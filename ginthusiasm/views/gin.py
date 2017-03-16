@@ -138,28 +138,30 @@ def add_gin(request, distillery_name_slug):
 # Creates or updates a review for the specified gin with a user rating
 # Note this view should be called using AJAX, so it passes back a status string as a HttpResponse
 def rate_gin(request, gin_name_slug):
-    # check the user is logged in
-    if not request.user.is_anonymous():
-        if request.method == 'POST':
+    if request.method == 'POST':
+        # check the user is logged in
+        if not request.user.is_anonymous():
+                # grab the user rating from the POST data
+                user_rating = request.POST.get('rating')
 
-            # grab the user rating from the POST data
-            user_rating = request.POST.get('rating')
+                # check the rating is within the allowed bounds (1-5)
+                if user_rating > 0 or user_rating <= 5:
+                    gin = Gin.objects.get(slug=gin_name_slug)
+                    userprofile = request.user.userprofile
 
-            # check the rating is within the allowed bounds (1-5)
-            if user_rating > 0 or user_rating <= 5:
-                gin = Gin.objects.get(slug=gin_name_slug)
-                userprofile = request.user.userprofile
+                    review, created = Review.objects.get_or_create(user=userprofile, gin=gin)
 
-                review, created = Review.objects.get_or_create(user=userprofile, gin=gin)
+                    review.rating = user_rating
+                    review.save()
 
-                review.rating = user_rating
-                review.save()
+                    return HttpResponse('rated')
+        else:
+            return HttpResponse('unauthenticated')
 
-                return HttpResponse('rated')
+        return HttpResponse('not rated')
+
     else:
-        return HttpResponse('unauthenticated')
-
-    return HttpResponse('not rated')
+        return redirect('index')
 
 
 # View for the gin search page
