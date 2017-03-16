@@ -60,6 +60,7 @@ ul {
 
 input, select, textarea {
     font-family: robotolight, sans-serif;
+    font-size: 15px;
 }
 
 input {
