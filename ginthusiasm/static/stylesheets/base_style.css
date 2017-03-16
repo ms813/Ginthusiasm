@@ -58,6 +58,10 @@ ul {
     margin: 0px;
 }
 
+input, select, textarea {
+    font-family: robotolight, sans-serif;
+}
+
 input {
     padding: 1px;
 }
