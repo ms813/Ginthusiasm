@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from ginthusiasm.models import UserProfile
 from ginthusiasm.forms import AddArticleForm
 from datetime import date, datetime
+from django.contrib.auth.decorators import login_required
 
 """
 Views relating to the Article model, including creating new ones and Gin of the Month
@@ -66,7 +67,7 @@ def article_month(request):
 
     return render(request, 'ginthusiasm/article.html', context_dict)
 
-
+@login_required
 def add_article(request, user_name):
     try:
         user = User.objects.get(username=user_name)
@@ -75,6 +76,16 @@ def add_article(request, user_name):
         userprofile = None
 
     form = AddArticleForm()
+
+    if request.user.is_anonymous():
+        return article_listing(request)
+
+    is_expert = request.user.userprofile.user_type == UserProfile.EXPERT
+    is_admin = request.user.userprofile.user_type == UserProfile.ADMIN
+
+    # if the user doesnt have privileges, send them to the distillery page
+    if not (is_admin or is_expert):
+        return article_listing(request)
 
     if request.method == 'POST':
         form = AddArticleForm(request.POST)
