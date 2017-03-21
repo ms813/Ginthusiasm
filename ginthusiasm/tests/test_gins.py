@@ -113,6 +113,16 @@ class TestGin(TestCase):
 
         self.assertEqual(gin.average_rating, 3)
 
+    def test_gin_rating(self):
+        gin = add_gin("NewGin", "Short Description", "Long Description", "gin/Eden-Mill-Love-Gin.jpg", 42, 0)
+        user = add_user('jsmith', 'John', 'Smith', 'js@test.com', 'jsmith123')
+
+        self.client.login(username='jsmith', password='jsmith123')
+        response = self.client.post(reverse('rate_gin', kwargs={'gin_name_slug' : "newgin"}), data = {'rating' : '5'})
+        self.assertContains(response, 'rated')
+        self.assertEqual(gin.reviews.get(user=UserProfile.objects.get(user = user)).rating, 5)
+
+
 
 def add_user(username, first_name, last_name, email, password):
     user = User.objects.get_or_create(username = username)[0]
