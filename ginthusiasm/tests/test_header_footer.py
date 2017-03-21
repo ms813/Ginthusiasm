@@ -1,10 +1,11 @@
-from django.test import TestCase, Client
+from django.test import TestCase, Client, override_settings
 from django.shortcuts import reverse
 from django.contrib import auth
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import User
 
 
+@override_settings(SECURE_SSL_REDIRECT=False)
 class TestHeaderFooter(TestCase):
     def setUp(self):
         self.user = User.objects.create(username="jsmith")

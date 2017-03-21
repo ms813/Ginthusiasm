@@ -1,9 +1,10 @@
-from django.test import TestCase, Client
+from django.test import TestCase, Client, override_settings
 from django.urls import reverse
 
 from ginthusiasm.models import Distillery
 
 
+@override_settings(SECURE_SSL_REDIRECT=False)
 class TestDistillery(TestCase):
     def setUp(self):
         self.client = Client()

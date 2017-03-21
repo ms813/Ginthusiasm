@@ -1,10 +1,12 @@
-from django.test import TestCase, Client
+from django.test import TestCase, Client, override_settings
 from django.shortcuts import reverse
 from ginthusiasm.models import Gin, TasteTag, Distillery, Review, UserProfile
 from django.contrib import auth
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import User
 
+
+@override_settings(SECURE_SSL_REDIRECT=False)
 class TestGin(TestCase):
     def setUp(self):
         add_gin("Gin1", "Short Description 1", "Long Description 1", "gin/Eden-Mill-Love-Gin.jpg", 42, 4)
