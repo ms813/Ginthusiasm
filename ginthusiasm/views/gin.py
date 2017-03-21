@@ -49,8 +49,6 @@ def show_gin(request, gin_name_slug):
                     {'lat': -85, 'lng': 180}
                 ]
 
-
-
         # set the zoom level - if more than one marker the map script scales the map dynamically anyways
         context_dict['zoom'] = 16
 
@@ -91,6 +89,7 @@ def show_gin(request, gin_name_slug):
     return render(request, 'ginthusiasm/gin_page.html', context=context_dict)
 
 
+
 # View for adding a gin to the database
 @login_required
 def add_gin(request, distillery_name_slug):
@@ -113,6 +112,7 @@ def add_gin(request, distillery_name_slug):
     if not (is_admin or owns_distillery):
         return show_distillery(request, distillery_name_slug)
 
+    # add the gin
     if request.method == 'POST':
         form = AddGinForm(request.POST)
         if form.is_valid():
