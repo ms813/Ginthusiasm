@@ -29,4 +29,4 @@ class ArticleTestCase(TestCase):
     # Test that if a user has no articles a message appears
     def test_user_articles(self):
         response = self.client.get(reverse('article_user_listing', kwargs={'user_name': 'testuser'}))
-        self.assertContains(response, "No Articles Found")
+        self.assertContains(response, "No Articles Found")    # Test that if a user wants to add an article the template exists
