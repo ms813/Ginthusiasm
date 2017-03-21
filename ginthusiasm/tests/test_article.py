@@ -19,7 +19,33 @@ class ArticleTestCase(TestCase):
         self.user.userprofile.save()
         self.user.save()
 
+        #Create an article
+
+        user = User.objects.get(username='Catherine')
+        userprofile = user.userprofile
+        add_article("Article1", "Short Description 1", "Content 1", 2016-12-02, "article1", userprofile, "articles/harris.jpg", False)
+
         self.client = Client()
+
+
+def test_adding_article(self):
+    self.assertIsNotNone(Article.objects.get(title="Article1"))
+
+    def add_article(title, shortDesc, content, date, slug, author, image, month):
+
+        article = Article.objects.get_or_create(title=title)[0]
+
+        article.shortDesc = shortDesc
+        article.content = content
+        article.date = date
+        article.slug = slug
+        article.author = author
+        article.image = image
+        article.month = month
+
+        article.save()
+        return article
+
 
     # Test that the article listing page contains the correct template
     def test_article_widgets(self):
