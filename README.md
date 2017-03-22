@@ -1,5 +1,7 @@
 ﻿# Ginthusiasm
 
+When running the population_script.py an index file for the Haystack search must be created. This will cause the script to pause while waiting for user input. Enter y and it will continue.
+
 To run the debug email server (for password resets):
 * `python -m smtpd -n -c DebuggingServer localhost:1025`
 * Go to /password-reset/ and enter an email address that matches a user in the databases
