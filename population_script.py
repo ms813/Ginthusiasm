@@ -324,7 +324,7 @@ if __name__ == '__main__':
 
     if len(sys.argv) <= 1:
         # if no command line arguments, populate every model
-        # note first cmd arg is 'populate_db.py'
+        # note first cmd arg is 'population_script.py'
 
         # These should be called in order
         populate_users()
