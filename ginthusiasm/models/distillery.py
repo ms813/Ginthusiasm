@@ -1,4 +1,5 @@
 from __future__ import unicode_literals
+
 from django.template.defaultfilters import slugify
 from django.db import models
 
@@ -24,13 +25,6 @@ class Distillery(models.Model):
 
     class Meta:
         verbose_name_plural = "Distilleries"
-
-    # *args, **kwargs = a way of specifying that a method/function can take
-    # extra parameters depending on future use (e.g. if need to save a Distillery
-    # in a specific way with something models.Model provides). *args = arguments, and
-    # **kwargs = keyword arguments. E.g. could call save(<extra parameters>)
-    # which would then get passed to the save method on the models.Model class. Means
-    # do not need to define lots of different save methods.
 
     # override the save method to automatically set the slug based on the name
     def save(self, *args, **kwargs):

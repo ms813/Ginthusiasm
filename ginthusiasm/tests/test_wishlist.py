@@ -1,4 +1,4 @@
-from django.test import TestCase, Client
+from django.test import TestCase, Client, override_settings
 from django.urls import reverse
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import User
@@ -6,6 +6,7 @@ from django.contrib import auth
 from ginthusiasm.models import UserProfile, Wishlist, Gin
 
 
+@override_settings(SECURE_SSL_REDIRECT=False)
 class UserTestCase(TestCase):
     def setUp(self):
         # Create a test user
