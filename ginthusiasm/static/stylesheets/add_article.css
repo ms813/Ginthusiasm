@@ -22,3 +22,17 @@ form input[type='text'] {
   height: 35px;
 
 }
+
+form input[type='checkbox']{
+  flex-basis: 100%;
+  height: 35px;
+}
+
+form label{
+  padding-top: 10px;
+}
+
+form input[type='file']{
+  flex-basis: 100%;
+  height: 35px;
+}
