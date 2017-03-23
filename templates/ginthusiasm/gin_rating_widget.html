@@ -14,7 +14,7 @@
 
 {% endcomment %}
 
-<div class="rating_widget" data-gin='{{ gin.slug }}'>
+<div class="rating_widget {{ rating_style }}" data-gin='{{ gin.slug }}'>
     <select class="{{ rating_type }}" data-rating='{{ rating_initial }}'>
         <option value=""></option>
         <option value="1">1</option>
