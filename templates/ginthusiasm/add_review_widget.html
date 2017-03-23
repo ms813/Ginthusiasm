@@ -14,10 +14,8 @@
     {{ form.postcode }}
     OR use current location:
     <a id='location-btn' class='ginthusiasm-button'><span>Use Current Location</span></a></span>
-    <span class= "ar_stars big">
-        {% with rating_type='form_rating' rating_initial='3' %}
+    {% with rating_type='form_rating' rating_initial='3' %}
             {% include 'ginthusiasm/gin_rating_widget.html' %}
         {% endwith %}
-    </span>
-    <span class= "ar_reviewsubmit"><a id='add-review-btn' class='ginthusiasm-button'><span>Save Review</span></a></span>
+    <span class= "ar_reviewsubmit"> <a id='add-review-btn' class='ginthusiasm-button'><span>Save Review</span></a></span>
 </form>

@@ -7,6 +7,8 @@ form {
     flex-direction: row;
     align-content: space-around;
     flex-wrap: wrap;
+    justify-content:center;
+
 }
 
 form textarea{
@@ -42,11 +44,4 @@ form input[type='text']{
 
 .ar_location #location-btn{
   margin-left: 10px;
-}
-
-.ar_stars{
-  display: flex;
-  flex-basis: 100%;
-  justify-content:center;
-  align-items: center;
 }
